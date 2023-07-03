@@ -1,0 +1,347 @@
+:root {
+  --background-color: #FFFFFF;
+  --text-color: #1C1B1F;
+  --typing-color: #1C1B1F;
+  --icon-color: #1C1B1F;
+}
+
+.dark-theme{
+  --background-color: #202020;
+  --text-color: #808080;
+  --typing-color: #FFFFFF;
+  --icon-color: #808080;
+}
+
+
+.blue-theme {
+  --background-color: #202020;
+  --text-color: #2FCCEE;
+  --typing-color: #2FCCEE;
+  --icon-color: #2FCCEE;
+}
+
+
+body{
+	background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1,h2,h3,h4,h5,p{
+  padding: 0px;
+  margin: 0px;
+}
+
+.karantina-font{
+  font-family: 'Karantina', cursive;
+}
+
+.neucha-font{
+  font-family: 'Neucha', cursive;
+}
+
+.montserrat-font{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*************** Theme  ***************/
+
+#theme-btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0px;
+}
+
+/**************** navbar ***************/
+
+.navbar{
+	margin-top: 1.5px;
+  padding-left:34px;
+}
+
+.nav-logo{
+	font-size: 2.25rem;
+	/*font-size: 1.896rem;*/
+	color: var(--text-color);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.nav-icon{
+	height: 100%;
+	width: 100%;
+	padding: 12px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+}
+
+
+#nav-link{
+  text-decoration: none;
+  color: var(--icon-color);
+}
+
+#nav-link:hover{
+  color: var(--icon-color);
+  text-decoration: none;
+}
+
+.nav-item{
+  display: inline-block;
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
+  height: 60px;
+  width: 60px;
+  float: right;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.nav-item:hover{
+  width: 200px;
+}
+
+.nav-item .icon{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  box-sizing: border-box;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+
+.nav-item .icon i{
+  font-size: 25px;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+
+.nav-item:hover .icon i{
+  color: var(--text-color);
+}
+
+.nav-item span{
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+
+
+.active{
+  display: inline-block;
+  background-color: var(--text-color);
+  border: 1px solid var(--background-color);
+  height: 60px;
+  width: 200px;
+  float: right;
+  cursor: pointer;
+}
+
+.active:hover .icon i{
+  color: var(--background-color);
+}
+
+.active span {
+  color: var(--background-color);
+}
+
+.active #nav-link{
+  text-decoration: none;
+  color: var(--background-color);
+}
+
+.active #nav-link:hover{
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+
+/***************** Main Section *****************/
+
+#main{
+  padding-left: 24px;
+}
+
+.heading{
+	font-size: 6rem;
+  letter-spacing: 0.2em;
+  color: var(--text-color);
+}
+
+.typed-element{
+  font-size: 4rem;
+  color: var(--typing-color);
+}
+
+.typing span{
+  font-size: 4rem;
+  color: var(--typing-color);
+}
+
+
+.custom-btn{
+  font-size: 2.25rem;
+  outline: 1px solid var(--text-color);
+  color: var(--text-color);
+}
+
+.custom-btn:hover{
+  color: var(--text-color);
+}
+
+@media (max-width: 767px) {
+
+ .heading{
+	font-size: 2.5rem;
+  }
+
+  .typed-element{
+    font-size: 2rem;
+  }
+
+  .typing span{
+    font-size: 2rem;
+  }
+
+  .custom-btn{
+    font-size: 1rem;
+  }
+
+}
+
+/***************** About *****************/
+
+#about{
+  padding-left: 24px;
+}
+
+.about-row{
+  margin-top: 21.5px;
+}
+
+.name{
+  font-size: 5rem;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  line-height: 81px;
+}
+
+.profile-img-col{
+  padding: 0px;
+}
+
+
+.about-content{
+  padding-left: 54px;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 39px;
+  letter-spacing: 0.05em;
+}
+
+.social{
+  list-style: none;
+  padding: 0px;
+}
+
+.social-icon {
+  display: inline-flex; /* Ensures the border wraps around the icon */
+  justify-content: center; /* Centers the icon horizontally */
+  align-items: center; /* Centers the icon vertically */
+  width: 40px; /* Sets the width of the border */
+  height: 40px; /* Sets the height of the border */
+  border: 2px solid black; /* Adds a black border with 2px width */
+  overflow: hidden; /* Clips the icon to the border dimensions */
+}
+
+.social-icon i {
+  font-size: 30px; /* Adjusts the size of the icon */
+  color: var(--icon-color); /* Sets the color of the icon to LinkedIn blue */
+  margin: 0; /* Removes any default margins */
+  padding: 0; /* Removes any default padding */
+}
+
+.summary{
+  margin-top: 65px;
+}
+
+.summary p{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/************** Footer ****************/
+
+.footer{
+	font-size: 1.25rem;
+	color: var(--text-color);
+  margin-top: auto;
+  padding-left:24px;
+  padding-right:24px;
+  padding-top: 19.5px;
+  padding-bottom: 19.5px;
+}
+
+#vector-svg {
+  color: var(--icon-color);
+  background-color: var(--background-color);
+}
+
+.footer-link{
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.credite-text{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+@media (max-width: 767px) {
+
+.footer{
+	 font-size: 1.05rem;
+}
+
+.footer-row.d-flex.justify-content-between {
+  justify-content: center !important;
+}
+
+.credite-text{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+}
+
+
+/************** Grid ****************/
+.parent {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(25, 1fr);
+grid-column-gap: 19px;
+grid-row-gap: 20px;
+}
+
+.div1 { grid-area: 1 / 1 / 4 / 4;  background-color:red;  }
+.div2 { grid-area: 1 / 4 / 2 / 7;  background-color:blue; }
+.div3 { grid-area: 1 / 7 / 2 / 13;  background-color:black;  }
+.div4 { grid-area: 2 / 4 / 4 / 8;  background-color:orange;  }
+.div5 { grid-area: 2 / 8 / 4 / 13;  background-color: yellow; }
+.div6 { grid-area: 4 / 1 / 7 / 5;  background-color: green; }
+.div7 { grid-area: 4 / 5 / 7 / 10;  background-color: purple; }
+.div8 { grid-area: 4 / 10 / 10 / 13;  background-color: pink;  }
+.div9 { grid-area: 7 / 1 / 10 / 10;  background-color: aqua; }
+.div10 { grid-area: 10 / 1 / 15 / 7;  background-color: brown; }
+.div11 { grid-area: 10 / 7 / 15 / 13;  background-color: violet; }
+.div12 { grid-area: 14 / 1 / 26 / 4;  background-color: darkgray; }
+.div13 { grid-area: 14 / 4 / 20 / 8;  background-color:  magenta;}
+.div14 { grid-area: 14 / 8 / 20 / 13;  background-color:  red;}
