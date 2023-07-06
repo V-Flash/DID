@@ -1,38 +1,13 @@
-var owl = $('.owl-carousel');
-owl.owlCarousel({
-  dots: false, // Initially hide the dots
-  dotsEach: 4 // Display the dots for each set of 4 items
-});
+$(function(){
+    $(".filtering").on("click", "span", function () {
+        var a = $(".gallery").isotope({});
+        var e = $(this).attr("data-filter");
+        a.isotope({ filter: e });
+    });
 
-$('.filter-btn').on('click', function() {
-  var filterValue = $(this).data('filter');
+    
+    $(".filtering").on("click", "span", function () {
+        $(this).addClass("filter-active").siblings().removeClass("filter-active");
+    });
 
-  $('.filter-btn').removeClass('filter-active');
-  $(this).addClass('filter-active');
-
-  owl.trigger('refresh.owl.carousel'); // Refresh the carousel to reflect any changes
-
-  if (filterValue === 'all') {
-    owl.find('.item').removeClass('hidden');
-  } else {
-    owl.find('.item').addClass('hidden');
-    owl.find('.item[data-colors="' + filterValue + '"]').removeClass('hidden');
-  }
-
-  owl.trigger('to.owl.carousel', [0]); // Go to the first item in the carousel
-
-  var visibleItems = owl.find('.item:not(.hidden)');
-  var showDots = visibleItems.length > 3; // Determine if dots should be shown based on the number of visible items
-  
-  owl.trigger('destroy.owl.carousel'); // Destroy the carousel instance
-  owl.empty(); // Empty the carousel
-
-  visibleItems.each(function() {
-    owl.append($(this).clone()); // Add the visible items back to the carousel
-  });
-
-  owl.owlCarousel({
-    dots: showDots, // Show or hide the dots based on the number of visible items
-    dotsEach: 4 // Display the dots for each set of 4 items
-  });
 });
