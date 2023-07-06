@@ -1,53 +1,12 @@
-<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+ $(function(){
+	    $(".filtering").on("click", "span", function () {
+	        var a = $(".owl-carousel").isotope({});
+	        var e = $(this).attr("data-filter");
+	        a.isotope({ filter: e });
+	    });
 
-<!-- Isotope CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.min.css">
-
-<!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<!-- Isotope JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-
-
-
-<div class="filter-container">
-  <button class="filter-btn" data-filter="*">All</button>
-  <button class="filter-btn" data-filter=".category1">Category 1</button>
-  <button class="filter-btn" data-filter=".category2">Category 2</button>
-  <!-- Add more filter buttons as needed -->
-
-  <div class="owl-carousel owl-theme">
-    <div class="item category1">Item 1</div>
-    <div class="item category2">Item 2</div>
-    <!-- Add more carousel items with appropriate class names -->
-  </div>
-</div>
-
-$(document).ready(function() {
-  // Initialize Owl Carousel
-  $('.owl-carousel').owlCarousel({
-    // Owl Carousel options
-    // ...
-  });
-
-  // Initialize Isotope
-  var $container = $('.owl-carousel');
-  $container.isotope({
-    itemSelector: '.item',
-    layoutMode: 'fitRows'
-  });
-
-  // Filter items on button click
-  $('.filter-btn').on('click', function() {
-    var filterValue = $(this).attr('data-filter');
-    $container.isotope({ filter: filterValue });
-  });
-});
-
-
-
+	    
+	    $(".filtering").on("click", "span", function () {
+	        $(this).addClass("active").siblings().removeClass("active");
+	    });
+	}) 
