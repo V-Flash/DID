@@ -1,1 +1,46 @@
+<div class="row no-gutters">
+    <div class="filtering col-sm-12 text-center">
+        <span data-filter="*" class="triangle-span filter-active" onclick="showAll()">All</span>
+        <span data-filter=".architecture" class="" onclick="showDiv('.architecture')">Agrochemical</span>
+        <span data-filter=".decor" class="" onclick="showDiv('.decor')">Automobile</span>
+        <span data-filter=".interior" class="" onclick="showDiv('.interior')">FMCG</span>
+        <span data-filter=".food" class="" onclick="showDiv('.food')">Food Product</span>
+        <span data-filter=".obd" class="" onclick="showDiv('.obd')">OBD Carry Bags</span>
+        <span data-filter=".pharma" class="" onclick="showDiv('.pharma')">Pharmaceuticals</span>
+        <span data-filter=".textile" class="" onclick="showDiv('.textile')">Textile</span>
+    </div>
+</div>
+
+<!-- Hidden divs -->
+<div class="architecture" style="display: none;">Agrochemical content goes here</div>
+<div class="decor" style="display: none;">Automobile content goes here</div>
+<div class="interior" style="display: none;">FMCG content goes here</div>
+<div class="food" style="display: none;">Food Product content goes here</div>
+<div class="obd" style="display: none;">OBD Carry Bags content goes here</div>
+<div class="pharma" style="display: none;">Pharmaceuticals content goes here</div>
+<div class="textile" style="display: none;">Textile content goes here</div>
+
+<script>
+    function showAll() {
+        // Show all hidden divs
+        var hiddenDivs = document.querySelectorAll('.filtering ~ div');
+        hiddenDivs.forEach(function(div) {
+            div.style.display = 'block';
+        });
+    }
+
+    function showDiv(filter) {
+        // Hide all hidden divs
+        var hiddenDivs = document.querySelectorAll('.filtering ~ div');
+        hiddenDivs.forEach(function(div) {
+            div.style.display = 'none';
+        });
+
+        // Show the corresponding div based on the filter
+        var divToShow = document.querySelector(filter);
+        if (divToShow) {
+            divToShow.style.display = 'block';
+        }
+    }
+</script>
 
