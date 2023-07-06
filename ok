@@ -1,12 +1,22 @@
-$(function () {
-  var $carousel = $(".owl-carousel").isotope({});
+ var owl = $('.owl-carousel');
+	  owl.owlCarousel();
 
-  $(".filtering").on("click", "span", function () {
-    var $this = $(this);
-    var filterValue = $this.attr("data-filter");
+	  
+	  $('.filter-btn').on('click', function() {
+	    var filterValue = $(this).data('filter');
 
-    $carousel.isotope({ filter: filterValue });
 
-    $this.addClass("active").siblings().removeClass("active");
-  });
-});
+	    $('.filter-btn').removeClass('filter-active');
+	   
+	    $(this).addClass('filter-active');
+
+
+	    if (filterValue === 'all') {
+	      owl.trigger('.owl.carousel');
+	      owl.find('.item').show();
+	    } else {
+	      owl.trigger('.owl.carousel');
+	      owl.find('.item').hide();
+	      owl.find('.item[data-colors="' + filterValue + '"]').show();
+	    }
+	  });
