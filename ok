@@ -7,13 +7,14 @@ $('.filter-btn').on('click', function() {
   $('.filter-btn').removeClass('filter-active');
   $(this).addClass('filter-active');
 
+  owl.trigger('refresh.owl.carousel'); // Refresh the carousel to reflect any changes
+
   if (filterValue === 'all') {
-    owl.find('.item').show();
+    owl.find('.item').removeClass('hidden');
   } else {
-    owl.find('.item').hide();
-    owl.find('.item[data-colors="' + filterValue + '"]').show();
+    owl.find('.item').addClass('hidden');
+    owl.find('.item[data-colors="' + filterValue + '"]').removeClass('hidden');
   }
 
-  owl.trigger('refresh.owl.carousel'); // Refresh the carousel to reflect any changes
   owl.trigger('to.owl.carousel', [0]); // Go to the first item in the carousel
 });
