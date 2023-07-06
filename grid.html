@@ -70,12 +70,9 @@
 
 </body>
 </html>
-
 $(document).ready(function() {
   var owl = $('.owl-carousel');
   owl.owlCarousel();
-
-  var activeFilters = []; // Array to store active filter options
 
   // Handle filter button click
   $('.filter-btn').on('click', function() {
@@ -84,24 +81,20 @@ $(document).ready(function() {
     // Toggle active state of the clicked filter button
     $(this).toggleClass('active');
 
-    // Update active filters array based on the clicked button
-    if ($(this).hasClass('active')) {
-      activeFilters.push(filterValue);
-    } else {
-      var index = activeFilters.indexOf(filterValue);
-      if (index > -1) {
-        activeFilters.splice(index, 1);
-      }
-    }
+    // Get the active filter buttons
+    var activeFilters = $('.filter-btn.active');
+    var activeFilterValues = activeFilters.map(function() {
+      return $(this).data('filter');
+    }).get();
 
-    // Show items that match any of the active filter options
+    // Filter carousel items based on the selected options
     if (activeFilters.length === 0) {
       owl.trigger('refresh.owl.carousel');
       owl.find('.item').show();
     } else {
       owl.trigger('refresh.owl.carousel');
       owl.find('.item').hide();
-      activeFilters.forEach(function(filter) {
+      activeFilterValues.forEach(function(filter) {
         owl.find('.item[data-colors="' + filter + '"]').show();
       });
     }
