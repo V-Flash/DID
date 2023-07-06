@@ -70,29 +70,40 @@
 
 </body>
 </html>
+
 $(document).ready(function() {
   var owl = $('.owl-carousel');
   owl.owlCarousel();
+
+  var activeFilters = []; // Array to store active filter options
 
   // Handle filter button click
   $('.filter-btn').on('click', function() {
     var filterValue = $(this).data('filter');
 
-    // Remove active class from all filter buttons
-    $('.filter-btn').removeClass('active');
-    // Add active class to the clicked filter button
-    $(this).addClass('active');
+    // Toggle active state of the clicked filter button
+    $(this).toggleClass('active');
 
-    // Filter carousel items based on the selected option
-    if (filterValue === 'all') {
+    // Update active filters array based on the clicked button
+    if ($(this).hasClass('active')) {
+      activeFilters.push(filterValue);
+    } else {
+      var index = activeFilters.indexOf(filterValue);
+      if (index > -1) {
+        activeFilters.splice(index, 1);
+      }
+    }
+
+    // Show items that match any of the active filter options
+    if (activeFilters.length === 0) {
       owl.trigger('refresh.owl.carousel');
       owl.find('.item').show();
     } else {
       owl.trigger('refresh.owl.carousel');
       owl.find('.item').hide();
-      owl.find('.item[data-colors="' + filterValue + '"]').show();
+      activeFilters.forEach(function(filter) {
+        owl.find('.item[data-colors="' + filter + '"]').show();
+      });
     }
   });
 });
-
-
