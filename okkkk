@@ -1,54 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		
+.filtering {padding: 40px 0px;}
+
+.filtering-col{}
+
+.filtering span {
+    position: relative;
+    border-bottom: 2px solid transparent;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    width: 12.22%;
+    text-align: center;
+    padding: 25px;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.filtering span:last-child {
+    margin: 0;
+}
+
+.filtering .filter-active{
+    color: var(--white-color);
+    background-color: #EA2B2D;
+}
+
+.filter-active::after{
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50px;
+    transform: translateX(273%);
+    border-left: 10px solid transparent;
+    border-right:10px solid transparent ;
+    border-top: 10px solid  var(--red-color);;  
+}
+
+	</style>
+</head>
+<body>
 <div class="row no-gutters">
     <div class="filtering col-sm-12 text-center">
-        <span data-filter="*" class="triangle-span filter-active" onclick="showDiv(this, '*')">All</span>
-        <span data-filter=".architecture" class="" onclick="showDiv(this, '.architecture')">Agrochemical</span>
-        <span data-filter=".decor" class="" onclick="showDiv(this, '.decor')">Automobile</span>
-        <span data-filter=".interior" class="" onclick="showDiv(this, '.interior')">FMCG</span>
-        <span data-filter=".food" class="" onclick="showDiv(this, '.food')">Food Product</span>
-        <span data-filter=".obd" class="" onclick="showDiv(this, '.obd')">OBD Carry Bags</span>
-        <span data-filter=".pharma" class="" onclick="showDiv(this, '.pharma')">Pharmaceuticals</span>
-        <span data-filter=".textile" class="" onclick="showDiv(this, '.textile')">Textile</span>
+        <!-- Filter options -->
+        <span data-filter="all" class="filter-active" onclick="showDiv('all')">All</span>
+        <span data-filter="architecture" class="" onclick="showDiv('architecture')">Agrochemical</span>
+        <span data-filter="decor" class="" onclick="showDiv('decor')">Automobile</span>
+        <span data-filter="interior" class="" onclick="showDiv('interior')">FMCG</span>
+        <span data-filter="food" class="" onclick="showDiv('food')">Food Product</span>
+        <span data-filter="obd" class="" onclick="showDiv('obd')">OBD Carry Bags</span>
+        <span data-filter="pharma" class="" onclick="showDiv('pharma')">Pharmaceuticals</span>
+        <span data-filter="textile" class="" onclick="showDiv('textile')">Textile</span>
     </div>
 </div>
 
-<!-- Hidden divs -->
-<div class="content-div">
-    <div class="architecture" style="display: none;">Agrochemical content goes here</div>
-    <div class="decor" style="display: none;">Automobile content goes here</div>
-    <div class="interior" style="display: none;">FMCG content goes here</div>
-    <div class="food" style="display: none;">Food Product content goes here</div>
-    <div class="obd" style="display: none;">OBD Carry Bags content goes here</div>
-    <div class="pharma" style="display: none;">Pharmaceuticals content goes here</div>
-    <div class="textile" style="display: none;">Textile content goes here</div>
-</div>
+<div id="content-all" class="content">Content for All</div>
+<div id="content-architecture" class="content">Content for Agrochemical</div>
+<div id="content-decor" class="content">Content for Automobile</div>
+<div id="content-interior" class="content">Content for FMCG</div>
+<div id="content-food" class="content">Content for Food Product</div>
+<div id="content-obd" class="content">Content for OBD Carry Bags</div>
+<div id="content-pharma" class="content">Content for Pharmaceuticals</div>
+<div id="content-textile" class="content">Content for Textile</div>
 
 <script>
-    var previousSpan = null;
+window.addEventListener('DOMContentLoaded', function() {
+  // Show only the content for the "All" filter initially
+  showDiv('all');
+});
 
-    // Set initial active state
-    window.addEventListener('DOMContentLoaded', function() {
-        var initialSpan = document.querySelector('[data-filter="*"]');
-        showDiv(initialSpan, '*');
-    });
+function showDiv(filter) {
+  // Remove the 'filter-active' class from all span elements
+  var spanElements = document.getElementsByClassName("filtering")[0].getElementsByTagName("span");
+  for (var i = 0; i < spanElements.length; i++) {
+    spanElements[i].classList.remove("filter-active");
+  }
 
-    function showDiv(span, filter) {
-        var contentDiv = document.querySelector('.content-div');
-        var divToShow = contentDiv.querySelector(filter);
+  // Add the 'filter-active' class to the clicked span element
+  var clickedSpan = document.querySelector('[data-filter="' + filter + '"]');
+  clickedSpan.classList.add("filter-active");
 
-        if (previousSpan) {
-            previousSpan.classList.remove('filter-active');
-        }
-
-        span.classList.add('filter-active');
-        contentDiv.childNodes.forEach(function(child) {
-            if (child.nodeType === Node.ELEMENT_NODE) {
-                child.style.display = 'none';
-            }
-        });
-
-        if (divToShow) {
-            divToShow.style.display = 'block';
-            previousSpan = span;
-        }
+  // Show the corresponding content div and hide others
+  var contentDivs = document.getElementsByClassName("content");
+  for (var j = 0; j < contentDivs.length; j++) {
+    var divId = contentDivs[j].getAttribute("id");
+    if (divId === "content-" + filter) {
+      contentDivs[j].style.display = "block";
+    } else {
+      contentDivs[j].style.display = "none";
     }
+  }
+}
 </script>
+
+</body>
+</html>
