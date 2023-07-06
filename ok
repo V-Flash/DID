@@ -21,9 +21,16 @@ $('.filter-btn').on('click', function() {
 
   owl.trigger('to.owl.carousel', [0]); // Go to the first item in the carousel
 
-  var totalItems = owl.find('.item:not(.hidden)').length;
-  var showDots = totalItems > 3; // Determine if dots should be shown based on the number of visible items
+  var visibleItems = owl.find('.item:not(.hidden)');
+  var showDots = visibleItems.length > 3; // Determine if dots should be shown based on the number of visible items
+  
   owl.trigger('destroy.owl.carousel'); // Destroy the carousel instance
+  owl.empty(); // Empty the carousel
+
+  visibleItems.each(function() {
+    owl.append($(this).clone()); // Add the visible items back to the carousel
+  });
+
   owl.owlCarousel({
     dots: showDots, // Show or hide the dots based on the number of visible items
     dotsEach: 4 // Display the dots for each set of 4 items
