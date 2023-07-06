@@ -1,22 +1,20 @@
- var owl = $('.owl-carousel');
-	  owl.owlCarousel();
+var owl = $('.owl-carousel');
+owl.owlCarousel();
 
-	  
-	  $('.filter-btn').on('click', function() {
-	    var filterValue = $(this).data('filter');
+$('.filter-btn').on('click', function() {
+  var filterValue = $(this).data('filter');
 
+  $('.filter-btn').removeClass('filter-active');
+  $(this).addClass('filter-active');
 
-	    $('.filter-btn').removeClass('filter-active');
-	   
-	    $(this).addClass('filter-active');
+  if (filterValue === 'all') {
+    owl.trigger('refresh.owl.carousel'); // Refresh the carousel to reflect any changes
+    owl.find('.item').show();
+  } else {
+    owl.trigger('refresh.owl.carousel'); // Refresh the carousel to reflect any changes
+    owl.find('.item').hide();
+    owl.find('.item[data-colors="' + filterValue + '"]').show();
+  }
 
-
-	    if (filterValue === 'all') {
-	      owl.trigger('.owl.carousel');
-	      owl.find('.item').show();
-	    } else {
-	      owl.trigger('.owl.carousel');
-	      owl.find('.item').hide();
-	      owl.find('.item[data-colors="' + filterValue + '"]').show();
-	    }
-	  });
+  owl.trigger('to.owl.carousel', [0]); // Go to the first item in the carousel
+});
