@@ -70,6 +70,29 @@
 
 </body>
 </html>
+$(document).ready(function() {
+  var owl = $('.owl-carousel');
+  owl.owlCarousel();
 
+  // Handle filter button click
+  $('.filter-btn').on('click', function() {
+    var filterValue = $(this).data('filter');
+
+    // Remove active class from all filter buttons
+    $('.filter-btn').removeClass('active');
+    // Add active class to the clicked filter button
+    $(this).addClass('active');
+
+    // Filter carousel items based on the selected option
+    if (filterValue === 'all') {
+      owl.trigger('refresh.owl.carousel');
+      owl.find('.item').show();
+    } else {
+      owl.trigger('refresh.owl.carousel');
+      owl.find('.item').hide();
+      owl.find('.item[data-colors="' + filterValue + '"]').show();
+    }
+  });
+});
 
 
