@@ -25,6 +25,12 @@
 <script>
     var previousSpan = null;
 
+    // Set initial active state
+    window.addEventListener('DOMContentLoaded', function() {
+        var initialSpan = document.querySelector('[data-filter="*"]');
+        showDiv(initialSpan, '*');
+    });
+
     function showDiv(span, filter) {
         var contentDiv = document.querySelector('.content-div');
         var divToShow = contentDiv.querySelector(filter);
