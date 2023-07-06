@@ -1,13 +1,22 @@
 $(function(){
-    $(".filtering").on("click", "span", function () {
-        var a = $(".gallery").isotope({});
-        var e = $(this).attr("data-filter");
-        a.isotope({ filter: e });
-    });
+  // Initialize Owl Carousel
+  var owl = $(".owl-carousel").owlCarousel({
+    items: 1,
+    loop: true,
+    autoWidth: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    onInitialized: updateCarousel,
+    onResized: updateCarousel
+  });
 
-    
-    $(".filtering").on("click", "span", function () {
-        $(this).addClass("filter-active").siblings().removeClass("filter-active");
-    });
-
+  // Function to update Owl Carousel
+  function updateCarousel(event){
+    var itemCount = owl.find('.owl-item:not(.cloned)').length;
+    if(itemCount === 1){
+      owl.trigger('to.owl.carousel', 0);
+      owl.trigger('stop.owl.autoplay');
+    }
+  }
 });
