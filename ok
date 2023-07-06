@@ -1,12 +1,12 @@
- $(function(){
-	    $(".filtering").on("click", "span", function () {
-	        var a = $(".owl-carousel").isotope({});
-	        var e = $(this).attr("data-filter");
-	        a.isotope({ filter: e });
-	    });
+$(function () {
+  var $carousel = $(".owl-carousel").isotope({});
 
-	    
-	    $(".filtering").on("click", "span", function () {
-	        $(this).addClass("active").siblings().removeClass("active");
-	    });
-	}) 
+  $(".filtering").on("click", "span", function () {
+    var $this = $(this);
+    var filterValue = $this.attr("data-filter");
+
+    $carousel.isotope({ filter: filterValue });
+
+    $this.addClass("active").siblings().removeClass("active");
+  });
+});
