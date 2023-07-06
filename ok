@@ -1,47 +1,72 @@
-$(function(){
-  // Initialize Owl Carousel
-  var owl = $(".owl-carousel").owlCarousel({
-    items: 4,
-    loop: true,
-    autoWidth: true,
-    autoplay: true,
-    autoplayTimeout: 3000,
-    autoplayHoverPause: true,
-    onInitialized: updateCarousel,
-    onResized: updateCarousel
-  });
+<div class="row no-gutters">
+	        <div class="filtering col-sm-12 text-center">
 
-  // Function to update Owl Carousel
-  function updateCarousel(event){
-    var itemCount = owl.find('.owl-item:not(.cloned)').length;
-    if(itemCount === 1){
-      owl.trigger('to.owl.carousel', 0);
-      owl.trigger('stop.owl.autoplay');
-    }
-  }
+	           		<span data-filter="*" class="triangle-span filter-active">All</span>
+                <span data-filter=".architecture" class="">Agrochemical</span>
+                <span data-filter=".decor" class="">Automobile</span>
+                <span data-filter=".interior" class="">FMCG</span>
+                <span data-filter=".food" class="">Food Product</span>
+                <span data-filter=".obd" class="">OBD Carry Bags</span>
+                <span data-filter=".pharma" class="">Pharmaceuticals</span>
+                <span data-filter=".textile" class="">Textile</span>
+	        </div>
+	      </div>
 
-  // Event handler for filter click
-  $(".filtering").on("click", "span", function () {
-    var filter = $(this).attr("data-filter");
 
-    // Update Owl Carousel items based on filter
-    owl.owlCarousel('destroy');
-    owl.empty();
 
-    var filteredItems = $(".gallery").find(filter);
-    filteredItems.each(function(){
-      owl.append($(this).clone());
+.filtering {padding: 40px 0px;}
+
+.filtering-col{}
+
+.filtering span {
+    position: relative;
+    border-bottom: 2px solid transparent;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    width: 12.22%;
+    text-align: center;
+    padding: 25px;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.filtering span:last-child {
+    margin: 0;
+}
+
+.filtering .filter-active{
+    color: var(--white-color);
+    background-color: #EA2B2D;
+}
+
+.filter-active::after{
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50px;
+    transform: translateX(273%);
+    border-left: 10px solid transparent;
+    border-right:10px solid transparent ;
+    border-top: 10px solid  var(--red-color);;  
+}
+
+
+* owlCarousel Start js  */
+$(function() {
+    $('.owl-1').owlCarousel({
+        animateOut: 'slideOutDown',
+        animateIn: 'slideInUp',
+        items:4,
+        loop: false,
+        nav:true,
+        margin:0,
+		    autoplay:true,
+        stagePadding:0,
+        smartSpeed:450,
+        navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
     });
-
-    owl.owlCarousel({
-      items: 4,
-      loop: true,
-      autoWidth: true,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true,
-      onInitialized: updateCarousel,
-      onResized: updateCarousel
-    });
-  });
-});
+})
+/* owlCarousel End js  */
