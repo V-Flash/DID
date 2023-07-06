@@ -1,7 +1,7 @@
 $(function(){
   // Initialize Owl Carousel
   var owl = $(".owl-carousel").owlCarousel({
-    items: 1,
+    items: 4,
     loop: true,
     autoWidth: true,
     autoplay: true,
@@ -19,4 +19,29 @@ $(function(){
       owl.trigger('stop.owl.autoplay');
     }
   }
+
+  // Event handler for filter click
+  $(".filtering").on("click", "span", function () {
+    var filter = $(this).attr("data-filter");
+
+    // Update Owl Carousel items based on filter
+    owl.owlCarousel('destroy');
+    owl.empty();
+
+    var filteredItems = $(".gallery").find(filter);
+    filteredItems.each(function(){
+      owl.append($(this).clone());
+    });
+
+    owl.owlCarousel({
+      items: 4,
+      loop: true,
+      autoWidth: true,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      onInitialized: updateCarousel,
+      onResized: updateCarousel
+    });
+  });
 });
