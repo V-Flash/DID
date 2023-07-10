@@ -1,38 +1,31 @@
-var offset = 200;
-var duration = 500;
 var lastScrollTop = 0;
-var isButtonVisible = false;
-var timeout;
 
-$(window).scroll(function() {
-    var st = $(this).scrollTop();
+    
 
-    if (st > offset && st > lastScrollTop) {
-        if (!isButtonVisible) {
-            $('.back-to-top').fadeIn(400);
-            isButtonVisible = true;
-            clearTimeout(timeout);
+     $(window).scroll(function() {
+
+      const st = $(this).scrollTop();
+
+      $(window).bind('mousewheel', function(event) {
+
+        if (event.originalEvent.wheelDelta >= 0 && st > lastScrollTop) {
+
+          $('.back-to-top').fadeIn(400);
         }
-    } else {
-        if (isButtonVisible) {
-            timeout = setTimeout(function() {
-                $('.back-to-top').fadeOut(400);
-                isButtonVisible = false;
-            }, 8000);
+        else {
+          $('.back-to-top').hide();
         }
-    }
 
-    lastScrollTop = st;
-});
+      });
 
-$('.back-to-top').click(function(event) {
-    event.preventDefault();
-    $('html, body').animate({ scrollTop: 0 }, 600, function() {
-        $('.back-to-top').fadeOut(400);
-        isButtonVisible = false;
+     });
+   
+    $('.back-to-top').click(function(event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 600, function() {
+           $('.back-to-top').hide();
+        });
+        return false;
     });
-    return false;
-});
 
-// Hide the back-to-top button by default
-$('.back-to-top').hide();
+    $('.back-to-top').hide();
