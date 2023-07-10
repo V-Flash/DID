@@ -1,21 +1,38 @@
 var offset = 200;
 var duration = 500;
 var lastScrollTop = 0;
+var isButtonVisible = false;
+var timeout;
 
 $(window).scroll(function() {
     var st = $(this).scrollTop();
-    
+
     if (st > offset && st > lastScrollTop) {
-        $('.back-to-top').fadeIn(400);
+        if (!isButtonVisible) {
+            $('.back-to-top').fadeIn(400);
+            isButtonVisible = true;
+            clearTimeout(timeout);
+        }
     } else {
-        $('.back-to-top').fadeOut(400);
+        if (isButtonVisible) {
+            timeout = setTimeout(function() {
+                $('.back-to-top').fadeOut(400);
+                isButtonVisible = false;
+            }, 8000);
+        }
     }
-    
+
     lastScrollTop = st;
 });
 
 $('.back-to-top').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop: 0}, 600);
+    $('html, body').animate({ scrollTop: 0 }, 600, function() {
+        $('.back-to-top').fadeOut(400);
+        isButtonVisible = false;
+    });
     return false;
 });
+
+// Hide the back-to-top button by default
+$('.back-to-top').hide();
