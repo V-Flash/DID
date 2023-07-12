@@ -7,3 +7,14 @@
               </ul>
             </li>
 <ul>
+// Get the "About Us" dropdown toggle element
+  var aboutUsToggle = document.querySelector('.dropdown-toggle');
+
+  // Get the dropdown menu element
+  var dropdownMenu = document.querySelector('.dropdown-menu');
+
+  // Add a click event listener to the "About Us" toggle
+  aboutUsToggle.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    dropdownMenu.classList.toggle('show'); // Toggle the "show" class on the dropdown menu
+  });
