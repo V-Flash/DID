@@ -1,0 +1,9 @@
+<ul class="nav navbar-nav navbar-right p0" data-in="fadeIn" data-out="fadeOut">
+	        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
+	          <ul class="dropdown-menu">
+	            <li><a href="about.html">About Shiva Pharmachem Ltd.</a></li>
+	            <li><a href="about.html#vision-mission">Vision & Mission</a></li>
+	            <li><a href="our-values.html">Values</a></li>
+              </ul>
+            </li>
+<ul>
