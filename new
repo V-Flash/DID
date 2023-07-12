@@ -1,20 +1,39 @@
 <ul class="nav navbar-nav navbar-right p0" data-in="fadeIn" data-out="fadeOut">
-	        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
-	          <ul class="dropdown-menu">
-	            <li><a href="about.html">About Shiva Pharmachem Ltd.</a></li>
-	            <li><a href="about.html#vision-mission">Vision & Mission</a></li>
-	            <li><a href="our-values.html">Values</a></li>
-              </ul>
-            </li>
-<ul>
-// Get the "About Us" dropdown toggle element
-  var aboutUsToggle = document.querySelector('.dropdown-toggle');
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
+    <ul class="dropdown-menu">
+      <li><a href="about.html">About Shiva Pharmachem Ltd.</a></li>
+      <li><a href="about.html#vision-mission">Vision & Mission</a></li>
+      <li><a href="our-values.html">Values</a></li>
+    </ul>
+  </li>
+</ul>
 
-  // Get the dropdown menu element
-  var dropdownMenu = document.querySelector('.dropdown-menu');
+<script>
+  // Get all the dropdown menu items
+  var dropdownItems = document.querySelectorAll('.dropdown-menu li');
 
-  // Add a click event listener to the "About Us" toggle
-  aboutUsToggle.addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default link behavior
-    dropdownMenu.classList.toggle('show'); // Toggle the "show" class on the dropdown menu
+  // Add a click event listener to each dropdown menu item
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+
+      // Remove the "on" class from all dropdown menu items
+      dropdownItems.forEach(function(item) {
+        item.classList.remove('on');
+      });
+
+      // Add the "on" class to the clicked dropdown menu item
+      item.classList.add('on');
+
+      // Get the corresponding <a> tag
+      var link = item.querySelector('a');
+
+      // Add the "fadeIn" class to the <a> tag
+      link.classList.add('fadeIn');
+
+      // Add inline style (display: block) to the <a> tag
+      link.style.display = 'block';
+    });
   });
+</script>
