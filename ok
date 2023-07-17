@@ -1,15 +1,15 @@
-const inputFields = document.querySelectorAll('.input-div input');
+const inputFields = document.querySelectorAll('.input-field');
 
 inputFields.forEach(input => {
-  const label = input.nextElementSibling;
+  const label = input.parentElement.querySelector('.form-label');
 
   input.addEventListener('input', function() {
     if (input.value.trim() !== '') {
       label.style.opacity = '1';
-      label.style.marginTop = '-20px';
+      label.style.top = '-20px';
     } else {
       label.style.opacity = '0';
-      label.style.marginTop = '0';
+      label.style.top = '22px';
     }
   });
 });
