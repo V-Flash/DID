@@ -1,3 +1,18 @@
 <div class="input-div">
             <input type="email" class="form-control" id="email" placeholder="username">
           </div>
+.input-div {
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+input:focus + label {
+  opacity: 1;
+}
