@@ -1,31 +1,29 @@
-var lastScrollTop = 0;
+$(document).ready(function(){
 
-    
+      //light-dark theme
+      var themeSwitch = document.getElementById("flexSwitchCheckDefault");
+      var currentTheme = localStorage.getItem("theme");
 
-     $(window).scroll(function() {
+      themeSwitch.change(function(){
+      var isChecked = $(this).is(':checked');
 
-      const st = $(this).scrollTop();
+        function switchTheme() {
 
-      $(window).bind('mousewheel', function(event) {
+          var isChecked = $(this).is(':checked');
 
-        if (event.originalEvent.wheelDelta >= 0 && st > lastScrollTop) {
+          if(isChecked && document.body.classList.contains("dark-theme")){
 
-          $('.back-to-top').fadeIn(400);
+              document.body.classList.remove("dark-theme");
+              localStorage.setItem("theme", "light");
+          }
+
+          else {
+            document.body.classList.add("dark-theme");
+            localStorage.setItem("theme", "dark");
+          }
+
         }
-        else {
-          $('.back-to-top').hide();
-        }
 
-      });
+      themeSwitch.onclick = switchTheme;
 
      });
-   
-    $('.back-to-top').click(function(event) {
-        event.preventDefault();
-        $('html, body').animate({scrollTop: 0}, 600, function() {
-           $('.back-to-top').hide();
-        });
-        return false;
-    });
-
-    $('.back-to-top').hide();
