@@ -1,0 +1,9 @@
+// item mouse event
+__this__.$item.on('click.rotate', function(e) {
+  // prevent click on active item
+  if ($(this).hasClass(__this__.ACTIVE_CLASS)) return;
+  // check if the clicked element is an anchor tag
+  if ($(e.target).is("a")) return;
+  // move slide to the desired index
+  _moveSlide($(this).index(), __this__);
+});
