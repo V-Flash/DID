@@ -1,13 +1,12 @@
-$(document).ready(function() {
-      $("#datepicker").datepicker({
-        firstDay: 1,
-        showOtherMonths: true,
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: "dd.mm.yy"
-      });
+document.addEventListener('DOMContentLoaded', function() {
+  var datepicker = document.getElementById('datepicker');
 
-      $(".date").mousedown(function() {
-        $(".ui-datepicker").addClass("active");
-      });
-    });
+  datepicker.addEventListener('click', function() {
+    datepicker.setAttribute('type', 'date');
+    datepicker.focus();
+  });
+
+  datepicker.addEventListener('blur', function() {
+    datepicker.setAttribute('type', 'text');
+  });
+});
