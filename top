@@ -15,7 +15,7 @@ $(document).ready(function() {
     }
   }
 
-  themeSwitch.change(switchTheme);
+  themeSwitch.on('change', switchTheme);
 
   // Set initial theme based on localStorage
   if (currentTheme === "dark") {
