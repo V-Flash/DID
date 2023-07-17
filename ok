@@ -1,13 +1,43 @@
- <div class="input-div">
-            <label for="exampleFormControlInput1" id="email-label" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="username">
-          </div>
-
- .form-label{
-      font-size: 15px;
-      margin-left: 10px;
-      margin-bottom: 0px;
-      position: absolute;
-      top: 22px;
-      opacity: 0;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            // Function to handle input change
+            function handleInputChange() {
+                var inputValue = $('#myInput').val(); // Get the input value
+                
+                // Check if the input value is empty
+                if (inputValue === '') {
+                    $('#headerContainer').removeClass('styled-header'); // Remove the style class
+                } else {
+                    $('#headerContainer').addClass('styled-header'); // Apply the style class
+                }
+            }
+            
+            // Bind input change event
+            $('#myInput').on('input', handleInputChange);
+        });
+    </script>
+    <style>
+        /* Define the style for the header */
+        .styled-header {
+            background-color: yellow;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a container element where the header will be inserted -->
+    <div id="headerContainer"></div>
+    
+    <!-- Input field -->
+    <input type="text" id="myInput" placeholder="Enter a value">
+    
+    <!-- Rest of your HTML content -->
+    <h1>Welcome to my page</h1>
+    <p>This is the main content of the page.</p>
+</body>
+</html>
