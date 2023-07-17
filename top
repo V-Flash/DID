@@ -1,29 +1,25 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  // Light-dark theme
+  var themeSwitch = $("#flexSwitchCheckDefault");
+  var currentTheme = localStorage.getItem("theme");
 
-      //light-dark theme
-      var themeSwitch = document.getElementById("flexSwitchCheckDefault");
-      var currentTheme = localStorage.getItem("theme");
+  function switchTheme() {
+    var isChecked = themeSwitch.is(':checked');
 
-      themeSwitch.change(function(){
-      var isChecked = $(this).is(':checked');
+    if (isChecked && $("body").hasClass("dark-theme")) {
+      $("body").removeClass("dark-theme");
+      localStorage.setItem("theme", "light");
+    } else {
+      $("body").addClass("dark-theme");
+      localStorage.setItem("theme", "dark");
+    }
+  }
 
-        function switchTheme() {
+  themeSwitch.change(switchTheme);
 
-          var isChecked = $(this).is(':checked');
-
-          if(isChecked && document.body.classList.contains("dark-theme")){
-
-              document.body.classList.remove("dark-theme");
-              localStorage.setItem("theme", "light");
-          }
-
-          else {
-            document.body.classList.add("dark-theme");
-            localStorage.setItem("theme", "dark");
-          }
-
-        }
-
-      themeSwitch.onclick = switchTheme;
-
-     });
+  // Set initial theme based on localStorage
+  if (currentTheme === "dark") {
+    themeSwitch.prop("checked", true);
+    switchTheme();
+  }
+});
