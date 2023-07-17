@@ -1,12 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-  var datepicker = document.getElementById('datepicker');
-
-  datepicker.addEventListener('click', function() {
-    datepicker.setAttribute('type', 'date');
-    datepicker.focus();
-  });
-
-  datepicker.addEventListener('blur', function() {
-    datepicker.setAttribute('type', 'text');
-  });
-});
+<div class="input-div">
+            <input type="email" class="form-control" id="email" placeholder="username">
+          </div>
