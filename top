@@ -6,12 +6,12 @@ $(document).ready(function() {
   function switchTheme() {
     var isChecked = themeSwitch.is(':checked');
 
-    if (isChecked && $("body").hasClass("dark-theme")) {
-      $("body").removeClass("dark-theme");
-      localStorage.setItem("theme", "light");
-    } else {
+    if (isChecked) {
       $("body").addClass("dark-theme");
       localStorage.setItem("theme", "dark");
+    } else {
+      $("body").removeClass("dark-theme");
+      localStorage.setItem("theme", "light");
     }
   }
 
