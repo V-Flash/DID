@@ -1,26 +1,69 @@
-Add the following JavaScript code inside the <script> tags:
-javascript
-Copy code
-$(document).ready(function() {
-  $(".testimonial .tabs li").click(function() {
-    var index = $(this).index();
-    $(this).addClass('active').siblings().removeClass('active');
-    $(".testimonial .carousel-item").eq(index).addClass('active').siblings().removeClass('active');
-  });
-});
-Update the CSS classes to include the active state styles. Add the following CSS code inside the <style> tags:
-css
-Copy code
-body .testimonial .row .tabs li.active::before,
-body .testimonial .row .tabs li.active::after,
-body .testimonial .row .tabs li:focus {
-  /* Add your active state styles here */
-  border: 10px solid red;
-}
-body .testimonial .row .carousel-inner .carousel-item.active {
-  /* Add your active state styles here */
-  display: block;
-}
-With these changes, the tabs should be functional, and clicking on a tab will switch the corresponding testimonial slide.
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title></title>
 
-Please note that if you are using this code in an actua
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style type="text/css">
+    /* CSS styles for the testimonial section */
+    /* ... */
+
+    /* CSS styles for the sliding effect */
+    body .testimonial .carousel-inner .carousel-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    body .testimonial .carousel-inner .carousel-item.active {
+      opacity: 1;
+    }
+
+    body .testimonial .carousel-inner .carousel-item.left {
+      left: -100%;
+    }
+
+    body .testimonial .carousel-inner .carousel-item.right {
+      left: 100%;
+    }
+
+    body .testimonial .carousel-inner .carousel-item.right,
+    body .testimonial .carousel-inner .carousel-item.left {
+      opacity: 0;
+    }
+  </style>
+
+</head>
+<body>
+
+  <section class="testimonial">
+    <!-- ... -->
+  </section>
+
+  <!-- Bootstrap and jQuery scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".testimonial .tabs li").click(function() {
+        var index = $(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $(".testimonial .carousel-item").eq(index).addClass('active').siblings().removeClass('active');
+        $(".testimonial .carousel-inner .carousel-item").removeClass('left right');
+        $(".testimonial .carousel-inner .carousel-item").eq(index).prevAll().addClass('left');
+        $(".testimonial .carousel-inner .carousel-item").eq(index).nextAll().addClass('right');
+      });
+    });
+  </script>
+
+</body>
+</html>
