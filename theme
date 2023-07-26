@@ -1,89 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <!-- Add your meta tags, CSS links, and other head elements here -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <title>Superhero Names in Alphabetical Order</title>
     <style>
-        /* Add your CSS styles here */
+        /* Add some basic styling for demonstration purposes */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .column {
+            flex: 1;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
     </style>
 </head>
-
 <body>
-    <!-- Your website content goes here -->
-
-    <!-- Swiper Slider -->
-    <div class="swiper-container home-swiper">
-        <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-                <div class="favorite-category">
-                    <img src="path/to/favorite-image-1.jpg" alt="Favorite Image 1">
-                    <h2>Favorite Category Item 1</h2>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-                <div class="favorite-category">
-                    <img src="path/to/favorite-image-2.jpg" alt="Favorite Image 2">
-                    <h2>Favorite Category Item 2</h2>
-                </div>
-            </div>
-
-            <!-- Add more slides as needed -->
+    <div class="container" id="superhero-container">
+        <div class="row">
+            <div class="column"><h1>Wonder Woman</h1></div>
+            <div class="column"><h1>Spider-Man</h1></div>
+            <div class="column"><h1>Superman</h1></div>
+            <div class="column"><h1>Thor</h1></div>
+            <div class="column"><h1>Iron Man</h1></div>
+            <div class="column"><h1>Batman</h1></div>
+            <div class="column"><h1>Black Widow</h1></div>
         </div>
-
-        <!-- Pagination -->
-        <div class="swiper-pagination"></div>
-
-        <!-- Navigation arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
     </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.2/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
-
     <script>
-        /* Your JavaScript code goes here */
-        document.addEventListener("DOMContentLoaded", function () {
-            /* HOME SWIPER */
-            let homeSwiper = new Swiper(".home-swiper", {
-                spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                },
-                on: {
-                    slideChange: function () {
-                        const activeIndex = this.activeIndex;
-                        const favoriteImages = [
-                            "path/to/favorite-image-1.jpg",
-                            "path/to/favorite-image-2.jpg",
-                            // Add more image paths as needed
-                        ];
-                        const favoriteTexts = [
-                            "Favorite Category Item 1",
-                            "Favorite Category Item 2",
-                            // Add more texts as needed
-                        ];
+        // Function to alphabetically sort the columns based on their titles
+        function sortColumnsAlphabetically() {
+            const container = document.getElementById("superhero-container");
+            const columns = Array.from(container.querySelectorAll(".column"));
 
-                        // Update the favorite category item's image and text based on the active slide index
-                        document.querySelector(".favorite-category img").src = favoriteImages[activeIndex];
-                        document.querySelector(".favorite-category h2").innerText = favoriteTexts[activeIndex];
-                    }
-                }
+            columns.sort((a, b) => {
+                const titleA = a.querySelector("h1").textContent.toLowerCase();
+                const titleB = b.querySelector("h1").textContent.toLowerCase();
+                return titleA.localeCompare(titleB);
             });
 
-            /* ... Your existing code for other functionalities ... */
-        });
+            for (let i = 0; i < columns.length; i++) {
+                container.appendChild(columns[i]);
+            }
+        }
+
+        // Call the function to sort the columns alphabetically
+        sortColumnsAlphabetically();
     </script>
 </body>
-
 </html>
