@@ -1,122 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Arrival Slides</title>
-  <!-- Add the Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <style>
-    /* Add your CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    .swiper-container {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .swiper-slide {
-      background-color: #f0f0f0;
-      border-radius: 8px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .slide-image {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 16px;
-    }
-
-    .slide-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .slide-description {
-      font-size: 16px;
-      color: #777;
-    }
-  </style>
+    <!-- Add your meta tags, CSS links, and other head elements here -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        /* Add your CSS styles here */
+    </style>
 </head>
+
 <body>
-  <!-- Add your HTML content here -->
-  <div class="swiper-container new-swiper">
-    <div class="swiper-wrapper">
-      <!-- Slide 1 -->
-      <div class="swiper-slide">
-        <img class="slide-image" src="https://via.placeholder.com/200" alt="Slide 1 Image">
-        <h2 class="slide-title">Slide 1 Title</h2>
-        <p class="slide-description">Slide 1 Description</p>
-      </div>
+    <!-- Your website content goes here -->
 
-      <!-- Slide 2 -->
-      <div class="swiper-slide">
-        <img class="slide-image" src="https://via.placeholder.com/200" alt="Slide 2 Image">
-        <h2 class="slide-title">Slide 2 Title</h2>
-        <p class="slide-description">Slide 2 Description</p>
-      </div>
+    <!-- Swiper Slider -->
+    <div class="swiper-container home-swiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+                <div class="favorite-category">
+                    <img src="path/to/favorite-image-1.jpg" alt="Favorite Image 1">
+                    <h2>Favorite Category Item 1</h2>
+                </div>
+            </div>
 
-      <!-- Add more slides as needed -->
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+                <div class="favorite-category">
+                    <img src="path/to/favorite-image-2.jpg" alt="Favorite Image 2">
+                    <h2>Favorite Category Item 2</h2>
+                </div>
+            </div>
+
+            <!-- Add more slides as needed -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Navigation arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
 
-    <!-- Add Swiper Pagination -->
-    <div class="swiper-pagination"></div>
-  </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.2/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
 
-  <!-- Add the Swiper JavaScript -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    // Add your JavaScript code here
-    let newSwiper = new Swiper(".new-swiper", {
-      centeredSlides: true,
-      slidesPerView: "auto",
-      loop: true,
-      spaceBetween: 16,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    });
+    <script>
+        /* Your JavaScript code goes here */
+        document.addEventListener("DOMContentLoaded", function () {
+            /* HOME SWIPER */
+            let homeSwiper = new Swiper(".home-swiper", {
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                },
+                on: {
+                    slideChange: function () {
+                        const activeIndex = this.activeIndex;
+                        const favoriteImages = [
+                            "path/to/favorite-image-1.jpg",
+                            "path/to/favorite-image-2.jpg",
+                            // Add more image paths as needed
+                        ];
+                        const favoriteTexts = [
+                            "Favorite Category Item 1",
+                            "Favorite Category Item 2",
+                            // Add more texts as needed
+                        ];
 
-    // Array to store "New Arrival" data for each slide
-    const newArrivalData = [
-      {
-        image: "https://via.placeholder.com/200", // Replace with actual image URL
-        title: "Slide 1 Title",
-        description: "Slide 1 Description",
-      },
-      {
-        image: "https://via.placeholder.com/200", // Replace with actual image URL
-        title: "Slide 2 Title",
-        description: "Slide 2 Description",
-      },
-      // Add data for other slides as needed
-    ];
+                        // Update the favorite category item's image and text based on the active slide index
+                        document.querySelector(".favorite-category img").src = favoriteImages[activeIndex];
+                        document.querySelector(".favorite-category h2").innerText = favoriteTexts[activeIndex];
+                    }
+                }
+            });
 
-    newSwiper.on("slideChange", function () {
-      const activeIndex = newSwiper.realIndex;
-      const slideData = newArrivalData[activeIndex];
-
-      // Update slide content with new data
-      document.querySelector(".slide-image").src = slideData.image;
-      document.querySelector(".slide-title").innerText = slideData.title;
-      document.querySelector(".slide-description").innerText = slideData.description;
-    });
-  </script>
+            /* ... Your existing code for other functionalities ... */
+        });
+    </script>
 </body>
+
 </html>
