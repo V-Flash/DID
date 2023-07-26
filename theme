@@ -30,7 +30,7 @@
             <div class="column"><h1>Spider-Man</h1></div>
             <div class="column"><h1>Superman</h1></div>
             <div class="column"><h1>Thor</h1></div>
-            <div class="column"><h1>Iron Man</h1></div>
+            <div class="column"><h1>Iron Man 2</h1></div>
             <div class="column"><h1>Batman</h1></div>
             <div class="column"><h1>Black Widow</h1></div>
         </div>
@@ -45,7 +45,21 @@
             columns.sort((a, b) => {
                 const titleA = a.querySelector("h1").textContent.toLowerCase();
                 const titleB = b.querySelector("h1").textContent.toLowerCase();
-                return titleA.localeCompare(titleB);
+
+                // Check if titleA and titleB have numbers
+                const hasNumberA = /\d/.test(titleA);
+                const hasNumberB = /\d/.test(titleB);
+
+                // Sort alphabetically
+                if (!hasNumberA && !hasNumberB) {
+                    return titleA.localeCompare(titleB);
+                } else if (!hasNumberA) {
+                    return -1; // Place column with number at the end
+                } else if (!hasNumberB) {
+                    return 1; // Place column with number at the end
+                } else {
+                    return titleA.localeCompare(titleB); // Sort alphabetically otherwise
+                }
             });
 
             for (let i = 0; i < columns.length; i++) {
