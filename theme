@@ -3,29 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Slide Content</title>
+  <title>New Arrival Slides</title>
   <!-- Add the Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <style>
     /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .swiper-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .swiper-slide {
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .slide-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 16px;
+    }
+
+    .slide-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .slide-description {
+      font-size: 16px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
   <!-- Add your HTML content here -->
-  <div class="swiper-container home-swiper">
+  <div class="swiper-container new-swiper">
     <div class="swiper-wrapper">
       <!-- Slide 1 -->
       <div class="swiper-slide">
-        <h2 id="slide-title">Slide 1 Title</h2>
-        <p id="slide-description">Slide 1 Description</p>
-        <img id="slide-image" src="path/to/slide1-image.jpg" alt="Slide 1 Image">
+        <img class="slide-image" src="https://via.placeholder.com/200" alt="Slide 1 Image">
+        <h2 class="slide-title">Slide 1 Title</h2>
+        <p class="slide-description">Slide 1 Description</p>
       </div>
 
       <!-- Slide 2 -->
       <div class="swiper-slide">
-        <h2 id="slide-title">Slide 2 Title</h2>
-        <p id="slide-description">Slide 2 Description</p>
-        <img id="slide-image" src="path/to/slide2-image.jpg" alt="Slide 2 Image">
+        <img class="slide-image" src="https://via.placeholder.com/200" alt="Slide 2 Image">
+        <h2 class="slide-title">Slide 2 Title</h2>
+        <p class="slide-description">Slide 2 Description</p>
       </div>
 
       <!-- Add more slides as needed -->
@@ -39,37 +82,40 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     // Add your JavaScript code here
-    let homeSwiper = new Swiper(".home-swiper", {
-      spaceBetween: 30,
+    let newSwiper = new Swiper(".new-swiper", {
+      centeredSlides: true,
+      slidesPerView: "auto",
       loop: true,
+      spaceBetween: 16,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
       },
     });
 
-    homeSwiper.on("slideChange", function () {
-      const activeIndex = homeSwiper.realIndex;
+    // Array to store "New Arrival" data for each slide
+    const newArrivalData = [
+      {
+        image: "https://via.placeholder.com/200", // Replace with actual image URL
+        title: "Slide 1 Title",
+        description: "Slide 1 Description",
+      },
+      {
+        image: "https://via.placeholder.com/200", // Replace with actual image URL
+        title: "Slide 2 Title",
+        description: "Slide 2 Description",
+      },
+      // Add data for other slides as needed
+    ];
 
-      switch (activeIndex) {
-        case 0:
-          document.getElementById("slide-title").innerText = "Slide 1 Title";
-          document.getElementById("slide-description").innerText = "Slide 1 Description";
-          document.getElementById("slide-image").src = "path/to/slide1-image.jpg";
-          break;
+    newSwiper.on("slideChange", function () {
+      const activeIndex = newSwiper.realIndex;
+      const slideData = newArrivalData[activeIndex];
 
-        case 1:
-          document.getElementById("slide-title").innerText = "Slide 2 Title";
-          document.getElementById("slide-description").innerText = "Slide 2 Description";
-          document.getElementById("slide-image").src = "path/to/slide2-image.jpg";
-          break;
-
-        // Add cases for other slide indexes as needed
-
-        default:
-          // Default case when no matching slide index is found
-          break;
-      }
+      // Update slide content with new data
+      document.querySelector(".slide-image").src = slideData.image;
+      document.querySelector(".slide-title").innerText = slideData.title;
+      document.querySelector(".slide-description").innerText = slideData.description;
     });
   </script>
 </body>
