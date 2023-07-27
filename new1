@@ -1,0 +1,161 @@
+.box-pro:nth-child(odd){width:80%; margin:0 auto; background-color:#f1f1f1; display:flex; margin-bottom:30px;}
+.in-img {display: block;}
+
+/* GALLERY CSS START  */
+
+/*.demo-gallery > ul > li {
+float: left;
+margin-bottom: 15px;
+margin-right: 20px;
+width: 200px;
+}*/
+.demo-gallery > ul > li a {
+border: 3px solid #FFF;
+border-radius: 3px;
+display: block;
+overflow: hidden;
+position: relative;
+float: left;
+}
+.demo-gallery > ul > li a > img {
+-webkit-transition: -webkit-transform 0.15s ease 0s;
+-moz-transition: -moz-transform 0.15s ease 0s;
+-o-transition: -o-transform 0.15s ease 0s;
+transition: transform 0.15s ease 0s;
+-webkit-transform: scale3d(1, 1, 1);
+transform: scale3d(1, 1, 1);
+height: 100%;
+width: 100%;
+}
+.demo-gallery > ul > li a:hover > img {
+-webkit-transform: scale3d(1.1, 1.1, 1.1);
+transform: scale3d(1.1, 1.1, 1.1);
+}
+.demo-gallery > ul > li a:hover .demo-gallery-poster > img {
+opacity: 1;
+}
+.demo-gallery > ul > li a .demo-gallery-poster {
+background-color: rgba(0, 0, 0, 0.1);
+bottom: 0;
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+-webkit-transition: background-color 0.15s ease 0s;
+-o-transition: background-color 0.15s ease 0s;
+transition: background-color 0.15s ease 0s;
+}
+.demo-gallery > ul > li a .demo-gallery-poster > img {
+left: 50%;
+margin-left: -10px;
+margin-top: -10px;
+opacity: 0;
+position: absolute;
+top: 50%;
+-webkit-transition: opacity 0.3s ease 0s;
+-o-transition: opacity 0.3s ease 0s;
+transition: opacity 0.3s ease 0s;
+}
+.demo-gallery > ul > li a:hover .demo-gallery-poster {
+background-color: rgba(0, 0, 0, 0.5);
+}
+.demo-gallery .justified-gallery > a > img {
+-webkit-transition: -webkit-transform 0.15s ease 0s;
+-moz-transition: -moz-transform 0.15s ease 0s;
+-o-transition: -o-transform 0.15s ease 0s;
+transition: transform 0.15s ease 0s;
+-webkit-transform: scale3d(1, 1, 1);
+transform: scale3d(1, 1, 1);
+height: 100%;
+width: 100%;
+}
+.demo-gallery .justified-gallery > a:hover > img {
+-webkit-transform: scale3d(1.1, 1.1, 1.1);
+transform: scale3d(1.1, 1.1, 1.1);
+}
+.demo-gallery .justified-gallery > a:hover .demo-gallery-poster > img {
+opacity: 1;
+}
+.demo-gallery .justified-gallery > a .demo-gallery-poster {
+background-color: rgba(0, 0, 0, 0.1);
+bottom: 0;
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+-webkit-transition: background-color 0.15s ease 0s;
+-o-transition: background-color 0.15s ease 0s;
+transition: background-color 0.15s ease 0s;
+}
+.demo-gallery .justified-gallery > a .demo-gallery-poster > img {
+left: 50%;
+margin-left: -10px;
+margin-top: -10px;
+opacity: 0;
+position: absolute;
+top: 50%;
+-webkit-transition: opacity 0.3s ease 0s;
+-o-transition: opacity 0.3s ease 0s;
+transition: opacity 0.3s ease 0s;
+}
+.demo-gallery .justified-gallery > a:hover .demo-gallery-poster {
+background-color: rgba(0, 0, 0, 0.5);
+}
+.demo-gallery .video .demo-gallery-poster img {
+height: 48px;
+margin-left: -24px;
+margin-top: -24px;
+opacity: 0.8;
+width: 48px;
+}
+.demo-gallery.dark > ul > li a {
+border: 3px solid #04070a;
+}
+.home .demo-gallery {
+padding-bottom: 80px;
+}
+
+/* GALLERY CSS END  */
+
+.my-overlay:hover > .font-plus{opacity:1; transition:all 0.4s ease-in-out; -moz-transition:all 0.4s ease-in-out; -webkit-transition:all 0.4s ease-in-out; -o-transition:all 0.4s ease-in-out;}
+.my-overlay > .font-plus{opacity:0;}
+.font-plus {font-size: 40px;color: #ed3237;position: relative;padding: 0px;top: 50%;line-height: 40px;background-color: #fff;width: 40px;border-radius: 20px;left: 50%;transform: translate(-50%, -50%);
+}
+.my-overlay{position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0); transition:all 0.4s ease-in-out; -moz-transition:all 0.4s ease-in-out; -webkit-transition:all 0.4s ease-in-out; -o-transition:all 0.4s ease-in-out;}
+a:hover > .home-projects > .home-projects-img > .my-overlay{background-color:rgba(237, 50, 55, 0.6); -webkit-transition:all 0.3s ease-out; -moz-transition:all 0.3s ease-out; -ms-transition:all 0.3s ease-out; -o-transition:all 0.3s ease-out; transition:all 0.3s ease-out;}
+.gallery-thumb-img.home-projects-img{overflow:hidden; position:relative;border: 1px solid lightgray;}
+
+
+
+ <div id="lightgallery">
+                
+                <div class="box-pro" data-responsive="" data-src="images/products/plastic-cap.jpg" data-sub-html="Plastic Cap">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5">
+                            <div class="in-img">
+                                <a href="">
+                                    <div class="gallery-thumb text-center home-projects">
+                                    <div class="gallery-thumb-img home-projects-img">
+                                        <img src="images/products/plastic-cap.jpg" class="img-responsive" alt="">
+                                        <div class="my-overlay">
+                                            <div class="font-plus">+</div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                 </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7 col-md-7 col-sm-7">
+                            <div class="pro-txt">
+                                <div class="pro-txt3">
+                                 <h3>Plastic Cap</h3>
+                                 <p><strong>Size: </strong>32 mm</p>
+                                 <p><strong>Material: </strong>Polypropylene</p>
+                                 <!-- <p><strong>Rubber Disc:</strong> Poly Isoprene / Bromo Butyl</p> -->
+                            </div>   
+      
+                            </div>
+                        </div>
+                    </div>
+                </div>
