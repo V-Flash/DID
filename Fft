@@ -1,96 +1,16 @@
- <div id="lightgallery">
-
-                <div class="box-pro" data-responsive="" data-src="images/products/eurohead-double flip.jpg" data-sub-html="Eurohead Double Flip">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5">
-                            <div class="in-img">
-                                <a href="">
-                                    <div class="gallery-thumb text-center home-projects">
-                                    <div class="gallery-thumb-img home-projects-img">
-                                        <img src="images/products/eurohead-double flip.jpg" class="img-responsive" alt="">
-                                        <div class="my-overlay">
-                                            <div class="font-plus">+</div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                 </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-md-7 col-sm-7 product-text-col">
-                            <div class="pro-txt">
-                                <div class="pro-txt3">
-                                 <h3>Eurohead Double Flip</h3>
-                                 <p><strong>Size: </strong>29 mm</p>
-                                 <p><strong>Material: </strong>Polypropylene</p>
-                                 <!-- <p><strong>Rubber Disc:</strong> Poly Isoprene / Bromo Butyl</p> -->
-                            </div>   
-      
-                            </div>
-                        </div>
-                    </div>
-                </div>
- // Function to alphabetically sort the columns based on their titles
-        function sortColumnsAlphabetically() {
-            const container = document.getElementById("superhero-container");
-            const columns = Array.from(container.querySelectorAll(".column"));
-
-            columns.sort((a, b) => {
-                const titleA = a.querySelector("h1").textContent.toLowerCase();
-                const titleB = b.querySelector("h1").textContent.toLowerCase();
-
-                // Check if titleA and titleB have numbers at the beginning
-                const startsWithNumberA = /^\d/.test(titleA);
-                const startsWithNumberB = /^\d/.test(titleB);
-
-                // Sort alphabetically
-                if (!startsWithNumberA && !startsWithNumberB) {
-                    return titleA.localeCompare(titleB);
-                } else if (startsWithNumberA) {
-                    return 1; // Place column with number at the end
-                } else if (startsWithNumberB) {
-                    return -1; // Place column with number at the end
-                } else {
-                    return titleA.localeCompare(titleB); // Sort alphabetically otherwise
-                }
-            });
-
-            for (let i = 0; i < columns.length; i++) {
-                container.appendChild(columns[i]);
-            }
-        }
-
-        // Call the function to sort the columns alphabetically
-        sortColumnsAlphabetically();
-
-
-
-
-
-
-// Function to alphabetically sort the columns based on their titles
-    function sortColumnsAlphabetically() {
-        const container = document.getElementById("lightgallery");
-        const columns = Array.from(container.querySelectorAll(".box-pro"));
-
-        columns.sort((a, b) => {
-            const titleA = a.querySelector("h3").textContent.toLowerCase();
-            const titleB = b.querySelector("h3").textContent.toLowerCase();
-            return titleA.localeCompare(titleB);
-        });
-
-        // Remove existing lightGallery
-        container.removeAttribute('data-lg-initialized');
-        container.innerHTML = '';
-
-        // Append sorted columns to the container
-        for (let i = 0; i < columns.length; i++) {
-            container.appendChild(columns[i]);
-        }
-
-        // Reinitialize lightGallery on the sorted elements
-        lightGallery(document.getElementById("lightgallery"));
+// Initialize LightGallery with options
+$(document).ready(function() {
+  $("#lightgallery").lightGallery({
+    download: true, // Enable the download button
+    onAfterOpen: function() {
+      // Move the download button to the bottom left corner
+      var downloadButton = $(".lg-download");
+      downloadButton.css({
+        "bottom": "10px",
+        "left": "10px",
+        "top": "auto",
+        "right": "auto"
+      });
     }
-
-    // Call the function to sort the columns alphabetically initially
-    sortColumnsAlphabetically();
+  });
+});
