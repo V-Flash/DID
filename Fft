@@ -62,3 +62,35 @@
 
         // Call the function to sort the columns alphabetically
         sortColumnsAlphabetically();
+
+
+
+
+
+
+// Function to alphabetically sort the columns based on their titles
+    function sortColumnsAlphabetically() {
+        const container = document.getElementById("lightgallery");
+        const columns = Array.from(container.querySelectorAll(".box-pro"));
+
+        columns.sort((a, b) => {
+            const titleA = a.querySelector("h3").textContent.toLowerCase();
+            const titleB = b.querySelector("h3").textContent.toLowerCase();
+            return titleA.localeCompare(titleB);
+        });
+
+        // Remove existing lightGallery
+        container.removeAttribute('data-lg-initialized');
+        container.innerHTML = '';
+
+        // Append sorted columns to the container
+        for (let i = 0; i < columns.length; i++) {
+            container.appendChild(columns[i]);
+        }
+
+        // Reinitialize lightGallery on the sorted elements
+        lightGallery(document.getElementById("lightgallery"));
+    }
+
+    // Call the function to sort the columns alphabetically initially
+    sortColumnsAlphabetically();
