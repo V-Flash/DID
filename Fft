@@ -1,70 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Superhero Names in Alphanumeric Order</title>
-    <style>
-        /* Add some basic styling for demonstration purposes */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+ <div id="lightgallery">
 
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
+                <div class="box-pro" data-responsive="" data-src="images/products/eurohead-double flip.jpg" data-sub-html="Eurohead Double Flip">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5">
+                            <div class="in-img">
+                                <a href="">
+                                    <div class="gallery-thumb text-center home-projects">
+                                    <div class="gallery-thumb-img home-projects-img">
+                                        <img src="images/products/eurohead-double flip.jpg" class="img-responsive" alt="">
+                                        <div class="my-overlay">
+                                            <div class="font-plus">+</div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                 </a>
+                            </div>
+                        </div>
 
-        .column {
-            flex: 1;
-            text-align: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container" id="superhero-container">
-        <div class="row">
-            <!-- Your dynamically generated columns with class "box-pro" and data attributes -->
-            <div class="column box-pro" data-responsive="" data-src="images/products/eurohead-double-flip.jpg" data-sub-html="Eurohead Double Flip" lg-event-uid="&amp;4"><span class="title">Eurohead Double Flip</span></div>
-            <div class="column box-pro" data-responsive="" data-src="images/products/spider-man.jpg" data-sub-html="Spider-Man" lg-event-uid="&amp;2"><span class="title">Spider-Man</span></div>
-            <div class="column box-pro" data-responsive="" data-src="images/products/superman.jpg" data-sub-html="Superman" lg-event-uid="&amp;3"><span class="title">Superman</span></div>
-            <div class="column box-pro" data-responsive="" data-src="images/products/thor.jpg" data-sub-html="3 Thor" lg-event-uid="&amp;1"><span class="title">3 Thor</span></div>
-            <div class="column box-pro" data-responsive="" data-src="images/products/iron-man.jpg" data-sub-html="Iron Man" lg-event-uid="&amp;6"><span class="title">Iron Man</span></div>
-            <div class="column box-pro" data-responsive="" data-src="images/products/batman.jpg" data-sub-html="2 Batman" lg-event-uid="&amp;5"><span class="title">2 Batman</span></div>
-            <div class="column box-pro" data-responsive="" data-src="images/products/black-widow.jpg" data-sub-html="Black Widow" lg-event-uid="&amp;7"><span class="title">Black Widow</span></div>
-        </div>
-    </div>
-
-    <script>
-        // Function to sort the columns in alphanumeric order
-        function sortColumnsAlphanumerically() {
-            const container = document.getElementById("superhero-container");
-            const columns = Array.from(container.querySelectorAll(".column"));
-
-            // Create an array to store the column data (title and attributes)
-            const data = columns.map((column) => ({
-                element: column,
-                title: column.querySelector(".title").textContent.toLowerCase(),
-                attributes: Array.from(column.attributes),
-            }));
-
-            // Sort the data array based on titles in alphanumeric order
-            data.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
-
-            // Rearrange the columns based on the sorted data
-            data.forEach((item, index) => {
-                container.appendChild(item.element);
-                // Restore the attributes for the correct column
-                item.attributes.forEach((attr) => {
-                    item.element.setAttribute(attr.name, attr.value);
-                });
-            });
-        }
-
-        // Call the function to sort the columns in alphanumeric order
-        sortColumnsAlphanumerically();
-    </script>
-</body>
-</html>
+                        <div class="col-lg-7 col-md-7 col-sm-7 product-text-col">
+                            <div class="pro-txt">
+                                <div class="pro-txt3">
+                                 <h3>Eurohead Double Flip</h3>
+                                 <p><strong>Size: </strong>29 mm</p>
+                                 <p><strong>Material: </strong>Polypropylene</p>
+                                 <!-- <p><strong>Rubber Disc:</strong> Poly Isoprene / Bromo Butyl</p> -->
+                            </div>   
+      
+                            </div>
+                        </div>
+                    </div>
+                </div>
