@@ -43,22 +43,24 @@
             const container = document.getElementById("superhero-container");
             const columns = Array.from(container.querySelectorAll(".column"));
 
-            const data = columns.map((column) => {
-                const title = column.querySelector(".title").textContent.toLowerCase();
-                const imgUrl = column.getAttribute("data-src");
-                return { title, imgUrl };
-            });
+            // Create an array to store the column data (title and attributes)
+            const data = columns.map((column) => ({
+                element: column,
+                title: column.querySelector(".title").textContent.toLowerCase(),
+                attributes: Array.from(column.attributes),
+            }));
 
+            // Sort the data array based on titles
             data.sort((a, b) => a.title.localeCompare(b.title));
 
-            for (let i = 0; i < data.length; i++) {
-                const column = columns[i];
-                const title = column.querySelector(".title").textContent.toLowerCase();
-                const imgUrl = data[i].imgUrl;
-
-                column.setAttribute("data-src", imgUrl);
-                column.querySelector(".title").textContent = title;
-            }
+            // Rearrange the columns based on the sorted data
+            data.forEach((item, index) => {
+                container.appendChild(item.element);
+                // Restore the attributes for the correct column
+                item.attributes.forEach((attr) => {
+                    item.element.setAttribute(attr.name, attr.value);
+                });
+            });
         }
 
         // Call the function to sort the columns alphabetically
