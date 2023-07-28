@@ -1,11 +1,17 @@
 <script>
-    // Get all elements with the class "box-pro"
-    const boxProElements = document.querySelectorAll(".box-pro");
+    // Get all thumbnail images
+    const thumbnailImages = document.querySelectorAll(".thumbnail-img");
 
-    // Prevent the default click behavior on each "box-pro" element
-    boxProElements.forEach(boxPro => {
-        boxPro.addEventListener("click", function(event) {
+    // Open lightbox gallery on thumbnail image click
+    thumbnailImages.forEach(image => {
+        image.addEventListener("click", function(event) {
+            // Prevent the default behavior of the click event
             event.preventDefault();
+
+            // Open the lightbox gallery here using your preferred gallery library or custom code
+            // For example, you can use Lightbox2, Fancybox, or create a custom lightbox function.
+            // Replace the line below with the appropriate code to open the gallery.
+            console.log("Open lightbox gallery for image:", image.src);
         });
     });
 </script>
