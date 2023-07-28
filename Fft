@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Superhero Names in Alphabetical Order</title>
+    <title>Superhero Names in Alphanumeric Order</title>
     <style>
         /* Add some basic styling for demonstration purposes */
         .container {
@@ -38,8 +38,8 @@
     </div>
 
     <script>
-        // Function to alphabetically sort the columns based on their titles
-        function sortColumnsAlphabetically() {
+        // Function to sort the columns in alphanumeric order
+        function sortColumnsAlphanumerically() {
             const container = document.getElementById("superhero-container");
             const columns = Array.from(container.querySelectorAll(".column"));
 
@@ -50,8 +50,8 @@
                 attributes: Array.from(column.attributes),
             }));
 
-            // Sort the data array based on titles
-            data.sort((a, b) => a.title.localeCompare(b.title));
+            // Sort the data array based on titles in alphanumeric order
+            data.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true }));
 
             // Rearrange the columns based on the sorted data
             data.forEach((item, index) => {
@@ -63,8 +63,8 @@
             });
         }
 
-        // Call the function to sort the columns alphabetically
-        sortColumnsAlphabetically();
+        // Call the function to sort the columns in alphanumeric order
+        sortColumnsAlphanumerically();
     </script>
 </body>
 </html>
