@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Superhero Names in Alphabetical Order</title>
+    <style>
+        /* Add some basic styling for demonstration purposes */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .column {
+            flex: 1;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="superhero-container">
+        <div class="row">
+            <!-- Your dynamically generated columns with class "box-pro" and data attributes -->
+            <div class="column box-pro" data-responsive="" data-src="images/products/eurohead-double-flip.jpg" data-sub-html="Eurohead Double Flip" lg-event-uid="&amp;4"><span class="title">Eurohead Double Flip</span></div>
+            <div class="column box-pro" data-responsive="" data-src="images/products/spider-man.jpg" data-sub-html="Spider-Man" lg-event-uid="&amp;2"><span class="title">Spider-Man</span></div>
+            <div class="column box-pro" data-responsive="" data-src="images/products/superman.jpg" data-sub-html="Superman" lg-event-uid="&amp;3"><span class="title">Superman</span></div>
+            <div class="column box-pro" data-responsive="" data-src="images/products/thor.jpg" data-sub-html="3 Thor" lg-event-uid="&amp;1"><span class="title">3 Thor</span></div>
+            <div class="column box-pro" data-responsive="" data-src="images/products/iron-man.jpg" data-sub-html="Iron Man" lg-event-uid="&amp;6"><span class="title">Iron Man</span></div>
+            <div class="column box-pro" data-responsive="" data-src="images/products/batman.jpg" data-sub-html="2 Batman" lg-event-uid="&amp;5"><span class="title">2 Batman</span></div>
+            <div class="column box-pro" data-responsive="" data-src="images/products/black-widow.jpg" data-sub-html="Black Widow" lg-event-uid="&amp;7"><span class="title">Black Widow</span></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to alphabetically sort the columns based on their titles
+        function sortColumnsAlphabetically() {
+            const container = document.getElementById("superhero-container");
+            const columns = Array.from(container.querySelectorAll(".column"));
+
+            const data = columns.map((column) => {
+                const title = column.querySelector(".title").textContent.toLowerCase();
+                const imgUrl = column.getAttribute("data-src");
+                return { title, imgUrl };
+            });
+
+            data.sort((a, b) => a.title.localeCompare(b.title));
+
+            for (let i = 0; i < data.length; i++) {
+                const column = columns[i];
+                const title = column.querySelector(".title").textContent.toLowerCase();
+                const imgUrl = data[i].imgUrl;
+
+                column.setAttribute("data-src", imgUrl);
+                column.querySelector(".title").textContent = title;
+            }
+        }
+
+        // Call the function to sort the columns alphabetically
+        sortColumnsAlphabetically();
+    </script>
+</body>
+</html>
