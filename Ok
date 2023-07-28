@@ -1,0 +1,11 @@
+<script>
+    // Get all elements with the class "box-pro"
+    const boxProElements = document.querySelectorAll(".box-pro");
+
+    // Prevent the default click behavior on each "box-pro" element
+    boxProElements.forEach(boxPro => {
+        boxPro.addEventListener("click", function(event) {
+            event.preventDefault();
+        });
+    });
+</script>
