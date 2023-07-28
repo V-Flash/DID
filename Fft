@@ -1,16 +1,14 @@
-// Initialize LightGallery with options
-$(document).ready(function() {
-  $("#lightgallery").lightGallery({
-    download: true, // Enable the download button
-    onAfterOpen: function() {
-      // Move the download button to the bottom left corner
-      var downloadButton = $(".lg-download");
-      downloadButton.css({
-        "bottom": "10px",
-        "left": "10px",
-        "top": "auto",
-        "right": "auto"
-      });
-    }
-  });
-});
+ <!-- Default Design -->
+          <div class="dropdown-container">
+            <div class="dropdown-toggle click-dropdown">
+              DropDown Menu
+            </div>
+            <div class="dropdown-menu">
+              <ul>
+                <li><a href="javascript:void(0)">DropDown Menu Item 1 DropDown Menu Item 1 DropDown Menu Item 1</a></li>
+                <li><a href="javascript:void(0)">DropDown Menu Item 2</a></li>
+                <li><a href="javascript:void(0)">DropDown Menu Item 3</a></li>
+                <li><a href="javascript:void(0)">DropDown Menu Item 4</a></li>
+              </ul>
+            </div>
+          </div>
