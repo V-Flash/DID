@@ -30,3 +30,35 @@
                         </div>
                     </div>
                 </div>
+ // Function to alphabetically sort the columns based on their titles
+        function sortColumnsAlphabetically() {
+            const container = document.getElementById("superhero-container");
+            const columns = Array.from(container.querySelectorAll(".column"));
+
+            columns.sort((a, b) => {
+                const titleA = a.querySelector("h1").textContent.toLowerCase();
+                const titleB = b.querySelector("h1").textContent.toLowerCase();
+
+                // Check if titleA and titleB have numbers at the beginning
+                const startsWithNumberA = /^\d/.test(titleA);
+                const startsWithNumberB = /^\d/.test(titleB);
+
+                // Sort alphabetically
+                if (!startsWithNumberA && !startsWithNumberB) {
+                    return titleA.localeCompare(titleB);
+                } else if (startsWithNumberA) {
+                    return 1; // Place column with number at the end
+                } else if (startsWithNumberB) {
+                    return -1; // Place column with number at the end
+                } else {
+                    return titleA.localeCompare(titleB); // Sort alphabetically otherwise
+                }
+            });
+
+            for (let i = 0; i < columns.length; i++) {
+                container.appendChild(columns[i]);
+            }
+        }
+
+        // Call the function to sort the columns alphabetically
+        sortColumnsAlphabetically();
