@@ -1,1 +1,37 @@
-Access to fetch at 'file:///E:/DATA/excel-to-html/test.xlsx' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, isolated-app, chrome-extension, chrome, https, chrome-untrusted.
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<title></title>
+</head>
+<body>
+<table id="test">
+	<tr>
+		<th>One</th>
+		<th>Two</th>
+		<th>Three</th>
+		<th>Four</th>
+	</tr>
+</table>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+  	$.getJSON("test.json", function(data) {
+  		var test_data = '';
+  		$.each(data, function(key, value){
+  			test_data += '<tr>';
+  			test_data += '<td>' +value.One+'</td>';
+  			test_data += '<td>' +value.Two+'</td>';
+  			test_data += '<td>' +value.Three+'</td>';
+  			test_data += '<td>' +value.Four+'</td>';
+  			test_data += '</tr>';
+  		});
+  		$('#test').append(test_data);
+  	});
+
+});
+</script>
+</body>
+</html>
