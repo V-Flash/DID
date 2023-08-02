@@ -9,51 +9,38 @@
     <table id="excelTable"></table>
 
     <script>
-        // Your JavaScript code will go here
+        $(document).ready(function () {
+            const excelFileLocation = 'path/to/your/excel-file.xlsx';
+
+            fetch(excelFileLocation)
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheetName = workbook.SheetNames[0];
+                    const sheet = workbook.Sheets[sheetName];
+                    const excelData = XLSX.utils.sheet_to_json(sheet);
+                    generateTable(document.getElementById('excelTable'), excelData);
+                })
+                .catch(error => console.error('Error fetching or parsing the Excel file:', error));
+        });
+
+        function generateTable(table, data) {
+            const header = table.createTHead();
+            const headerRow = header.insertRow();
+            for (let key in data[0]) {
+                const th = document.createElement('th');
+                th.textContent = key;
+                headerRow.appendChild(th);
+            }
+
+            for (let row of data) {
+                const tr = table.insertRow();
+                for (let key in row) {
+                    const cell = tr.insertCell();
+                    cell.textContent = row[key];
+                }
+            }
+        }
     </script>
 </body>
 </html>
-$(document).ready(function () {
-    // File location of the Excel file
-    const excelFileLocation = 'path/to/your/excel-file.xlsx';
-
-    // Fetch the Excel file using the fetch API
-    fetch(excelFileLocation)
-        .then(response => response.arrayBuffer())
-        .then(data => {
-            // Parse the Excel data using xlsx library
-            const workbook = XLSX.read(data, { type: 'array' });
-
-            // Assuming the first sheet is the one you want to display
-            const sheetName = workbook.SheetNames[0];
-            const sheet = workbook.Sheets[sheetName];
-
-            // Convert sheet data to JSON format
-            const excelData = XLSX.utils.sheet_to_json(sheet);
-
-            // Generate the table
-            const table = document.getElementById('excelTable');
-            generateTable(table, excelData);
-        })
-        .catch(error => console.error('Error fetching or parsing the Excel file:', error));
-});
-
-function generateTable(table, data) {
-    // Create table header
-    const header = table.createTHead();
-    const headerRow = header.insertRow();
-    for (let key in data[0]) {
-        const th = document.createElement('th');
-        th.textContent = key;
-        headerRow.appendChild(th);
-    }
-
-    // Create table rows
-    for (let row of data) {
-        const tr = table.insertRow();
-        for (let key in row) {
-            const cell = tr.insertCell();
-            cell.textContent = row[key];
-        }
-    }
-}
