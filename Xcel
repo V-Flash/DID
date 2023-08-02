@@ -1,1 +1,40 @@
-https://cdn.jsdelivr.net/npm/read-excel-file@5.6.1/bundle/read-excel-file.min.js
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel Table Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/read-excel-file@5.6.1/bundle/read-excel-file.min.js"></script>
+</head>
+<body>
+    <table id="excelTable"></table>
+
+    <script>
+        const excelFileLocation = 'path/to/your/excel-file.xlsx';
+
+        readXlsxFile(excelFileLocation).then(rows => {
+            const header = rows[0];
+            const excelData = rows.slice(1);
+            generateTable(document.getElementById('excelTable'), header, excelData);
+        }).catch(error => {
+            console.error('Error fetching or parsing the Excel file:', error);
+        });
+
+        function generateTable(table, header, data) {
+            const headerRow = table.createTHead().insertRow();
+            for (let columnName of header) {
+                const th = document.createElement('th');
+                th.textContent = columnName;
+                headerRow.appendChild(th);
+            }
+
+            for (let row of data) {
+                const tr = table.insertRow();
+                for (let value of row) {
+                    const cell = tr.insertCell();
+                    cell.textContent = value;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
