@@ -4,6 +4,13 @@ if (sheet_data.length > 0) {
     var header = sheet_data[0];
     var dataRows = sheet_data.slice(1);
 
+    // Function to format time values in the HH:mm format
+    function formatTime(time) {
+        var hours = Math.floor(time);
+        var minutes = Math.round((time - hours) * 60);
+        return (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+    }
+
     var table = $('#excel_table').DataTable({
         data: dataRows,
         responsive: true,
@@ -14,9 +21,13 @@ if (sheet_data.length > 0) {
             {
                 targets: "_all", // Apply to all columns
                 render: function(data, type, row) {
-                    return type === 'display' && typeof data === 'string'
-                        ? '<div style="white-space:normal; overflow:hidden; text-overflow: ellipsis;">' + data + '</div>'
-                        : data;
+                    if (type === 'display' && typeof data === 'number') {
+                        // Assuming the time field is in the first column
+                        if (header.indexOf(this.columnDefs[0].targets[0]) === 0) {
+                            return formatTime(data);
+                        }
+                    }
+                    return data;
                 }
             }
         ]
