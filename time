@@ -1,72 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Excel to DataTable</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-</head>
-<body>
-    <table id="excel_table" class="display"></table>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            var reader = new FileReader();
-
-            reader.onload = function(event) {
-                var data = new Uint8Array(event.target.result);
-                var work_book = XLSX.read(data, { type: 'array' });
-                var sheet_name = work_book.SheetNames;
-                var sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0]], {
-                    header: 1,
-                    cellDates: true,
-                    raw: false,
-                    dateNF: 'hh:mm AM/PM',
-                });
-
-                if (sheet_data.length > 0) {
-                    var header = sheet_data[0];
-                    var dataRows = sheet_data.slice(1);
-
-                    var table = $('#excel_table').DataTable({
-                        data: dataRows,
-                        responsive: true,
-                        columns: header.map(function(col) {
-                            if (col === 'TimeColumnHeader') { // Replace 'TimeColumnHeader' with the actual header
-                                return {
-                                    title: col,
-                                    render: function(data, type, row) {
-                                        return type === 'display' ? formatTime(data) : data;
-                                    },
-                                };
-                            } else {
-                                return { title: col };
-                            }
-                        }),
-                    });
-                }
+var table = $('#excel_table').DataTable({
+    data: dataRows,
+    responsive: true,
+    columns: header.map(function(col) {
+        if (col === 'TimeColumnHeader') {
+            return {
+                title: col,
+                width: '150px', // Set custom width for the time column
+                render: function(data, type, row) {
+                    return type === 'display' ? formatTime(data) : data;
+                },
             };
-
-            // Load your Excel file here
-            var fileInput = 'yog-class.xlsx'; // Replace with the actual path to your file
-            fetch(fileInput)
-              .then(response => response.blob())
-              .then(blob => reader.readAsArrayBuffer(blob));
-        });
-
-        function formatTime(timeString) {
-            // Implement your custom time formatting logic here
-            // Example: Convert '14:30' to '02:30 PM'
-            // This is just a simple example, you can adjust it according to your needs
-            var parts = timeString.split(':');
-            var hours = parseInt(parts[0]);
-            var minutes = parseInt(parts[1]);
-            var ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // Handle midnight (12:00) case
-            return hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
+        } else if (col === 'Name') {
+            return {
+                title: col,
+                width: '200px', // Set custom width for the 'Name' column
+            };
+        } else if (col === 'Mobile Number') {
+            return {
+                title: col,
+                width: '180px', // Set custom width for the 'Mobile Number' column
+            };
+        } else {
+            return { title: col };
         }
-    </script>
-</body>
-</html>
+    }),
+});
