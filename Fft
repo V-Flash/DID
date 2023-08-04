@@ -1,76 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-  .year-container {
-    display: none;
-  }
-
-  #2023 {
-    display: block;
-  }
-
-  .active-year {
-    font-weight: bold;
-  }
-</style>
-</head>
-<body>
-
-<div class="row">
-  <div class="col">
-    <!-- Default Design -->
-    <div class="dropdown-container">
-      <div class="dropdown-toggle click-dropdown" id="selected-year">
-        2023 <!-- Default year, you can change this if needed -->
-      </div>
-      <div class="dropdown-menu">
-        <ul id="dropdown-list">
-          <!-- Dropdown list items will be generated dynamically here -->
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="year-container" id="2023">
-  <h1>2023</h1>
-</div>
-
-<div class="year-container" id="2022">
-  <h1>2022</h1>
-</div>
-
-<div class="year-container" id="2021">
-  <h1>2021</h1>
-</div>
-
-<div class="year-container" id="2020">
-  <h1>2020</h1>
-</div>
-
-<div class="year-container" id="2019">
-  <h1>2019</h1>
-</div>
-
-<div class="year-container" id="2018">
-  <h1>2018</h1>
-</div>
-
 <script>
-  // Show the specified year and mark it as active
+  // Show the specified year and mark it as active with fade-in
   function showYear(year) {
     var yearContainers = document.querySelectorAll('.year-container');
     yearContainers.forEach(function(container) {
-      container.style.display = 'none';
+      if (container.style.display === 'block') {
+        fadeOut(container, function() {
+          container.style.display = 'none';
+          fadeIn(document.getElementById(year));
+        });
+      }
     });
 
     var yearLinks = document.querySelectorAll('.dropdown-menu a');
     yearLinks.forEach(function(yearLink) {
       yearLink.classList.remove('active-year');
     });
-
-    document.getElementById(year).style.display = 'block';
 
     var selectedYear = document.getElementById('selected-year');
     selectedYear.textContent = year;
@@ -79,27 +23,38 @@
     // Toggle the dropdown
     var dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = 'none';
+  }
 
-    // Generate the dropdown list dynamically, excluding the active year
-    var dropdownList = document.getElementById('dropdown-list');
-    dropdownList.innerHTML = ''; // Clear existing items
+  // Fade-in function
+  function fadeIn(element, callback) {
+    var opacity = 0;
+    element.style.display = 'block';
 
-    var availableYears = ['2023', '2022', '2021', '2020', '2019', '2018'];
-    var filteredYears = availableYears.filter(function(item) {
-      return item !== year;
-    });
+    var fadeEffect = setInterval(function() {
+      if (opacity < 1) {
+        opacity += 0.05;
+        element.style.opacity = opacity;
+      } else {
+        clearInterval(fadeEffect);
+        if (callback) callback();
+      }
+    }, 50);
+  }
 
-    filteredYears.forEach(function(item) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = '#';
-      a.textContent = item;
-      a.onclick = function() {
-        showYear(item);
-      };
-      li.appendChild(a);
-      dropdownList.appendChild(li);
-    });
+  // Fade-out function
+  function fadeOut(element, callback) {
+    var opacity = 1;
+
+    var fadeEffect = setInterval(function() {
+      if (opacity > 0) {
+        opacity -= 0.05;
+        element.style.opacity = opacity;
+      } else {
+        clearInterval(fadeEffect);
+        element.style.display = 'none';
+        if (callback) callback();
+      }
+    }, 50);
   }
 
   // Set the default year to be active
@@ -113,11 +68,6 @@
   dropdownToggle.addEventListener('click', function() {
     var dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
-
-    // Generate the dropdown list when the dropdown is toggled
-    if (dropdownMenu.style.display === 'block') {
-      generateDropdownList();
-    }
   });
 
   // Close dropdown when clicking outside
@@ -127,31 +77,4 @@
       dropdownMenu.style.display = 'none';
     }
   });
-
-  // Function to generate the dropdown list
-  function generateDropdownList() {
-    var activeYear = document.getElementById('selected-year').textContent;
-    var dropdownList = document.getElementById('dropdown-list');
-    dropdownList.innerHTML = ''; // Clear existing items
-
-    var availableYears = ['2023', '2022', '2021', '2020', '2019', '2018'];
-    var filteredYears = availableYears.filter(function(item) {
-      return item !== activeYear;
-    });
-
-    filteredYears.forEach(function(item) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = '#';
-      a.textContent = item;
-      a.onclick = function() {
-        showYear(item);
-      };
-      li.appendChild(a);
-      dropdownList.appendChild(li);
-    });
-  }
 </script>
-
-</body>
-</html>
