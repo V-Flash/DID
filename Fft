@@ -1,10 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .year-container {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .show {
+    opacity: 1;
+  }
+
+  #2023 {
+    display: block;
+  }
+
+  .active-year {
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="col">
+    <!-- Default Design -->
+    <div class="dropdown-container">
+      <div class="dropdown-toggle click-dropdown" id="selected-year">
+        2023 <!-- Default year, you can change this if needed -->
+      </div>
+      <div class="dropdown-menu">
+        <ul>
+          <li><a href="#" onclick="showYear('2023')">2023</a></li>
+          <li><a href="#" onclick="showYear('2022')">2022</a></li>
+          <li><a href="#" onclick="showYear('2021')">2021</a></li>
+          <li><a href="#" onclick="showYear('2020')">2020</a></li>
+          <li><a href="#" onclick="showYear('2019')">2019</a></li>
+          <li><a href="#" onclick="showYear('2018')">2018</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="year-container show" id="2023">
+  <h1>2023</h1>
+</div>
+
+<div class="year-container" id="2022">
+  <h1>2022</h1>
+</div>
+
+<div class="year-container" id="2021">
+  <h1>2021</h1>
+</div>
+
+<div class="year-container" id="2020">
+  <h1>2020</h1>
+</div>
+
+<div class="year-container" id="2019">
+  <h1>2019</h1>
+</div>
+
+<div class="year-container" id="2018">
+  <h1>2018</h1>
+</div>
+
 <script>
   // Show the specified year and mark it as active with fade-in
   function showYear(year) {
     var yearContainers = document.querySelectorAll('.year-container');
     yearContainers.forEach(function(container) {
-      if (container.style.display === 'block') {
+      if (container.classList.contains('show')) {
         fadeOut(container, function() {
+          container.classList.remove('show');
           container.style.display = 'none';
           fadeIn(document.getElementById(year));
         });
@@ -78,3 +149,6 @@
     }
   });
 </script>
+
+</body>
+</html>
