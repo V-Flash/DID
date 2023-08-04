@@ -1,50 +1,229 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-  .year-container {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-  .show {
-    opacity: 1;
-  }
+	<style>
 
-  #2023 {
-    display: block;
-  }
 
-  .active-year {
-    font-weight: bold;
+@media (min-width: 767px) {
+  .row .col {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
-</style>
+}
+@media (min-width: 992px) {
+  .row .col {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* Dropdown menu css */
+.dropdown-container {
+  position: relative;
+  max-width: 240px;
+}
+.dropdown-container .dropdown-toggle {
+  color: #000000;
+  background-color: #ffffff;
+  font-size: 17px;
+  padding: 18px 20px;
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: all ease-in-out 0.3s;
+}
+.dropdown-container .dropdown-toggle label {
+  cursor: pointer;
+  width: 100%;
+}
+.dropdown-container .dropdown-toggle:hover, .dropdown-container .dropdown-toggle:active, .dropdown-container .dropdown-toggle:focus {
+  background-color: #0979ce;
+  color: #ffffff;
+}
+.dropdown-container .dropdown-menu {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.5);
+  margin-top: 17px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: none;
+  background-color: #ffffff;
+  z-index: 10;
+}
+.dropdown-container .dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  z-index: 10;
+}
+.dropdown-container .dropdown-menu a {
+  text-decoration: none;
+  display: block;
+  color: #000000;
+  font-size: 15px;
+  padding: 16px 20px;
+  font-weight: 600;
+  box-shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.5);
+  transition: all ease-in-out 0.3s;
+}
+.dropdown-container .dropdown-menu a:hover, .dropdown-container .dropdown-menu a:active, .dropdown-container .dropdown-menu a:focus {
+  background-color: #0979ce;
+  color: #ffffff;
+}
+
+.dropdown-menu,
+.dropdown-toggle {
+  position: relative;
+}
+.dropdown-menu::before,
+.dropdown-toggle::before {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border: 5px solid;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+  margin-top: -2.5px;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all ease-in-out 0.2s;
+}
+
+.dropdown-menu {
+  z-index: 10;
+  position: relative;
+}
+.dropdown-menu::before {
+  z-index: -1;
+  transform: rotate(-135deg);
+  top: -4px;
+  border-color: #ffffff;
+  box-shadow: 1px 1px 4px -2px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-open .dropdown-menu.dropdown-active {
+  display: block;
+}
+
+.dropdown-container.dropdown-open .dropdown-toggle {
+  background-color: #0979ce;
+  color: #ffffff;
+}
+.dropdown-container.dropdown-open .dropdown-toggle:before {
+  transform: rotate(-135deg);
+}
+
+.dropdown-bordered .dropdown-toggle {
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+.dropdown-bordered .dropdown-toggle:hover, .dropdown-bordered .dropdown-toggle:active, .dropdown-bordered .dropdown-toggle:focus {
+  background-color: #0979ce;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+.dropdown-bordered .dropdown-menu {
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+.dropdown-bordered .dropdown-menu::before {
+  border-color: #000000;
+}
+.dropdown-bordered .dropdown-menu a {
+  box-shadow: none;
+  border-bottom: 2px solid #000000;
+}
+.dropdown-bordered .dropdown-menu li:last-child a {
+  border-bottom: 0;
+}
+
+.dropdown-gradient .dropdown-toggle,
+.dropdown-gradient .dropdown-menu,
+.dropdown-gradient a {
+  background: #ff3131;
+  background: -moz-linear-gradient(262deg, #ff3131 11%, #5400ff 100%);
+  background: -webkit-linear-gradient(262deg, #ff3131 11%, #5400ff 100%);
+  background: linear-gradient(262deg, #ff3131 11%, #5400ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff3131",endColorstr="#5400ff",GradientType=1);
+  color: #ffffff;
+}
+.dropdown-gradient .dropdown-toggle::before {
+  color: #ffffff;
+}
+.dropdown-gradient .dropdown-menu a {
+  background: none;
+  box-shadow: none;
+  color: #ffffff;
+}
+.dropdown-gradient .dropdown-menu a:hover, .dropdown-gradient .dropdown-menu a:active, .dropdown-gradient .dropdown-menu a:focus {
+  background: #ff3131;
+  background: -moz-linear-gradient(66deg, #ff3131 11%, #5400ff 100%);
+  background: -webkit-linear-gradient(66deg, #ff3131 11%, #5400ff 100%);
+  background: linear-gradient(66deg, #ff3131 11%, #5400ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff3131",endColorstr="#5400ff",GradientType=1);
+}
+.dropdown-gradient .dropdown-menu::before {
+  box-shadow: none;
+  border-color: #ff3131;
+}
+
+.dropdown-solid .dropdown-toggle,
+.dropdown-solid .dropdown-menu {
+  background-color: #0979ce;
+  color: #ffffff;
+}
+.dropdown-solid .dropdown-menu a {
+  color: #ffffff;
+}
+.dropdown-solid .dropdown-menu a:hover, .dropdown-solid .dropdown-menu a:active, .dropdown-solid .dropdown-menu a:focus {
+  background-color: #ffffff;
+  color: #000000;
+}
+.dropdown-solid .dropdown-menu::before {
+  border-color: #0979ce;
+}
+
+
+
+
+	</style>
 </head>
 <body>
 
-<div class="row">
-  <div class="col">
-    <!-- Default Design -->
-    <div class="dropdown-container">
-      <div class="dropdown-toggle click-dropdown" id="selected-year">
-        2023 <!-- Default year, you can change this if needed -->
-      </div>
-      <div class="dropdown-menu">
-        <ul>
-          <li><a href="#" onclick="showYear('2023')">2023</a></li>
-          <li><a href="#" onclick="showYear('2022')">2022</a></li>
-          <li><a href="#" onclick="showYear('2021')">2021</a></li>
-          <li><a href="#" onclick="showYear('2020')">2020</a></li>
-          <li><a href="#" onclick="showYear('2019')">2019</a></li>
-          <li><a href="#" onclick="showYear('2018')">2018</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="year-container show" id="2023">
+    <div class="row">
+        <div class="col">
+          <!-- Default Design -->
+          <div class="dropdown-container">
+            <div class="dropdown-toggle click-dropdown" id="selected-year">
+              2023
+            </div>
+            <div class="dropdown-menu">
+              <ul>
+                <li><a href="#2023" onclick="showYear('2023', this)">2023</a></li>
+                <li><a href="#" onclick="showYear('2022', this)">2022</a></li>
+                <li><a href="#" onclick="showYear('2021', this)">2021</a></li>
+                <li><a href="#" onclick="showYear('2020', this)">2020</a></li>
+                <li><a href="#" onclick="showYear('2019', this)">2019</a></li>
+                <li><a href="#" onclick="showYear('2018', this)">2018</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+<div class="year-container" id="2023">
   <h1>2023</h1>
 </div>
 
@@ -68,18 +247,19 @@
   <h1>2018</h1>
 </div>
 
-<script>
-  // Show the specified year and mark it as active with fade-in
+
+
+    
+      
+     
+     
+
+<script type="text/javascript">
+	
   function showYear(year) {
     var yearContainers = document.querySelectorAll('.year-container');
     yearContainers.forEach(function(container) {
-      if (container.classList.contains('show')) {
-        fadeOut(container, function() {
-          container.classList.remove('show');
-          container.style.display = 'none';
-          fadeIn(document.getElementById(year));
-        });
-      }
+      container.style.display = 'none';
     });
 
     var yearLinks = document.querySelectorAll('.dropdown-menu a');
@@ -87,67 +267,120 @@
       yearLink.classList.remove('active-year');
     });
 
+    document.getElementById(year).style.display = 'block';
+
     var selectedYear = document.getElementById('selected-year');
     selectedYear.textContent = year;
     selectedYear.classList.add('active-year');
 
-    // Toggle the dropdown
+
     var dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = 'none';
   }
 
-  // Fade-in function
-  function fadeIn(element, callback) {
-    var opacity = 0;
-    element.style.display = 'block';
 
-    var fadeEffect = setInterval(function() {
-      if (opacity < 1) {
-        opacity += 0.05;
-        element.style.opacity = opacity;
-      } else {
-        clearInterval(fadeEffect);
-        if (callback) callback();
-      }
-    }, 50);
-  }
-
-  // Fade-out function
-  function fadeOut(element, callback) {
-    var opacity = 1;
-
-    var fadeEffect = setInterval(function() {
-      if (opacity > 0) {
-        opacity -= 0.05;
-        element.style.opacity = opacity;
-      } else {
-        clearInterval(fadeEffect);
-        element.style.display = 'none';
-        if (callback) callback();
-      }
-    }, 50);
-  }
-
-  // Set the default year to be active
   document.addEventListener('DOMContentLoaded', function() {
     var defaultYearLink = document.querySelector('.dropdown-menu li:first-child a');
     showYear('2023', defaultYearLink);
   });
 
-  // Toggle dropdown on click
+
   var dropdownToggle = document.querySelector('.click-dropdown');
   dropdownToggle.addEventListener('click', function() {
     var dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
   });
 
-  // Close dropdown when clicking outside
+
   window.addEventListener('click', function(event) {
     var dropdownMenu = document.querySelector('.dropdown-menu');
     if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
       dropdownMenu.style.display = 'none';
     }
   });
+	
+
+
+
+
+
+
+// Get all the dropdown from document
+document.querySelectorAll('.dropdown-toggle').forEach(dropDownFunc);
+
+// Dropdown Open and Close function
+function dropDownFunc(dropDown) {
+    console.log(dropDown.classList.contains('click-dropdown'));
+
+    if(dropDown.classList.contains('click-dropdown') === true){
+        dropDown.addEventListener('click', function (e) {
+            e.preventDefault();        
+    
+            if (this.nextElementSibling.classList.contains('dropdown-active') === true) {
+                // Close the clicked dropdown
+                this.parentElement.classList.remove('dropdown-open');
+                this.nextElementSibling.classList.remove('dropdown-active');
+    
+            } else {
+                // Close the opend dropdown
+                closeDropdown();
+    
+                // add the open and active class(Opening the DropDown)
+                this.parentElement.classList.add('dropdown-open');
+                this.nextElementSibling.classList.add('dropdown-active');
+            }
+        });
+    }
+
+    if(dropDown.classList.contains('hover-dropdown') === true){
+
+        dropDown.onmouseover  =  dropDown.onmouseout = dropdownHover;
+
+        function dropdownHover(e){
+            if(e.type == 'mouseover'){
+                // Close the opend dropdowns
+                closeDropdown();
+
+                // add the open and active class(Opening the DropDown)
+                this.parentElement.classList.add('dropdown-open');
+                this.nextElementSibling.classList.add('dropdown-active');
+                
+            }
+
+        }
+    }
+
+};
+
+
+// Listen to the doc click
+window.addEventListener('click', function (e) {
+
+    // Close the menu if click happen outside menu
+    if (e.target.closest('.dropdown-container') === null) {
+        // Close the opend dropdown
+        closeDropdown();
+    }
+
+});
+
+
+// Close the openend Dropdowns
+function closeDropdown() { 
+    console.log('run');
+    
+    // remove the open and active class from other opened Dropdown (Closing the opend DropDown)
+    document.querySelectorAll('.dropdown-container').forEach(function (container) { 
+        container.classList.remove('dropdown-open')
+    });
+
+    document.querySelectorAll('.dropdown-menu').forEach(function (menu) { 
+        menu.classList.remove('dropdown-active');
+    });
+}
+
+
+
 </script>
 
 </body>
