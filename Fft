@@ -113,6 +113,11 @@
   dropdownToggle.addEventListener('click', function() {
     var dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+
+    // Generate the dropdown list when the dropdown is toggled
+    if (dropdownMenu.style.display === 'block') {
+      generateDropdownList();
+    }
   });
 
   // Close dropdown when clicking outside
@@ -122,6 +127,30 @@
       dropdownMenu.style.display = 'none';
     }
   });
+
+  // Function to generate the dropdown list
+  function generateDropdownList() {
+    var activeYear = document.getElementById('selected-year').textContent;
+    var dropdownList = document.getElementById('dropdown-list');
+    dropdownList.innerHTML = ''; // Clear existing items
+
+    var availableYears = ['2023', '2022', '2021', '2020', '2019', '2018'];
+    var filteredYears = availableYears.filter(function(item) {
+      return item !== activeYear;
+    });
+
+    filteredYears.forEach(function(item) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#';
+      a.textContent = item;
+      a.onclick = function() {
+        showYear(item);
+      };
+      li.appendChild(a);
+      dropdownList.appendChild(li);
+    });
+  }
 </script>
 
 </body>
