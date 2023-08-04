@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<title></title>
+
+
+<!---------------------- Portfolio Stlye ---------------------->
+<style>
+
+.wrapper img{
+  width: 100%;
+  height: 100%;
+  transition: scale 400ms;
+}
+
+.wrapper:hover img{
+  scale: 120%;
+}
+
+
+
+.menu {
+  z-index: 999;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.menu .share i.fa-brands,.fa-solid,.fa{
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.menu .share:hover.top .submenu li:nth-child(1) {
+  opacity: 1;
+  top: 51px;
+  transition-delay: 0.08s;
+  transform: rotateY(0deg);
+  border-bottom: 1px dashed #d9d9d9;
+}
+.menu .share:hover.top .submenu li:nth-child(2) {
+  opacity: 1;
+  top: 102px;
+  transition-delay: 0.16s;
+  transform: rotateY(0deg);
+  border-bottom: 1px dashed #d9d9d9;
+}
+.menu .share:hover.top .submenu li:nth-child(3) {
+  opacity: 1;
+  top: 153px;
+  transition-delay: 0.24s;
+  transform: rotateY(0deg);
+  border-bottom: 1px dashed #d9d9d9;
+}
+.menu .share:hover.top .submenu li:nth-child(4) {
+  opacity: 1;
+  top: 204px;
+  transition-delay: 0.32s;
+  transform: rotateY(0deg);
+  border-bottom: 1px dashed #d9d9d9;
+}
+.menu .share:hover.top .submenu li:nth-child(5) {
+  opacity: 1;
+  top: 255px;
+  transition-delay: 0.4s;
+  transform: rotateY(0deg);
+  border-bottom: 1px dashed #d9d9d9;
+}
+.menu .submenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.menu .submenu li {
+  transition: all ease-in-out 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+}
+
+.menu .submenu li a {
+  color: #212121;
+}
+.menu .submenu li a:hover i.fa {
+  color: #fff;
+}
+.menu .submenu li a:hover.linkedin i.fa-brands {
+   background-color: #0a66c2;
+   color: white;
+}
+.menu .submenu li a:hover.github i.fa-brands {
+  background-color: #6e5494;
+  color: white;
+}
+.menu .submenu li a:hover.gmail i.fa-solid {
+  background-color: #dd4b39;
+  color: white;
+}
+.menu .submenu li a:hover.mobile i.fa-solid {
+  background-color: #25D366;
+  color: white;
+}
+
+.menu .submenu li:nth-child(1) {
+  transform: rotateX(-45deg);
+
+}
+.menu .submenu li:nth-child(2) {
+  transform: rotateX(-90deg);
+}
+.menu .submenu li:nth-child(3) {
+  transform: rotateX(-135deg);
+}
+.menu .submenu li:nth-child(4) {
+  transform: rotateX(-180deg);
+}
+
+.menu.bottomRight {
+  bottom: 10px;
+  right: 10px;
+}
+
+</style>
+
+</head>
+<body>
+<ul class="menu bottomRight">
+        <li class="share top">
+          <i class="fa fa-share-alt"></i>
+          <ul class="submenu">
+            <li><a href="https://www.linkedin.com/in/vivek-parmar-78a8a517b/" target="_blank" class="linkedin"><i class="social-icon fa-brands fa-linkedin-in"></i></a></li>
+            <li><a href="https://github.com/V-Flash" class="github"><i class="social-icon fa-brands fa-github"></i></a></li>
+            <li><a href="mailto:vivekparmaroo7.vp@gmail.com" class="gmail"><i class="social-icon fa-solid fa-envelope"></i></a></li>
+            <li><a href="tel:9173661130" class="mobile"><i class="fa-solid fa-mobile"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</body>
+</html>
+
