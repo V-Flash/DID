@@ -80,6 +80,10 @@
 
     // Update the selected year text
     document.getElementById('selected-year').textContent = year;
+
+    // Close the dropdown
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+    dropdownMenu.style.display = 'none';
   }
 
   // Set the default year to be active
