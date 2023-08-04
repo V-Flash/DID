@@ -25,13 +25,8 @@
         2023 <!-- Default year, you can change this if needed -->
       </div>
       <div class="dropdown-menu">
-        <ul>
-          <li><a href="#" onclick="showYear('2023')">2023</a></li>
-          <li><a href="#" onclick="showYear('2022')">2022</a></li>
-          <li><a href="#" onclick="showYear('2021')">2021</a></li>
-          <li><a href="#" onclick="showYear('2020')">2020</a></li>
-          <li><a href="#" onclick="showYear('2019')">2019</a></li>
-          <li><a href="#" onclick="showYear('2018')">2018</a></li>
+        <ul id="dropdown-list">
+          <!-- Dropdown list items will be generated dynamically here -->
         </ul>
       </div>
     </div>
@@ -84,6 +79,27 @@
     // Toggle the dropdown
     var dropdownMenu = document.querySelector('.dropdown-menu');
     dropdownMenu.style.display = 'none';
+
+    // Generate the dropdown list dynamically, excluding the active year
+    var dropdownList = document.getElementById('dropdown-list');
+    dropdownList.innerHTML = ''; // Clear existing items
+
+    var availableYears = ['2023', '2022', '2021', '2020', '2019', '2018'];
+    var filteredYears = availableYears.filter(function(item) {
+      return item !== year;
+    });
+
+    filteredYears.forEach(function(item) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#';
+      a.textContent = item;
+      a.onclick = function() {
+        showYear(item);
+      };
+      li.appendChild(a);
+      dropdownList.appendChild(li);
+    });
   }
 
   // Set the default year to be active
