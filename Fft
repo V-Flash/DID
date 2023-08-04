@@ -1,46 +1,72 @@
- <div class="row">
-        <div class="col">
-          <!-- Default Design -->
-          <div class="dropdown-container">
-            <div class="dropdown-toggle click-dropdown">
-              DropDown Menu
-            </div>
-            <div class="dropdown-menu">
-              <ul>
-                <li><a href="#">2023</a></li>
-                <li><a href="#">2022</a></li>
-                <li><a href="#">2021</a></li>
-                <li><a href="#">2020</a></li>
-                <li><a href="#">2019</a></li>
-                <li><a href="#">2018</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .year-container {
+    display: none;
+  }
 
-      <div id="2023">
-        <h1>2023</h1>
+  #2023 {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="col">
+    <!-- Default Design -->
+    <div class="dropdown-container">
+      <div class="dropdown-toggle click-dropdown">
+        DropDown Menu
       </div>
-
-
-      <div id="2022">
-        <h1>2022</h1>
+      <div class="dropdown-menu">
+        <ul>
+          <li><a href="#" onclick="showYear('2023')">2023</a></li>
+          <li><a href="#" onclick="showYear('2022')">2022</a></li>
+          <li><a href="#" onclick="showYear('2021')">2021</a></li>
+          <li><a href="#" onclick="showYear('2020')">2020</a></li>
+          <li><a href="#" onclick="showYear('2019')">2019</a></li>
+          <li><a href="#" onclick="showYear('2018')">2018</a></li>
+        </ul>
       </div>
+    </div>
+  </div>
+</div>
 
-      <div id="2021">
-        <h1>2021</h1>
-      </div>
+<div class="year-container" id="2023">
+  <h1>2023</h1>
+</div>
 
-       <div id="2020">
-        <h1>2020</h1>
-      </div>
+<div class="year-container" id="2022">
+  <h1>2022</h1>
+</div>
 
-       <div id="2019">
-        <h1>2019</h1>
-      </div>
+<div class="year-container" id="2021">
+  <h1>2021</h1>
+</div>
 
-       <div id="2018">
-        <h1>2018</h1>
-      </div>
+<div class="year-container" id="2020">
+  <h1>2020</h1>
+</div>
 
+<div class="year-container" id="2019">
+  <h1>2019</h1>
+</div>
+
+<div class="year-container" id="2018">
+  <h1>2018</h1>
+</div>
+
+<script>
+  function showYear(year) {
+    var yearContainers = document.querySelectorAll('.year-container');
+    yearContainers.forEach(function(container) {
+      container.style.display = 'none';
+    });
+    document.getElementById(year).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
