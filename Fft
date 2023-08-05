@@ -1,34 +1,27 @@
-<!-- Dark/Light Mode Css -->
-<link type="text/css" id="aStyleLink" rel="stylesheet" />
+$(document).ready(function() {
+    let darkMode = localStorage.getItem("dark-mode");
 
-
-$(function () {
-    
-
-let darkMode = localStorage.getItem("dark-mode");
-    function style_change(stylename) {
+    function setTheme(theme) {
+        if (theme === "black") {
+            document.getElementById('aStyleLink').href = 'assets/css/black-theme.css';
+            document.getElementById('themeIcon').src = 'moon.png'; // Change this to your moon icon
+            localStorage.setItem("dark-mode", "black");
+        } else {
+            document.getElementById('aStyleLink').href = 'assets/css/white-theme.css';
+            document.getElementById('themeIcon').src = 'sun.png'; // Change this to your sun icon
+            localStorage.setItem("dark-mode", "white");
+        }
     }
 
-     $(document).ready(function(){
-        $("#aBlack").click(function(){
-            document.getElementById('aStyleLink').href='assets/css/black-theme.css';
-            localStorage.setItem("dark-mode", "black");
-        });
-    
-        $("#aNormal").click(function(){
-            document.getElementById('aStyleLink').href='#';
-            localStorage.setItem("dark-mode", "white");
-        });
-    
+    $("#themeToggle").click(function() {
+        darkMode = (darkMode === "black") ? "white" : "black";
+        setTheme(darkMode);
+    });
 
-        if (darkMode === "black") {
-          document.getElementById('aStyleLink').href='assets/css/black-theme.css'; // set state of darkMode on page load
-        }
-         
-         else if (darkMode === "white") {
-          document.getElementById('aStyleLink').href='#';
-        }
-
-    });    
-    
-})
+    // Initial theme setup
+    if (darkMode === "black") {
+        setTheme("black");
+    } else {
+        setTheme("white"); // Set light theme as default
+    }
+});
