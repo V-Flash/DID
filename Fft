@@ -13,7 +13,7 @@ $(document).ready(function() {
         }
     }
 
-    $("#themeToggle").click(function() {
+    $("#themeIcon").click(function() {
         darkMode = (darkMode === "black") ? "white" : "black";
         setTheme(darkMode);
     });
