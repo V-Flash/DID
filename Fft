@@ -1,27 +1,33 @@
-$(document).ready(function() {
-    let darkMode = localStorage.getItem("dark-mode");
+def admin_login(request):
 
-    function setTheme(theme) {
-        if (theme === "black") {
-            document.getElementById('aStyleLink').href = 'assets/css/black-theme.css';
-            document.getElementById('themeIcon').src = 'moon.png'; // Change this to your moon icon
-            localStorage.setItem("dark-mode", "black");
-        } else {
-            document.getElementById('aStyleLink').href = 'assets/css/white-theme.css';
-            document.getElementById('themeIcon').src = 'sun.png'; // Change this to your sun icon
-            localStorage.setItem("dark-mode", "white");
-        }
-    }
+try:
 
-    $("#themeIcon").click(function() {
-        darkMode = (darkMode === "black") ? "white" : "black";
-        setTheme(darkMode);
-    });
+if request.user.is_authenticated: return redirect('/dashboard/')
 
-    // Initial theme setup
-    if (darkMode === "black") {
-        setTheme("black");
-    } else {
-        setTheme("white"); // Set light theme as default
-    }
-});
+#messages.info (request, 'Account not found')
+
+if request.method == 'POST':
+
+username = request.POST.get('username')
+
+password = request.POST.get('password')
+
+user_obj= User.objects.filter(username = username)
+
+if not user_obj.exists():
+
+messages.info(request, 'Account not found')
+
+return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+user_obj = authenticate(username =username, password = password)
+
+if user_obj and user_obj.is_superuser:
+
+login (request, user_obj) return redirect('/dashboard/')
+
+messages.info(request, 'Invalid password')
+
+return redirect('/')
+
+return render(request, 'login.html')
