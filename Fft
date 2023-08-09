@@ -1,35 +1,37 @@
+<div class="faq-accordion">
+			 <div class="accordion" id="accordionExample">
+				<div class="card">
+				  <div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+					  <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i> The standard Lorem Ipsum passage, used since the 1500s</button>
+					</h2>
+				  </div>
+				  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+					<div class="card-body">
+					  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, consequuntur, non. Accusamus veniam blanditiis nemo. Itaque non, aliquam reiciendis molestias! Aliquam ipsa rem illo dolor praesentium veritatis voluptatibus laudantium eveniet.</p>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
 
-https://docs.google.com/forms/d/e/1FAIpQLScDzHL188rhjjJb3TyfQdGoDDuh1WRtSwZr7nle_DfQUZZ26Q/viewform
-def admin_login(request):
 
-try:
+// Toggle plus minus icon on show hide of collapse element
+  $(".collapse")
+    .on("show.bs.collapse", function () {
+      $(this)
+        .prev(".card-header")
+        .find(".fa")
+        .removeClass("fa-plus")
+        .addClass("fa-minus");
+    })
+    .on("hide.bs.collapse", function () {
+      $(this)
+        .prev(".card-header")
+        .find(".fa")
+        .removeClass("fa-minus")
+        .addClass("fa-plus");
+    });
+});
 
-if request.user.is_authenticated: return redirect('/dashboard/')
 
-#messages.info (request, 'Account not found')
-
-if request.method == 'POST':
-
-username = request.POST.get('username')
-
-password = request.POST.get('password')
-
-user_obj= User.objects.filter(username = username)
-
-if not user_obj.exists():
-
-messages.info(request, 'Account not found')
-
-return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-user_obj = authenticate(username =username, password = password)
-
-if user_obj and user_obj.is_superuser:
-
-login (request, user_obj) return redirect('/dashboard/')
-
-messages.info(request, 'Invalid password')
-
-return redirect('/')
-
-return render(request, 'login.html')
