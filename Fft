@@ -1,26 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accordion with Color Change</title>
+<!-- Include Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  /* Add custom CSS styles for accordion */
+  .custom-accordion .card-header.active {
+    background-color: #007bff;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
 <div class="faq-accordion">
-			 <div class="accordion" id="accordionExample">
-				<div class="card">
-				  <div class="card-header" id="headingOne">
-					<h2 class="mb-0">
-					  <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i> The standard Lorem Ipsum passage, used since the 1500s</button>
-					</h2>
-				  </div>
-				  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-					<div class="card-body">
-					  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, consequuntur, non. Accusamus veniam blanditiis nemo. Itaque non, aliquam reiciendis molestias! Aliquam ipsa rem illo dolor praesentium veritatis voluptatibus laudantium eveniet.</p>
-					</div>
-				  </div>
-				</div>
-			</div>
-		</div>
+  <div class="accordion custom-accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i> The standard Lorem Ipsum passage, used since the 1500s</button>
+        </h2>
+      </div>
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, consequuntur, non. Accusamus veniam blanditiis nemo. Itaque non, aliquam reiciendis molestias! Aliquam ipsa rem illo dolor praesentium veritatis voluptatibus laudantium eveniet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Include jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-// Toggle plus minus icon on show hide of collapse element
-  $(".collapse")
+<script>
+  // Toggle plus minus icon and change colors on show/hide of collapse element
+  $(".custom-accordion .collapse")
     .on("show.bs.collapse", function () {
       $(this)
         .prev(".card-header")
+        .addClass("active")
         .find(".fa")
         .removeClass("fa-plus")
         .addClass("fa-minus");
@@ -28,10 +52,12 @@
     .on("hide.bs.collapse", function () {
       $(this)
         .prev(".card-header")
+        .removeClass("active")
         .find(".fa")
         .removeClass("fa-minus")
         .addClass("fa-plus");
     });
-});
+</script>
 
-
+</body>
+</html>
