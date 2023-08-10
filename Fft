@@ -1,38 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the anchor elements by their IDs
-    const section1Link = document.getElementById('section1-link');
-    const section2Link = document.getElementById('section2-link');
+    // Add click event listener to the anchor link
+    const anchorLink = document.querySelector('a[href*="about.html#section1"]');
 
-    // Add click event listeners to the anchor links
-    section1Link.addEventListener('click', function(event) {
-        event.preventDefault();
+    if (anchorLink) {
+        anchorLink.addEventListener('click', function(event) {
+            event.preventDefault();
 
-        const target = document.querySelector('#section1');
+            const href = this.getAttribute('href');
+            const sectionId = href.split('#')[1];
 
-        if (target) {
-            const offset = 80;
-            const targetOffsetTop = target.offsetTop - offset;
+            const target = document.querySelector(`#${sectionId}`);
 
-            window.scrollTo({
-                top: targetOffsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
+            if (target) {
+                const offset = 80;
+                const targetOffsetTop = target.offsetTop - offset;
 
-    section2Link.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        const target = document.querySelector('#section2');
-
-        if (target) {
-            const offset = 80;
-            const targetOffsetTop = target.offsetTop - offset;
-
-            window.scrollTo({
-                top: targetOffsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
+                window.scrollTo({
+                    top: targetOffsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 });
