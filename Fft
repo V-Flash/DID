@@ -1,32 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Add click event listener to the anchor link
-    const anchorLink = document.querySelector('a[href*="about.html#section1"]');
+const header = document.querySelector('.header');
 
-    if (anchorLink) {
-        anchorLink.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            const href = this.getAttribute('href');
-            const sectionId = href.split('#')[1];
-
-            // Check if we are on the same page or a different page
-            if (window.location.pathname === '/about.html') {
-                // We are on the same page, scroll to the section
-                const target = document.querySelector(`#${sectionId}`);
-
-                if (target) {
-                    const offset = 80;
-                    const targetOffsetTop = target.offsetTop - offset;
-
-                    window.scrollTo({
-                        top: targetOffsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+            if (header && header.classList.contains('fixed')) {
+                // Header has 'fixed' class, execute script for fixed header
+                scrollToSectionWithFixedHeader(sectionId);
             } else {
-                // We are on a different page, navigate to the about page
-                window.location.href = href;
+                // Header does not have 'fixed' class, execute script for non-fixed header
+                scrollToSectionWithoutFixedHeader(sectionId);
             }
-        });
-    }
-});
