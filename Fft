@@ -1,9 +1,37 @@
-const header = document.querySelector('.header');
+document.addEventListener('DOMContentLoaded', function() {
+    // Add click event listener to the anchor link
+    const anchorLink = document.querySelector('a[href*="about.html#section1"]');
+
+    if (anchorLink) {
+        anchorLink.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const href = this.getAttribute('href');
+            const sectionId = href.split('#')[1];
+
+            const header = document.querySelector('.header');
 
             if (header && header.classList.contains('fixed')) {
-                // Header has 'fixed' class, execute script for fixed header
-                scrollToSectionWithFixedHeader(sectionId);
+                // Header has 'fixed' class, navigate to the about page and then scroll
+                window.location.href = href;
             } else {
-                // Header does not have 'fixed' class, execute script for non-fixed header
-                scrollToSectionWithoutFixedHeader(sectionId);
+                // Header does not have 'fixed' class, scroll to the section
+                scrollToSection(sectionId);
             }
+        });
+    }
+});
+
+function scrollToSection(sectionId) {
+    const target = document.querySelector(`#${sectionId}`);
+
+    if (target) {
+        const offset = 80;
+        const targetOffsetTop = target.offsetTop - offset;
+
+        window.scrollTo({
+            top: targetOffsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
