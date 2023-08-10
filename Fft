@@ -1,1 +1,44 @@
-window.location.href = `${href}&from=index`;
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the hash part of the URL
+    const hash = window.location.hash;
+
+    if (hash) {
+        // Remove the '#' symbol from the hash
+        const sectionId = hash.substring(1);
+
+        // Scroll to the section with the appropriate offset
+        if (window.location.search.includes('from=index')) {
+            scrollToSectionWithHeaderOffset(sectionId);
+        } else {
+            scrollToSection(sectionId);
+        }
+    }
+});
+
+function scrollToSection(sectionId) {
+    const target = document.querySelector(`#${sectionId}`);
+
+    if (target) {
+        const offset = 80;
+        const targetOffsetTop = target.offsetTop - offset;
+
+        window.scrollTo({
+            top: targetOffsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+function scrollToSectionWithHeaderOffset(sectionId) {
+    const target = document.querySelector(`#${sectionId}`);
+
+    if (target) {
+        const offset = 120; // Adjust the offset as needed
+        const targetOffsetTop = target.offsetTop - offset;
+
+        window.scrollTo({
+            top: targetOffsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
