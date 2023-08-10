@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add a click event listener to the navigation menu
     document.querySelector('nav ul').addEventListener('click', function(event) {
         // Check if the clicked element is an anchor tag
-        if (event.target.tagName === 'A') {
+        if (event.target.tagName === 'A' && event.target.getAttribute('href').startsWith('#')) {
             event.preventDefault();
-            
+
             const href = event.target.getAttribute('href');
             const target = document.querySelector(href);
 
@@ -12,14 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const offset = 80;
                 const targetOffsetTop = target.offsetTop - offset;
 
-                if (href.startsWith("#")) {
-                    window.scrollTo({
-                        top: targetOffsetTop,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    window.location.href = href;
-                }
+                window.scrollTo({
+                    top: targetOffsetTop,
+                    behavior: 'smooth'
+                });
             }
         }
     });
