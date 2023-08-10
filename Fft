@@ -1,22 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Add a click event listener to the navigation menu
-    document.querySelector('nav ul').addEventListener('click', function(event) {
-        // Check if the clicked element is an anchor tag
-        if (event.target.tagName === 'A' && event.target.getAttribute('href').startsWith('#')) {
-            event.preventDefault();
+    // Get the anchor elements by their IDs
+    const section1Link = document.getElementById('section1-link');
+    const section2Link = document.getElementById('section2-link');
 
-            const href = event.target.getAttribute('href');
-            const target = document.querySelector(href);
+    // Add click event listeners to the anchor links
+    section1Link.addEventListener('click', function(event) {
+        event.preventDefault();
 
-            if (target) {
-                const offset = 80;
-                const targetOffsetTop = target.offsetTop - offset;
+        const target = document.querySelector('#section1');
 
-                window.scrollTo({
-                    top: targetOffsetTop,
-                    behavior: 'smooth'
-                });
-            }
+        if (target) {
+            const offset = 80;
+            const targetOffsetTop = target.offsetTop - offset;
+
+            window.scrollTo({
+                top: targetOffsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+
+    section2Link.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const target = document.querySelector('#section2');
+
+        if (target) {
+            const offset = 80;
+            const targetOffsetTop = target.offsetTop - offset;
+
+            window.scrollTo({
+                top: targetOffsetTop,
+                behavior: 'smooth'
+            });
         }
     });
 });
