@@ -9,16 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const href = this.getAttribute('href');
             const sectionId = href.split('#')[1];
 
-            const target = document.querySelector(`#${sectionId}`);
+            // Check if we are on the same page or a different page
+            if (window.location.pathname === '/about.html') {
+                // We are on the same page, scroll to the section
+                const target = document.querySelector(`#${sectionId}`);
 
-            if (target) {
-                const offset = 80;
-                const targetOffsetTop = target.offsetTop - offset;
+                if (target) {
+                    const offset = 80;
+                    const targetOffsetTop = target.offsetTop - offset;
 
-                window.scrollTo({
-                    top: targetOffsetTop,
-                    behavior: 'smooth'
-                });
+                    window.scrollTo({
+                        top: targetOffsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                // We are on a different page, navigate to the about page
+                window.location.href = href;
             }
         });
     }
