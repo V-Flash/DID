@@ -1,44 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the hash part of the URL
-    const hash = window.location.hash;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variable Value in Div</title>
+</head>
+<body>
+    <p>Click the button to display the variable value in the div:</p>
+    <button onclick="displayVariableValue()">Display Variable Value</button>
+    <div id="outputDiv"></div>
 
-    if (hash) {
-        // Remove the '#' symbol from the hash
-        const sectionId = hash.substring(1);
-
-        // Scroll to the section with the appropriate offset
-        if (window.location.search.includes('from=index')) {
-            scrollToSectionWithHeaderOffset(sectionId);
-        } else {
-            scrollToSection(sectionId);
+    <script>
+        function displayVariableValue() {
+            // Replace this with your variable value
+            var variableValue = "Hello, World!";
+            
+            // Get the div element by its ID
+            var divElement = document.getElementById("outputDiv");
+            
+            // Set the innerHTML of the div to the variable value
+            divElement.innerHTML = variableValue;
         }
-    }
-});
-
-function scrollToSection(sectionId) {
-    const target = document.querySelector(`#${sectionId}`);
-
-    if (target) {
-        const offset = 80;
-        const targetOffsetTop = target.offsetTop - offset;
-
-        window.scrollTo({
-            top: targetOffsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
-
-function scrollToSectionWithHeaderOffset(sectionId) {
-    const target = document.querySelector(`#${sectionId}`);
-
-    if (target) {
-        const offset = 120; // Adjust the offset as needed
-        const targetOffsetTop = target.offsetTop - offset;
-
-        window.scrollTo({
-            top: targetOffsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
+    </script>
+</body>
+</html>
