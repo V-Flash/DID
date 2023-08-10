@@ -9,24 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const href = this.getAttribute('href');
             const sectionId = href.split('#')[1];
 
-            const header = document.querySelector('.header');
-
-            if (header && header.classList.contains('fixed')) {
-                // Header has 'fixed' class, navigate to the about page and then scroll
-                window.location.href = href;
+            if (window.location.pathname === '/about.html') {
+                // We are on the same page, scroll to the section with standard offset
+                scrollToSection(sectionId, 80);
             } else {
-                // Header does not have 'fixed' class, scroll to the section
-                scrollToSection(sectionId);
+                // We are on a different page, navigate to the about page
+                window.location.href = href;
             }
         });
     }
 });
 
-function scrollToSection(sectionId) {
+function scrollToSection(sectionId, offset) {
     const target = document.querySelector(`#${sectionId}`);
 
     if (target) {
-        const offset = 80;
         const targetOffsetTop = target.offsetTop - offset;
 
         window.scrollTo({
