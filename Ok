@@ -1,23 +1,21 @@
-$(document).ready(function() {
-  // Function to close the sidebar
-  function closeSidebar() {
-    $(".page-wrapper").removeClass("toggled");
+$(".sidebar-dropdown > a").click(function() {
+  $(".sidebar-submenu").slideUp(200);
+  if (
+    $(this)
+      .parent()
+      .hasClass("active")
+  ) {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .parent()
+      .removeClass("active");
+  } else {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .next(".sidebar-submenu")
+      .slideDown(200);
+    $(this)
+      .parent()
+      .addClass("active");
   }
-
-  // Click event for closing the sidebar
-  $("#close-sidebar").click(function() {
-    closeSidebar();
-  });
-
-  // Click event for opening the sidebar
-  $("#show-sidebar").click(function() {
-    $(".page-wrapper").addClass("toggled");
-  });
-
-  // Event listener to close sidebar when clicking outside
-  $(document).on("click", function(event) {
-    if (!$(event.target).closest("#sidebar").length && !$(event.target).closest("#show-sidebar").length) {
-      closeSidebar();
-    }
-  });
 });
