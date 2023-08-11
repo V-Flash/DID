@@ -30,12 +30,12 @@
   var names = ["Naruto", "luffy", "zoro", "hitachi"];
 
   // Function to populate the "ok" div in modals
-  function populateModalOkDiv(modalId, namesArray) {
+  function populateModalOkDiv(modalId, name) {
     var okDiv = document.querySelector(`${modalId} .modal-body .ok`);
-    okDiv.innerHTML = namesArray.join(', ');
+    okDiv.textContent = name;
   }
 
   // Call the function to populate the "ok" div for each modal
-  populateModalOkDiv('#exampleModal1', names);
-  populateModalOkDiv('#exampleModal2', names);
+  populateModalOkDiv('#exampleModal1', names[0]);
+  populateModalOkDiv('#exampleModal2', names[1]);
 </script>
