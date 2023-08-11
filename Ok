@@ -17,6 +17,7 @@
   // Create and populate dynamic modals
   function createDynamicModals() {
     var modalsContainer = document.getElementById('modalsContainer');
+    modalsContainer.innerHTML = ''; // Clear any existing modals
 
     names.forEach(function(name, index) {
       var modalId = `exampleModal${index}`;
