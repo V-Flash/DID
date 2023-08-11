@@ -5,16 +5,16 @@
     const mobileMenu = document.querySelector(".mobilemenu");
     const sidebarWrapper = document.querySelector(".sapti-sidebar");
 
-    // Function to close the sidebar
-    function closeSidebar() {
-      sidebarWrapper.classList.remove("sapti-sidebar");
+    // Function to toggle the sidebar class
+    function toggleSidebar() {
+      sidebarWrapper.classList.toggle("sapti-sidebar");
     }
 
     // Add a click event listener to the document
     document.addEventListener("click", function (event) {
       // Check if the click was outside the mobile menu
       if (!mobileMenu.contains(event.target)) {
-        closeSidebar();
+        toggleSidebar();
       }
     });
   });
