@@ -1,9 +1,14 @@
 $(document).ready(function() {
+  // Function to close all submenus
+  function closeSubmenus() {
+    $(".sidebar-submenu").slideUp(200);
+    $(".sidebar-dropdown").removeClass("active");
+  }
+
   // Function to close the sidebar and all submenus
   function closeSidebar() {
     $(".page-wrapper").removeClass("toggled");
-    $(".sidebar-submenu").slideUp(200);
-    $(".sidebar-dropdown").removeClass("active");
+    closeSubmenus();
   }
 
   // Click event for closing the sidebar
@@ -18,18 +23,16 @@ $(document).ready(function() {
 
   // Click event for sidebar dropdowns
   $(".sidebar-dropdown > a").click(function() {
-    $(".sidebar-submenu").slideUp(200);
+    closeSubmenus();
     if ($(this).parent().hasClass("active")) {
-      $(".sidebar-dropdown").removeClass("active");
       $(this).parent().removeClass("active");
     } else {
-      $(".sidebar-dropdown").removeClass("active");
       $(this).next(".sidebar-submenu").slideDown(200);
       $(this).parent().addClass("active");
     }
   });
 
-  // Event listener to close sidebar when clicking outside
+  // Event listener to close sidebar and submenus when clicking outside
   $(document).on("click", function(event) {
     if (!$(event.target).closest("#sidebar").length && !$(event.target).closest("#show-sidebar").length) {
       closeSidebar();
