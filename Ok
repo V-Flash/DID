@@ -1,41 +1,54 @@
-<!-- Modal 1 -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <!-- ... modal content ... -->
-  <div class="modal-body">
-    <div class="ok"></div>
-  </div>
-  <!-- ... modal content ... -->
-</div>
+<!-- Add an empty container for modals -->
+<div id="modalsContainer"></div>
 
-<!-- Button trigger modal 1 -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-  Launch demo modal 1
-</button>
-
-<!-- Modal 2 -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <!-- ... modal content ... -->
-  <div class="modal-body">
-    <div class="ok"></div>
-  </div>
-  <!-- ... modal content ... -->
-</div>
-
-<!-- Button trigger modal 2 -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-  Launch demo modal 2
+<!-- Button to trigger dynamic modals -->
+<button type="button" class="btn btn-primary" id="launchDynamicModals">
+  Launch Dynamic Modals
 </button>
 
 <script>
-  var names = ["Naruto", "luffy", "zoro", "hitachi"];
+  var names = ["Naruto", "Luffy", "Zoro", "Hitachi"];
 
-  // Function to populate the "ok" div in modals
   function populateModalOkDiv(modalId, name) {
     var okDiv = document.querySelector(`${modalId} .modal-body .ok`);
     okDiv.textContent = name;
   }
 
-  // Call the function to populate the "ok" div for each modal
-  populateModalOkDiv('#exampleModal1', names[0]);
-  populateModalOkDiv('#exampleModal2', names[1]);
+  // Create and populate dynamic modals
+  function createDynamicModals() {
+    var modalsContainer = document.getElementById('modalsContainer');
+
+    names.forEach(function(name, index) {
+      var modalId = `exampleModal${index}`;
+      var modalContent = `
+        <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="ok"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      modalsContainer.insertAdjacentHTML('beforeend', modalContent);
+
+      // Populate "ok" div with the corresponding name
+      populateModalOkDiv(`#${modalId}`, name);
+    });
+  }
+
+  // Event listener for button click to create dynamic modals
+  var launchDynamicModalsButton = document.getElementById('launchDynamicModals');
+  launchDynamicModalsButton.addEventListener('click', function() {
+    createDynamicModals();
+  });
 </script>
