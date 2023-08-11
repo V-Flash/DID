@@ -1,7 +1,3 @@
-<?php
-$dynamicId = 5; // Replace this with your dynamic ID value
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,31 +6,26 @@ $dynamicId = 5; // Replace this with your dynamic ID value
 <body>
     <!-- Your other HTML body content here -->
 
-    <!-- Container for displaying the text -->
+    <!-- Container for displaying the div elements -->
     <div id="outputContainer"></div>
 
     <!-- Your other HTML body content here -->
 
     <script>
-        // Get the dynamic ID from PHP
-        var id = <?php echo $dynamicId; ?>;
+        // Array of names
+        var names = ["Alice", "Bob", "Charlie", "David", "Eve"];
 
-        // Function to display text based on ID
-        function displayTextWithId(id) {
-            var output = '';
-
-            for (var i = 1; i <= id; i++) {
-                output += 'hello' + i + ' ';
-            }
-
-            return output;
+        // Function to create and append div elements with names
+        function createDivElementsWithNames(names) {
+            names.forEach(function(name) {
+                var div = document.createElement("div");
+                div.textContent = 'hello ' + name;
+                document.getElementById("outputContainer").appendChild(div);
+            });
         }
 
-        // Get the container element where you want to display the text
-        var container = document.getElementById('outputContainer');
-
-        // Call the function and display the text
-        container.textContent = displayTextWithId(id);
+        // Call the function to create and append div elements
+        createDivElementsWithNames(names);
     </script>
 </body>
 </html>
