@@ -1,6 +1,21 @@
-$("#close-sidebar").click(function() {
-  $(".page-wrapper").removeClass("toggled");
+<script>
+$(document).ready(function() {
+  $("#close-sidebar").click(function() {
+    $(".page-wrapper").removeClass("toggled");
+  });
+  
+  $("#show-sidebar").click(function() {
+    $(".page-wrapper").addClass("toggled");
+  });
+
+  $(document).click(function(event) {
+    const menu = $(".page-wrapper");
+    const target = $(event.target);
+
+    // Check if the clicked target is not inside the menu
+    if (!target.closest(menu).length && menu.hasClass("toggled")) {
+      menu.removeClass("toggled");
+    }
+  });
 });
-$("#show-sidebar").click(function() {
-  $(".page-wrapper").addClass("toggled");
-});   
+</script>
