@@ -1,22 +1,23 @@
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
 $(document).ready(function() {
-  $("#close-sidebar").click(function() {
+  // Function to close the sidebar
+  function closeSidebar() {
     $(".page-wrapper").removeClass("toggled");
+  }
+
+  // Click event for closing the sidebar
+  $("#close-sidebar").click(function() {
+    closeSidebar();
   });
 
+  // Click event for opening the sidebar
   $("#show-sidebar").click(function() {
     $(".page-wrapper").addClass("toggled");
   });
 
+  // Event listener to close sidebar when clicking outside
   $(document).on("click", function(event) {
-    const menu = $(".page-wrapper");
-    const target = $(event.target);
-
-    // Check if the clicked target is not inside the menu
-    if (!target.closest(menu).length && menu.hasClass("toggled")) {
-      menu.removeClass("toggled");
+    if (!$(event.target).closest("#sidebar").length && !$(event.target).closest("#show-sidebar").length) {
+      closeSidebar();
     }
   });
 });
-</script>
