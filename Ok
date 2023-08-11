@@ -1,21 +1,6 @@
-<script>
-  // Wait for the DOM to be ready
-  document.addEventListener("DOMContentLoaded", function () {
-    // Get references to the elements
-    const mobileMenu = document.querySelector(".mobilemenu");
-    const sidebarWrapper = document.querySelector(".sapti-sidebar");
-
-    // Function to toggle the sidebar class
-    function toggleSidebar() {
-      sidebarWrapper.classList.toggle("sapti-sidebar");
-    }
-
-    // Add a click event listener to the document
-    document.addEventListener("click", function (event) {
-      // Check if the click was outside the mobile menu
-      if (!mobileMenu.contains(event.target)) {
-        toggleSidebar();
-      }
-    });
-  });
-</script>
+$("#close-sidebar").click(function() {
+  $(".page-wrapper").removeClass("toggled");
+});
+$("#show-sidebar").click(function() {
+  $(".page-wrapper").addClass("toggled");
+});   
