@@ -1,14 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Example</title>
+  <!-- Add Bootstrap CSS link here -->
+</head>
+<body>
+
 <input type="text" id="pdf1" value="raj">
-<!-- Modal -->
+
+<!-- Modal 1 -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-      
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div class="ok"></div>
+        <div class="ok"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -18,13 +28,14 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+<!-- Button trigger modal 1 -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="fillModalContent(1)">
   Launch demo modal 1
 </button>
 
 <input type="text" id="pdf2" value="vivek">
-<!-- Modal -->
+
+<!-- Modal 2 -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -33,7 +44,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <div class="ok"></div>
+        <div class="ok"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -43,7 +54,20 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+<!-- Button trigger modal 2 -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="fillModalContent(2)">
   Launch demo modal 2
 </button>
+
+<!-- Add Bootstrap JS script and your custom JavaScript here -->
+
+<script>
+  function fillModalContent(modalNumber) {
+    const pdfInput = document.getElementById(`pdf${modalNumber}`);
+    const modalBody = document.querySelector(`#exampleModal${modalNumber} .modal-body .ok`);
+    modalBody.textContent = pdfInput.value;
+  }
+</script>
+
+</body>
+</html>
