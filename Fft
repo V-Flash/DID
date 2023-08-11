@@ -1,105 +1,21 @@
-<div class="mobilemenu" >
-  <div class="page-wrapper sapti-sidebar">
-    <nav id="sidebar" class="sidebar-wrapper">
-      <div class="sidebar-content">
-        <div class="sidebar-brand">
-          <div id="close-sidebar"> <i class="fas fa-times"></i> </div>
-        </div>
-        <div class="sidebar-navigation">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About <em class="mdi mdi-chevron-down"></em></a>
-              <ul>
-                <li><a href="about-overview.html">Overview</a></li>
-                <li><a href="about-overview.html#vision-mision">Vision & Mission</a></li>
-                <li><a href="about-overview.html#amis-object">Aims & Objectives</a></li>
-                <li><a href="about-organization-structure.html">Organization Structure</a></li>
-                <li><a href="about-gallery.html">Gallery</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Education <em class="mdi mdi-chevron-down"></em></a>
-              <ul>
-                <li><a href="courses-beginners-certificate-course-scd-I.html">Beginners Certificate Course (SCD - I)</a></li>
-                <li><a href="courses-intermediate-certificate-course-scd-II.html">Intermediate Certificate Course (SCD - II)</a></li>
-                <li><a href="courses-advanced-certificate-course-scd-III.html">Advanced Certificate Course (SCD - III)</a></li>
-                <li><a href="courses-diploma-scd-IV.html">Diploma (SCD - IV)</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Center <em class="mdi mdi-chevron-down"></em></a>
-              <ul>
-                <li><a href="#">SAPTI Ambaji <em class="mdi mdi-chevron-down"></em></a>
-                  <ul>
-                    <li><a href="ambaji-overview.html">Overview</a></li>
-                    <li><a href="ambaji-education.html">Education</a></li>
-                    <li><a href="ambaji-infrastructure.html">Infrastructure</a></li>
-                    <li><a href="ambaji-prospeets.html">Prospects</a></li>
-                    <li><a href="admission.html">Admission</a></li>
-                    <li><a href="ambaji-gallery.html">Gallery</a></li>
-                    <li><a href="ambaji-contact.html">Contact</a></li>
-                    <!--<li><a href="#">Activity <em class="mdi mdi-chevron-down"></em></a>
-                      <ul>
-                        <li><a href="#">Social media</a></li>
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">Project</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Activity</a></li>
-                      </ul>
-                    </li>-->
-                  </ul>
-                </li>
-                <li><a href="#">SAPTI Dhrangadhra <em class="mdi mdi-chevron-down"></em></a>
-                  <ul>
-                    <li><a href="dhrangadhra-overview.html">Overview</a></li>
-                    <li><a href="dhrangadhra-education.html">Education</a></li>
-                    <li><a href="dhrangadhra-infrastructure.html">Infrastructure</a></li>
-                    <li><a href="dhrangadhra-prospeets.html">Prospects</a></li>
-                    <li><a href="admission.html">Admission</a></li>
-                    <li><a href="dhrangadhra-gallery.html">Gallery</a></li>
-                    <li><a href="dhrangadhra-contact.html">Contact</a></li>
-                    <!--<li><a href="#">Activity <em class="mdi mdi-chevron-down"></em></a>
-                      <ul>
-                        <li><a href="#">Social media</a></li>
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">Project</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Activity</a></li>
-                      </ul>
-                    </li>-->
-                  </ul>
-                </li>
-                
-                <!--<li><a href="#">Internet</a></li>-->
-              </ul>
-            </li>
-            <li><a href="admission.html">Admission</a></li>
-            <li><a href="enquiery.html">Enquiry</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="tenders.html">Tender</a></li>
-            <li><a href="download.html">Downloads</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="career.html">Career</a></li>
-            <li><a href="news.html">News & Events</a></li>
-            <li><a href="login.html">Login</a></li>
-            <!--<li><a href="#"> Register</a></li>-->
-            <!--<li><a href="#"> Enquiry</a></li>
-            <li><a href="admission.html"> Apply</a></li>-->
-          </ul>
-        </div>
-        
-        <!-- sidebar-menu  --> 
-      </div>
-      <!-- sidebar-content  --> 
-    </nav>
-    <!-- sidebar-wrapper  --> 
-    <!--    <main class="page-content">
-      <div class="header-area__mobile">
-        <div class="mobile-menu-area"> <a id="show-sidebar" class="btn btn-sm btn-dark" href="javascript:void(0);"> <i class="fas fa-bars"></i></a></div>
-      </div>
+<script>
+  // Wait for the DOM to be ready
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get references to the elements
+    const mobileMenu = document.querySelector(".mobilemenu");
+    const sidebarWrapper = document.querySelector(".sapti-sidebar");
 
+    // Function to close the sidebar
+    function closeSidebar() {
+      sidebarWrapper.classList.remove("sapti-sidebar");
+    }
 
-    </main>--> 
-    <!-- page-content" --> 
-  </div>
-  <!-- page-wrapper --> 
-  
-</div>
+    // Add a click event listener to the document
+    document.addEventListener("click", function (event) {
+      // Check if the click was outside the mobile menu
+      if (!mobileMenu.contains(event.target)) {
+        closeSidebar();
+      }
+    });
+  });
+</script>
