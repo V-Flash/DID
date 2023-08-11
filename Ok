@@ -1,47 +1,49 @@
-$(document).ready(function() {
-  // Function to close all submenus
-  function closeSubmenus() {
-    $(".sidebar-submenu").slideUp(200);
-    $(".sidebar-dropdown").removeClass("active");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Example</title>
+  <!-- Include Bootstrap CSS link here -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<input type="text" class="pdf-input" value="raj">
+
+<!-- Modal 1 -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="pdf1Value">Value from PDF1:</label>
+        <input type="text" class="pdf-value-input form-control" disabled>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal 1 -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="fillModalContent(1)">
+  Launch demo modal 1
+</button>
+
+<!-- Include Bootstrap JS script and your custom JavaScript here -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function fillModalContent(modalNumber) {
+    const pdfInput = document.querySelector(`.pdf-input`);
+    const pdfValueInput = document.querySelector(`.pdf-value-input`);
+    pdfValueInput.value = pdfInput.value;
   }
+</script>
 
-  // Function to close the sidebar and all submenus
-  function closeSidebar() {
-    $(".page-wrapper").removeClass("toggled");
-    closeSubmenus();
-  }
-
-  // Function to open the sidebar
-  function openSidebar() {
-    $(".page-wrapper").addClass("toggled");
-  }
-
-  // Click event for closing the sidebar
-  $("#close-sidebar").click(function() {
-    closeSidebar();
-  });
-
-  // Click event for opening the sidebar
-  $("#show-sidebar").click(function() {
-    openSidebar();
-    closeSubmenus(); // Close submenus when sidebar is opened
-  });
-
-  // Click event for sidebar dropdowns
-  $(".sidebar-dropdown > a").click(function() {
-    closeSubmenus();
-    if ($(this).parent().hasClass("active")) {
-      $(this).parent().removeClass("active");
-    } else {
-      $(this).next(".sidebar-submenu").slideDown(200);
-      $(this).parent().addClass("active");
-    }
-  });
-
-  // Event listener to close sidebar and submenus when clicking outside
-  $(document).on("click", function(event) {
-    if (!$(event.target).closest("#sidebar").length && !$(event.target).closest("#show-sidebar").length) {
-      closeSidebar();
-    }
-  });
-});
+</body>
+</html>
