@@ -1,57 +1,21 @@
-<!-- Add an empty container for modals -->
-<div id="modalsContainer"></div>
-
-<!-- Button to trigger dynamic modals -->
-<button type="button" class="btn btn-primary" id="launchDynamicModals">
-  Launch Dynamic Modals
-</button>
-
 <script>
-  var names = ["Naruto", "Luffy", "Zoro", "Hitachi"];
+  // Wait for the DOM to be ready
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get references to the elements
+    const mobileMenu = document.querySelector(".mobilemenu");
+    const sidebarWrapper = document.querySelector(".sapti-sidebar");
 
-  function populateModalOkDiv(modalId, name) {
-    var okDiv = document.querySelector(`${modalId} .modal-body .ok`);
-    okDiv.textContent = name;
-  }
+    // Function to toggle the sidebar class
+    function toggleSidebar() {
+      sidebarWrapper.classList.toggle("sapti-sidebar");
+    }
 
-  // Create and populate dynamic modals
-  function createDynamicModals() {
-    var modalsContainer = document.getElementById('modalsContainer');
-    modalsContainer.innerHTML = ''; // Clear any existing modals
-
-    names.forEach(function(name, index) {
-      var modalId = `exampleModal${index}`;
-      var modalContent = `
-        <div class="modal fade" id="${modalId}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="ok"></div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      var modalWrapper = document.createElement('div');
-      modalWrapper.innerHTML = modalContent;
-      modalsContainer.appendChild(modalWrapper);
-
-      // Populate "ok" div with the corresponding name
-      populateModalOkDiv(`#${modalId}`, name);
+    // Add a click event listener to the document
+    document.addEventListener("click", function (event) {
+      // Check if the click was outside the mobile menu
+      if (!mobileMenu.contains(event.target)) {
+        toggleSidebar();
+      }
     });
-  }
-
-  // Event listener for button click to create dynamic modals
-  var launchDynamicModalsButton = document.getElementById('launchDynamicModals');
-  launchDynamicModalsButton.addEventListener('click', function() {
-    createDynamicModals();
   });
 </script>
