@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   // Function to close all submenus
   function closeSubmenus() {
@@ -12,6 +11,11 @@ $(document).ready(function() {
     closeSubmenus();
   }
 
+  // Function to open the sidebar
+  function openSidebar() {
+    $(".page-wrapper").addClass("toggled");
+  }
+
   // Click event for closing the sidebar
   $("#close-sidebar").click(function() {
     closeSidebar();
@@ -19,7 +23,8 @@ $(document).ready(function() {
 
   // Click event for opening the sidebar
   $("#show-sidebar").click(function() {
-    $(".page-wrapper").addClass("toggled");
+    openSidebar();
+    closeSubmenus(); // Close submenus when sidebar is opened
   });
 
   // Click event for sidebar dropdowns
