@@ -1,24 +1,40 @@
+<?php
+$dynamicId = 5; // Replace this with your dynamic ID value
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Variable Value in Div</title>
+    <!-- Your other HTML head content here -->
 </head>
 <body>
-    <p>Click the button to display the variable value in the div:</p>
-    <button onclick="displayVariableValue()">Display Variable Value</button>
-    <div id="outputDiv"></div>
+    <!-- Your other HTML body content here -->
+
+    <!-- Container for displaying the text -->
+    <div id="outputContainer"></div>
+
+    <!-- Your other HTML body content here -->
 
     <script>
-        function displayVariableValue() {
-            // Replace this with your variable value
-            var variableValue = "Hello, World!";
-            
-            // Get the div element by its ID
-            var divElement = document.getElementById("outputDiv");
-            
-            // Set the innerHTML of the div to the variable value
-            divElement.innerHTML = variableValue;
+        // Get the dynamic ID from PHP
+        var id = <?php echo $dynamicId; ?>;
+
+        // Function to display text based on ID
+        function displayTextWithId(id) {
+            var output = '';
+
+            for (var i = 1; i <= id; i++) {
+                output += 'hello' + i + ' ';
+            }
+
+            return output;
         }
+
+        // Get the container element where you want to display the text
+        var container = document.getElementById('outputContainer');
+
+        // Call the function and display the text
+        container.textContent = displayTextWithId(id);
     </script>
 </body>
 </html>
