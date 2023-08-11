@@ -40,7 +40,9 @@
           </div>
         </div>
       `;
-      modalsContainer.insertAdjacentHTML('beforeend', modalContent);
+      var modalWrapper = document.createElement('div');
+      modalWrapper.innerHTML = modalContent;
+      modalsContainer.appendChild(modalWrapper);
 
       // Populate "ok" div with the corresponding name
       populateModalOkDiv(`#${modalId}`, name);
