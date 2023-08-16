@@ -1,8 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function toggleSubOptions() {
+  var mainCheckbox = document.getElementById("option");
+  var subCheckboxes = document.getElementsByClassName("subOption");
+
+  for (var i = 0; i < subCheckboxes.length; i++) {
+    subCheckboxes[i].checked = mainCheckbox.checked;
+  }
+}
+</script>
+</head>
+<body>
+
 <li>
-							  <input type="checkbox" id="option"> <label for="option"> Cables</label>
-							  <ul>
-								<li><label><input type="checkbox" class="subOption"> LV</label></li>
-								<li><label><input type="checkbox" class="subOption"> HV</label></li>
-								<li><label><input type="checkbox" class="subOption"> EHV</label></li>
-							  </ul>
-							</li>
+  <input type="checkbox" id="option" onclick="toggleSubOptions()">
+  <label for="option"> Cables</label>
+  <ul>
+    <li><label><input type="checkbox" class="subOption"> LV</label></li>
+    <li><label><input type="checkbox" class="subOption"> HV</label></li>
+    <li><label><input type="checkbox" class="subOption"> EHV</label></li>
+  </ul>
+</li>
+
+</body>
+</html>
