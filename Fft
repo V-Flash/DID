@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script>
-function toggleSubOptions() {
-  var mainCheckbox = document.getElementById("option");
-  var subCheckboxes = document.getElementsByClassName("subOption");
+// Get the element where you want to insert the checkbox list
+var listContainer = document.getElementById("listContainer"); // Replace "listContainer" with the actual ID of the container element
 
-  for (var i = 0; i < subCheckboxes.length; i++) {
-    subCheckboxes[i].checked = mainCheckbox.checked;
-  }
-}
-</script>
-</head>
-<body>
+// Construct the HTML for the checkbox list
+var checkboxListHTML = `
+  <li>
+    <input type="checkbox" id="option"> <label for="option"> Cables</label>
+    <ul>
+      <li><label><input type="checkbox" class="subOption"> LV</label></li>
+      <li><label><input type="checkbox" class="subOption"> HV</label></li>
+      <li><label><input type="checkbox" class="subOption"> EHV</label></li>
+    </ul>
+  </li>
+`;
 
-<li>
-  <input type="checkbox" id="option" onclick="toggleSubOptions()">
-  <label for="option"> Cables</label>
-  <ul>
-    <li><label><input type="checkbox" class="subOption"> LV</label></li>
-    <li><label><input type="checkbox" class="subOption"> HV</label></li>
-    <li><label><input type="checkbox" class="subOption"> EHV</label></li>
-  </ul>
-</li>
-
-</body>
-</html>
+// Set the HTML content of the container element
+listContainer.innerHTML = checkboxListHTML;
