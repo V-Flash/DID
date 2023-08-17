@@ -1,17 +1,18 @@
-<li>
-  [checkbox option id:option class:main-cable-checkbox "Cables"]
-  <ul>
-    [checkbox suboption class:sub-cable-checkbox "LV"]
-    [checkbox suboption class:sub-cable-checkbox "HV"]
-    [checkbox suboption class:sub-cable-checkbox "EHV"]
-  </ul>
-</li>
-jQuery(document).ready(function($) {
-  $('.main-cable-checkbox').on('click', function() {
-    var subCheckboxes = $('.sub-cable-checkbox');
-
-    for (var i = 0; i < subCheckboxes.length; i++) {
-      subCheckboxes[i].checked = this.checked;
-    }
-  });
-});
+<ul> 
+                    
+              <li>
+                 <label for="option"><span class="wpcf7-form-control-wrap" data-name="en-cable"><span class="wpcf7-form-control wpcf7-checkbox spacechekbox" id="option"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-cable[]" value="Cables"><span class="wpcf7-list-item-label">Cables</span></span></span></span></label>
+               <ul> 
+                  <li>
+                    <label><span class="wpcf7-form-control-wrap" data-name="en-lv"><span class="wpcf7-form-control wpcf7-checkbox subOption"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-lv[]" value="LV"><span class="wpcf7-list-item-label">LV</span></span></span></span></label>
+                  </li> 
+                  <li>
+                    <label><span class="wpcf7-form-control-wrap" data-name="en-hv"><span class="wpcf7-form-control wpcf7-checkbox subOption"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-hv[]" value="HV"><span class="wpcf7-list-item-label">HV</span></span></span></span></label>
+                  </li> 
+                  <li>
+                    <label><span class="wpcf7-form-control-wrap" data-name="en-ehv"><span class="wpcf7-form-control wpcf7-checkbox subOption"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-ehv[]" value="EHV"><span class="wpcf7-list-item-label">EHV</span></span></span></span></label>
+                  </li> 
+                </ul> 
+              </li> 
+              
+            </ul>
