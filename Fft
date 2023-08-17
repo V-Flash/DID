@@ -1,35 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script>
-
-</script>
-</head>
-<body>
-<ul> 
-                    
-              <li>
-                 <label for="option"><span class="wpcf7-form-control-wrap" data-name="en-cable"><span class="wpcf7-form-control wpcf7-checkbox spacechekbox" id="option"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-cable[]" value="Cables"><span class="wpcf7-list-item-label">Cables</span></span></span></span></label>
-               <ul> 
-                  <li>
-                    <label><span class="wpcf7-form-control-wrap" data-name="en-lv"><span class="wpcf7-form-control wpcf7-checkbox subOption"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-lv[]" value="LV"><span class="wpcf7-list-item-label">LV</span></span></span></span></label>
-                  </li> 
-                  <li>
-                    <label><span class="wpcf7-form-control-wrap" data-name="en-hv"><span class="wpcf7-form-control wpcf7-checkbox subOption"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-hv[]" value="HV"><span class="wpcf7-list-item-label">HV</span></span></span></span></label>
-                  </li> 
-                  <li>
-                    <label><span class="wpcf7-form-control-wrap" data-name="en-ehv"><span class="wpcf7-form-control wpcf7-checkbox subOption"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-ehv[]" value="EHV"><span class="wpcf7-list-item-label">EHV</span></span></span></span></label>
-                  </li> 
-                </ul> 
-              </li> 
-              <li>          
-                <label for="option2"><span class="wpcf7-form-control-wrap" data-name="en-conductors"><span class="wpcf7-form-control wpcf7-checkbox spacechekbox" id="option2"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-conductors[]" value="Conductors"><span class="wpcf7-list-item-label">Conductors</span></span></span></span></label>
-              </li> 
-              <li>                
-                <label for="option3"><span class="wpcf7-form-control-wrap" data-name="en-towers"><span class="wpcf7-form-control wpcf7-checkbox spacechekbox" id="option3"><span class="wpcf7-list-item first last"><input type="checkbox" name="en-towers[]" value="Towers"><span class="wpcf7-list-item-label">Towers</span></span></span></span></label>
-              </li> 
-            </ul>
-
 <script type="text/javascript">
 var checkboxes = document.querySelectorAll('.subOption span input'),
     checkall = document.getElementById('option');
@@ -37,7 +5,7 @@ var checkboxes = document.querySelectorAll('.subOption span input'),
 for(var i=0; i<checkboxes.length; i++) {
   checkboxes[i].onclick = function() {
     var checkedCount = document.querySelectorAll('.subOption span input:checked').length;
-    checkall.checked = checkedCount > 0;
+    checkall.checked = checkedCount === checkboxes.length;
     checkall.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
   }
 }
@@ -48,7 +16,13 @@ checkall.onclick = function() {
   }
 } 
 
+// New code to automatically check sub-options when "Cables" checkbox is checked
+checkall.onchange = function() {
+  var isChecked = this.checked;
+  if (isChecked) {
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = true;
+    }
+  }
+};
 </script>
-
-</body>
-</html>
