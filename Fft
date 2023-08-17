@@ -1,17 +1,17 @@
-// Get the element where you want to insert the checkbox list
-var listContainer = document.getElementById("listContainer"); // Replace "listContainer" with the actual ID of the container element
+<li>
+  [checkbox option id:option class:main-cable-checkbox "Cables"]
+  <ul>
+    [checkbox suboption class:sub-cable-checkbox "LV"]
+    [checkbox suboption class:sub-cable-checkbox "HV"]
+    [checkbox suboption class:sub-cable-checkbox "EHV"]
+  </ul>
+</li>
+jQuery(document).ready(function($) {
+  $('.main-cable-checkbox').on('click', function() {
+    var subCheckboxes = $('.sub-cable-checkbox');
 
-// Construct the HTML for the checkbox list
-var checkboxListHTML = `
-  <li>
-    <input type="checkbox" id="option"> <label for="option"> Cables</label>
-    <ul>
-      <li><label><input type="checkbox" class="subOption"> LV</label></li>
-      <li><label><input type="checkbox" class="subOption"> HV</label></li>
-      <li><label><input type="checkbox" class="subOption"> EHV</label></li>
-    </ul>
-  </li>
-`;
-
-// Set the HTML content of the container element
-listContainer.innerHTML = checkboxListHTML;
+    for (var i = 0; i < subCheckboxes.length; i++) {
+      subCheckboxes[i].checked = this.checked;
+    }
+  });
+});
