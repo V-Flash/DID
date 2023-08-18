@@ -1,28 +1,48 @@
-<script type="text/javascript">
-var checkboxes = document.querySelectorAll('.subOption span input'),
-    checkall = document.getElementById('option');
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Example</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const firstCheckbox = document.getElementById('checkbox1');
+            const secondCheckbox = document.getElementById('checkbox2');
 
-for(var i=0; i<checkboxes.length; i++) {
-  checkboxes[i].onclick = function() {
-    var checkedCount = document.querySelectorAll('.subOption span input:checked').length;
-    checkall.checked = checkedCount === checkboxes.length;
-    checkall.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
-  }
-}
+            firstCheckbox.addEventListener('change', function () {
+                secondCheckbox.checked = firstCheckbox.checked;
+            });
+        });
+    </script>
+</head>
+<body>
+    <label for="checkbox1">Checkbox 1:</label>
+    <input type="checkbox" id="checkbox1"><br>
 
-checkall.onclick = function() {
-  for(var i=0; i<checkboxes.length; i++) {
-    checkboxes[i].checked = this.checked;
-  }
-} 
+    <label for="checkbox2">Checkbox 2:</label>
+    <input type="checkbox" id="checkbox2"><br>
+</body>
+</html>
 
-// New code to automatically check sub-options when "Cables" checkbox is checked
-checkall.onchange = function() {
-  var isChecked = this.checked;
-  if (isChecked) {
-    for (var i = 0; i < checkboxes.length; i++) {
-      checkboxes[i].checked = true;
-    }
-  }
-};
-</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Example</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="checkGroup"]');
+            
+            checkboxes[0].addEventListener('change', function () {
+                checkboxes[1].checked = checkboxes[0].checked;
+            });
+        });
+    </script>
+</head>
+<body>
+    <label for="checkbox1">Checkbox 1:</label>
+    <input type="checkbox" id="checkbox1" name="checkGroup"><br>
+
+    <label for="checkbox2">Checkbox 2:</label>
+    <input type="checkbox" id="checkbox2" name="checkGroup"><br>
+</body>
+</html>
+
