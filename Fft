@@ -1,48 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkbox Example</title>
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const firstCheckbox = document.getElementById('checkbox1');
-            const secondCheckbox = document.getElementById('checkbox2');
+<div class="spacing-side search-spacing-div">
 
-            firstCheckbox.addEventListener('change', function () {
-                secondCheckbox.checked = firstCheckbox.checked;
-            });
-        });
-    </script>
-</head>
-<body>
-    <label for="checkbox1">Checkbox 1:</label>
-    <input type="checkbox" id="checkbox1"><br>
+            <div class="search-container">
+              <i class="fa fa-search search-icon"></i>
+            </div>
 
-    <label for="checkbox2">Checkbox 2:</label>
-    <input type="checkbox" id="checkbox2"><br>
-</body>
-</html>
+            <div class="input-group search-input-div">
+              <form action="" id="search-form">
+              <div class="input-group form-outline">        
 
+                <input type="search" id="form1" class="form-control"/>   
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkbox Example</title>
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="checkGroup"]');
-            
-            checkboxes[0].addEventListener('change', function () {
-                checkboxes[1].checked = checkboxes[0].checked;
-            });
-        });
-    </script>
-</head>
-<body>
-    <label for="checkbox1">Checkbox 1:</label>
-    <input type="checkbox" id="checkbox1" name="checkGroup"><br>
+                <button type="button" class="btn btn-primary search-btn">
+                  <i class="fa fa-search"></i>
+                </button>
 
-    <label for="checkbox2">Checkbox 2:</label>
-    <input type="checkbox" id="checkbox2" name="checkGroup"><br>
-</body>
-</html>
+              </div>
 
+              </form>   
+            </div>
+
+          </div>
+
+$(document).ready(function(){
+  $(".search-container").click(function(){
+    $(".search-input-div").slideToggle("500");
+  });
+});
+
+.search-input-div{
+	display:none;}
