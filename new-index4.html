@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Equal Height Images</title>
+    <style>
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 100%; /* Maintain aspect ratio for square space */
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="image-container">
+                    <img src="landscape-image.jpg" alt="Landscape Image">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="image-container">
+                    <img src="vertical-image.jpg" alt="Vertical Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

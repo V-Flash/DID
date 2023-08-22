@@ -1,33 +1,48 @@
-def admin_login(request):
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Example</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const firstCheckbox = document.getElementById('checkbox1');
+            const secondCheckbox = document.getElementById('checkbox2');
 
-try:
+            firstCheckbox.addEventListener('change', function () {
+                secondCheckbox.checked = firstCheckbox.checked;
+            });
+        });
+    </script>
+</head>
+<body>
+    <label for="checkbox1">Checkbox 1:</label>
+    <input type="checkbox" id="checkbox1"><br>
 
-if request.user.is_authenticated: return redirect('/dashboard/')
+    <label for="checkbox2">Checkbox 2:</label>
+    <input type="checkbox" id="checkbox2"><br>
+</body>
+</html>
 
-#messages.info (request, 'Account not found')
 
-if request.method == 'POST':
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Example</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="checkGroup"]');
+            
+            checkboxes[0].addEventListener('change', function () {
+                checkboxes[1].checked = checkboxes[0].checked;
+            });
+        });
+    </script>
+</head>
+<body>
+    <label for="checkbox1">Checkbox 1:</label>
+    <input type="checkbox" id="checkbox1" name="checkGroup"><br>
 
-username = request.POST.get('username')
+    <label for="checkbox2">Checkbox 2:</label>
+    <input type="checkbox" id="checkbox2" name="checkGroup"><br>
+</body>
+</html>
 
-password = request.POST.get('password')
-
-user_obj= User.objects.filter(username = username)
-
-if not user_obj.exists():
-
-messages.info(request, 'Account not found')
-
-return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-user_obj = authenticate(username =username, password = password)
-
-if user_obj and user_obj.is_superuser:
-
-login (request, user_obj) return redirect('/dashboard/')
-
-messages.info(request, 'Invalid password')
-
-return redirect('/')
-
-return render(request, 'login.html')

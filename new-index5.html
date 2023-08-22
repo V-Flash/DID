@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Equal Height Images</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .col-lg-2 {
+            flex: 0 0 16.66667%;
+            max-width: 16.66667%;
+            padding: 0;
+            position: relative;
+        }
+
+        .landscape-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .vertical-image {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <img class="landscape-image" src="landscape-image.jpg" alt="Landscape Image">
+                <img class="vertical-image" src="vertical-image.jpg" alt="Vertical Image">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
