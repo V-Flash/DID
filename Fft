@@ -1,31 +1,51 @@
 <div class="spacing-side search-spacing-div">
+  <div class="search-container">
+    <i class="fa fa-search search-icon"></i>
+  </div>
+  <div class="input-group search-input-div">
+    <form action="" id="search-form">
+      <div class="input-group form-outline">
+        <input type="search" id="form1" class="form-control"/>
+        <button type="button" class="btn btn-primary search-btn">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
-            <div class="search-container">
-              <i class="fa fa-search search-icon"></i>
-            </div>
+<style>
+  .search-input-div {
+    display: none;
+  }
+</style>
 
-            <div class="input-group search-input-div">
-              <form action="" id="search-form">
-              <div class="input-group form-outline">        
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var searchInputDiv = $(".search-input-div");
+    var searchContainer = $(".search-container");
 
-                <input type="search" id="form1" class="form-control"/>   
+    // Function to hide the search input div
+    function hideSearchInput() {
+      searchInputDiv.slideUp("500");
+    }
 
-                <button type="button" class="btn btn-primary search-btn">
-                  <i class="fa fa-search"></i>
-                </button>
+    // Click outside the search container or input group
+    $(document).on("click", function(event) {
+      if (!searchContainer.is(event.target) && !searchInputDiv.is(event.target) && searchInputDiv.has(event.target).length === 0) {
+        hideSearchInput();
+      }
+    });
 
-              </div>
+    // Scroll event
+    $(window).on("scroll", function() {
+      hideSearchInput();
+    });
 
-              </form>   
-            </div>
-
-          </div>
-
-$(document).ready(function(){
-  $(".search-container").click(function(){
-    $(".search-input-div").slideToggle("500");
+    // Toggle search input div when clicking the search container
+    searchContainer.click(function() {
+      searchInputDiv.slideToggle("500");
+    });
   });
-});
-
-.search-input-div{
-	display:none;}
+</script>
