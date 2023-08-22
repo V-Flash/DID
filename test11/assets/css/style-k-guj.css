@@ -1,0 +1,92 @@
+@charset "utf-8";
+/*** teaching-methodology page ***/
+.mb-30{margin-bottom:30px;}
+.teaching-box-text{font-size:18px; line-height: 26px; color: #fff;}
+.teaching-box1 {background-color: var(--coolgrey-color);display: flex; justify-content: center; /*align-items: center;*/height: 100%; padding: 20px 25px;}
+.teaching-box2 {background-color: var(--mushroom-color);display: flex;justify-content: center;/*align-items: center;*/height: 100%;padding:20px 25px;}
+/**** yog-holistic page***/
+.holistic-health .text {display: flex;height: 100%;align-items: center;}
+.grid-container {/*background-color: deepskyblue;border: 10px solid mistyrose;*/display: grid;grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto;/*min-height: 100vh;*/}
+.box {color: #fff;display: flex;justify-content: center;align-items: center;font-size: 25px;line-height: inherit;padding: 2rem;	width: 100%;text-align: center;/*text-shadow: 2px 2px 1px #333;*/align-items: center;}
+.box-1 { background-color: var(--wine-color); grid-row-start: 1; grid-row-end: 3; }
+.box-2 { background-color: var(--mushroom-color); grid-row-start: 1; grid-row-end: 1; }
+.box-3 { background-color: var(--coolgrey-color); grid-row-start: 1; grid-row-end: 1; }
+.box-4 { background-color: var(--coolgrey-color); grid-column-start: 2; grid-column-end: 2; }
+.box-5 { background-color: var(--mushroom-color); grid-column-start: 3; grid-column-end: 3; }
+.box-6 { background-color: var(--coolgrey-color); grid-column-start: 1; grid-column-end:1; }
+.box-7 { background-color: var(--mushroom-color); }
+.box-8 { background-color: var(--coolgrey-color); }
+.box.box-1 div {display: grid;flex-direction: column;text-align: center;justify-content: center; width: 100%;font-size:35px;}
+.box.box-1 div img {display: grid;flex-direction: column;margin: 10px auto;}
+/**** yog-Lifestyle page***/
+.yog-sec-img img {padding-left: 30px;}
+.yog-sec-txt{font-size: 20px;color: #fff;line-height: 28px;padding: 0 30px 0 10px;}
+/**** Yog & Physical page***/
+.table-font-size{font-size:18px;}
+.table-bordered thead td, .table-bordered thead th {border-bottom-width: 2px;background: var(--wine-color);color: #fff;}
+.box-shadow1{box-shadow: 0px 3px 6px #00000029;}
+/**** yog sitting page ****/
+p.line {border-top: 1px solid #f3ebd8;}
+.border-bottom-line hr { border-bottom: solid 8px var(--cocoa-brown);border-top: none;}
+.yog-sitting-slider .yog-landign-box a .landing-title {font-size: 20px;font-weight: 700;color: var(--cocoa-brown);text-align: center;line-height: 30px;}
+.yog-sitting-slider .yog-landign-box a .landing-title span {font-size: 16px;font-weight: 600;display: block;}
+.yogasan-bg-top .plr {padding: 0 60px;}
+.br-right-dottod-block.text-white {border-right: none;}
+.astang-bg {background-color: var(--wine-color);padding: 30px;height: 100%;display: flex;align-items: center;}
+.astang-text-left p{text-align: center!important;}
+.astang-img-box {display: inline-block; text-align: center;}
+.astang-num1 {position: relative;display: inline-block;margin-bottom: -10px;}
+.astang-num1 span {position: absolute;left: 0;right: 0;text-align: center;justify-content: center;top: 50%;transform: translateY(-50%);font-size: 22px;color: #f7b378;font-weight: 600;}
+.astang-titles {border-top: solid 2px #e9514a;border-bottom: solid 2px #e9514a;display: flex; padding: 8px 0px;}
+.astang-t {font-size: 22px;font-weight: 700;color: var(--wine-color);letter-spacing: 0;text-align: center;line-height: initial;}
+.astang-t span {display: block;font-size: 16px;font-weight: normal;}
+.botom-astang-img-box {display: flex;text-align: center;height: 100%;justify-content: center;flex-direction: column;}
+.botom-astang-num1 {position: relative;/* display: flex; */margin-bottom: -10px;}
+.botom-astang-num1 span {position: absolute;left: 0;right: 0;text-align: center;justify-content: center;top: 50%;transform: translateY(-50%);font-size: 22px;color: #f7b378;
+font-weight: 600;}
+.botom-astang-titles {border-top: solid 2px #e9514a;border-bottom: solid 2px #e9514a;display: block;padding: 8px 0px;height: 100%;}
+.botom-astang-t {font-size: 22px;font-weight: 700;color: var(--wine-color);letter-spacing: 0;text-align: center;line-height: initial;}
+.botom-astang-t span {display: block;font-size: 16px;font-weight: normal;}
+.astang-list-title{display: block;}
+
+.font-25{font-size: 25px; font-weight: 600; line-height:30px; padding-bottom:15px;}
+.icon-cousce{font-size: 35px; margin-bottom:15px;}
+
+.inner-sub-title{font-size:25px; font-weight:600; color:#000000; text-align:center; font-style:italic;}
+.table-striped tbody tr:nth-of-type(odd){background-color:#F5F2F2;}
+tr.bg-black {
+    background: #000 !important;
+    color: #fff;
+    font-weight: 600;
+}
+.logo-google {
+    max-width: 180px;
+}
+
+
+
+
+
+
+/*
+.table-bordered table td{border-top:none; border-left:0;}
+
+.table-bordered table td:last-child{border-right:0;}
+
+table.table-bordered.dataTable th{background-color:#eedec5; color:#000000; padding:15px; border-top:0; border-bottom:0;}
+table.table-bordered.dataTable td{padding:12px;}
+
+table.table-bordered.dataTable.table-striped tbody tr:nth-of-type(odd){background-color:rgb(238 222 197 / 20%);}
+*/
+
+.dataTables_paginate .page-item.active .page-link{z-index:3; color:#fff; background-color:#7c2037; border-color:#7c2037;}
+.dataTables_paginate .page-item .page-link{color:#000;}
+.bg-down-c {
+    font-size: 26px;
+    font-weight: 600;
+    color:#ffffff;
+    text-align: center;
+    background: var(--wine-color);
+    line-height: 45px;
+    margin-bottom: 50px;
+}

@@ -1,35 +1,15 @@
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get all the col-lg-7 elements
-        const colLg7Elements = document.querySelectorAll(".col-lg-7");
+const inputFields = document.querySelectorAll('.input-field');
 
-        // Add click event listener to each col-lg-7 element
-        colLg7Elements.forEach(colLg7 => {
-            colLg7.addEventListener("click", function(event) {
-                // Stop the event from bubbling up to the parent elements
-                event.stopPropagation();
-            });
-        });
-    });
-</script>
+inputFields.forEach(input => {
+  const label = input.parentElement.querySelector('.form-label');
 
-class="box-pro" data-responsive="" data-src="images/products/eurohead-double flip.jpg" data-sub-html="Eurohead Double Flip" lg-event-uid="&amp;4"
-
-<script>
-        // Function to sort the images based on the data-order attribute
-        function sortImages() {
-            const gallery = document.getElementById("image-gallery");
-            const images = Array.from(gallery.querySelectorAll(".box-pro"));
-
-            images.sort((a, b) => {
-                const orderA = parseInt(a.dataset.order);
-                const orderB = parseInt(b.dataset.order);
-                return orderA - orderB;
-            });
-
-            images.forEach(image => gallery.appendChild(image));
-        }
-
-        // Call the function to sort the images
-        sortImages();
-    </script>
+  input.addEventListener('input', function() {
+    if (input.value.trim() !== '') {
+      label.style.opacity = '1';
+      label.style.top = '-20px';
+    } else {
+      label.style.opacity = '0';
+      label.style.top = '22px';
+    }
+  });
+});

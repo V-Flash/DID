@@ -1,0 +1,41 @@
+[
+ {
+  "Type": "Yoga Coach",
+  "Name": "Anjana Solanki",
+  "Mobile No": 9374065270,
+  "Class Type": "Yog Trainer Batch 1 ",
+  "Class Address": "Science City Nature Park",
+  "District": "Ahmedabad",
+  "Taluka": "Ahmedabad",
+  "Pincode": 380060,
+  "Create Month": "2023-07",
+  "Class Time": "05:45",
+  "Class Close Time": "08:45"
+ },
+ {
+  "Type": "Yoga Coach",
+  "Name": "Anjana Solanki",
+  "Mobile No": 9374065270,
+  "Class Type": "Yog Trainer Batch 1 ",
+  "Class Address": "Science City Nature Park",
+  "District": "Ahmedabad",
+  "Taluka": "Daskroi",
+  "Pincode": 380060,
+  "Create Month": "2023-07",
+  "Class Time": "05:45",
+  "Class Close Time": "08:45"
+ },
+ {
+  "Type": "Yoga Trainer",
+  "Name": "Ghanshyam Tilumal Netai",
+  "Mobile No": 9327023345,
+  "Class Type": "Yog Sadhak Batch 1",
+  "Class Address": "River Valley One Hansol",
+  "District": "Ahmedabad",
+  "Taluka": "Ahmedabad",
+  "Pincode": 382475,
+  "Create Month": "2023-07",
+  "Class Time": "07:15",
+  "Class Close Time": "08:15"
+ }
+]

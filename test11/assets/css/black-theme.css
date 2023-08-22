@@ -1,0 +1,14 @@
+/* Navigation Styles */
+/*body{background:#101010; color: #fff !important;}*/
+	
+:root{
+	--white:#fff;
+	--black:#000;
+	--grey:#2a2a2a;
+	--grey1:#474747;
+	--grey2:#b1b1b1;
+	--yellow:#ffee00;
+}
+
+.top-bar{background-color: var(--black);}
+.top-menu ul li a{color: var(--white);}

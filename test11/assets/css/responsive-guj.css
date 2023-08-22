@@ -1,0 +1,510 @@
+@charset "utf-8";
+/* CSS Document */
+/*@import url("./responsive-k.css");*/
+@media only screen and (max-width : 1920px) {
+
+}
+
+@media only screen and (max-width : 1680px) {
+.pro-box img {width: 90%;height: auto;}
+/*.site-navbar .site-navigation .site-menu > li > a {font-size: 16px;}	*/
+.site-navbar .site-logo-right {right: 2px;top: 2px;}
+.site-navbar .site-logo-right img {width: 96%; height: auto;}
+.site-navbar .site-navigation .site-menu .has-children:hover > .dropdown, .site-navbar .site-navigation .site-menu .has-children:focus > .dropdown, .site-navbar .site-navigation .site-menu .has-children:active > .dropdown {margin-top: 0px;}	
+.site-navbar .site-logo02 {left: 15%;}
+.pm-box {margin-right: 12%;}
+.about-botom-img02 img {right: 15px; top: 15px; width: 55%;}	
+.about-botom-text02 {font-size: 36px;width: 40%;}
+
+}
+
+@media only screen and (max-width : 1536px) {
+
+.pro-box img {width: 83%;height: auto;}
+.container-pd-lr {padding: 0px 0px;}
+
+/* TOP HEADER CSS START */	
+.top-menu ul {padding-left: 0;}	
+.top-menu ul li a {font-size: 14px;padding: 0px 8px;}
+.en-guj-txt {padding: 0px;}
+.right-logo {margin-left: 0px;}
+.site-navbar .site-logo {/*width: auto;*/top: -15px;left: 15px;}
+.site-navbar .site-logo img {width: 65%;height: auto;}
+.site-navbar .site-logo02 {font-size: 10px;top: 15px;left: 10.5%;line-height: 20px;}
+.site-navbar .site-logo02 span {font-size: 16px;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo {top: 5px;left: 15px;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo img {width: 35%; height: auto;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo02 {left: 6.5%;}
+.site-navbar .site-navigation .site-menu .has-children .dropdown-width {width: 230px;}	
+.site-navbar .site-navigation .site-menu {margin-right: 50px;}
+
+
+/* TOP HEADER CSS END */	
+
+.pm-box {margin-right: 0%;padding: 0px 20px 20px 20px;}
+.txt-small {line-height: 22px;}
+
+.about-botom-img02 img {right: 15px; top: 15px; width: 55%;}	
+.about-botom-text02 {font-size: 36px;width: 40%;}
+
+.margin-right-left-150 {margin: 0px 50px;}
+}
+
+@media only screen and (max-width : 1440px) {
+/* Header css start */
+.header-top-padding {padding: 10px 50px;}
+/* Header css end */
+
+/*.site-navbar .site-navigation .site-menu .has-children .dropdown-width-program {width: auto;}	*/
+.site-navbar .site-navigation .site-menu .has-children .dropdown-width {width: 220px;}	
+.site-navbar .site-navigation .site-menu {margin-right: 50px;}
+
+.pro-box img {width: 79%;height: auto;}
+.container-pd-lr {padding: 0px 0px;}
+/*.site-navbar .site-navigation .site-menu > li > a {font-size: 15px;}	*/
+.site-navbar .site-logo-right {right: 2px;top: 2px;}
+.site-navbar .site-logo-right img {width: 70%; height: auto;}
+}
+
+@media only screen and (max-width : 1366px) {
+/* Header css start */
+.header-top-padding {padding: 10px 50px;}
+/* Header css end */
+.site-navbar .site-navigation .site-menu .has-children .dropdown-width-program {width: auto;}
+.site-navbar .site-navigation .site-menu .has-children .dropdown-width {width: 190px;}	
+.pro-box img {width: 75%;height: auto;}
+.container-pd-lr {padding: 0px 15px;}	
+
+
+/* TOP HEADER CSS START */
+.top-menu ul {padding-left: 0;}	
+.top-menu ul li a {font-size: 14px;padding: 0px 8px;}
+
+.en-guj-txt {padding: 0px;}
+.right-logo {margin-left: 0px;}
+
+.site-navbar .site-logo {/*width: auto;*/top: -15px;left: 15px;}
+.site-navbar .site-logo img {width: 65%;height: auto;}
+.site-navbar .site-logo02 {font-size: 10px;top: 15px;left: 10.5%;line-height: 20px;}
+.site-navbar .site-logo02 span {font-size: 16px;}
+
+.sticky-wrapper.is-sticky .site-navbar .site-logo {top: 5px;left: 15px;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo img {width: 35%; height: auto;}
+
+.sticky-wrapper.is-sticky .site-navbar .site-logo02 {left: 6.5%;}
+/*.site-navbar .site-navigation .site-menu .has-children .dropdown-width {width: 230px;}	*/
+
+/* TOP HEADER CSS END */	
+
+
+.pm-box {margin-right: 0%;padding: 0px 20px 20px 20px;}
+.txt-small {line-height: 22px;}
+
+.about-botom-img02 img {right: 15px; top: 15px; width: 55%;}	
+.about-botom-text02 {font-size: 28px;width: 40%;}
+
+
+.owl-2 .owl-nav .owl-next {right: -20px;}
+.owl-2 .owl-nav .owl-prev {left: -20px;}
+.owl-3 .owl-nav .owl-next {right: -20px;}
+.owl-3 .owl-nav .owl-prev {left: -20px;}
+
+.margin-right-left-150 {margin: 0px 0px;}
+
+
+}
+
+@media only screen and (max-width : 1280px) {
+.site-navbar .site-navigation .site-menu .has-children .dropdown-width-program {width: auto;}
+#carouselExampleIndicators .carousel-indicators {bottom: 30px;margin-left: 19%;}
+
+.pro-box img {width: 70%;height: auto;}
+/*.container-pd-lr {padding: 0px 0px;}*/
+
+
+.site-navbar .site-navigation .site-menu > li > a {font-size: 16px;}	
+.site-navbar .site-navigation .site-menu .has-children .dropdown > li > a{font-size:15px;}
+
+.ciercle-img img {width: 90%;}	
+.yog-bottom-bg {
+background: transparent;}
+.site-navbar .site-logo-right {right: 2px;top: 2px;}
+.site-navbar .site-logo-right img {width: 70%; height: auto;}
+
+/*.ft-bg {width: 87.5%;}	
+.form-img img {margin-left:50%; float: right; }*/
+
+}
+
+@media only screen and (max-width : 1200px){
+/* Header css start */
+.header-top-padding {padding: 15px;}
+/* Header css end */
+}
+
+@media (max-width: 1080px) {
+/* Header css start */
+.site-navbar .site-navigation .site-menu .has-children > a {padding-right: 15px;}
+.site-navbar .site-navigation .site-menu > li > a {margin-left: 5px;margin-right: 5px;}	
+/* Header css end */
+
+/* TOP HEADER CSS START */	
+
+.top-menu ul {padding-left: 0;}	
+.top-menu ul li a {font-size: 12px; padding: 0px 5px;}
+
+.en-guj-txt {padding: 0px;}
+.right-logo {margin-left: 0px;}
+
+.site-navbar .site-logo {/*width: auto;*/top: -15px;left: 15px;}
+.site-navbar .site-logo img {width: 65%;height: auto;}
+.site-navbar .site-logo02 {font-size: 10px;top: 15px;left: 10.5%;line-height: 20px;}
+.site-navbar .site-logo02 span {font-size: 16px;}
+
+.sticky-wrapper.is-sticky .site-navbar .site-logo {top: 5px;left: 15px;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo img {width: 35%; height: auto;}
+
+.sticky-wrapper.is-sticky .site-navbar .site-logo02 {left: 6.5%;}
+.site-navbar .site-navigation .site-menu .has-children .dropdown-width {width: 210px;}	
+.tp-social {display: none;}
+.about-img-bg {background-size: contain;}
+
+/* TOP HEADER CSS END */
+/*HOME PAGE START CSS*/
+.yog-bg-title {display: none;}
+.yog-img-box {position: relative;padding: 0;display: flex;flex-direction: column;}
+.yog-titles {width: 100%;}
+.yog-main-box {margin-bottom: 0px; }
+.yog-text { width: 100%;position: relative;min-height: 220px;}
+.big-title {font-size: 24px;}	
+/*HOME PAGE END CSS*/	
+.txt-small {font-size: 14px;}
+.txt-big {font-size: 18px;line-height: 28px;}
+
+/*.yog-titles { width: 85%;}*/
+.ciercle-img img { width: 100%;}
+.perfo-text {font-size: 36px;line-height: 42px;}
+.yog-bottom-bg {background: transparent;height: auto;padding-top: 150px;padding-bottom: 80px;}
+.site-navbar .site-logo02 {display: none;}
+.inner-pagetitle {bottom: -40%;}	
+.owl-2 .owl-nav .owl-prev {left: 0px;}
+.owl-2 .owl-nav .owl-next {right: 0px;}
+.owl-3 .owl-nav .owl-prev {left: 0px;}
+.owl-3 .owl-nav .owl-next {right: 0px;}
+.yog-landign-box a .landing-title {font-size: 20px;line-height: 20px;}
+.yog-landign-box a .landing-title span {font-size: 16px;margin-top: 8px;}
+
+.mission-img-box {background-color: var(--coolgrey-color);
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+padding: 0px;}	
+
+}
+
+@media (max-width: 993px) {
+/* Header css start */
+.header-top-padding {padding: 0px 15px;display: flex;}
+/*.site-navbar .toggle-button {right: 15px;}*/
+
+.top-menu {display: block;}
+.top-menu ul li a {font-size: 14px;padding: 0px 6px;}
+.sticky-wrapper .site-navbar {height: 75px;}	
+.sticky-wrapper.is-sticky.sticky-wrapper .site-navbar {height: auto;}
+
+/*.site-navbar .toggle-button {top: 35px; }*/
+.site-navbar .toggle-button a {color: #fff;}
+.site-navbar .toggle-button {position: relative;display: flex;float: right;}
+.site-mobile-menu .site-nav-wrap > li > a {font-size: 18px;}
+.site-mobile-menu .site-nav-wrap > li {border-bottom: solid 1px #eee;}	
+.site-mobile-menu .site-nav-wrap > li:last-child {border-bottom: none;}
+/* Header css end */
+
+.yog-sec-img {display: flex; align-items: center;}
+.yoga-big-title {font-size: 36px;line-height: 42px;}
+.yoga-big-title span {font-size: 24px;}	
+.ashtang-tab-size-img img {width: 100%; height: auto;}
+.big-title {font-size: 22px;letter-spacing:4px;}	
+.ab-list ul li {font-size: 16px;}
+.pm-img-bg {background: transparent;margin-top: 0px;}
+.ab-sec-txt {margin: 0px 30px;}
+.about-botom-text02 {font-size: 20px;}
+
+.contact-pro {padding: 20px;}	
+
+.tp-menu-main{display:flex; align-items:center; flex-wrap:wrap; justify-content:center; padding:7px 0px;}
+.right-logo img{width:120px; height:auto; margin-top:8px; margin-left:10px;}
+
+}
+
+@media only screen and (max-width : 768px){
+.inner-pagetitle {bottom: -44%; margin-left: -15px;}
+.inner-pagetitle img {width: 80%; height: auto;}
+.form-ico-title {font-size: 18px;}
+.cal-box {background-size: cover;}
+.event02-cal-box {background-size: cover;}
+.event03-cal-box {background-size: cover;}
+.yog-t {font-size: 14px;letter-spacing: 0;}
+.yog-text {min-height: 290px;}
+.perfo-bg {margin-top: 0;padding: 30px 0px;}
+.about-botom-text02 {font-size: 16px;}
+.plr {padding: 0 0px;}
+
+.pro-img img {margin-top: -50px;margin-bottom: -50px;margin-left: -30px;}
+.pro-detail h3 {margin-top: 20px;}
+
+.spacing-side {margin: 4px 5px;}
+.top-menu ul {padding-left: 4px;}
+.top-menu ul li a {padding: 8px 5px;}
+.top-menu {padding-right: 5px;}
+.search:focus {width: 290px;}
+
+}
+
+@media only screen and (max-width : 767px){
+.container-pd-lr {padding: 0px 30px;}
+.about-margin {margin: 0px 0px;}
+.grid-container {display: block;}
+.box {margin-bottom: 30px;}
+.sec-ft {text-align: center;}
+.foter-social {float: none;margin: 0 auto;text-align: center;}	
+.inner-title {font-size: 28px; line-height: 32px;}
+.ft-logo-add {display: flex;margin-bottom: 30px;}
+.yog-sec-img img {padding-left: 0;width: 100%;margin-bottom: 30px;}	
+.yoga-logo-png {text-align: center;}	
+.sukshma-img {text-align: center;}
+.sukshma-img img {float: none;}
+.yoga-pranayama-big-title {font-size: 56px;}
+.form-ico-title {font-size: 18px;}
+.yoga-pranayama01 {padding: 50px 15px 30px;}	
+
+.ciercle-img {margin-top: 0; margin-bottom: 0;}
+.ciercle-img img {width: 50%;}
+.perfo-text {font-size: 25px;line-height: 42px;text-align: center; margin-bottom: 30px;display: block;}
+
+
+.about-box11 {background-color: var(--coolgrey-color);}
+.about-box22 {background-color: var(--mushroom-color);}
+
+.box-shadow {padding: 0; box-shadow: none;}
+.pr-01 {padding-right: 15px !important;margin-bottom: 30px;}	
+.pl-01 {padding-left: 15px !important;margin-bottom: 30px;}	
+
+/*.site-navbar .site-logo {
+width: 30%;
+top: -15px;
+left: 0px;
+position: relative;
+}
+.site-navbar .site-logo img {
+width: 100%;
+height: auto;
+}*/
+/*.site-navbar .site-logo {width: 15%;top: -15px;left: 15px;}
+.site-navbar .site-logo img {width: 100%;height: auto;}
+.right-logo {margin-left: 15%;margin-top: 8px;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo {top: 0px;left: 15px;width: 9%;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo img {width: 100%;height: auto;}
+.sticky-wrapper.is-sticky .site-navbar .right-logo {margin-left: 10%;margin-top: 10px;}
+.sticky-wrapper.is-sticky .site-navbar .right-logo img {width: 130px;height: auto;}*/
+
+.yog-img img {width: 100%;height: auto;}
+.yog-text {min-height: auto;}
+.yog-button a {padding: 5px 10px;font-size: 16px;display: inline-block;margin-top: 10px;}
+.yog-t {font-size: 18px;letter-spacing: 2px;}
+
+
+.vm-title {font-size: 28px; /*letter-spacing: 15px;*/}
+.vm-text {margin: 0px;}
+.vm-text p {font-size: 18px;line-height: 30px;}
+.vm-crem-box-bottom {font-size: 18px;margin: 0px 15px 0px 0px;}
+
+.uttan-txt p {margin-left: 0px; margin-right: 0px; text-align: justify !important;}
+.precautions {width: 100%;margin: 0 auto;}
+.yogasan-bg-top .plr {padding: 0px;}
+
+
+.inner-image .w-100 {height: 200px; object-fit: cover; object-position: bottom;}	
+
+.yog-studio-bg {margin-bottom: 30px;}	
+	
+.box {color:#fff; display:flex; justify-content:center; align-items:center; font-size:23px; line-height: inherit; padding:1rem;	width:100%;text-align: center;/*text-shadow: 2px 2px 1px #333;*/align-items: center; margin-bottom:5px;}
+.box-1 { background-color: var(--wine-color); }
+.box-2 { background-color: var(--mushroom-color); }
+.box-3 { background-color: var(--coolgrey-color); }
+.box-4 { background-color: var(--mushroom-color); }
+.box-5 { background-color: var(--coolgrey-color); }
+.box-6 { background-color: var(--mushroom-color); }
+.box-7 { background-color: var(--coolgrey-color); }
+.box-8 { background-color: var(--mushroom-color); }
+
+}
+
+@media only screen and (max-width : 680px){
+
+.site-navbar .site-logo {width: auto;top: 0px;left: -15px;position: relative;}
+.site-navbar .site-logo img {width: 45%;}
+.inner-pagetitle {position: relative;text-align: center;}	
+.inner-pagetitle img {width: 30%;height: auto;}	
+.inner-pagetitle {margin-left: 0;}
+.mobile-tab-space {padding-bottom: 50px;padding-top: 20px;}
+.yog-sec-txt {padding: 15px;}
+.yog-sec-img img {padding-left:15px; width:100%; padding-right:15px;}
+.sticky-wrapper.is-sticky .site-navbar .site-logo{left:-15px;}
+.uttan-txt h2{font-size:32px;}	
+.uttan-txt h2 span{font-size:22px;}
+.ft-top-form{display:flex; align-items:center; justify-content:center; flex-direction:column;}
+.form-bottom-newsletter {margin-left:0px; margin-top:15px;}
+.yoga-pranayama-big-title {font-size:40px; /*line-height: 40px;*/}	
+.yoga-pranayama-big-title span {font-size: 22px;}
+.yoga-pranayama-small-title {font-size: 20px;line-height: 30px;}
+.yoga-list-title-big {font-size: 22px;margin-bottom: 15px !important;}
+
+.about-bottom01 {font-size: 20px;}
+
+.home-mobile-mb {margin-bottom: 50px;}
+.home-mobile-pt {padding-top: 50px !important;}
+.form-group .label-h {height: auto;}
+.become-trainer-title {font-size: 18px;letter-spacing: 0px;}
+
+.top-menu {display: none;}
+.menu-mobile-show {display: block !important;}
+
+.yog-pranayama-list ul li{font-size: 18px;}
+.mobile-tab-space .margin-bottom100{margin-bottom:50px;}
+.yog-studio-box-text span{font-size:26px;}
+.yog-studio-box-text{font-size:20px;}
+
+.table-bordered thead td, .table-bordered thead th{font-size:15px; line-height:inherit;}
+.pt-latest{padding-top:60px;}
+	
+.search:focus {width: 165px;}
+
+}
+
+@media only screen and (max-width : 590px){
+.tp-menu-main {display:flex; align-items:center; flex-wrap:wrap; justify-content:center;}
+.right-logo img {width:120px; height:auto; margin-top:8px; margin-left:10px;}
+
+.br-right-dotted {border-right:none; border-bottom:dotted 2px #cccccc; padding-bottom:10px;}
+.yog-text{min-height:auto;}
+.perfo-text{text-align:center;}
+
+.ciercle-img img {width: 100%;}
+.perfo-bg {height: auto;background-size: cover;}
+.ciercle-img {margin-top: 0; margin-bottom: 0;}
+.yog-logo img {float: none;margin-bottom: 30px;}
+.about-img-bg {background: transparent;}
+.ml-5-mobile-home-about {margin-left: 0px !important; text-align: center;}
+
+.about-botom-bg {padding: 15px; text-align: center;}
+.about-botom-text02 {width: 100%;position: relative;left: 0;}	
+.about-botom-text02 br {display: none;}
+.about-botom-img02 {text-align: center; margin-top: 30px; margin-bottom: 30px;}	
+.about-botom-img02 img {width: 100%;right: 0;left: 0;position: relative;}
+.yog-bottom-bg {padding-top: 60px;}
+.chairman-pro {margin-left: 0px;background-color: transparent;}
+.pro-img {text-align: center;}
+.pro-img img {margin-top: 30px;margin-bottom: 20px;margin-left: 0px;width: 75%;}
+.pro-detail {text-align: center;background-color: var(--wine-color);padding: 1px 0px;}
+.chairman-top-spaces {margin-top: 0px !important;margin-bottom: 0 !important;}
+.pro-margin-right {margin-right: 0px;margin-left: 0 !important;}
+
+.mobile-co-img {text-align: center;}
+.contact-pro {padding: 20px;text-align: center;}
+.wp-input-width {width: 100%;margin-bottom: 10px;}
+
+.test-pro {margin-top: 10px;margin-bottom: 20px;}	
+.testimonial-box1 {height: auto;text-align: center;}
+
+.box-border1 {border-right: 500px solid transparent;}
+.testimonial-box1:nth-child(odd) .box-border1 {border-top: 250px solid var(--mushroom-color);}
+.testimonial-box1:nth-child(even) .box-border1 {border-top: 250px solid var(--coolgrey-color);}
+
+.pro-mobile-img-size img {width: 80%; height: auto;}	
+.pro-title-name {margin-bottom: 30px;}
+.pro-title-name span {margin-bottom: 5px;}
+.pro-title-name p {margin-top: 0px; }
+.txt-small{font-size: 17px;}
+.form-bottom{margin-left: 0px;}
+.form-bottom form{width: 100%;}
+.yog-button a{padding: 8px 20px;font-size: 16px;}
+.yog-button a i{font-size: 18px; margin-left: 8px;}
+.top-bar{padding: 5px 0px;}
+
+.about-sec-text {font-size: 18px;padding: 15px;}
+
+.home-mobile-space01 {margin-bottom: 0px !important;}
+.home-mobile-space02 {margin-bottom: 0px !important;}
+.home-mobile-space03 {margin-bottom: 0px !important; padding-bottom: 20px !important;}
+.mobile-mt-m{margin-top:20px !important;}
+.mobile-mb-m60{margin-bottom:60px !important;}
+
+.mobile-pb-m60{padding-bottom:60px !important;}
+
+.search:focus {width: 180px;}
+
+}
+
+@media only screen and (max-width : 480px){
+.site-mobile-menu {width: 100%;}
+/*.tp-menu-main {padding: 10px 0px;display: flex;align-items: center;justify-content: flex-end;flex-wrap: wrap;}*/
+.tp-menu-main {padding: 5px 0px;}
+.right-logo img {width: 110px;}
+.ft-logo-add {display: block;margin-bottom: 30px;}
+.event-tab .nav-tabs .nav-link {color: #000;font-size: 16px;font-weight: 600;padding: 18px 8px;}
+.inner-pagetitle img {width: 40%; height: auto;}
+.page-tabes ul li {margin-right: 0px;}	
+.page-tabes ul li {display: grid;margin-bottom: 5px;}		
+.box-border1 {border-right: 400px solid transparent;}
+.testimonial-box1:nth-child(odd) .box-border1 {border-top: 200px solid var(--mushroom-color);}
+.testimonial-box1:nth-child(even) .box-border1 {border-top: 200px solid var(--coolgrey-color);}	
+.ciercle-img img {width: 100%;}	
+.nav-fillpath a{width:20px; height:30px;}
+.big-title{font-size:20px; letter-spacing:1.5px; margin-bottom:30px !important;}
+.about-inner-title{font-size:20px; letter-spacing:3px;}
+.pt-latest{padding-top:30px;}
+
+.about-botom-img02 img {width: 100%;right: 0;left: 01;}	
+.yoga-text-big {font-size: 18px;line-height: 26px;}
+.braket01 img, .braket02 img{height:35px; width:auto;}
+
+.inner-title{font-size:26px; line-height:28px;}
+.inner-sub-title{font-size:22px;}
+.pranayama-inner-title{font-size:24px;}
+
+.back-to-top{bottom:75px;}
+.ft02{padding:5px 0px 12px 0px;}
+.sec-ft{font-size:16px; padding:5px 0px;}
+
+.spacing-side{margin:10px 5px;}
+.dropdown1 a{padding: 7px 16px;}	
+
+}
+
+
+@media only screen and (max-width : 425px){
+	.search:focus{width: 310px;}
+	.search-container{margin-top: 6px;}
+}
+
+@media only screen and (max-width : 390px){
+.tp-menu-main {display: flex;align-items: center;flex-wrap: wrap;justify-content: end;}	
+.right-logo {margin-top: 10px;}	
+.sticky-wrapper.is-sticky .site-navbar .site-logo {left: -25px;}
+.search:focus {width: 155px;}
+}
+
+@media only screen and (max-width : 320px){
+
+}
+
+
+
+
+
+
+
+
+
