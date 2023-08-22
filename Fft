@@ -1,48 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkbox Example</title>
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const firstCheckbox = document.getElementById('checkbox1');
-            const secondCheckbox = document.getElementById('checkbox2');
+<div class="spacing-side search-spacing-div">
+  <div class="search-container">
+    <i class="fa fa-search search-icon"></i>
+  </div>
+  <div class="input-group search-input-div">
+    <form action="" id="search-form">
+      <div class="input-group form-outline">
+        <input type="search" id="form1" class="form-control"/>
+        <button type="button" class="btn btn-primary search-btn">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
-            firstCheckbox.addEventListener('change', function () {
-                secondCheckbox.checked = firstCheckbox.checked;
-            });
-        });
-    </script>
-</head>
-<body>
-    <label for="checkbox1">Checkbox 1:</label>
-    <input type="checkbox" id="checkbox1"><br>
+<style>
+  .search-input-div {
+    display: none;
+  }
+</style>
 
-    <label for="checkbox2">Checkbox 2:</label>
-    <input type="checkbox" id="checkbox2"><br>
-</body>
-</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var searchInputDiv = $(".search-input-div");
+    var searchContainer = $(".search-container");
 
+    // Function to hide the search input div
+    function hideSearchInput() {
+      searchInputDiv.slideUp("500");
+    }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkbox Example</title>
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"][name="checkGroup"]');
-            
-            checkboxes[0].addEventListener('change', function () {
-                checkboxes[1].checked = checkboxes[0].checked;
-            });
-        });
-    </script>
-</head>
-<body>
-    <label for="checkbox1">Checkbox 1:</label>
-    <input type="checkbox" id="checkbox1" name="checkGroup"><br>
+    // Click outside the search container or input group
+    $(document).on("click", function(event) {
+      if (!searchContainer.is(event.target) && !searchInputDiv.is(event.target) && searchInputDiv.has(event.target).length === 0) {
+        hideSearchInput();
+      }
+    });
 
-    <label for="checkbox2">Checkbox 2:</label>
-    <input type="checkbox" id="checkbox2" name="checkGroup"><br>
-</body>
-</html>
+    // Scroll event
+    $(window).on("scroll", function() {
+      hideSearchInput();
+    });
 
+    // Toggle search input div when clicking the search container
+    searchContainer.click(function() {
+      searchInputDiv.slideToggle("500");
+    });
+  });
+</script>
