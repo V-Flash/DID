@@ -5,15 +5,20 @@
     utilsScript: "js/utils.js",
   });
 
-  // Add event listener to the input element
-  input.addEventListener("click", function() {
+  var form = document.querySelector(".form"); // Get the form element
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    
     // Get the selected country's phone code and input value
     var selectedCountryData = iti.getSelectedCountryData();
     var phoneCode = selectedCountryData.dialCode;
     var inputValue = input.value;
 
-    // Display the input value with the selected country's phone code
-    var valueWithCode = "+" + phoneCode + " " + inputValue;
-    alert("Input value with country code: " + valueWithCode);
+    // Construct the phone number with country code
+    var phoneNumberWithCode = "+" + phoneCode + " " + inputValue;
+
+    // Perform further processing here, such as sending the data to a server or displaying it
+    alert("Phone number with country code: " + phoneNumberWithCode);
   });
 </script>
