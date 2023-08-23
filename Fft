@@ -1,51 +1,19 @@
-<div class="spacing-side search-spacing-div">
-  <div class="search-container">
-    <i class="fa fa-search search-icon"></i>
-  </div>
-  <div class="input-group search-input-div">
-    <form action="" id="search-form">
-      <div class="input-group form-outline">
-        <input type="search" id="form1" class="form-control"/>
-        <button type="button" class="btn btn-primary search-btn">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<style>
-  .search-input-div {
-    display: none;
-  }
-</style>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(document).ready(function() {
-    var searchInputDiv = $(".search-input-div");
-    var searchContainer = $(".search-container");
+  var input = document.querySelector("#phone");
+  var iti = window.intlTelInput(input, {
+    initialCountry: "in",
+    utilsScript: "js/utils.js",
+  });
 
-    // Function to hide the search input div
-    function hideSearchInput() {
-      searchInputDiv.slideUp("500");
-    }
+  // Add event listener to the input element
+  input.addEventListener("click", function() {
+    // Get the selected country's phone code and input value
+    var selectedCountryData = iti.getSelectedCountryData();
+    var phoneCode = selectedCountryData.dialCode;
+    var inputValue = input.value;
 
-    // Click outside the search container or input group
-    $(document).on("click", function(event) {
-      if (!searchContainer.is(event.target) && !searchInputDiv.is(event.target) && searchInputDiv.has(event.target).length === 0) {
-        hideSearchInput();
-      }
-    });
-
-    // Scroll event
-    $(window).on("scroll", function() {
-      hideSearchInput();
-    });
-
-    // Toggle search input div when clicking the search container
-    searchContainer.click(function() {
-      searchInputDiv.slideToggle("500");
-    });
+    // Display the input value with the selected country's phone code
+    var valueWithCode = "+" + phoneCode + " " + inputValue;
+    alert("Input value with country code: " + valueWithCode);
   });
 </script>
