@@ -1,24 +1,8 @@
-<script>
-  var input = document.querySelector("#phone");
-  var iti = window.intlTelInput(input, {
-    initialCountry: "in",
-    utilsScript: "js/utils.js",
-  });
-
-  var form = document.querySelector(".form"); // Get the form element
-
-  form.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-    
-    // Get the selected country's phone code and input value
-    var selectedCountryData = iti.getSelectedCountryData();
-    var phoneCode = selectedCountryData.dialCode;
-    var inputValue = input.value;
-
-    // Construct the phone number with country code
-    var phoneNumberWithCode = "+" + phoneCode + " " + inputValue;
-
-    // Perform further processing here, such as sending the data to a server or displaying it
-    alert("Phone number with country code: " + phoneNumberWithCode);
-  });
-</script>
+$(document).ready(function () {
+      $('.collapse').on('shown.bs.collapse', function () {
+        var offset = $(this).offset();
+        $('html, body').animate({
+          scrollTop: offset.top
+        }, 500);
+      });
+    });
