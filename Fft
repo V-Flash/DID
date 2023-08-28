@@ -1,8 +1,21 @@
-$(document).ready(function () {
-      $('.collapse').on('shown.bs.collapse', function () {
-        var offset = $(this).offset();
-        $('html, body').animate({
-          scrollTop: offset.top
-        }, 500);
-      });
+<!-- Script for scrolling to a defined offset from the top of the opened accordion and sub-accordion items -->
+<script>
+  $(document).ready(function () {
+    var customOffset = 100; // Define your custom offset in pixels
+
+    $('.collapse').on('shown.bs.collapse', function () {
+      var offset = $(this).offset();
+      $('html, body').animate({
+        scrollTop: offset.top - customOffset // Subtract the custom offset
+      }, 500);
     });
+
+    $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
+      var subOffset = $(this).offset();
+      var mainOffset = $(this).closest('.collapse').offset();
+      $('html, body').animate({
+        scrollTop: mainOffset.top + subOffset.top - customOffset // Subtract the custom offset
+      }, 500);
+    });
+  });
+</script>
