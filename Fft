@@ -1,21 +1,139 @@
-<!-- Script for scrolling to a defined offset from the top of the opened accordion and sub-accordion items -->
-<script>
-  $(document).ready(function () {
-    var customOffset = 100; // Define your custom offset in pixels
+<div id="accordion">
 
-    $('.collapse').on('shown.bs.collapse', function () {
-      var offset = $(this).offset();
-      $('html, body').animate({
-        scrollTop: offset.top - customOffset // Subtract the custom offset
-      }, 500);
-    });
+  <div class="card">
 
-    $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
-      var subOffset = $(this).offset();
-      var mainOffset = $(this).closest('.collapse').offset();
-      $('html, body').animate({
-        scrollTop: mainOffset.top + subOffset.top - customOffset // Subtract the custom offset
-      }, 500);
-    });
-  });
-</script>
+    <div class="card-header">
+      <a class="collapsed card-link accordion-title" data-toggle="collapse" href="#note03">
+       Notebook Distribution at Lignite Project, Bhavnagar
+      </a>
+    </div>
+
+    <div id="note03" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        
+
+      <div class="sub-accordion" id="accordion-01">
+
+        <div class="card">
+        <div class="card-header">
+          <a class="card-link accordion-title" data-toggle="collapse" href="#note01-inner">
+          Bhumbhali Village - Girls Primary School
+          </a>
+        </div>
+        <div id="note01-inner" class="collapse show" data-parent="#accordion-01">
+          <div class="card-body">
+
+            <div class="row image-popup">
+
+            
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-01-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-01-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-02-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-02-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-03-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-03-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-04-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-04-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-05-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-05-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-06-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-06-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm">
+                <div class="gallery-cust">
+                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-07-l.webp" class="single-gallery-thumb" title=" ">
+                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-07-t.webp" class="img-fluid" alt="">
+                  </a>
+                </div> 
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+        </div>
+
+        <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link accordion-title" data-toggle="collapse" href="#note02-inner">
+          Bhumbhali Village - Kumar Shaala
+          </a>
+        </div>
+        <div id="note02-inner" class="collapse" data-parent="#accordion-01">
+          <div class="card-body">
+
+              <div class="row image-popup">
+
+
+                 <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                  <div class="gallery-cust">
+                    <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-01-l.webp" class="single-gallery-thumb" title=" ">
+                      <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-01-t.webp" class="img-fluid" alt="">
+                    </a>
+                  </div> 
+                </div>
+
+                 <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                  <div class="gallery-cust">
+                    <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-02-l.webp" class="single-gallery-thumb" title=" ">
+                      <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-02-t.webp" class="img-fluid" alt="">
+                    </a>
+                  </div> 
+                </div>
+
+                 <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
+                  <div class="gallery-cust">
+                    <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-03-l.webp" class="single-gallery-thumb" title=" ">
+                      <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-03-t.webp" class="img-fluid" alt="">
+                    </a>
+                  </div> 
+                </div>
+
+                </div>
+          </div>
+        </div>
+        </div>
+       
+      </div>
+    </div> 
+
+  </div>
+  </div> 
+</div>
