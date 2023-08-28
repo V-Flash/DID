@@ -1,89 +1,17 @@
-lkks<<<<<<< HEAD
-const inputFields = document.querySelectorAll('.input-field');
+$(document).ready(function () {
+    var customOffset = 180;
 
-inputFields.forEach(input => {
-  const label = input.parentElement.querySelector('.form-label');
+    $('.collapse').on('shown.bs.collapse', function () {
+      var offset = $(this).offset();
+      $('html, body').animate({
+        scrollTop: offset.top - 180
+      }, 500);
+    });
 
-  input.addEventListener('input', function() {
-    if (input.value.trim() !== '') {
-      label.style.opacity = '1';
-      label.style.top = '-20px';
-    } else {
-      label.style.opacity = '0';
-      label.style.top = '22px';
-    }
+    $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
+     var offset = $(this).offset();
+      $('html, body').animate({
+        scrollTop: offset.top - 175
+      }, 500);
+    });
   });
-});
-=======
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Checkbox Example</title>
-  <script>
-    function toggleSubOptions(mainCheckbox) {
-      var subCheckboxes = mainCheckbox.parentElement.nextElementSibling.querySelectorAll('input[type="checkbox"]');
-
-      for (var i = 0; i < subCheckboxes.length; i++) {
-        subCheckboxes[i].checked = mainCheckbox.checked;
-      }
-    }
-  </script>
-</head>
-<body>
-
-<ul>
-  <li>
-    <label>
-      <span class="wpcf7-form-control-wrap" data-name="en-cable">
-        <span class="wpcf7-form-control wpcf7-checkbox spacechekbox">
-          <span class="wpcf7-list-item first last">
-            <input type="checkbox" name="en-cable[]" value="Cables" onclick="toggleSubOptions(this)">
-            <span class="wpcf7-list-item-label">Cables</span>
-          </span>
-        </span>
-      </span>
-    </label>
-    <ul>
-      <li>
-        <label>
-          <span class="wpcf7-form-control-wrap" data-name="en-lv">
-            <span class="wpcf7-form-control wpcf7-checkbox subOption">
-              <span class="wpcf7-list-item first last">
-                <input type="checkbox" name="en-lv[]" value="LV">
-                <span class="wpcf7-list-item-label">LV</span>
-              </span>
-            </span>
-          </span>
-        </label>
-      </li>
-      <li>
-        <label>
-          <span class="wpcf7-form-control-wrap" data-name="en-hv">
-            <span class="wpcf7-form-control wpcf7-checkbox subOption">
-              <span class="wpcf7-list-item first last">
-                <input type="checkbox" name="en-hv[]" value="HV">
-                <span class="wpcf7-list-item-label">HV</span>
-              </span>
-            </span>
-          </span>
-        </label>
-      </li>
-      <li>
-        <label>
-          <span class="wpcf7-form-control-wrap" data-name="en-ehv">
-            <span class="wpcf7-form-control wpcf7-checkbox subOption">
-              <span class="wpcf7-list-item first last">
-                <input type="checkbox" name="en-ehv[]" value="EHV">
-                <span class="wpcf7-list-item-label">EHV</span>
-              </span>
-            </span>
-          </span>
-        </label>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-</body>
-</html>
->>>>>>> 5a6c6c451f2fe2ef679839b416d6f1e726a8d879
