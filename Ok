@@ -1,17 +1,26 @@
 $(document).ready(function () {
-    var customOffset = 180;
+  var customOffset = 180;
+  var mainAccordionClicked = false; // Initialize flag for main accordion click
 
-    $('.collapse').on('shown.bs.collapse', function () {
+  $('.collapse').on('shown.bs.collapse', function () {
+    if (mainAccordionClicked) {
       var offset = $(this).offset();
       $('html, body').animate({
-        scrollTop: offset.top - 180
+        scrollTop: offset.top - customOffset
       }, 500);
-    });
-
-    $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
-     var offset = $(this).offset();
-      $('html, body').animate({
-        scrollTop: offset.top - 175
-      }, 500);
-    });
+    }
+    mainAccordionClicked = false; // Reset the flag
   });
+
+  $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
+    var offset = $(this).offset();
+    $('html, body').animate({
+      scrollTop: offset.top - 175
+    }, 500);
+  });
+
+  // Click event handler for main accordion items
+  $('.btn.btn-link[data-toggle="collapse"]').on('click', function () {
+    mainAccordionClicked = true;
+  });
+});
