@@ -1,15 +1,66 @@
- <form id="post_form" method="POST">
-                {% csrf_token %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style type="text/css">
+
+
+    </style>
+
+
+  </head>
+  <body>
+
+    
+     <form id="post_form" method="POST">
+                
                 <div class="form-group mb-3">
                     <label for="greeting">Greeting:</label>
-                    <input class="form-control" type="text" id="greeting" name="greeting" value="{{ profile.greeting }}" {% if not edit_mode %}disabled{% endif %}>
+                    <input class="form-control" type="text" id="greeting" name="greeting" value="{{ profile.greeting }}" disabled>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="content">About Content:</label>
-                    <textarea class="form-control" rows="5" id="content" name="content" {% if not edit_mode %}disabled{% endif %}>{{ profile.content }}</textarea>
+                    <textarea class="form-control" rows="5" id="content" name="content" disabled>{{ profile.content }}</textarea>
                 </div>
 
                 <button type="button" class="btn btn-primary mb-3" id="edit_button">Edit</button>
                 <button type="submit" class="btn btn-primary mb-3" id="submit_button">Update Profile</button>
             </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+     
+      
+      const greeting = document.getElementById('greeting');
+      const content = document.getElementById('content');
+      const disableBtn = document.getElementById('submit_button');
+      const enableBtn = document.getElementById('edit_button');
+
+      disableBtn.addEventListener('click', () =>
+        greeting.setAttribute('disabled', 'disabled')
+       
+      );
+
+      enableBtn.addEventListener('click', () =>
+        greeting.removeAttribute('disabled')
+       
+      );
+
+      
+      
+
+    </script>
+
+  </body>
+</html>
