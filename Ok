@@ -1,16 +1,43 @@
+def update_profile(request):
+    profile = Profile.objects.get(user=request.user)
+    success_message = None
+
+    if request.method == 'POST':
+        # Update the profile fields based on form data
+        profile.greeting = request.POST['greeting']
+        profile.content = request.POST['content']
+        profile.save()
+        success_message = 'Profile updated successfully'
+
+    return render(request, 'profile.html', {'profile': profile, 'success_message': success_message})
+
+
+ {% if success_message  %}
+    <script>
+     alert("{{success_message}}");
+    </script>
+ {% endif %}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    const greeting = document.getElementById('greeting');
-    const content = document.getElementById('content');
-    const editBtn = document.getElementById('edit_button');
-    const submitBtn = document.getElementById('submit_button');
+        const greeting = document.getElementById('greeting');
+        const content = document.getElementById('content');
+        const editBtn = document.getElementById('edit_button');
+        const submitBtn = document.getElementById('submit_button');
 
-    editBtn.addEventListener('click', () => {
-        greeting.removeAttribute('disabled');
-        content.removeAttribute('disabled');
-    });
+        editBtn.addEventListener('click', () => {
+            greeting.removeAttribute('disabled');
+            content.removeAttribute('disabled');
+            submitBtn.removeAttribute('disabled');
+            editBtn.setAttribute('disabled', 'disabled');
+        });
 
-    submitBtn.addEventListener('click', () => {
-        greeting.setAttribute('disabled', 'disabled');
-        content.setAttribute('disabled', 'disabled');
+        submitBtn.addEventListener('click', () => {
+            greeting.setAttribute('disabled', 'disabled');
+            content.setAttribute('disabled', 'disabled');
+            submitBtn.setAttribute('disabled', 'disabled');
+            editBtn.removeAttribute('disabled');
+
+        });
     });
-});
