@@ -1,26 +1,16 @@
-$(document).ready(function () {
-  var customOffset = 180;
-  var mainAccordionClicked = false; // Initialize flag for main accordion click
+from django.shortcuts import render, redirect
+from .models import Profile
 
-  $('.collapse').on('shown.bs.collapse', function () {
-    if (mainAccordionClicked) {
-      var offset = $(this).offset();
-      $('html, body').animate({
-        scrollTop: offset.top - customOffset
-      }, 500);
-    }
-    mainAccordionClicked = false; // Reset the flag
-  });
+def update_profile(request):
+    # Get the current user's profile (you may need to adjust this depending on your authentication setup)
+    profile = Profile.objects.get(user=request.user)
+    success_message = None
 
-  $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
-    var offset = $(this).offset();
-    $('html, body').animate({
-      scrollTop: offset.top - 175
-    }, 500);
-  });
+    if request.method == 'POST':
+        # Update the profile fields based on form data
+        profile.greeting = request.POST['greeting']
+        profile.content = request.POST['content']
+        profile.save()
+        success_message = 'Profile updated successfully'  # Set the success message
 
-  // Click event handler for main accordion items
-  $('.btn.btn-link[data-toggle="collapse"]').on('click', function () {
-    mainAccordionClicked = true;
-  });
-});
+    return render(request, 'update_profile.html', {'profile': profile, 'success_message': success_message})
