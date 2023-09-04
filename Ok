@@ -1,19 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const greeting = document.getElementById('greeting');
-    const content = document.getElementById('content');
-    const editBtn = document.getElementById('edit_button');
-    const submitBtn = document.getElementById('submit_button');
+from django.urls import reverse
 
-    editBtn.addEventListener('click', () => {
-        greeting.removeAttribute('disabled');
-        content.removeAttribute('disabled');
-        submitBtn.removeAttribute('disabled');
-        editBtn.setAttribute('disabled', 'disabled');
-    });
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'greeting', 'content', 'history_link')
 
-    submitBtn.addEventListener('click', () => {
-        // Ensure the fields are not disabled before form submission
-        greeting.removeAttribute('disabled');
-        content.removeAttribute('disabled');
-    });
-});
+    def history_link(self, obj):
+        url = reverse('admin:{}_{}_history'.format(
+            obj._meta.app_label,  # The app label where the Profile model is defined
+            obj._meta.model_name  # The model name 'profile' in lowercase
+        ), args=[obj.pk])
+        return '<a href="{}">History</a>'.format(url)
+
+    history_link.short_description = 'View History'
+    history_link.allow_tags = True
