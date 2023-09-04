@@ -1,16 +1,76 @@
-from django.shortcuts import render, redirect
-from .models import Profile
+{% extends "admin_base.html" %}
 
-def update_profile(request):
-    # Get the current user's profile (you may need to adjust this depending on your authentication setup)
-    profile = Profile.objects.get(user=request.user)
-    success_message = None
+{% block page_title %}Profile{% endblock %}
 
-    if request.method == 'POST':
-        # Update the profile fields based on form data
-        profile.greeting = request.POST['greeting']
-        profile.content = request.POST['content']
-        profile.save()
-        success_message = 'Profile updated successfully'  # Set the success message
+{% block content %}
+  {% load static %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-5 mt-4">
+        <form id="post_form" method="POST">
+          {% csrf_token %}
+          <div class="form-group mb-3">
+            <label for="greeting">Greeting:</label>
+            <input class="form-control" type="text" id="greeting" name="greeting" value="{{ profile.greeting }}">
+          </div>
 
-    return render(request, 'update_profile.html', {'profile': profile, 'success_message': success_message})
+          <div class="form-group mb-3">
+            <label for="content">About Content:</label>
+            <textarea class="form-control" rows="5" id="content" name="content">{{ profile.content }}</textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary mb-3">Update Profile</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Store the initial form values
+    const initialFormValues = {
+      greeting: "{{ profile.greeting }}",
+      content: "{{ profile.content }}",
+    };
+
+    // Flag to track if changes have been made
+    let changesMade = false;
+
+    // Add event listeners to form fields
+    document.getElementById('greeting').addEventListener('input', function () {
+      if (this.value !== initialFormValues.greeting) {
+        changesMade = true;
+      } else {
+        changesMade = false;
+      }
+    });
+
+    document.getElementById('content').addEventListener('input', function () {
+      if (this.value !== initialFormValues.content) {
+        changesMade = true;
+      } else {
+        changesMade = false;
+      }
+    });
+
+    // Add event listener to form submission
+    document.getElementById('post_form').addEventListener('submit', function () {
+      // Form is being submitted, no need for a confirmation message
+      window.removeEventListener('beforeunload', confirmExit);
+    });
+
+    // Add event listener to window beforeunload
+    function confirmExit(e) {
+      if (changesMade) {
+        e.returnValue = 'You have unsaved changes. Are you sure you want to leave this page?';
+      }
+    }
+
+    window.addEventListener('beforeunload', confirmExit);
+  </script>
+
+  {% if success_message %}
+    <script>
+      alert("{{ success_message }}");
+    </script>
+  {% endif %}
+{% endblock %}
