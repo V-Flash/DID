@@ -1,30 +1,40 @@
-admin.site.register(LogEntry, LogEntryAdmin)
+from django.shortcuts import render
+from django.contrib.admin.models import LogEntry
+
+def custom_dashboard(request):
+    # Fetch recent actions
+    recent_actions = LogEntry.objects.all()[:10]  # You can adjust the number of recent actions to display
+    context = {'recent_actions': recent_actions}
+    return render(request, 'admin/dashboard.html', context)
+
+
 {% extends "admin/base.html" %}
 
 {% block content %}
     <div class="module">
-        <table summary="Recent Actions">
-            <caption>{% trans "Recent Actions" %}</caption>
-            <thead>
-                <tr>
-                    <th scope="col">{% trans "Time" %}</th>
-                    <th scope="col">{% trans "User" %}</th>
-                    <th scope="col">{% trans "Action" %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for entry in recent_actions %}
-                    <tr{% if forloop.counter0|yesno:",row_even,row_odd" %}>
-                        <td>{{ entry.action_time|date:_("DATETIME_FORMAT") }}</td>
-                        <td>{{ entry.user }}</td>
-                        <td>{{ entry.get_action_flag_display }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="3">{% trans "No recent actions." %}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <h2>{% trans "Recent Actions" %}</h2>
+        <ul>
+            {% for entry in recent_actions %}
+                <li>
+                    {{ entry.action_time|date:_("DATETIME_FORMAT") }} - 
+                    {{ entry.user }}: 
+                    {{ entry.get_action_flag_display }}
+                    on {{ entry.content_type }} {{ entry.object_repr }}
+                </li>
+            {% empty %}
+                <li>{% trans "No recent actions." %}</li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
+
+
+from django.contrib import admin
+from django.contrib.admin.views import IndexView
+
+class CustomAdminIndexView(IndexView):
+    def get(self, request, *args, **kwargs):
+        return views.custom_dashboard(request)
+
+admin.site.index_template = 'admin/dashboard.html'  # Set the dashboard template
+admin.site.index = CustomAdminIndexView  # Set the custom index view
