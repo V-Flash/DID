@@ -1,14 +1,2 @@
-from django.urls import reverse
-
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'greeting', 'content', 'history_link')
-
-    def history_link(self, obj):
-        url = reverse('admin:{}_{}_history'.format(
-            obj._meta.app_label,  # The app label where the Profile model is defined
-            obj._meta.model_name  # The model name 'profile' in lowercase
-        ), args=[obj.pk])
-        return '<a href="{}">History</a>'.format(url)
-
-    history_link.short_description = 'View History'
-    history_link.allow_tags = True
+from django.contrib import admin
+from django.contrib.admin.models import LogEntry
