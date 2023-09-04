@@ -1,76 +1,15 @@
-{% extends "admin_base.html" %}
+ <form id="post_form" method="POST">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="greeting">Greeting:</label>
+                    <input class="form-control" type="text" id="greeting" name="greeting" value="{{ profile.greeting }}" {% if not edit_mode %}disabled{% endif %}>
+                </div>
 
-{% block page_title %}Profile{% endblock %}
+                <div class="form-group mb-3">
+                    <label for="content">About Content:</label>
+                    <textarea class="form-control" rows="5" id="content" name="content" {% if not edit_mode %}disabled{% endif %}>{{ profile.content }}</textarea>
+                </div>
 
-{% block content %}
-  {% load static %}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-5 mt-4">
-        <form id="post_form" method="POST">
-          {% csrf_token %}
-          <div class="form-group mb-3">
-            <label for="greeting">Greeting:</label>
-            <input class="form-control" type="text" id="greeting" name="greeting" value="{{ profile.greeting }}">
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="content">About Content:</label>
-            <textarea class="form-control" rows="5" id="content" name="content">{{ profile.content }}</textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary mb-3">Update Profile</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Store the initial form values
-    const initialFormValues = {
-      greeting: "{{ profile.greeting }}",
-      content: "{{ profile.content }}",
-    };
-
-    // Flag to track if changes have been made
-    let changesMade = false;
-
-    // Add event listeners to form fields
-    document.getElementById('greeting').addEventListener('input', function () {
-      if (this.value !== initialFormValues.greeting) {
-        changesMade = true;
-      } else {
-        changesMade = false;
-      }
-    });
-
-    document.getElementById('content').addEventListener('input', function () {
-      if (this.value !== initialFormValues.content) {
-        changesMade = true;
-      } else {
-        changesMade = false;
-      }
-    });
-
-    // Add event listener to form submission
-    document.getElementById('post_form').addEventListener('submit', function () {
-      // Form is being submitted, no need for a confirmation message
-      window.removeEventListener('beforeunload', confirmExit);
-    });
-
-    // Add event listener to window beforeunload
-    function confirmExit(e) {
-      if (changesMade) {
-        e.returnValue = 'You have unsaved changes. Are you sure you want to leave this page?';
-      }
-    }
-
-    window.addEventListener('beforeunload', confirmExit);
-  </script>
-
-  {% if success_message %}
-    <script>
-      alert("{{ success_message }}");
-    </script>
-  {% endif %}
-{% endblock %}
+                <button type="button" class="btn btn-primary mb-3" id="edit_button">Edit</button>
+                <button type="submit" class="btn btn-primary mb-3" id="submit_button">Update Profile</button>
+            </form>
