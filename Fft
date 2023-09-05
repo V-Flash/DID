@@ -1,16 +1,53 @@
-from django.contrib.admin.models import LogEntry
+from django.contrib.admin.models import LogEntry, ADDITION, CHANGE, DELETION
 from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import YourModel  # Import your model if necessary
 
-def dashboard(request):
-    # Your existing code
+def create_object(request):
+    if request.method == 'POST':
+        # Your code to create the object
+        # For example, if you have a form:
+        # form = YourModelForm(request.POST)
+        # if form.is_valid():
+        #     obj = form.save()
+        #     Log the action
+        #     LogEntry.objects.log_action(
+        #         user_id=request.user.id,
+        #         content_type_id=ContentType.objects.get_for_model(obj).id,
+        #         object_id=obj.id,
+        #         object_repr=str(obj),
+        #         action_flag=ADDITION,  # Use ADDITION for creating
+        #     )
+        #     return redirect('success_page')
 
-    # Fetch recent actions without using .select()
-    recent_actions = LogEntry.objects.select_related('content_type').all().order_by('-action_time')[:10]
+def edit_object(request, object_id):
+    if request.method == 'POST':
+        obj = get_object_or_404(YourModel, pk=object_id)
+        # Your code to edit the object
+        # For example, if you have a form:
+        # form = YourModelForm(request.POST, instance=obj)
+        # if form.is_valid():
+        #     obj = form.save()
+        #     Log the action
+        #     LogEntry.objects.log_action(
+        #         user_id=request.user.id,
+        #         content_type_id=ContentType.objects.get_for_model(obj).id,
+        #         object_id=obj.id,
+        #         object_repr=str(obj),
+        #         action_flag=CHANGE,  # Use CHANGE for editing
+        #     )
+        #     return redirect('success_page')
 
-    context = {
-        # Your existing context variables
-        'recent_actions': recent_actions,
-    }
-
-    return render(request, 'dashboard.html', context)
+def delete_object(request, object_id):
+    if request.method == 'POST':
+        obj = get_object_or_404(YourModel, pk=object_id)
+        # Log the action before deleting the object
+        LogEntry.objects.log_action(
+            user_id=request.user.id,
+            content_type_id=ContentType.objects.get_for_model(obj).id,
+            object_id=obj.id,
+            object_repr=str(obj),
+            action_flag=DELETION,  # Use DELETION for deleting
+        )
+        obj.delete()
+        return redirect('success_page')
