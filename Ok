@@ -1,24 +1,41 @@
-from django.contrib.admin.models import LogEntry, ADDITION
-from django.contrib.contenttypes.models import ContentType
+@login_required(login_url='customadmin:admin-login')
+def edit_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
 
-def create_post(request):
+    # Set current_datetime using timezone.now()
+    current_datetime = timezone.now()
+
     if request.method == 'POST':
-        title = request.POST.get('title')
-        text = request.POST.get('text')
-        published_date = request.POST.get('published_date')
+        post.title = request.POST['title']
+        post.text = request.POST['text']
 
-        # Create the Post object
-        post = Post.objects.create(title=title, text=text, published_date=published_date, author=request.user)
+        published_date_str = request.POST['published_date']
+        try:
+            new_published_date = timezone.make_aware(
+                datetime.strptime(published_date_str, '%Y-%m-%dT%H:%M'))
+        except ValueError:
+            return render(request, 'edit_post.html',
+                          {'post': post, 'current_datetime': current_datetime, 'error_message': 'Invalid date format'})
 
+        if new_published_date > current_datetime:
+            post.published_date = new_published_date
+         
         # Log the creation action
         LogEntry.objects.log_action(
             user_id=request.user.id,
             content_type_id=ContentType.objects.get_for_model(post).id,
             object_id=post.id,
             object_repr=str(post),
-            action_flag=ADDITION,  # Use ADDITION for creating
-        )
+            action_flag=CHANGE,
+       )
 
+        post.save()
         return redirect('customadmin:posts')
+        #return redirect('post_detail', post_id=post.id)
 
-    return render(request, 'create_post.html')
+    return render(request, 'edit_post.html', {'post': post, 'current_datetime': current_datetime})
+
+
+
+MultiValueDictKeyError at /admin/edit/11/
+'published_date'
