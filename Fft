@@ -1,139 +1,32 @@
-<div id="accordion">
+{% extends "base.html" %}
 
-  <div class="card">
+{% block content %}
+<div class="container">
+    <h1>Dashboard</h1>
 
-    <div class="card-header">
-      <a class="collapsed card-link accordion-title" data-toggle="collapse" href="#note03">
-       Notebook Distribution at Lignite Project, Bhavnagar
-      </a>
-    </div>
+    <!-- Your existing dashboard content here -->
 
-    <div id="note03" class="collapse" data-parent="#accordion">
-      <div class="card-body">
-        
-
-      <div class="sub-accordion" id="accordion-01">
-
-        <div class="card">
-        <div class="card-header">
-          <a class="card-link accordion-title" data-toggle="collapse" href="#note01-inner">
-          Bhumbhali Village - Girls Primary School
-          </a>
-        </div>
-        <div id="note01-inner" class="collapse show" data-parent="#accordion-01">
-          <div class="card-body">
-
-            <div class="row image-popup">
-
-            
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-01-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-01-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-02-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-02-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-03-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-03-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-04-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-04-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-05-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-05-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-06-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-06-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-               <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm">
-                <div class="gallery-cust">
-                  <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-07-l.webp" class="single-gallery-thumb" title=" ">
-                    <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/girls-primary-school/girls-primary-school-07-t.webp" class="img-fluid" alt="">
-                  </a>
-                </div> 
-              </div>
-
-
-            </div>
-
-          </div>
-        </div>
-        </div>
-
-        <div class="card">
-        <div class="card-header">
-          <a class="collapsed card-link accordion-title" data-toggle="collapse" href="#note02-inner">
-          Bhumbhali Village - Kumar Shaala
-          </a>
-        </div>
-        <div id="note02-inner" class="collapse" data-parent="#accordion-01">
-          <div class="card-body">
-
-              <div class="row image-popup">
-
-
-                 <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                  <div class="gallery-cust">
-                    <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-01-l.webp" class="single-gallery-thumb" title=" ">
-                      <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-01-t.webp" class="img-fluid" alt="">
-                    </a>
-                  </div> 
+    <h2>Recent Actions</h2>
+    <ul class="recent-actions">
+        {% for log_entry in recent_actions %}
+            <li>
+                <div class="action-icon">
+                    {% if log_entry.action_flag == 1 %}
+                        <i class="fas fa-plus-circle create-icon"></i> <!-- FontAwesome plus-circle icon for create -->
+                    {% elif log_entry.action_flag == 2 %}
+                        <i class="fas fa-pencil-alt edit-icon"></i> <!-- FontAwesome pencil-alt icon for edit -->
+                    {% elif log_entry.action_flag == 3 %}
+                        <i class="fas fa-trash delete-icon"></i> <!-- FontAwesome trash icon for delete -->
+                    {% endif %}
                 </div>
-
-                 <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                  <div class="gallery-cust">
-                    <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-02-l.webp" class="single-gallery-thumb" title=" ">
-                      <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-02-t.webp" class="img-fluid" alt="">
-                    </a>
-                  </div> 
+                <div class="action-details">
+                    <strong>{{ log_entry.user }}:</strong>
+                    {{ log_entry.action_time|date:"F j, Y, g:i a" }} - {{ log_entry.object_repr }} - {{ log_entry.get_action_display }}
                 </div>
-
-                 <div class="col-lg-3 col-sm-6 gallery-col bottom-image-thumb-sm text-center">
-                  <div class="gallery-cust">
-                    <a href="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-03-l.webp" class="single-gallery-thumb" title=" ">
-                      <img src="assets/img/sectors/education/nb-dis-at-lignite-proj-bhavnagar/bhumbhali-village/kumar-shaala/kumar-shaala-03-t.webp" class="img-fluid" alt="">
-                    </a>
-                  </div> 
-                </div>
-
-                </div>
-          </div>
-        </div>
-        </div>
-       
-      </div>
-    </div> 
-
-  </div>
-  </div> 
+            </li>
+        {% empty %}
+            <li>No recent actions.</li>
+        {% endfor %}
+    </ul>
 </div>
+{% endblock %}
