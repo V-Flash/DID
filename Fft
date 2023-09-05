@@ -1,2 +1,16 @@
-AttributeError at /admin/dashboard/
-'LogEntryManager' object has no attribute 'select'
+from django.contrib.admin.models import LogEntry
+from django.contrib.contenttypes.models import ContentType
+from .models import YourModel  # Import your model if necessary
+
+def dashboard(request):
+    # Your existing code
+
+    # Fetch recent actions without using .select()
+    recent_actions = LogEntry.objects.select_related('content_type').all().order_by('-action_time')[:10]
+
+    context = {
+        # Your existing context variables
+        'recent_actions': recent_actions,
+    }
+
+    return render(request, 'dashboard.html', context)
