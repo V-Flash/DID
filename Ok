@@ -1,39 +1,38 @@
-from django.http import HttpResponseBadRequest  # Import HttpResponseBadRequest
+{% extends "base.html" %}
 
-@login_required(login_url='customadmin:admin-login')
-def edit_post(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
+{% block content %}
+  <h2>Edit Post</h2>
+  <form method="post">
+    {% csrf_token %}
+    <!-- Your form fields here -->
+    <label for="published_date">Published Date:</label>
+    <input type="datetime-local" id="published_date" name="published_date" value="{{ post.published_date|date:'Y-m-d\TH:i' }}" required>
+    
+    <button type="submit">Save</button>
+  </form>
 
-    # Set current_datetime using timezone.now()
-    current_datetime = timezone.now()
+  <!-- JavaScript for displaying alert message -->
+  <script>
+    // Get the current date and time
+    var currentDate = new Date();
 
-    if request.method == 'POST':
-        post.title = request.POST['title']
-        post.text = request.POST['text']
-        published_date_str = request.POST['published_date']
-        
-        try:
-            new_published_date = timezone.make_aware(
-                datetime.strptime(published_date_str, '%Y-%m-%dT%H:%M'))
-        except ValueError:
-            return render(request, 'edit_post.html',
-                          {'post': post, 'current_datetime': current_datetime, 'error_message': 'Invalid date format'})
+    // Get the input element for published date
+    var publishedDateInput = document.getElementById('published_date');
 
-        if new_published_date < current_datetime:  # Check if the selected date is less than current date
-            return render(request, 'edit_post.html',
-                          {'post': post, 'current_datetime': current_datetime, 'error_message': 'Publish date must be in the future'})
+    // Add an event listener to the form submission
+    document.querySelector('form').addEventListener('submit', function (event) {
+      var selectedDate = new Date(publishedDateInput.value);
+      
+      // Check if the selected date is in the past
+      if (selectedDate <= currentDate) {
+        event.preventDefault(); // Prevent the form submission
+        alert('Publish date must be in the future');
+      }
+    });
+  </script>
 
-        # Log the creation action
-        LogEntry.objects.log_action(
-            user_id=request.user.id,
-            content_type_id=ContentType.objects.get_for_model(post).id,
-            object_id=post.id,
-            object_repr=str(post),
-            action_flag=CHANGE,
-        )
-
-        post.save()
-        return redirect('customadmin:posts')
-        #return redirect('post_detail', post_id=post.id)
-
-    return render(request, 'edit_post.html', {'post': post, 'current_datetime': current_datetime})
+  <!-- Display error message if it exists -->
+  {% if error_message %}
+    <p>{{ error_message }}</p>
+  {% endif %}
+{% endblock %}
