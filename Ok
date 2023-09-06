@@ -1,3 +1,5 @@
+from django.http import HttpResponseBadRequest  # Import HttpResponseBadRequest
+
 @login_required(login_url='customadmin:admin-login')
 def edit_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
@@ -17,9 +19,10 @@ def edit_post(request, post_id):
             return render(request, 'edit_post.html',
                           {'post': post, 'current_datetime': current_datetime, 'error_message': 'Invalid date format'})
 
-        if new_published_date > current_datetime:
-            post.published_date = new_published_date
-         
+        if new_published_date < current_datetime:  # Check if the selected date is less than current date
+            return render(request, 'edit_post.html',
+                          {'post': post, 'current_datetime': current_datetime, 'error_message': 'Publish date must be in the future'})
+
         # Log the creation action
         LogEntry.objects.log_action(
             user_id=request.user.id,
@@ -27,7 +30,7 @@ def edit_post(request, post_id):
             object_id=post.id,
             object_repr=str(post),
             action_flag=CHANGE,
-       )
+        )
 
         post.save()
         return redirect('customadmin:posts')
