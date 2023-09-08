@@ -1,21 +1,26 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-5 mt-4">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-group mb-3">
-                    <label for="greeting">Greeting:</label>
-                    <input class="form-control" type="text" id="greeting" name="greeting" value="{{ profile.greeting }}">
-                </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const editButton = document.getElementById("edit_button");
+        const submitButton = document.getElementById("submit_button");
+        const greetingInput = document.getElementById("greeting");
+        const contentTextarea = document.getElementById("content");
 
-                <div class="form-group mb-3">
-                    <label for="content">About Content:</label>
-                    <textarea class="form-control" rows="5" id="content" name="content">{{ profile.content }}</textarea>
-                </div>
+        editButton.addEventListener("click", function () {
+            // Enable editing and disable edit button
+            greetingInput.removeAttribute("readonly");
+            contentTextarea.removeAttribute("readonly");
+            editButton.disabled = true;
+            // Enable the "Update Profile" button
+            submitButton.removeAttribute("disabled");
+        });
 
-                <button type="button" class="btn btn-primary mb-3" id="edit_button">Edit</button>
-                <button type="submit" class="btn btn-primary mb-3" id="submit_button">Update Profile</button>
-            </form>
-        </div>
-    </div>
-</div>
+        submitButton.addEventListener("click", function () {
+            // Disable editing and enable edit button
+            greetingInput.setAttribute("readonly", true);
+            contentTextarea.setAttribute("readonly", true);
+            editButton.disabled = false;
+            // Disable the "Update Profile" button
+            submitButton.disabled = true;
+        });
+    });
+</script>
