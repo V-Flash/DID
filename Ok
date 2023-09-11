@@ -1,7 +1,8 @@
-
-				<div class="col-lg-6 timber-col">
-					<div class="timber">
-						<h5>Timber</h5>
-						<p>The majority of pellets available on the market are produced from timber obtained from sawmills or energy plants specifically cultivated for biomass production.</p>
-					</div>
-				</div>
+.vertical-text {
+    writing-mode: vertical-lr; /* Rotate text vertically */
+    transform: rotate(-180deg); /* Rotate text 180 degrees to make it upright */
+    text-align: center; /* Center the vertical text */
+    white-space: nowrap; /* Prevent the text from wrapping */
+    margin: 0; /* Remove any margin for spacing */
+    padding: 0; /* Remove any padding */
+}
