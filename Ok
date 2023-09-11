@@ -1,15 +1,13 @@
-.timber {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 331px;
-}
 
-.centered-text {
-    text-align: center;
-    flex-grow: 1; /* Allows the div to grow and center the content vertically */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+				<div class="col-lg-6 fadeInUp wow product-col biomass-sources-col com-2" data-wow-duration=".2s" data-wow-delay=".4s">
+					<div class="biomass-sources">
+					
+						<div class="centered-text">
+							Some pellets are made from straw, although they may produce slightly more ash compared to wood pellets.
+						</div>
+							
+						<h5 class="vertical-text green">Straw</h5>
+						
+					</div>
+					
+				</div>
