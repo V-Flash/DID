@@ -1,12 +1,7 @@
-li::before {
-  content: ''; /* Add empty content to the ::before pseudo-element */
-  background-image: url('your-image-url.png'); /* Replace with your image URL */
-  background-size: contain; /* Size the image to fit within the ::before element */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  width: 20px; /* Adjust the width of the image */
-  height: 20px; /* Adjust the height of the image */
-  position: absolute; /* Position the ::before element absolutely */
-  left: 0; /* Position it to the left of the list item */
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Adjust to vertically center */
-}
+
+				<div class="col-lg-6 timber-col">
+					<div class="timber">
+						<h5>Timber</h5>
+						<p>The majority of pellets available on the market are produced from timber obtained from sawmills or energy plants specifically cultivated for biomass production.</p>
+					</div>
+				</div>
