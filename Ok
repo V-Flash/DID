@@ -1,26 +1,12 @@
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const editButton = document.getElementById("edit_button");
-        const submitButton = document.getElementById("submit_button");
-        const greetingInput = document.getElementById("greeting");
-        const contentTextarea = document.getElementById("content");
-
-        editButton.addEventListener("click", function () {
-            // Enable editing and disable edit button
-            greetingInput.removeAttribute("readonly");
-            contentTextarea.removeAttribute("readonly");
-            editButton.disabled = true;
-            // Enable the "Update Profile" button
-            submitButton.removeAttribute("disabled");
-        });
-
-        submitButton.addEventListener("click", function () {
-            // Disable editing and enable edit button
-            greetingInput.setAttribute("readonly", true);
-            contentTextarea.setAttribute("readonly", true);
-            editButton.disabled = false;
-            // Disable the "Update Profile" button
-            submitButton.disabled = true;
-        });
-    });
-</script>
+li::before {
+  content: ''; /* Add empty content to the ::before pseudo-element */
+  background-image: url('your-image-url.png'); /* Replace with your image URL */
+  background-size: contain; /* Size the image to fit within the ::before element */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  width: 20px; /* Adjust the width of the image */
+  height: 20px; /* Adjust the height of the image */
+  position: absolute; /* Position the ::before element absolutely */
+  left: 0; /* Position it to the left of the list item */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust to vertically center */
+}
