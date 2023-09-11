@@ -1,8 +1,15 @@
-.vertical-text {
-    writing-mode: vertical-lr; /* Rotate text vertically */
-    transform: rotate(-180deg); /* Rotate text 180 degrees to make it upright */
-    text-align: center; /* Center the vertical text */
-    white-space: nowrap; /* Prevent the text from wrapping */
-    margin: 0; /* Remove any margin for spacing */
-    padding: 0; /* Remove any padding */
+.timber {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 331px;
+}
+
+.centered-text {
+    text-align: center;
+    flex-grow: 1; /* Allows the div to grow and center the content vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
