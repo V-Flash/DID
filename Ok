@@ -1,8 +1,14 @@
-<div class="col-lg-5 mt-4" style="position: relative;">
-    <!-- Your other content -->
+/* Add these styles for the active class */
+.link.active {
+    background-color: #007bff; /* Change to your desired active background color */
+    color: #fff; /* Change to your desired active text color */
+}
 
-    <!-- Center-aligned text -->
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        Your Centered Text
-    </div>
-</div>
+.link.active .link-icon {
+    background-color: transparent; /* Remove the background for the active icon */
+}
+
+.link.active:hover,
+.link.active:focus {
+    width: 130px; /* Maintain the active width on hover/focus */
+}
