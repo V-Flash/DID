@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Basic Webpage with Menu</title>
+    <title>Basic Webpage with Custom Active Menu</title>
     <!-- Google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -65,18 +65,19 @@
             background-color: #eee;
         }
 
-        .link:hover,
-        .link:focus {
-            outline: 0;
-            width: 130px;
+        /* Add these styles for the custom active class */
+        .active-menu {
+            background-color: #007bff; /* Change to your desired active background color */
+            color: #fff; /* Change to your desired active text color */
         }
 
-        .link:hover:before,
-        .link:hover .link-title,
-        .link:focus:before,
-        .link:focus .link-title {
-            transform: translateX(0);
-            opacity: 1;
+        .active-menu .link-icon {
+            background-color: transparent; /* Remove the background for the active icon */
+        }
+
+        .active-menu:hover,
+        .active-menu:focus {
+            width: 130px; /* Maintain the active width on hover/focus */
         }
 
         .link-icon {
@@ -111,7 +112,7 @@
 </head>
 <body>
 <div class="menu">
-    <a href="#" class="link">
+    <a href="#" class="link active-menu">
         <span class="link-icon">
             <!-- icon -->
             <span class="material-symbols-outlined mob-icon">home</span>
