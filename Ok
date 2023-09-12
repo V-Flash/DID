@@ -1,13 +1,8 @@
+<div class="col-lg-5 mt-4" style="position: relative;">
+    <!-- Your other content -->
 
-				<div class="col-lg-6 fadeInUp wow product-col biomass-sources-col com-2" data-wow-duration=".2s" data-wow-delay=".4s">
-					<div class="biomass-sources">
-					
-						<div class="centered-text">
-							Some pellets are made from straw, although they may produce slightly more ash compared to wood pellets.
-						</div>
-							
-						<h5 class="vertical-text green">Straw</h5>
-						
-					</div>
-					
-				</div>
+    <!-- Center-aligned text -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        Your Centered Text
+    </div>
+</div>
