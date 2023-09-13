@@ -1,14 +1,20 @@
-/* Add these styles for the active class */
-.link.active {
-    background-color: #007bff; /* Change to your desired active background color */
-    color: #fff; /* Change to your desired active text color */
+.article-link{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 24px;
 }
 
-.link.active .link-icon {
-    background-color: transparent; /* Remove the background for the active icon */
+.navbar {
+    padding-left: 34px;
+    padding-right: 34px;
 }
 
-.link.active:hover,
-.link.active:focus {
-    width: 130px; /* Maintain the active width on hover/focus */
+#main {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+#about {
+    padding-left: 24px;
+    padding-right: 24px;
 }
