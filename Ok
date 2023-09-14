@@ -1,36 +1,33 @@
-.article-link{
-    position: absolute;
+
+
+.footer {
+    position: fixed;
     bottom: 0;
-    margin-bottom: 24px;
 }
 
-.navbar {
-    padding-left: 34px;
-    padding-right: 34px;
+(max-width: 1024px)
+.name {
+    font-size: 2.3rem;
 }
 
-#main {
-    padding-left: 24px;
-    padding-right: 24px;
+.about-para{margin-top:0;}
+
+// remove
+.about-content {
+    flex-direction: column;
 }
 
-#about {
-    padding-left: 24px;
-    padding-right: 24px;
+.about-row{margin-top:0;}
+
+
+(max-width: 767px)
+
+.name {
+    font-size: 2.6rem;}
+
+.about-detail {
+    align-items: center;
 }
 
-<div class="col-lg-11 col-md-6 col-sm-12 info">
-
-
-.info {
-    display: flex;
-    justify-content: space-between;
-    /* height: 97px; */
-    background: #F4F2F2;
-    box-shadow: 4px 4px 5px var(--text-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 24px 24px;
-}
+.contact-card{width:100%;}
+.message{width:100%;}
