@@ -9,3 +9,14 @@
     width: 100%; 
     height: auto; 
 }
+
+#form-container {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    right: 0px;
+    padding: 20px;
+}
+container-fluid p-0
+
+margin-top:10px to form tag
+
+.newsletter-header p{font-size:1.5rem}
