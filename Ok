@@ -2,8 +2,8 @@
 
 .article-col{padding-right:0;}
 
-
-
+try on main divs
+{min-height: calc(78.5vh);}
 
 
 768px
