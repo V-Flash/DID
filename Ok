@@ -1,41 +1,11 @@
+768px
 
-
-.footer {
-    position: fixed;
-    bottom: 0;
+.about-para {
+    margin-top: 0px;
 }
 
-(max-width: 1024px)
-.name {
-    font-size: 2.3rem;
-}
-
-.about-para{margin-top:0;}
-.info {width:100%;margin-top: 30px;position:re}
-
-.article-card {height: auto;}
-
-// remove
-.about-content {
-    flex-direction: column;
-}
-
-.about-row{margin-top:0;}
-
-
-(max-width: 767px)
-
-.name {
-    font-size: 2.6rem;}
-
-.about-detail {
-    align-items: center;
-}
-
-.contact-card{width:100%;}
-.message{width:100%;}
-
-@media only screen and (min-width: 768px)
-.heading {
-    font-size: 2.2rem;
+.avi-img {
+    object-fit: contain;
+    width: 100%; 
+    height: auto; 
 }
