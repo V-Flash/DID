@@ -21,12 +21,11 @@
     );
 
     echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
-    
-    // Calculate and display the total quantity in the cart
-    $total_quantity = 0;
-    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-        $total_quantity += $cart_item['quantity'];
-    }
+    ?>
+
+    <!-- Calculate and display the total quantity in the cart -->
+    <?php
+    $total_quantity = WC()->cart->get_cart_contents_count();
     echo '<p>Total Quantity in Cart: ' . $total_quantity . '</p>';
     ?>
 </td>
