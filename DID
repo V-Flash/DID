@@ -21,6 +21,18 @@
 @media only screen and (max-width:1280px)
 .social{: 0 0 0 32px;}
 
+@media only screen and (max-width:767px){
+    
+.article-link {
+    position: relative;
+    margin-top: 24px;
+}
+
+.article-col {padding-right: 0;padding-left:0;}
+
+.article-card {
+    width: 100%;}
+
 @media only screen and (max-width:768px)
 
 .content-form{width:100%;}
