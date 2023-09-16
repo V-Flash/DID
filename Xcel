@@ -1,60 +1,87 @@
 <?php
-if ( woocommerce_product_loop() ) {
-
-  /**
-   * Hook: woocommerce_before_shop_loop.
-   *
-   * @hooked woocommerce_output_all_notices - 10
-   * @hooked woocommerce_result_count - 20
-   * @hooked woocommerce_catalog_ordering - 30
-   */
-  
-  do_action( 'woocommerce_before_shop_loop' );
-?>
- 
-<?php
-  woocommerce_product_loop_start();
-
-  if ( wc_get_loop_prop( 'total' ) ) {
-    while ( have_posts() ) {
-      the_post();
-
-      /**
-       * Hook: woocommerce_shop_loop.
-       */
-      ?>
-      <div class="col-lg-12 mb-4">
-            <div class="product-sale">
-              
-           
-      <?php
-      do_action( 'woocommerce_shop_loop' );
-              
-      wc_get_template_part( 'content', 'product' );
-      ?>
-
-   </div>
-          </div>
-
-<?php
-    }
-  }
-
-  woocommerce_product_loop_end();
-
-  /**
-   * Hook: woocommerce_after_shop_loop.
-   *
-   * @hooked woocommerce_pagination - 10
-   */
-  do_action( 'woocommerce_after_shop_loop' );
-} else {
-  /**
-   * Hook: woocommerce_no_products_found.
-   *
-   * @hooked wc_no_products_found - 10
-   */
-  do_action( 'woocommerce_no_products_found' );
+/**
+* The template for displaying product content within loops
+*
+* This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
+*
+* HOWEVER, on occasion WooCommerce will need to update template files and you
+* (the theme developer) will need to copy the new files to your theme to
+* maintain compatibility. We try to do this as little as possible, but it does
+* happen. When this occurs the version of the template file will be bumped and
+* the readme will list any important changes.
+*
+* @see     https://docs.woocommerce.com/document/template-structure/
+* @package WooCommerce\Templates
+* @version 3.6.0
+*/
+defined( 'ABSPATH' ) || exit;
+global $productlist;
+// Ensure visibility.
+if ( empty( $productlist ) || ! $productlist->is_visible() ) {
+return;
 }
+?>
+<div class="pro-weight"><?php echo '&nbsp; '.$productlist->get_weight().esc_attr(get_option('woocommerce_weight_unit')); ?></div>
+
+<div class="head-flour-img">
+<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+<div class="image-card text-center">
+<img src="<?php echo wp_get_attachment_url( $productlist->get_image_id() ); ?>" class="img-fluid" alt=""/>
+</div>
+<div class="pro-detail mb-3">
+<h5><?php the_title(); ?></h5>
+<h4 class="uttam_product_block_title2">₹ <?php
+if($productlist->get_sale_price()) {
+$price = $productlist->get_sale_price();
+} else { $price = $productlist->get_regular_price(); }
+echo $price;
+?> </h4>
+</div>
+</a>
+<div class="purchase-box">
+<div class="qut-number">
+<?php
+woocommerce_quantity_input(
+array(
+'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $productlist->get_min_purchase_quantity(), $productlist ),
+'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $productlist->get_max_purchase_quantity(), $productlist ),
+'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $productlist->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+)
+);
+?>
+<script>
+jQuery( document ).ready(function($) {
+
+$('.wqpmb_input_text ').on('change keyup paste', function () {
+$('.jb_single_cart_btn').attr("data-quantity", $('.wqpmb_input_text').val())
+});
+});
+</script>
+</div>
+
+<div class="purchase-button">
+<?php
+
+if($productlist->is_in_stock()) {
+echo sprintf( '<a href="%s" data-quantity="1" class="%s" %s"><i class="fa fa-shopping-cart"></i></a>',
+esc_url( $productlist->add_to_cart_url() ),
+esc_attr( implode( ' ', array_filter( array(
+'button', 'product_type_' . $productlist->get_type(),
+$productlist->is_purchasable() && $productlist->is_in_stock() ? 'add_to_cart_button' : '',
+$productlist->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+) ) ) ),
+wc_implode_html_attributes( array(
+'data-product_id'  => $productlist->get_id(),
+'data-product_sku' => $productlist->get_sku(),
+'aria-label'       => $productlist->add_to_cart_description(),
+'rel'              => 'nofollow',
+) ),
+);
+} else {  }
+
 
 ?>
+</div>
+
+</div>
+</div>
