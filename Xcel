@@ -1,5 +1,16 @@
-<form>
-  <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-  <input type="number" id="number" value="0" />
-  <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
-</form>
+<?php
+			woocommerce_quantity_input(
+			array(
+				'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+				'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+				'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+			)
+			);
+			?>
+			<script>
+			jQuery( document ).ready(function($) {
+			$('.wqpmb_input_text ').on('change keyup paste', function () {
+			$('.jb_single_cart_btn').attr("data-quantity", $('.wqpmb_input_text').val())
+			});
+			});
+			</script>
