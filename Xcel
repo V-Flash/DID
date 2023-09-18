@@ -1,29 +1,50 @@
-<form class="cart"  method="post" enctype='multipart/form-data'>
-                <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
-                
-                <div class="purchase-box">
-                        <div class="qut-number">
-                                <?php
-                                do_action( 'woocommerce_before_add_to_cart_quantity' );
-                                woocommerce_quantity_input(
-                                        array(
-                                                'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-                                                'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
-                                                'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
-                                        )
-                                );
-                                do_action( 'woocommerce_after_add_to_cart_quantity' );
-                                ?>
-                        </div>
-                        
-                        <div class="purchase-button">
-                               
-                                <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><i class="fa fa-shopping-cart"></i>
-                                </button>
-                        </div>
-                        
-                        
-                </div>
-                
-                <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-        </form>
+<form class="cart" method="post" enctype="multipart/form-data">
+    <?php do_action('woocommerce_before_add_to_cart_button'); ?>
+    
+    <div class="purchase-box">
+        <div class="qut-number">
+            <?php
+            do_action('woocommerce_before_add_to_cart_quantity');
+            woocommerce_quantity_input(
+                array(
+                    'min_value'   => apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product),
+                    'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
+                    'input_value' => isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+                )
+            );
+            do_action('woocommerce_after_add_to_cart_quantity');
+            ?>
+        </div>
+        
+        <div class="purchase-button">
+            <button type="button" class="single_add_to_cart_button button alt<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" onclick="addToCart(<?php echo esc_attr($product->get_id()); ?>)">
+                <i class="fa fa-shopping-cart"></i> Add to Cart
+            </button>
+        </div>
+    </div>
+    
+    <?php do_action('woocommerce_after_add_to_cart_button'); ?>
+</form>
+
+<script>
+    function addToCart(productId) {
+        // Send an AJAX request to add the product to the cart.
+        jQuery.ajax({
+            type: 'POST',
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            data: {
+                action: 'add_to_cart',
+                product_id: productId,
+                quantity: jQuery('input[name="quantity"]').val(), // Get the quantity from the input field.
+            },
+            success: function(response) {
+                // Handle the response (e.g., display a success message).
+                alert('Product added to cart successfully!');
+            },
+            error: function(error) {
+                // Handle errors, if any.
+                console.error('Error adding product to cart:', error);
+            }
+        });
+    }
+</script>
