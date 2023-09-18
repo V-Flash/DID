@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Generate Anchor Elements</title>
+    <title>Add IDs to Anchor Tags by Class Name</title>
 </head>
 <body>
+    <a href="#" class="my-link">Link 1</a>
+    <a href="#" class="my-link">Link 2</a>
+    <a href="#" class="my-link">Link 3</a>
+    <a href="#" class="my-link">Link 4</a>
+    <a href="#" class="my-link">Link 5</a>
+
     <script>
-        // Define the number of anchor elements you want to create
-        var numberOfElements = 5; // You can change this to the desired number
+        // Get all anchor elements with the class "my-link"
+        var anchorElements = document.querySelectorAll(".my-link");
 
-        // Loop to create anchor elements with IDs
-        for (var i = 1; i <= numberOfElements; i++) {
-            // Create a new anchor element
-            var anchor = document.createElement("a");
-
-            // Set the ID attribute with "test" followed by the current loop index
-            anchor.id = "test" + i;
-
-            // Set the href attribute (for example, to a URL)
-            anchor.href = "https://example.com"; // Change this to your desired URL
-
-            // Set the anchor text
-            anchor.textContent = "Link " + i;
-
-            // Append the anchor element to the body
-            document.body.appendChild(anchor);
+        // Loop through the anchor elements and add unique IDs
+        for (var i = 0; i < anchorElements.length; i++) {
+            anchorElements[i].id = "test" + (i + 1);
         }
     </script>
 </body>
