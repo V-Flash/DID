@@ -1,52 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Non-Refreshing Form</title>
-</head>
-<body>
-    <form id="myForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    <div id="result"></div>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
-
-document.getElementById("myForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent page refresh on form submission
-
-    const formData = new FormData(this);
-
-    fetch("submit.php", {
-        method: "POST",
-        body: formData,
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("result").innerHTML = data;
-        this.reset(); // Clear the form data after submission
-    });
-});
-
-
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    
-    // Process the form data (e.g., store it in a database)
-
-    echo "Form submitted successfully!";
-} else {
-    echo "Invalid request.";
-}
-?>
+				echo sprintf( '<a href="%s" class="%s single_add_to_cart_button ut_single_cart_btn button alt" %s" data-quantity="1"><i class="fa fa-shopping-cart"></i></a>',
+							 esc_url( $product->add_to_cart_url() ),
+							 esc_attr( implode( ' ', array_filter( array(
+								 'button', 'product_type_' . $product->get_type(),
+								 $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+								 $product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+							 ) ) ) ),
+							 wc_implode_html_attributes( array(
+								 'data-product_id'  => $product->get_id(),
+								 'data-product_sku' => $product->get_sku(),
+								 'aria-label'       => $product->add_to_cart_description(),
+								 'rel'              => 'nofollow',
+							 ) ),
+							);
+				?>
