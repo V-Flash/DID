@@ -1,6 +1,6 @@
-jQuery(document).ready(function($) {
-    $('.wqpmb_input_text').on('change keyup paste', function () {
-        var inputValue = $(this).val();
-        $(this).closest('.product').find('.ut_single_cart_btn').attr("data-quantity", inputValue);
+   jQuery( document ).ready(function($) {
+
+    $('.wqpmb_input_text ').on('change keyup paste', function () {
+      $('.ut_single_cart_btn').attr("data-quantity", $('.wqpmb_input_text').val())
     });
 });
