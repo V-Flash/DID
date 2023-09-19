@@ -1,19 +1,50 @@
-<?php
-echo sprintf(
-    '<a href="%s" class="%s single_add_to_cart_button ut_single_cart_btn button alt" %s" data-quantity="%d"><i class="fa fa-shopping-cart"></i></a>',
-    esc_url($product->add_to_cart_url()),
-    esc_attr(implode(' ', array_filter(array(
-        'button',
-        'product_type_' . $product->get_type(),
-        $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-        $product->supports('ajax_add_to_cart') ? 'ajax_add_to_cart' : '',
-    )))),
-    wc_implode_html_attributes(array(
-        'data-product_id'  => $product->get_id(),
-        'data-product_sku' => $product->get_sku(),
-        'aria-label'       => $product->add_to_cart_description(),
-        'rel'              => 'nofollow',
-    )),
-    $product->get_stock_quantity() 
-);
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Quantity Update</title>
+</head>
+<body>
+<div class="list-box">list-box  
+
+
+<button class="grid">gird</button>
+<button class="list">list</button>
+
+</div>
+
+<div class="grid-box">grid-box
+
+
+<button class="grid">gird</button>
+<button class="list">list</button>
+
+</div>
+
+
+
+<script>
+$(document).ready(function(){
+  $("#list-item").hide();
+  $(".list-box").hide();
+  $(".grid").click(function(){
+    $("#grid-item").show();
+    $(".grid-box").show();
+    $(".grid-weight").show();
+    $("#list-item").hide();
+    $(".list-box").hide();
+    
+  });
+  $(".list").click(function(){
+     $("#grid-item").hide();
+     $(".grid-box").hide();
+     $(".grid-weight").hide();
+     $("#list-item").show();
+     $(".list-box").show();
+  });
+});
+</script>
+</body>
+</html>
