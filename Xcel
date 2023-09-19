@@ -1,7 +1,9 @@
-
 var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
 
-
 for (var i = 0; i < anchorElements.length; i++) {
-    anchorElements[i].id = "test" + (i + 1);
+    if (i % 2 === 0) {
+        // Even index, so skip this iteration
+        continue;
+    }
+    anchorElements[i].id = "test" + ((i + 1) / 2);
 }
