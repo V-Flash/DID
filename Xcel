@@ -1,9 +1,15 @@
-jQuery(document).ready(function($) {
-  for (var i = 1; i <= anchorElements.length; i++) {
-    if (i % 2 == 1) {
-      $('#intest' + i).on('change keyup paste', function () {
-        $('#test' + ((i + 1) / 2)).attr("data-quantity", $('#intest' + i).val());
-      });
-    }
-  }
-});
+
+var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
+
+
+for (var i = 0; i < anchorElements.length; i++) {
+    anchorElements[i].id = "test" + (i + 1);
+}
+
+
+var inputvalElements = document.querySelectorAll(".wqpmb_input_text");
+
+
+for (var i = 0; i < inputvalElements.length; i++) {
+    inputvalElements[i].id = "intest" + (i + 1);
+}
