@@ -1,9 +1,19 @@
-var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
-
-for (var i = 0; i < anchorElements.length; i++) {
-    if (i % 2 === 0) {
-        // Even index, so skip this iteration
-        continue;
-    }
-    anchorElements[i].id = "test" + ((i + 1) / 2);
-}
+<?php
+echo sprintf(
+    '<a href="%s" class="%s single_add_to_cart_button ut_single_cart_btn button alt" %s" data-quantity="%d"><i class="fa fa-shopping-cart"></i></a>',
+    esc_url($product->add_to_cart_url()),
+    esc_attr(implode(' ', array_filter(array(
+        'button',
+        'product_type_' . $product->get_type(),
+        $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+        $product->supports('ajax_add_to_cart') ? 'ajax_add_to_cart' : '',
+    )))),
+    wc_implode_html_attributes(array(
+        'data-product_id'  => $product->get_id(),
+        'data-product_sku' => $product->get_sku(),
+        'aria-label'       => $product->add_to_cart_description(),
+        'rel'              => 'nofollow',
+    )),
+    $product->get_stock_quantity() 
+);
+?>
