@@ -1,17 +1,30 @@
 jQuery(document).ready(function($) {
-  // Get all elements with the class .ut_single_cart_btn
-  var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
+  // Get all elements with the class .ut_single_cart_btn.input
+  var elementsWithBothClasses = document.querySelectorAll(".ut_single_cart_btn.input");
+
+  // Initialize arrays to store IDs
+  var testIds = [];
+  var intestIds = [];
 
   // Loop through all the elements
-  anchorElements.forEach(function(element, index) {
-    // Construct the IDs for intest and test
-    var intest = $('#intest' + (index + 1));
-    var test = $('#test' + (index + 1));
+  elementsWithBothClasses.forEach(function(element) {
+    // Get the IDs directly from the elements
+    var testId = $(element).data("test-id");
+    var intestId = $(element).data("intest-id");
+
+    // Push the IDs into their respective arrays
+    testIds.push(testId);
+    intestIds.push(intestId);
 
     // Attach event listener to the intest input field
-    $(intest).on('change keyup paste', function() {
+    $(intestId).on('change keyup paste', function() {
       // Update the data-quantity attribute of the associated test element
-      $(test).attr("data-quantity", $(intest).val());
+      $(testId).attr("data-quantity", $(intestId).val());
     });
   });
+
+  // Now, testIds and intestIds arrays contain the IDs
+  // You can access them as needed
+  console.log("Test IDs:", testIds);
+  console.log("Intest IDs:", intestIds);
 });
