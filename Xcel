@@ -1,30 +1,30 @@
 jQuery(document).ready(function($) {
-  // Get all elements with the class .ut_single_cart_btn.input
-  var elementsWithBothClasses = document.querySelectorAll(".ut_single_cart_btn.input");
+  // Get all elements with class ut_single_cart_btn
+  var utButtons = document.querySelectorAll('.ut_single_cart_btn');
 
-  // Initialize arrays to store IDs
-  var testIds = [];
-  var intestIds = [];
+  // Get all elements with class inputdata
+  var inputdataFields = document.querySelectorAll('.inputdata');
 
-  // Loop through all the elements
-  elementsWithBothClasses.forEach(function(element) {
-    // Get the IDs directly from the elements
-    var testId = $(element).data("test-id");
-    var intestId = $(element).data("intest-id");
+  // Create an empty object to store associations
+  var associations = {};
 
-    // Push the IDs into their respective arrays
-    testIds.push(testId);
-    intestIds.push(intestId);
-
-    // Attach event listener to the intest input field
-    $(intestId).on('change keyup paste', function() {
-      // Update the data-quantity attribute of the associated test element
-      $(testId).attr("data-quantity", $(intestId).val());
-    });
+  // Map the associations based on the data-associate attribute
+  utButtons.forEach(function(utButton) {
+    var associationKey = utButton.getAttribute('data-associate');
+    associations[associationKey] = utButton;
   });
 
-  // Now, testIds and intestIds arrays contain the IDs
-  // You can access them as needed
-  console.log("Test IDs:", testIds);
-  console.log("Intest IDs:", intestIds);
+  // Loop through the inputdataFields and attach event listeners
+  inputdataFields.forEach(function(inputdataField) {
+    var associationKey = inputdataField.getAttribute('data-associate');
+    var utButton = associations[associationKey];
+
+    if (utButton) {
+      // Attach event listener to the input field
+      $(inputdataField).on('change keyup paste', function() {
+        // Update the data-quantity attribute of the associated utButton
+        $(utButton).attr("data-quantity", $(inputdataField).val());
+      });
+    }
+  });
 });
