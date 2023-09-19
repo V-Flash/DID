@@ -8,49 +8,45 @@
 </head>
 <body>
 <div class="list-box">list-box  
-    <button class="grid">grid</button>
-    <button class="list">list</button>
+    <button class="grid">Grid</button>
+    <button class="list">List</button>
 </div>
 
 <div class="grid-box">grid-box
-    <button class="grid">grid</button>
-    <button class="list">list</button>
+    <button class="grid">Grid</button>
+    <button class="list">List</button>
 </div>
 
 <script>
 $(document).ready(function(){
-    // Set the default view preference to 'grid'
-    localStorage.setItem('viewPreference', 'grid');
+    // By default, show the grid view
+    $(".grid-box").show();
 
-    // Function to toggle views
-    function toggleViews() {
-        const userPreference = localStorage.getItem('viewPreference');
-        if (userPreference === 'grid') {
-            $("#grid-item").show();
-            $(".grid-box").show();
-            $(".grid-weight").show();
-            $("#list-item").hide();
-            $(".list-box").hide();
-        } else {
-            $("#grid-item").hide();
-            $(".grid-box").hide();
-            $(".grid-weight").hide();
-            $("#list-item").show();
-            $(".list-box").show();
-        }
+    // Check if the user previously selected a view
+    var selectedView = localStorage.getItem('selectedView');
+
+    if (selectedView === 'list') {
+        $(".grid-box").hide();
+    } else {
+        $(".list-box").hide();
     }
 
-    // Call the toggleViews function to set the initial view
-    toggleViews();
-
+    // Handle the grid button click
     $(".grid").click(function(){
-        localStorage.setItem('viewPreference', 'grid');
-        toggleViews();
+        $(".grid-box").show();
+        $(".list-box").hide();
+
+        // Store the user's choice in localStorage
+        localStorage.setItem('selectedView', 'grid');
     });
 
+    // Handle the list button click
     $(".list").click(function(){
-        localStorage.setItem('viewPreference', 'list');
-        toggleViews();
+        $(".grid-box").hide();
+        $(".list-box").show();
+
+        // Store the user's choice in localStorage
+        localStorage.setItem('selectedView', 'list');
     });
 });
 </script>
