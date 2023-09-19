@@ -8,42 +8,54 @@
 </head>
 <body>
 <div class="list-box">list-box  
-
-
-<button class="grid">gird</button>
-<button class="list">list</button>
-
+    <button class="grid">grid</button>
+    <button class="list">list</button>
 </div>
 
 <div class="grid-box">grid-box
-
-
-<button class="grid">gird</button>
-<button class="list">list</button>
-
+    <button class="grid">grid</button>
+    <button class="list">list</button>
 </div>
-
-
 
 <script>
 $(document).ready(function(){
-  $("#list-item").hide();
-  $(".list-box").hide();
-  $(".grid").click(function(){
-    $("#grid-item").show();
-    $(".grid-box").show();
-    $(".grid-weight").show();
-    $("#list-item").hide();
-    $(".list-box").hide();
-    
-  });
-  $(".list").click(function(){
-     $("#grid-item").hide();
-     $(".grid-box").hide();
-     $(".grid-weight").hide();
-     $("#list-item").show();
-     $(".list-box").show();
-  });
+    // Check if there's a user preference in local storage
+    const userPreference = localStorage.getItem('viewPreference');
+
+    // If user preference is 'grid', show grid view, otherwise show list view
+    if (userPreference === 'grid') {
+        $("#grid-item").show();
+        $(".grid-box").show();
+        $(".grid-weight").show();
+        $("#list-item").hide();
+        $(".list-box").hide();
+    } else {
+        $("#grid-item").hide();
+        $(".grid-box").hide();
+        $(".grid-weight").hide();
+        $("#list-item").show();
+        $(".list-box").show();
+    }
+
+    $(".grid").click(function(){
+        // Save user preference in local storage
+        localStorage.setItem('viewPreference', 'grid');
+        $("#grid-item").show();
+        $(".grid-box").show();
+        $(".grid-weight").show();
+        $("#list-item").hide();
+        $(".list-box").hide();
+    });
+
+    $(".list").click(function(){
+        // Save user preference in local storage
+        localStorage.setItem('viewPreference', 'list');
+        $("#grid-item").hide();
+        $(".grid-box").hide();
+        $(".grid-weight").hide();
+        $("#list-item").show();
+        $(".list-box").show();
+    });
 });
 </script>
 </body>
