@@ -1,13 +1,18 @@
 jQuery(document).ready(function($) {
-  // Loop through odd #intest IDs
-  for (var i = 1; i <= 9; i += 2) {
-    var $intest = $('#intest' + i);
-    var $test = $('#test' + (i + 1)); // Assuming the corresponding #test has the next even number
+  // Get all elements with class .ut_single_cart_btn
+  var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
+  
+  // Loop through the anchorElements
+  for (var i = 1; i <= anchorElements.length; i++) {
+    if (i % 2 == 1) { // Check if i is an odd number
+      var $intest = $('#intest' + i);
+      var $test = $('#test' + i); // Matching IDs for #test
     
-    // Add an event listener to the current #intest input element
-    $intest.on('change keyup paste', function () {
-      // Update the data-quantity attribute of the corresponding #test element
-      $test.attr("data-quantity", $intest.val());
-    });
+      // Add an event listener to the current #intest input element
+      $intest.on('change keyup paste', function () {
+        // Update the data-quantity attribute of the corresponding #test element
+        $test.attr("data-quantity", $intest.val());
+      });
+    }
   }
 });
