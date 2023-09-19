@@ -1,15 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Quantity Update</title>
+</head>
+<body>
+    <!-- HTML structure for input and test elements -->
+    <input type="text" class="wqpmb_input_text" id="intest1">
+    <div id="test1" data-quantity=""></div>
 
-var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
+    <input type="text" class="wqpmb_input_text" id="intest2">
+    <div id="test2" data-quantity=""></div>
 
+    <!-- Your jQuery script -->
+    <script>
+        jQuery(document).ready(function($) {
+          var anchorElements = document.querySelectorAll(".ut_single_cart_btn");
 
-for (var i = 0; i < anchorElements.length; i++) {
-    anchorElements[i].id = "test" + (i + 1);
-}
-
-
-var inputvalElements = document.querySelectorAll(".wqpmb_input_text");
-
-
-for (var i = 0; i < inputvalElements.length; i++) {
-    inputvalElements[i].id = "intest" + (i + 1);
-}
+          for (var i = 1; i <= anchorElements.length; i++) {
+            var intest = $('#intest' + i);
+            var test = $('#test' + i); 
+            
+            $(intest).on('change keyup paste', function () {
+              $(test).attr("data-quantity", $(intest).val());
+            });
+          }
+        });
+    </script>
+</body>
+</html>
