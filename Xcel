@@ -19,42 +19,38 @@
 
 <script>
 $(document).ready(function(){
-    // Check if there's a user preference in local storage
-    const userPreference = localStorage.getItem('viewPreference');
+    // Set the default view preference to 'grid'
+    localStorage.setItem('viewPreference', 'grid');
 
-    // If user preference is 'grid', show grid view, otherwise show list view
-    if (userPreference === 'grid') {
-        $("#grid-item").show();
-        $(".grid-box").show();
-        $(".grid-weight").show();
-        $("#list-item").hide();
-        $(".list-box").hide();
-    } else {
-        $("#grid-item").hide();
-        $(".grid-box").hide();
-        $(".grid-weight").hide();
-        $("#list-item").show();
-        $(".list-box").show();
+    // Function to toggle views
+    function toggleViews() {
+        const userPreference = localStorage.getItem('viewPreference');
+        if (userPreference === 'grid') {
+            $("#grid-item").show();
+            $(".grid-box").show();
+            $(".grid-weight").show();
+            $("#list-item").hide();
+            $(".list-box").hide();
+        } else {
+            $("#grid-item").hide();
+            $(".grid-box").hide();
+            $(".grid-weight").hide();
+            $("#list-item").show();
+            $(".list-box").show();
+        }
     }
 
+    // Call the toggleViews function to set the initial view
+    toggleViews();
+
     $(".grid").click(function(){
-        // Save user preference in local storage
         localStorage.setItem('viewPreference', 'grid');
-        $("#grid-item").show();
-        $(".grid-box").show();
-        $(".grid-weight").show();
-        $("#list-item").hide();
-        $(".list-box").hide();
+        toggleViews();
     });
 
     $(".list").click(function(){
-        // Save user preference in local storage
         localStorage.setItem('viewPreference', 'list');
-        $("#grid-item").hide();
-        $(".grid-box").hide();
-        $(".grid-weight").hide();
-        $("#list-item").show();
-        $(".list-box").show();
+        toggleViews();
     });
 });
 </script>
