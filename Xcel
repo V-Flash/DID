@@ -1,6 +1,116 @@
-document.getElementById("myForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Prevent the form from actually submitting
+global $product;
+// Ensure visibility.
+if ( empty( $product ) || ! $product->is_visible() ) {
+	return;
+}
+?>
+<div class="pro-weight grid-weight"><?php echo '&nbsp; '.$product->get_weight().esc_attr(get_option('woocommerce_weight_unit')); ?></div>
+<div class="head-flour-img grid-box">
+	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+		<div class="image-card text-center">
+			<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="img-fluid" alt=""/>
+		</div>
+		<div class="pro-detail mb-3">
+			<h5><?php the_title(); ?></h5>
+			<h4 class="uttam_product_block_title2">₹ <?php
+						if($product->get_sale_price()) {
+							$price = $product->get_sale_price();
+						} else { $price = $product->get_regular_price(); }
+						echo $price;
+			?> </h4>
+		</div>
+	</a>
+	
+	<form class="cart" method="post" name="productform" enctype='multipart/form-data'>
+		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+		
+		<div class="purchase-box">
+			<div class="qut-number">
+				<?php
+				do_action( 'woocommerce_before_add_to_cart_quantity' );
+				woocommerce_quantity_input(
+					array(
+						'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+						'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+						'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+					)
+				);
+				do_action( 'woocommerce_after_add_to_cart_quantity' );
+				?>
+			</div>
+			
+			<div class="purchase-button">
 
-  // Change the input value to "1"
-  document.getElementById("myInput").value = "1";
-});
+				 <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><i class="fa fa-shopping-cart"></i>
+				</button>
+                
+
+			</div>
+
+			
+
+			
+		</div>
+		
+		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+	</form>
+
+	
+
+</div>
+<div class="row align-items-center list-box">
+	<div class="col-lg-3 col-md-3 col-sm-3">
+		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+			<div class="image-card text-center"><img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="img-fluid" alt=""/></div>
+		</a>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<div class="pro-detail-tow mb-3">
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+				<h5><?php the_title(); ?></h5>
+				<?php
+				$desc = $product->get_short_description();
+				?>
+				<p><?php echo $desc; ?></p>
+				<h4>₹ <?php
+							if($product->get_sale_price()) {
+								$price = $product->get_sale_price();
+							} else { $price = $product->get_regular_price(); }
+							echo $price;
+				?> </h4>
+				<div class="pro-weight pro-weight-tow">Weight:<?php echo '&nbsp; '.$product->get_weight().esc_attr(get_option('woocommerce_weight_unit')); ?></div>
+			</a>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-3">
+		<form class="cart"  method="post" enctype='multipart/form-data'>
+		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+		
+		<div class="purchase-box purchase-box-tow">
+			<div class="qut-number mb-4">
+				<?php
+				do_action( 'woocommerce_before_add_to_cart_quantity' );
+				woocommerce_quantity_input(
+					array(
+						'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+						'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+						'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+					)
+				);
+				do_action( 'woocommerce_after_add_to_cart_quantity' );
+				?>
+			</div>
+			<div class="purchase-button">
+				
+				<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><i class="fa fa-shopping-cart"></i>
+				</button>
+			</div>
+			
+			
+		</div>
+		
+		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+	</form>
+		
+	</div>
+</div>
