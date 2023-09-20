@@ -1,25 +1,12 @@
+<?php
 // First Section
 woocommerce_quantity_input(
     array(
-        'input_name'  => 'quantity_' . $product->get_id(), // Add unique identifier
         'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
         'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+        'input_name'  => 'quantity_' . $product->get_id(), // Unique name attribute
         'input_value' => isset( $_POST['quantity_' . $product->get_id()] ) ? wc_stock_amount( wp_unslash( $_POST['quantity_' . $product->get_id()] ) ) : $product->get_min_purchase_quantity(),
     )
 );
-
-// Second Section
-woocommerce_quantity_input(
-    array(
-        'input_name'  => 'quantity_' . $product->get_id() . '_second', // Add unique identifier
-        'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-        'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
-        'input_value' => isset( $_POST['quantity_' . $product->get_id() . '_second'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity_' . $product->get_id() . '_second'] ) ) : $product->get_min_purchase_quantity(),
-    )
-);
-
-// First Section
+?>
 <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><i class="fa fa-shopping-cart"></i></button>
-
-// Second Section
-<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() . '_second' ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><i class="fa fa-shopping-cart"></i></button>
