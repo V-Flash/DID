@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkbox Filter</title>
+  <title>Checkbox Filter with Products</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     /* Add some basic styles for demonstration */
     .product {
-      margin-bottom: 10px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <h1>Checkbox Filter</h1>
+  <h1>Checkbox Filter with Products</h1>
 
-  <div class="product">
-    <input type="checkbox" class="filter" data-category="category1" checked> Product 1
-  </div>
-  <div class="product">
-    <input type="checkbox" class="filter" data-category="category2" checked> Product 2
-  </div>
-  <div class="product">
-    <input type="checkbox" class="filter" data-category="category1" checked> Product 3
-  </div>
-  <div class="product">
-    <input type="checkbox" class="filter" data-category="category2" checked> Product 4
-  </div>
-  <div class="product">
-    <input type="checkbox" class="filter" data-category="category3" checked> Product 5
-  </div>
+  <!-- Checkboxes for filtering -->
+  <label><input type="checkbox" class="filter" data-category="category1" checked> Category 1</label>
+  <label><input type="checkbox" class="filter" data-category="category2" checked> Category 2</label>
+  <label><input type="checkbox" class="filter" data-category="category3" checked> Category 3</label>
+
+  <!-- Product list -->
+  <div class="product" data-category="category1">Product 1 (Category 1)</div>
+  <div class="product" data-category="category2">Product 2 (Category 2)</div>
+  <div class="product" data-category="category1">Product 3 (Category 1)</div>
+  <div class="product" data-category="category3">Product 4 (Category 3)</div>
+  <div class="product" data-category="category2">Product 5 (Category 2)</div>
+  <div class="product" data-category="category3">Product 6 (Category 3)</div>
 
   <script>
     $(document).ready(function() {
@@ -57,7 +57,7 @@
         } else {
           // Otherwise, show products with matching categories
           $('.product').each(function() {
-            var productCategory = $(this).find('.filter').data('category');
+            var productCategory = $(this).data('category');
             if (checkedCategories.includes(productCategory)) {
               $(this).show();
             }
