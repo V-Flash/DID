@@ -1,1 +1,41 @@
+ <div class="catagories-side-bar mb-5 mt-4">
+            <h4>Catagories</h4>
+            <?php
+        
+                $categories = get_categories(
 
+                array(
+                    'hide_empty' =>  0,
+                    //'exclude'  =>  1,
+                    'taxonomy'   =>  'product_cat'
+                )
+             );
+                
+                ?>
+
+            <div class="catagories-under">
+              <?php
+            
+                foreach( $categories as $category ){
+                    
+                    if($category->name == 'Uncategorized') { continue; }
+                    $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true ); 
+                      
+                    $term = get_term( $thumbnail_id, 'product_cat' ); 
+                    
+             ?>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="01">
+                <?php
+                        echo '<label class="form-check-label" for="01">'.$category->name.' <span>('.$term->count.')</span></label>';
+                        ?>
+                        
+                <!-- <label class="form-check-label" for="01">Flour <span>(10)</span></label> -->
+              </div>
+              <?php
+
+                } 
+            
+            ?>
+            </div>
+          </div>
