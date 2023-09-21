@@ -1,70 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkbox Filter with Products</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    /* Add some basic styles for demonstration */
-    .product {
-      margin: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      display: inline-block;
-    }
-  </style>
-</head>
-<body>
-  <h1>Checkbox Filter with Products</h1>
+<!-- Product list -->
+<div class="product" data-category="category1" data-weight="10">Product 1 (Category 1, Weight 10)</div>
+<div class="product" data-category="category2" data-weight="15">Product 2 (Category 2, Weight 15)</div>
+<div class="product" data-category="category1" data-weight="20">Product 3 (Category 1, Weight 20)</div>
+<div class="product" data-category="category3" data-weight="25">Product 4 (Category 3, Weight 25)</div>
+<div class="product" data-category="category2" data-weight="30">Product 5 (Category 2, Weight 30)</div>
+<div class="product" data-category="category3" data-weight="35">Product 6 (Category 3, Weight 35)</div>
 
-  <!-- Checkboxes for filtering -->
-  <label><input type="checkbox" class="filter" data-category="category1" checked> Category 1</label>
-  <label><input type="checkbox" class="filter" data-category="category2" checked> Category 2</label>
-  <label><input type="checkbox" class="filter" data-category="category3" checked> Category 3</label>
+<!-- Checkboxes for filtering by category -->
+<label><input type="checkbox" class="filter" data-category="category1" checked> Category 1</label>
+<label><input type="checkbox" class="filter" data-category="category2" checked> Category 2</label>
+<label><input type="checkbox" class="filter" data-category="category3" checked> Category 3</label>
 
-  <!-- Product list -->
-  <div class="product" data-category="category1">Product 1 (Category 1)</div>
-  <div class="product" data-category="category2">Product 2 (Category 2)</div>
-  <div class="product" data-category="category1">Product 3 (Category 1)</div>
-  <div class="product" data-category="category3">Product 4 (Category 3)</div>
-  <div class="product" data-category="category2">Product 5 (Category 2)</div>
-  <div class="product" data-category="category3">Product 6 (Category 3)</div>
+<!-- Range input for weight filtering -->
+<label for="weightFilter">Weight Filter:</label>
+<input type="range" id="weightFilter" min="0" max="100" value="100">
+<span id="weightValue">100</span> grams or less
 
-  <script>
-    $(document).ready(function() {
-      // Handle the initial filter based on checked checkboxes
-      filterProducts();
 
-      // Listen for changes to checkboxes
-      $('.filter').change(function() {
-        filterProducts();
-      });
+<script>
+$(document).ready(function() {
+  // Handle the initial filter based on checked checkboxes and weight
+  filterProducts();
 
-      function filterProducts() {
-        // Get an array of checked categories
-        var checkedCategories = $('.filter:checked').map(function() {
-          return $(this).data('category');
-        }).get();
+  // Listen for changes to checkboxes and weight input
+  $('.filter, #weightFilter').change(function() {
+    filterProducts();
+  });
 
-        // Hide all products
-        $('.product').hide();
+  function filterProducts() {
+    // Get an array of checked categories
+    var checkedCategories = $('.filter:checked').map(function() {
+      return $(this).data('category');
+    }).get();
 
-        // Show products that match the checked categories
-        if (checkedCategories.length === 0) {
-          // If no checkboxes are checked, show all products
-          $('.product').show();
-        } else {
-          // Otherwise, show products with matching categories
-          $('.product').each(function() {
-            var productCategory = $(this).data('category');
-            if (checkedCategories.includes(productCategory)) {
-              $(this).show();
-            }
-          });
-        }
+    // Get the selected weight limit
+    var weightLimit = $('#weightFilter').val();
+
+    // Hide all products
+    $('.product').hide();
+
+    // Show products that match the checked categories and weight limit
+    $('.product').each(function() {
+      var productCategory = $(this).data('category');
+      var productWeight = parseInt($(this).data('weight'));
+
+      if (
+        (checkedCategories.length === 0 || checkedCategories.includes(productCategory)) &&
+        productWeight <= weightLimit
+      ) {
+        $(this).show();
       }
     });
-  </script>
-</body>
-</html>
+
+    // Update weight filter display value
+    $('#weightValue').text(weightLimit + ' grams or less');
+  }
+});
+</script>
