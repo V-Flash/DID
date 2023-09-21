@@ -1,3 +1,1 @@
-Warning: Undefined property: WP_Post_Type::$term_id in G:\xampp\htdocs\uttam\wp-content\themes\uttam\woocommerce\archive-product.php on line 91
-
-Warning: Undefined property: WP_Error::$count in G:\xampp\htdocs\uttam\wp-content\themes\uttam\woocommerce\archive-product.php on line 99
+$term_id = $category->term_id
