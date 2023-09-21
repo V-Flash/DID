@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkbox and Weight Filter</title>
+  <title>Checkbox and Exact Weight Filter</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     /* Add some basic styles for demonstration */
@@ -16,23 +16,23 @@
   </style>
 </head>
 <body>
-  <h1>Checkbox and Weight Filter</h1>
+  <h1>Checkbox and Exact Weight Filter</h1>
 
   <!-- Checkboxes for filtering by category -->
   <label><input type="checkbox" class="filter" data-category="category1" checked> Category 1</label>
   <label><input type="checkbox" class="filter" data-category="category2" checked> Category 2</label>
   <label><input type="checkbox" class="filter" data-category="category3" checked> Category 3</label>
 
-  <!-- Checkboxes for filtering by weight -->
-  <label><input type="checkbox" class="weight-filter" data-weight="10" checked> 10g or less</label>
-  <label><input type="checkbox" class="weight-filter" data-weight="20" checked> 20g or less</label>
-  <label><input type="checkbox" class="weight-filter" data-weight="30" checked> 30g or less</label>
+  <!-- Checkboxes for filtering by exact weight -->
+  <label><input type="checkbox" class="weight-filter" data-weight="10" checked> 10g</label>
+  <label><input type="checkbox" class="weight-filter" data-weight="20" checked> 20g</label>
+  <label><input type="checkbox" class="weight-filter" data-weight="30" checked> 30g</label>
 
   <!-- Product list -->
   <div class="product" data-category="category1" data-weight="10">Product 1 (Category 1, Weight 10g)</div>
   <div class="product" data-category="category2" data-weight="15">Product 2 (Category 2, Weight 15g)</div>
   <div class="product" data-category="category1" data-weight="20">Product 3 (Category 1, Weight 20g)</div>
-  <div class="product" data-category="category3" data-weight="25">Product 4 (Category 3, Weight 25g)</div>
+  <div class="product" data-category="category3" data-weight="20">Product 4 (Category 3, Weight 20g)</div>
   <div class="product" data-category="category2" data-weight="30">Product 5 (Category 2, Weight 30g)</div>
   <div class="product" data-category="category3" data-weight="35">Product 6 (Category 3, Weight 35g)</div>
 
@@ -52,22 +52,22 @@
           return $(this).data('category');
         }).get();
 
-        // Get an array of checked weight limits
-        var checkedWeightLimits = $('.weight-filter:checked').map(function() {
+        // Get an array of selected exact weights
+        var selectedWeights = $('.weight-filter:checked').map(function() {
           return parseInt($(this).data('weight'));
         }).get();
 
         // Hide all products
         $('.product').hide();
 
-        // Show products that match the checked categories and weight limits
+        // Show products that match the checked categories and selected exact weights
         $('.product').each(function() {
           var productCategory = $(this).data('category');
           var productWeight = parseInt($(this).data('weight'));
 
           if (
             (checkedCategories.length === 0 || checkedCategories.includes(productCategory)) &&
-            (checkedWeightLimits.length === 0 || checkedWeightLimits.some(limit => productWeight <= limit))
+            selectedWeights.includes(productWeight)
           ) {
             $(this).show();
           }
