@@ -1,47 +1,70 @@
-<div class="product">
-  <input type="checkbox" class="filter" data-category="category1" checked> Product 1
-</div>
-<div class="product">
-  <input type="checkbox" class="filter" data-category="category2" checked> Product 2
-</div>
-<div class="product">
-  <input type="checkbox" class="filter" data-category="category1" checked> Product 3
-</div>
-<!-- Add more products with checkboxes -->
-
-
-<script>
-$(document).ready(function() {
-  // Handle the initial filter based on checked checkboxes
-  filterProducts();
-
-  // Listen for changes to checkboxes
-  $('.filter').change(function() {
-    filterProducts();
-  });
-
-  function filterProducts() {
-    // Get an array of checked categories
-    var checkedCategories = $('.filter:checked').map(function() {
-      return $(this).data('category');
-    }).get();
-
-    // Hide all products
-    $('.product').hide();
-
-    // Show products that match the checked categories
-    if (checkedCategories.length === 0) {
-      // If no checkboxes are checked, show all products
-      $('.product').show();
-    } else {
-      // Otherwise, show products with matching categories
-      $('.product').each(function() {
-        var productCategory = $(this).find('.filter').data('category');
-        if (checkedCategories.includes(productCategory)) {
-          $(this).show();
-        }
-      });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Filter</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Add some basic styles for demonstration */
+    .product {
+      margin-bottom: 10px;
     }
-  }
-});
-</script>
+  </style>
+</head>
+<body>
+  <h1>Checkbox Filter</h1>
+
+  <div class="product">
+    <input type="checkbox" class="filter" data-category="category1" checked> Product 1
+  </div>
+  <div class="product">
+    <input type="checkbox" class="filter" data-category="category2" checked> Product 2
+  </div>
+  <div class="product">
+    <input type="checkbox" class="filter" data-category="category1" checked> Product 3
+  </div>
+  <div class="product">
+    <input type="checkbox" class="filter" data-category="category2" checked> Product 4
+  </div>
+  <div class="product">
+    <input type="checkbox" class="filter" data-category="category3" checked> Product 5
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // Handle the initial filter based on checked checkboxes
+      filterProducts();
+
+      // Listen for changes to checkboxes
+      $('.filter').change(function() {
+        filterProducts();
+      });
+
+      function filterProducts() {
+        // Get an array of checked categories
+        var checkedCategories = $('.filter:checked').map(function() {
+          return $(this).data('category');
+        }).get();
+
+        // Hide all products
+        $('.product').hide();
+
+        // Show products that match the checked categories
+        if (checkedCategories.length === 0) {
+          // If no checkboxes are checked, show all products
+          $('.product').show();
+        } else {
+          // Otherwise, show products with matching categories
+          $('.product').each(function() {
+            var productCategory = $(this).find('.filter').data('category');
+            if (checkedCategories.includes(productCategory)) {
+              $(this).show();
+            }
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
