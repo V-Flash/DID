@@ -1,3 +1,24 @@
+
+.newsletter-header p {
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+
+.newsletter-header {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+
+#hide-form-button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
 @media only screen and (max-width: 1280px) 
 
 .name {font-size: 3.5rem;}
