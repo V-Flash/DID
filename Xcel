@@ -18,26 +18,17 @@
             $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
             $term = get_term($thumbnail_id, 'product_cat');
             
-            // Add this line to echo the category information
-            echo '<pre>';
-            var_dump($category);
-            echo '</pre>';
-            ?>
+            // Echo the category name and count
+            echo '<div class="form-check mb-2">';
+            echo '<input class="form-check-input" type="checkbox" id="' . esc_attr($category->term_id) . '">';
+            echo '<label class="form-check-label" for="' . esc_attr($category->term_id) . '">' . esc_html($category->name);
+            
+            if (!is_null($term) && isset($term->count)) {
+                echo ' <span>(' . esc_html($term->count) . ')</span>';
+            }
 
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" id="<?php echo esc_attr($category->term_id); ?>">
-                <?php
-                echo '<label class="form-check-label" for="' . esc_attr($category->term_id) . '">' . esc_html($category->name);
-                
-                if (!is_null($term) && isset($term->count)) {
-                    echo ' <span>(' . esc_html($term->count) . ')</span>';
-                }
-
-                echo '</label>';
-                ?>
-            </div>
-
-        <?php
+            echo '</label>';
+            echo '</div>';
         }
         ?>
     </div>
