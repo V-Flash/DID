@@ -60,6 +60,12 @@
         // Hide all products
         $('.product').hide();
 
+        // Show all products if no checkboxes are checked
+        if (checkedCategories.length === 0 && selectedWeights.length === 0) {
+          $('.product').show();
+          return;
+        }
+
         // Show products that match the checked categories and selected exact weights
         $('.product').each(function() {
           var productCategory = $(this).data('category');
