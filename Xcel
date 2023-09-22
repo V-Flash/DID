@@ -71,10 +71,10 @@
           var productCategory = $(this).data('category');
           var productWeight = parseInt($(this).data('weight'));
 
-          if (
-            (checkedCategories.length === 0 || checkedCategories.includes(productCategory)) &&
-            selectedWeights.includes(productWeight)
-          ) {
+          var categoryMatch = checkedCategories.length === 0 || checkedCategories.includes(productCategory);
+          var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
+
+          if (categoryMatch && weightMatch) {
             $(this).show();
           }
         });
