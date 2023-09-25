@@ -1,12 +1,19 @@
 <?php
-$taxonomy = 'pa_weight'; // Replace 'pa_weight' with the actual taxonomy name of your attribute.
-$terms = get_the_terms(get_the_id(), $taxonomy);
+$taxonomy = 'pa_weight'; // Replace with the actual taxonomy name for your attribute, typically starts with 'pa_'
+$terms = get_terms($taxonomy);
 
-if ($terms && !is_wp_error($terms)) {
+if (!empty($terms)) {
     echo '<ul>';
+
     foreach ($terms as $term) {
-        echo '<li>' . esc_html($term->name) . '</li>';
+        echo '<li>';
+        echo 'Slug: ' . $term->slug . ', ';
+        echo 'Term: ' . $term->name;
+        echo '</li>';
     }
+
     echo '</ul>';
+} else {
+    echo 'No terms found for this attribute.';
 }
 ?>
