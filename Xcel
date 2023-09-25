@@ -1,19 +1,12 @@
-<?php
-$taxonomy = 'pa_weight'; // Replace with the actual taxonomy name for your attribute, typically starts with 'pa_'
-$terms = get_terms($taxonomy);
+$taxonomy = 'pa_weight'; // Assuming 'pa_' prefix is used for product attributes
+$term = get_term_by('slug', 'your-term-slug', $taxonomy); // Replace 'your-term-slug' with the actual slug
 
-if (!empty($terms)) {
-    echo '<ul>';
+if ($term) {
+    $label = wc_attribute_label($taxonomy);
+    $slug = $term->slug;
 
-    foreach ($terms as $term) {
-        echo '<li>';
-        echo 'Slug: ' . $term->slug . ', ';
-        echo 'Term: ' . $term->name;
-        echo '</li>';
-    }
-
-    echo '</ul>';
+    echo 'Label: ' . $label . '<br>';
+    echo 'Slug: ' . $slug;
 } else {
-    echo 'No terms found for this attribute.';
+    echo 'Term not found';
 }
-?>
