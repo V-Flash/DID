@@ -13,6 +13,10 @@
       border: 1px solid #ccc;
       display: inline-block;
     }
+    .no-products-found {
+      font-weight: bold;
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -35,6 +39,9 @@
   <div class="product" data-category="category3" data-weight="20">Product 4 (Category 3, Weight 20g)</div>
   <div class="product" data-category="category2" data-weight="30">Product 5 (Category 2, Weight 30g)</div>
   <div class="product" data-category="category3" data-weight="35">Product 6 (Category 3, Weight 35g)</div>
+
+  <!-- Message for no products found -->
+  <p class="no-products-found" style="display: none;">No products found.</p>
 
   <script>
     $(document).ready(function() {
@@ -63,21 +70,28 @@
         // Show all products if no checkboxes are checked
         if (checkedCategories.length === 0 && selectedWeights.length === 0) {
           $('.product').show();
+          $('.no-products-found').hide();
           return;
         }
 
         // Show products that match the checked categories and selected exact weights
-        $('.product').each(function() {
+        var productsToShow = $('.product').filter(function() {
           var productCategory = $(this).data('category');
           var productWeight = parseInt($(this).data('weight'));
 
           var categoryMatch = checkedCategories.length === 0 || checkedCategories.includes(productCategory);
           var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
 
-          if (categoryMatch && weightMatch) {
-            $(this).show();
-          }
+          return categoryMatch && weightMatch;
         });
+
+        // Display "No products found" message if no products match
+        if (productsToShow.length === 0) {
+          $('.no-products-found').show();
+        } else {
+          productsToShow.show();
+          $('.no-products-found').hide();
+        }
       }
     });
   </script>
