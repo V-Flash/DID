@@ -1,5 +1,12 @@
-              <?php
-     $taxonomy   = 'weight';
-$label_name = wc_attribute_label( $taxonomy );
-echo $label_name;
-              ?>
+<?php
+$taxonomy = 'pa_weight'; // Replace 'pa_weight' with the actual taxonomy name of your attribute.
+$terms = get_the_terms(get_the_id(), $taxonomy);
+
+if ($terms && !is_wp_error($terms)) {
+    echo '<ul>';
+    foreach ($terms as $term) {
+        echo '<li>' . esc_html($term->name) . '</li>';
+    }
+    echo '</ul>';
+}
+?>
