@@ -1,12 +1,6 @@
-<?php 
-$category_names = array();
-foreach (wp_get_post_terms(get_the_id(), 'product_cat') as $term) {
-    if ($term) {
-        $category_names[] = $term->name;
-    }
-}
-
-if (!empty($category_names)) {
-    echo implode(' ', $category_names);
-}
-?>
+Combo
+Flour
+Instant Mix
+Ready to Serve
+Snacks
+Spices
