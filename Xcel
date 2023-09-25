@@ -24,8 +24,8 @@
 
   <!-- Checkboxes for filtering by category -->
   <label><input type="checkbox" class="filter" data-category="Flour" checked> Flour</label>
-  <label><input type="checkbox" class="filter" data-category="Instant Mix" checked> Instant Mix</label>
-  <label><input type="checkbox" class="filter" data-category="Ready to Serve" checked> Ready to Serve</label>
+  <label><input type="checkbox" class="filter" data-category="Instant-Mix" checked> Instant Mix</label>
+  <label><input type="checkbox" class="filter" data-category="Ready-to-Serve" checked> Ready to Serve</label>
   <label><input type="checkbox" class="filter" data-category="Snacks" checked> Snacks</label>
   <label><input type="checkbox" class="filter" data-category="Spices" checked> Spices</label>
 
@@ -35,12 +35,12 @@
   <label><input type="checkbox" class="weight-filter" data-weight="30" checked> 30g</label>
 
   <!-- Product list -->
-  <div class="product" data-categories="Flour Instant Mix" data-weight="10">Product 1 (Flour, Instant Mix, Weight 10g)</div>
-  <div class="product" data-categories="Instant Mix Ready to Serve" data-weight="15">Product 2 (Instant Mix, Ready to Serve, Weight 15g)</div>
+  <div class="product" data-categories="Flour Instant-Mix" data-weight="10">Product 1 (Flour, Instant Mix, Weight 10g)</div>
+  <div class="product" data-categories="Instant-Mix Ready-to-Serve" data-weight="15">Product 2 (Instant Mix, Ready to Serve, Weight 15g)</div>
   <div class="product" data-categories="Flour Snacks" data-weight="20">Product 3 (Flour, Snacks, Weight 20g)</div>
   <div class="product" data-categories="Spices" data-weight="20">Product 4 (Spices, Weight 20g)</div>
-  <div class="product" data-categories="Ready to Serve Snacks" data-weight="30">Product 5 (Ready to Serve, Snacks, Weight 30g)</div>
-  <div class="product" data-categories="Flour Instant Mix Snacks" data-weight="35">Product 6 (Flour, Instant Mix, Snacks, Weight 35g)</div>
+  <div class="product" data-categories="Ready-to-Serve Snacks" data-weight="30">Product 5 (Ready to Serve, Snacks, Weight 30g)</div>
+  <div class="product" data-categories="Flour Instant-Mix Snacks" data-weight="35">Product 6 (Flour, Instant Mix, Snacks, Weight 35g)</div>
 
   <!-- Message for no products found -->
   <p class="no-products-found" style="display: none;">No products found.</p>
@@ -78,7 +78,7 @@
 
         // Show products that match the checked categories and selected exact weights
         var productsToShow = $('.product').filter(function() {
-          var productCategories = $(this).data('categories').split(' '); // Convert to an array
+          var productCategories = $(this).data('categories').split(' ').map(category => category.replace('-', ' ')); // Convert to an array and replace hyphens with spaces
           var productWeight = parseInt($(this).data('weight'));
 
           var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
@@ -87,15 +87,4 @@
           return categoryMatch && weightMatch;
         });
 
-        // Display "No products found" message if no products match
-        if (productsToShow.length === 0) {
-          $('.no-products-found').show();
-        } else {
-          productsToShow.show();
-          $('.no-products-found').hide();
-        }
-      }
-    });
-  </script>
-</body>
-</html>
+        // Display "No products
