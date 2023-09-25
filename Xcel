@@ -1,36 +1,21 @@
-$(document).ready(function(){
+/* Define the unfolding animation */
+@keyframes unfold {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
 
-    $("#myModal").modal('show');
-
-    $(window).on('load',function(){
-      $('#modal-popup02').modal('show');
-    });
-
-    });
-
+/* Apply the animation to the modal content */
+.modal-content.unfold {
+  animation: unfold 0.5s ease-in-out;
+}
 <div class="modal fade" id="modal-popup02" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="model-close">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body text-center"> 
-      <div class="p-5 mobile-p">
-        <h1>To stay updated on GSYB's news, updates, and activities, subscribe and follow us on: </h1>
-        <div class="tp-social popup-social">
-          <ul>
-              <li><a href="https://www.facebook.com/Gujaratyogboard" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-              <li><a href="https://twitter.com/gujaratyogboard?lang=en" target="_blank"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.instagram.com/gujaratyogboard/?hl=en" target="_blank"><i class="fa fa-instagram"></i></a></li>
-              <li><a href="https://www.youtube.com/@gujaratstateyogboard7929" target="_blank"><i class="fa fa-youtube"></i></a></li>
-              <li><a href="https://t.me/gujaratstateyogboard" target="_blank"><i class="fa fa-telegram"></i></a></li>
-            </ul></div>
-      </div>
-      
-      </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light btn-light-popup" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+  <div class="modal-dialog">
+    <div class="modal-content unfold"> <!-- Add the "unfold" class here -->
+      <!-- ... Modal content ... -->
     </div>
+  </div>
 </div>
