@@ -24,7 +24,7 @@
 
   <!-- Checkboxes for filtering by category -->
   <label><input type="checkbox" class="filter" data-category="Flour" checked> Flour</label>
-  <label><input type="checkbox" class="filter" data-category="Instant Mix" checked> Instant Mix</label>
+  <label><input type="checkbox" class="filter" data-category="Instant Serve" checked> Instant Serve</label>
   <label><input type="checkbox" class="filter" data-category="Ready to Serve" checked> Ready to Serve</label>
   <label><input type="checkbox" class="filter" data-category="Snacks" checked> Snacks</label>
   <label><input type="checkbox" class="filter" data-category="Spices" checked> Spices</label>
@@ -35,12 +35,12 @@
   <label><input type="checkbox" class="weight-filter" data-weight="30" checked> 30g</label>
 
   <!-- Product list -->
-  <div class="product" data-categories="Flour Instant Mix" data-weight="10">Product 1 (Flour, Instant Mix, Weight 10g)</div>
-  <div class="product" data-categories="Instant Mix Ready to Serve" data-weight="15">Product 2 (Instant Mix, Ready to Serve, Weight 15g)</div>
+  <div class="product" data-categories="Flour Instant Serve" data-weight="10">Product 1 (Flour, Instant Serve, Weight 10g)</div>
+  <div class="product" data-categories="Instant Serve Ready to Serve" data-weight="15">Product 2 (Instant Serve, Ready to Serve, Weight 15g)</div>
   <div class="product" data-categories="Flour Snacks" data-weight="20">Product 3 (Flour, Snacks, Weight 20g)</div>
   <div class="product" data-categories="Spices" data-weight="20">Product 4 (Spices, Weight 20g)</div>
   <div class="product" data-categories="Ready to Serve Snacks" data-weight="30">Product 5 (Ready to Serve, Snacks, Weight 30g)</div>
-  <div class="product" data-categories="Flour Instant Mix Snacks" data-weight="35">Product 6 (Flour, Instant Mix, Snacks, Weight 35g)</div>
+  <div class="product" data-categories="Flour Instant Serve Snacks" data-weight="35">Product 6 (Flour, Instant Serve, Snacks, Weight 35g)</div>
 
   <!-- Message for no products found -->
   <p class="no-products-found" style="display: none;">No products found.</p>
