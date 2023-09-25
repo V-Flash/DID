@@ -1,21 +1,9 @@
-/* Define the unfolding animation */
-@keyframes unfold {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+/* Override Bootstrap's default modal fade animation */
+.modal.fade .modal-dialog {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
 }
 
-/* Apply the animation to the modal content */
-.modal-content.unfold {
-  animation: unfold 0.5s ease-in-out;
+.modal.fade.show .modal-dialog {
+  transform: translateY(0);
 }
-<div class="modal fade" id="modal-popup02" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content unfold"> <!-- Add the "unfold" class here -->
-      <!-- ... Modal content ... -->
-    </div>
-  </div>
-</div>
