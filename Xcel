@@ -1,33 +1,23 @@
-.modal {
-  border-radius: 75px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  position: absolute !important;
-  animation: bondJamesBond 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('your-background-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: fadeInBackground 2s ease-in-out forwards;
 }
 
-@keyframes bondJamesBond {
-  0% {
-    transform: translateX(1000px);
-    top: 50%;
-  }
-  80% {
-    transform: translateX(0px);
-    border-radius: 75px;
-    height: 75px;
-    width: 75px;
-    top: 50%;
-  }
-  90% {
-    border-radius: 3px;
-    height: 182px;
-    width: 247px;
-    top: 0%;
-  }
-  100% {
-    border-radius: 0px;
-    height: 100%;
-    width: 100%;
-    top: 0%;
-  }
+.container {
+    /* Add your content styling here */
+}
+
+@keyframes fadeInBackground {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
