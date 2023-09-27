@@ -1,1 +1,23 @@
-<div class="pro-weight grid-weight"><?php echo '&nbsp; '.$product->get_weight().esc_attr(get_option('woocommerce_weight_unit')); ?></div>
+<?php
+// Assuming $products is an array of your products
+$weights = array();
+
+// Collect unique weights and count occurrences
+foreach ($products as $product) {
+    $weight = $product->get_weight();
+    if (!empty($weight)) {
+        if (isset($weights[$weight])) {
+            $weights[$weight]++;
+        } else {
+            $weights[$weight] = 1;
+        }
+    }
+}
+
+// Display checkboxes and counts
+foreach ($weights as $weight => $count) {
+    echo '<label>';
+    echo '<input type="checkbox" name="weights[]" value="' . esc_attr($weight) . '"> ' . esc_html($weight) . ' (' . $count . ')';
+    echo '</label><br>';
+}
+?>
