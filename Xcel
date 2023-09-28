@@ -48,29 +48,32 @@
   </div>
 
   <!-- Product list -->
-  <div class="product" data-categories="1 2" data-weight="10" data-price="25">Product 1 (1, 2, Weight 10g, Price ₹25)</div>
-  <div class="product" data-categories="2 3" data-weight="15" data-price="30">Product 2 (2, 3, Weight 15g, Price ₹30)</div>
-  <div class="product" data-categories="1 3" data-weight="20" data-price="15">Product 3 (1, 3, Weight 20g, Price ₹15)</div>
-  <div class="product" data-categories="4" data-weight="20" data-price="40">Product 4 (4, Weight 20g, Price ₹40)</div>
-  <div class="product" data-categories="3 4" data-weight="30" data-price="50">Product 5 (3, 4, Weight 30g, Price ₹50)</div>
-  <div class="product" data-categories="1 2 3" data-weight="35" data-price="10">Product 6 (1, 2, 3, Weight 35g, Price ₹10)</div>
+  <div class="product" data-categories="1 2" data-weight="10" data-price="250">Product 1 (1, 2, Weight 10g, Price ₹250)</div>
+  <div class="product" data-categories="1 2" data-weight="10" data-price="300">Product 1 (1, 2, Weight 10g, Price ₹300)</div>
+
+  <div class="product" data-categories="1 3" data-weight="20" data-price="150">Product 3 (1, 3, Weight 20g, Price ₹150)</div>
+  <div class="product" data-categories="4" data-weight="20" data-price="400">Product 4 (4, Weight 20g, Price ₹400)</div>
+  <div class="product" data-categories="3 4" data-weight="30" data-price="500">Product 5 (3, 4, Weight 30g, Price ₹500)</div>
+  <div class="product" data-categories="3 4" data-weight="30" data-price="100">Product 5 (3, 4, Weight 30g, Price ₹100)</div>
 
   <!-- Message for no products found -->
   <p class="no-products-found" style="display: none;">No products found.</p>
 
   <script>
     $(document).ready(function() {
-      // Initialize the price range slider
+     
       $( "#slider-range" ).slider({
         range: true,
-        min: 10, // Set the minimum price to ₹10
+        min: 100,
         max: 500,
-        values: [ 100, 500 ], // Adjust initial values to match your price range
+        values: [ 100, 500 ],
         slide: function( event, ui ) {
-          $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
-          filterProducts(); // Update the product list when the slider is moved
+        $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
+          filterProducts();
         }
       });
+      $( "#amount" ).val( "₹" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - ₹" + $( "#slider-range" ).slider( "values", 1 ) );
 
       // Handle the initial filter based on checked checkboxes, weight, and price range
       filterProducts();
@@ -83,7 +86,7 @@
       function filterProducts() {
         // Get an array of checked categories
         var checkedCategories = $('.filter:checked').map(function() {
-          return $(this).data('category');
+          return $(this).data('category').toString();
         }).get();
 
         // Get an array of selected exact weights
@@ -98,7 +101,7 @@
         $('.product').hide();
 
         // Show all products if no checkboxes are checked and both handles are at the minimum and maximum
-        if (checkedCategories.length === 0 && selectedWeights.length === 0 && priceRange[0] === 10 && priceRange[1] === 500) {
+        if (checkedCategories.length === 0 && selectedWeights.length === 100 && priceRange[0] === 100 && priceRange[1] === 500) {
           $('.product').show();
           $('.no-products-found').hide();
           return;
@@ -106,13 +109,13 @@
 
         // Show products that match the checked categories, selected exact weights, and price range
         var productsToShow = $('.product').filter(function() {
-          var productCategories = $(this).data('categories').split(' ').map(Number);
+          var productCategories = ($(this).data('categories').toString()).split(' ');
           var productWeight = parseInt($(this).data('weight'));
           var productPrice = parseInt($(this).data('price'));
 
           var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
           var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
-          var priceMatch = (productPrice >= priceRange[0] && productPrice <= priceRange[1]);
+          var priceMatch = (priceRange[0] === 100 && priceRange[1] === 500) || (productPrice >= priceRange[0] && productPrice <= priceRange[1]);
 
           return categoryMatch && weightMatch && priceMatch;
         });
