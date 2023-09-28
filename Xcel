@@ -1,12 +1,6 @@
 function filterProducts() {
   // ...
 
-  // Get the selected minimum and maximum price range values
-  var minPrice = priceRange[0];
-  var maxPrice = priceRange[1];
-
-  // ...
-
   // Show products that match the checked categories, selected exact weights, and price range
   var productsToShow = $('.product').filter(function () {
     var productCategories = ($(this).data('categories').toString()).split(' ');
@@ -17,7 +11,16 @@ function filterProducts() {
     var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
     var priceMatch = (minPrice === 100 && maxPrice === 500) || (productPrice >= minPrice && productPrice <= maxPrice);
 
-    return categoryMatch && weightMatch && priceMatch;
+    // Adjust the priceMatch condition to handle both minimum and maximum prices
+    if (minPrice === 100 && maxPrice === 500) {
+      return categoryMatch && weightMatch && priceMatch;
+    } else if (minPrice === 100) {
+      return categoryMatch && weightMatch && (productPrice <= maxPrice);
+    } else if (maxPrice === 500) {
+      return categoryMatch && weightMatch && (productPrice >= minPrice);
+    } else {
+      return categoryMatch && weightMatch && (productPrice >= minPrice && productPrice <= maxPrice);
+    }
   });
 
   // ...
