@@ -97,8 +97,8 @@
         // Hide all products
         $('.product').hide();
 
-        // Show all products if no checkboxes are checked and price range is at the minimum
-        if (checkedCategories.length === 0 && selectedWeights.length === 0 && priceRange[0] === 0) {
+        // Show all products if no checkboxes are checked and both handles are at the minimum and maximum
+        if (checkedCategories.length === 0 && selectedWeights.length === 0 && priceRange[0] === 0 && priceRange[1] === 100) {
           $('.product').show();
           $('.no-products-found').hide();
           return;
@@ -112,7 +112,7 @@
 
           var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
           var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
-          var priceMatch = priceRange[0] === 0 || (productPrice >= priceRange[0] && productPrice <= priceRange[1]);
+          var priceMatch = (priceRange[0] === 0 && priceRange[1] === 100) || (productPrice >= priceRange[0] && productPrice <= priceRange[1]);
 
           return categoryMatch && weightMatch && priceMatch;
         });
