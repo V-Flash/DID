@@ -63,9 +63,9 @@
       // Initialize the price range slider
       $( "#slider-range" ).slider({
         range: true,
-        min: 0,
-        max: 100,
-        values: [ 0, 100 ],
+        min: 10, // Set the minimum price to ₹10
+        max: 500,
+        values: [ 100, 500 ], // Adjust initial values to match your price range
         slide: function( event, ui ) {
           $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
           filterProducts(); // Update the product list when the slider is moved
@@ -98,7 +98,7 @@
         $('.product').hide();
 
         // Show all products if no checkboxes are checked and both handles are at the minimum and maximum
-        if (checkedCategories.length === 0 && selectedWeights.length === 0 && priceRange[0] === 0 && priceRange[1] === 100) {
+        if (checkedCategories.length === 0 && selectedWeights.length === 0 && priceRange[0] === 10 && priceRange[1] === 500) {
           $('.product').show();
           $('.no-products-found').hide();
           return;
@@ -112,7 +112,7 @@
 
           var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
           var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
-          var priceMatch = (priceRange[0] === 0 && priceRange[1] === 100) || (productPrice >= priceRange[0] && productPrice <= priceRange[1]);
+          var priceMatch = (productPrice >= priceRange[0] && productPrice <= priceRange[1]);
 
           return categoryMatch && weightMatch && priceMatch;
         });
