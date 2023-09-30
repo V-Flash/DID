@@ -1,141 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkbox, Price Range, and Exact Weight Filter</title>
-  <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
-  <style>
-    /* Add some basic styles for demonstration */
-    .product {
-      margin: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      display: inline-block;
-    }
-    .no-products-found {
-      font-weight: bold;
-      color: red;
-    }
-    .price-range-slider {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Checkbox, Price Range, and Exact Weight Filter</h1>
-
-  <!-- Checkboxes for filtering by category -->
-  <label><input type="checkbox" class="filter" data-category="1" checked> 1</label>
-  <label><input type="checkbox" class="filter" data-category="2" checked> 2</label>
-  <label><input type="checkbox" class="filter" data-category="3" checked> 3</label>
-  <label><input type="checkbox" class="filter" data-category="4" checked> 4</label>
-  <label><input type="checkbox" class="filter" data-category="5" checked> 5</label>
-
-  <!-- Checkboxes for filtering by exact weight -->
-  <label><input type="checkbox" class="weight-filter" data-weight="10" checked> 10g</label>
-  <label><input type="checkbox" class="weight-filter" data-weight="20" checked> 20g</label>
-  <label><input type="checkbox" class="weight-filter" data-weight="30" checked> 30g</label>
-
-  <!-- Price range slider -->
-  <div class="price-range-slider">
-    <p class="range-value">
-      <input type="text" id="amount" readonly>
-    </p>
-    <div id="slider-range" class="range-bar"></div>
-  </div>
-
-  <!-- Product list -->
-  <div class="product" data-categories="3 4" data-weight="30" data-price="100">Product 5 (3, 4, Weight 30g, Price ₹100)</div>
-
-  <div class="product" data-categories="1 3" data-weight="20" data-price="150">Product 3 (1, 3, Weight 20g, Price ₹150)</div>
-
-  <div class="product" data-categories="1 2" data-weight="10" data-price="250">Product 1 (1, 2, Weight 10g, Price ₹250)</div>
-
-  <div class="product" data-categories="1 2" data-weight="10" data-price="300">Product 1 (1, 2, Weight 10g, Price ₹300)</div>
-
-  <div class="product" data-categories="4" data-weight="20" data-price="400">Product 4 (4, Weight 20g, Price ₹400)</div>
-
-  <div class="product" data-categories="3 4" data-weight="30" data-price="500">Product 5 (3, 4, Weight 30g, Price ₹500)</div>
-
-  <!-- Message for no products found -->
-  <p class="no-products-found" style="display: none;">No products found.</p>
-
-  <script>
-    $(document).ready(function() {
-      var minPrice = 100; // Initial minimum price
-      var maxPrice = 500; // Initial maximum price
-
-      $("#slider-range").slider({
-        step: 1,
-        range: true,
-        min: 100,
-        max: 500,
-        values: [minPrice, maxPrice], // Set initial values for both handles
-        slide: function(event, ui) {
-          minPrice = ui.values[0]; // Update the minimum price
-          maxPrice = ui.values[1]; // Update the maximum price
-          $("#amount").val("₹" + minPrice + " - ₹" + maxPrice);
-          filterProducts();
-        }
-      });
-
-      // Initialize the price range display
-      $("#amount").val("₹" + minPrice + " - ₹" + maxPrice);
-
-      // Handle the initial filter based on checked checkboxes, weight, and price range
-      filterProducts();
-
-      // Listen for changes to checkboxes, weight checkboxes, and price range
-      $('.filter, .weight-filter').change(function() {
-        filterProducts();
-      });
-
-      function filterProducts() {
-        // Get an array of checked categories
-        var checkedCategories = $('.filter:checked').map(function() {
-          return $(this).data('category').toString();
-        }).get();
-
-        // Get an array of selected exact weights
-        var selectedWeights = $('.weight-filter:checked').map(function() {
-          return parseInt($(this).data('weight'));
-        }).get();
-
-        // Hide all products
-        $('.product').hide();
-
-        // Show all products if no checkboxes are checked and both handles are at the minimum and maximum
-        if (checkedCategories.length === 0 && selectedWeights.length === 0 && minPrice === 100 && maxPrice === 500) {
-          $('.product').show();
-          $('.no-products-found').hide();
-          return;
-        }
-
-        // Show products that match the checked categories, selected exact weights, and price range
-        var productsToShow = $('.product').filter(function() {
-          var productCategories = ($(this).data('categories').toString()).split(' ');
-          var productWeight = parseInt($(this).data('weight'));
-          var productPrice = parseInt($(this).data('price'));
-
-          var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
-          var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
-          var priceMatch = (minPrice === 100 && maxPrice === 500) || (productPrice >= minPrice && productPrice <= maxPrice);
-
-          return categoryMatch && weightMatch && priceMatch;
-        });
-
-        // Display "No products found" message if no products match
-        if (productsToShow.length === 0) {
-          $('.no-products-found').show();
-        } else {
-          productsToShow.show();
-          $('.no-products-found').hide();
-        }
-      }
-    });
-  </script>
-</body>
-</html>
+ <?php
+                        require 'admin/functions.php';
+                        $conn=conn();
+                        // Check connection
+                        if ($conn === false) {
+                        die("ERROR: Could not connect. " . mysqli_connect_error());
+                        }
+                        if (isset($_POST["submit"])) {
+                        $inquiry_date = date("Y-m-d");
+                        $name = $_POST["name"];
+                        $email = $_POST["email"];
+                        $contact = $_POST["contact"];
+                        $subject = $_POST["subject"];
+                        $message = $_POST["message"];
+                        date_default_timezone_set("Asia/Calcutta");
+                        $createdon = date("d/m/Y h:i:sA");
+                        $recaptcha = $_POST["g-recaptcha-response"];
+                        // Put secret key here, which we get
+                        // from google console
+                        $secret_key = "XYa95kEpeTglve2koZL6XYa95kEpeTglve2koZL6";
+                        // Hitting request to the URL, Google will
+                        // respond with success or error scenario
+                        $url =
+                        "https://www.google.com/recaptcha/api/siteverify?secret=" .
+                        $secret_key .
+                        "&response=" .
+                        $recaptcha;
+                        // Making request to verify captcha
+                        $response = file_get_contents($url);
+                        // Response return by google is in
+                        // JSON format, so we have to parse
+                        // that json
+                        $response = json_decode($response);
+                        // Checking, if response is true or not
+                        if ($response->success == true) {
+                        $sql = "INSERT INTO inquiry(inquiry_date, name, email, contact, subject, message)
+                        VALUES ('$inquiry_date', '$name', '$email', '$contact', '$subject', '$message')";
+                        if (mysqli_query($conn, $sql)) {
+                        
+                        $to      = "vaibhav@tigermail.in";
+                        $subject = "Contact Enquiry Mail Notification";
+                        $message = "
+                        <html>
+                            <body>
+                                <table width='750' border='0' cellpadding='0' cellspacing='0' bgcolor='#FFFFFF'>
+                                    <tr>
+                                        <td height='35' bgcolor='#b00000' style='font:bold 15px Arial, Helvetica, sans-serif; color:#FFFFFF;'>
+                                            &nbsp;&nbsp;Contact Enquiry Mail Notification
+                                        </td>
+                                    </tr>
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr>
+                                        <td align='center'>
+                                            <table width='725' border='0' cellpadding='4' cellspacing='1' bgcolor='#CCCCCC'>
+                                                <tr><td width='135' height='35' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>Name</td><td width='590' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>" . $name . "</td></tr>
+                                                
+                                                <tr><td width='135' height='35' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>Email</td><td width='590' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>" . $email . "</td></tr>
+                                                <tr><td width='135' height='35' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>Contact No.</td><td width='590' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>" . $contact . "</td></tr>
+                                                <tr><td width='135' height='35' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>Subject</td><td width='590' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>" . $subject . "</td></tr>
+                                                <tr><td width='135' height='35' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>Message</td><td width='590' align='left' valign='middle' bgcolor='#FFFFFF' style='font:12px Verdana, Arial, Helvetica, sans-serif; color:#000000; padding-left:15px;'>" . $message . "</td></tr>
+                                                
+                                                
+                                            </table></td></tr>
+                                            <tr><td>&nbsp;</td></tr>
+                                            <tr><td height='35' bgcolor='#b00000' style='font:9px Verdana, Arial, Helvetica, sans-serif; color:#fff;'>&nbsp;</td></tr>
+                                        </table>
+                                    </body>
+                                </html>
+                                ";
+                                // Always set content-type when sending HTML email
+                                $headers = "MIME-Version: 1.0" . "\r\n";
+                                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                                // More headers
+                                $headers .= 'From: <>' . "\r\n";
+                                //$headers .= 'BCc: ' . "\r\n";
+                                //$headers .= 'BCc: ' . "\r\n";
+                                mail($to, $subject, $message, $headers);
+                                $to2 = $email;
+                                $subject2 = "Mail Notification";
+                                $message2 = "<p>Your enquiry has been successfully received. We thank you for your interest and shall soon revert on this.</p><p>Please click on other links to explore our site further.</p>
+                                ";
+                                // Always set content-type when sending HTML email
+                                $headers2 = "MIME-Version: 1.0" . "\r\n";
+                                $headers2 .=
+                                "Content-type:text/html;charset=UTF-8" . "\r\n";
+                                // More headers
+                                $headers2 .= "From: <info@medicap.com>" . "\r\n";
+                                //$headers .= 'BCc: ' . "\r\n";
+                                //$headers .= 'BCc: ' . "\r\n";
+                                mail($to2, $subject2, $message2, $headers2);
+                                ?> <script type="text/javascript">
+                                window.location.assign("response-enquiry.php");
+                                </script>
+                                <?php
+                                } else {
+                                ?> <script type="text/javascript">
+                                window.location.assign("");
+                                </script>
+                                <?php
+                                }
+                                } else {
+                                echo '<div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="enq-form">
+                                        <div class="form-group">
+                                            
+                                            <div class="alert alert-danger ml-3 mt-2" id="errorgoogle"><strong> Error! </strong> in Google reCAPTACHA.</div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                            }
+                            }
+                            ?>
