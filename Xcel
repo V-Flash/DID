@@ -1,3 +1,51 @@
-$(document).ready(function() {
-        $(".address br").remove();
-    });
+# views.py
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import JsonResponse
+
+def AboutView(request):
+    if request.method == 'POST':
+        sender = request.POST.get('message_email')
+        message = request.POST.get('message')
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+
+        # Verify reCAPTCHA
+        import requests
+        data = {
+            'secret': settings.RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response,
+        }
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = response.json()
+
+        if result.get('success') and sender and message:
+            send_mail('New message from {}'.format(sender), message, sender, ["vivek.219beceg013@gmail.com"],
+                      fail_silently=False)
+            return render(request, 'about.html', {'message_email': sender})
+
+        # If reCAPTCHA validation fails or sender/message is empty, show an error message
+        error_message = "reCAPTCHA validation failed. Please try again."
+        return render(request, 'about.html', {'message_email': sender, 'error_message': error_message})
+
+    else:
+        return render(request, 'about.html')
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <!-- Your other input fields here -->
+    <input type="email" name="message_email" required>
+    <textarea name="message" required></textarea>
+    
+    <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
+    
+    <button type="submit">Submit</button>
+    
+    {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+    {% endif %}
+</form>
+
+
