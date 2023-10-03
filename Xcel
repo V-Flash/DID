@@ -44,6 +44,14 @@ def AboutView(request):
     <button type="submit">Submit</button>
     
     {% if error_message %}
+
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+      <i class="bi bi-exclamation-triangle-fill mx-2"></i>
+      <div>
+        An example danger alert with an icon
+      </div>
+    </div>
+
     <p class="error">{{ error_message }}</p>
     {% endif %}
 </form>
