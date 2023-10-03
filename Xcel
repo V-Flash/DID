@@ -46,7 +46,7 @@ def AboutView(request):
     {% if error_message %}
 
     <div class="alert alert-danger d-flex align-items-center" role="alert">
-      <i class="bi bi-exclamation-triangle-fill mx-2"></i>
+      <span class="material-symbols-outlined mx-2">error</span>
       <div>
         An example danger alert with an icon
       </div>
