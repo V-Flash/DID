@@ -1,5 +1,5 @@
-// Check if the user has already seen the popup
-const hasSeenPopup = localStorage.getItem('hasSeenPopup');
+// Check if the user has already seen the popup during this session
+const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
 
 if (!hasSeenPopup) {
   const mediaQuery = window.matchMedia('(max-width: 767px)');
@@ -22,6 +22,6 @@ if (!hasSeenPopup) {
     $('#modal-popup02').modal('show');
   }
 
-  // Set a flag in local storage to indicate that the user has seen the popup
-  localStorage.setItem('hasSeenPopup', 'true');
+  // Set a flag in session storage to indicate that the user has seen the popup during this session
+  sessionStorage.setItem('hasSeenPopup', 'true');
 }
