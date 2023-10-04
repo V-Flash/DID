@@ -1,51 +1,14 @@
+@media only screen and (max-width: 991px) 
 
-.newsletter-header p {
-    font-size: 20px;
-    font-weight: 600;
-    
-}
+.about-detail {justify-content: space-between;}
 
-.newsletter-header {
-    margin-top: 0;
-    margin-bottom: 15px;
-}
+.content-form{width:100%}
 
+@media only screen and (max-width: 730px) 
 
-#hide-form-button{
-    display: flex;
-    align-items: center;
-}
-
-
-
-
-@media only screen and (max-width: 1280px) 
-
-.name {font-size: 3.5rem;}
-
-
-@media only screen and (max-width: 767px) 
-
-.newsletter-header {  margin-top: 0px;}
-
-
-@media only screen and (max-width: 393px)
+.about-detail{display: block;}
 
 .social {
-    gap: 30px;
     display: flex;
-}
-
-.social li {
-    margin-right: 0px; 
-}
-
-
-@media only screen and (max-width: 375px)
-.heading {
-    font-size: 2.2rem;
-}
-
-.heading {
-    font-size: 2.2rem;
+    gap: 25px;
 }
