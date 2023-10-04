@@ -1,6 +1,14 @@
 <?php
-		if($product->get_sale_price()) {
-			$price = $product->get_sale_price();
-		} else { $price = $product->get_regular_price(); }
-		echo $price;
-	?>
+function getProductPrice($product) {
+    if ($product->get_sale_price()) {
+        return $product->get_sale_price();
+    } else {
+        return $product->get_regular_price();
+    }
+}
+
+// Example usage:
+$product = /* your product object here */;
+$price = getProductPrice($product);
+echo $price;
+?>
