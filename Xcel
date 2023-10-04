@@ -1,59 +1,51 @@
-# views.py
-from django.shortcuts import render
-from django.core.mail import send_mail
-from django.conf import settings
-from django.http import JsonResponse
-
-def AboutView(request):
-    if request.method == 'POST':
-        sender = request.POST.get('message_email')
-        message = request.POST.get('message')
-        recaptcha_response = request.POST.get('g-recaptcha-response')
-
-        # Verify reCAPTCHA
-        import requests
-        data = {
-            'secret': settings.RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response,
-        }
-        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-        result = response.json()
-
-        if result.get('success') and sender and message:
-            send_mail('New message from {}'.format(sender), message, sender, ["vivek.219beceg013@gmail.com"],
-                      fail_silently=False)
-            return render(request, 'about.html', {'message_email': sender})
-
-        # If reCAPTCHA validation fails or sender/message is empty, show an error message
-        error_message = "reCAPTCHA validation failed. Please try again."
-        return render(request, 'about.html', {'message_email': sender, 'error_message': error_message})
-
-    else:
-        return render(request, 'about.html')
-
-
-
-<form method="post">
-    {% csrf_token %}
-    <!-- Your other input fields here -->
-    <input type="email" name="message_email" required>
-    <textarea name="message" required></textarea>
-    
-    <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
-    
-    <button type="submit">Submit</button>
-    
-    {% if error_message %}
-
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
-      <span class="material-symbols-outlined mx-2">error</span>
-      <div>
-        An example danger alert with an icon
-      </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+      
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 
-    <p class="error">{{ error_message }}</p>
-    {% endif %}
-</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
+<script>
+
+  $(document).ready(function(){
+
+     $(document).ready(function(){
+    $("#myModal").modal('show');
+  });
+ 
+  });
+
+</script>
+
+  </body>
+</html>
