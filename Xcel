@@ -52,6 +52,9 @@
 
         // Check screen orientation when orientation changes
         window.addEventListener('orientationchange', checkScreenOrientation);
+
+        // Check screen orientation when the window is resized
+        window.addEventListener('resize', checkScreenOrientation);
       });
     </script>
   </body>
