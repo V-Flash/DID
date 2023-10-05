@@ -1,35 +1,26 @@
-$(document).ready(function() {
-  const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
+  $(document).ready(function() {
 
-  function showPopup() {
-    $('#modal-popup02').modal('show');
-    $("#landscapegif").css("display", "none");
-  }
+    const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
 
-  function hidePopup() {
-    $('#modal-popup02').modal('hide');
-    $("#landscapegif").css("display", "flex");
-  }
-
-  if (!hasSeenPopup) {
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-
-    function checkScreen() {
-      if (mediaQuery.matches) {
-        if (window.innerWidth > window.innerHeight) {
-          hidePopup();
-        } else {
-          showPopup();
-        }
+if (!hasSeenPopup) {
+  
+    function checkScreenOrientation() {
+      if (window.innerHeight > window.innerWidth) {
+        $('#modal-popup02').modal('show');
+        $("#landscapegif").css("display", "none");
       } else {
-        showPopup();
+        $('#modal-popup02').modal('hide');
+        $("#landscapegif").css("display", "flex");
       }
     }
 
-    checkScreen();
-    window.addEventListener('resize', checkScreen);
-    sessionStorage.setItem('hasSeenPopup', 'true');
-  } else {
-    showPopup();
-  }
+    checkScreenOrientation();
+    window.addEventListener('orientationchange', checkScreenOrientation);
+    window.addEventListener('resize', checkScreenOrientation);
+  
+
+  
+  sessionStorage.setItem('hasSeenPopup', 'true');
+}
+
 });
