@@ -1,30 +1,5 @@
-$(document).ready(function() {
-  const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
-  const popupShown = sessionStorage.getItem('popupShown');
-  const mediaQuery = window.matchMedia('(max-width: 767px)');
-
-  if (!hasSeenPopup || (!popupShown && mediaQuery.matches)) {
-    function checkScreenOrientation() {
-      if (window.innerHeight > window.innerWidth) {
-        if (mediaQuery.matches) {
-          $('#modal-popup02').modal('show');
-          $("#landscapegif").css("display", "none");
-          sessionStorage.setItem('popupShown', 'true'); // Set the flag that the popup has been shown
-        }
-      } else {
-        $('#modal-popup02').modal('hide');
-        if (mediaQuery.matches) {
-          $("#landscapegif").css("display", "flex");
-        }
-      }
-    }
-
-    checkScreenOrientation();
-    window.addEventListener('orientationchange', checkScreenOrientation);
-    window.addEventListener('resize', checkScreenOrientation);
-  } else {
-    $('#modal-popup02').modal('hide'); // Hide the popup if it has already been shown
-  }
-
-  sessionStorage.setItem('hasSeenPopup', 'true');
-});
+/ Add an event listener to detect when the modal is closed
+    modalPopup02.on('hidden.bs.modal', function () {
+      // Do something when the modal is closed
+      console.log('Modal closed');
+    });
