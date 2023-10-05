@@ -1,15 +1,15 @@
-  $(document).ready(function() {
+$(document).ready(function() {
+  const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
+  const popupShown = sessionStorage.getItem('popupShown');
 
-    const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
+  if (!hasSeenPopup || !popupShown) {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
 
-if (!hasSeenPopup) {
-  const mediaQuery = window.matchMedia('(max-width: 767px)');
-
-  if (mediaQuery.matches) {
     function checkScreenOrientation() {
       if (window.innerHeight > window.innerWidth) {
         $('#modal-popup02').modal('show');
         $("#landscapegif").css("display", "none");
+        sessionStorage.setItem('popupShown', 'true'); // Set the flag that the popup has been shown
       } else {
         $('#modal-popup02').modal('hide');
         $("#landscapegif").css("display", "flex");
@@ -20,11 +20,8 @@ if (!hasSeenPopup) {
     window.addEventListener('orientationchange', checkScreenOrientation);
     window.addEventListener('resize', checkScreenOrientation);
   } else {
-    $('#modal-popup02').modal('show');
+    $('#modal-popup02').modal('hide'); // Hide the popup if it has already been shown
   }
 
-  
   sessionStorage.setItem('hasSeenPopup', 'true');
-}
-
 });
