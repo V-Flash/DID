@@ -1,1 +1,1 @@
-$('#modal-popup02').modal('show')
+(!modalPopup02.hasClass('show'))
