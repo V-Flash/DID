@@ -1,9 +1,8 @@
-  $(document).ready(function() {
+$(document).ready(function() {
+  const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
+  let isPopupClosed = false; // Add a flag to track whether the popup is closed
 
-    const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
-
-if (!hasSeenPopup) {
-  
+  if (!hasSeenPopup || !isPopupClosed) {
     function checkScreenOrientation() {
       if (window.innerHeight > window.innerWidth) {
         $('#modal-popup02').modal('show');
@@ -16,11 +15,16 @@ if (!hasSeenPopup) {
 
     checkScreenOrientation();
     window.addEventListener('orientationchange', checkScreenOrientation);
-    window.addEventListener('resize', checkScreenOrientation);
-  
+    window.addEventListener('resize', function() {
+      if (!isPopupClosed) { // Only call checkScreenOrientation if the popup is not closed
+        checkScreenOrientation();
+      }
+    });
 
-  
-  sessionStorage.setItem('hasSeenPopup', 'true');
-}
-
+    // Handle closing of the popup
+    $('#modal-popup02').on('hidden.bs.modal', function () {
+      isPopupClosed = true; // Set the flag to indicate that the popup is closed
+      sessionStorage.setItem('hasSeenPopup', 'true');
+    });
+  }
 });
