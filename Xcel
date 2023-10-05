@@ -1,10 +1,9 @@
 $(document).ready(function() {
   const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
   const popupShown = sessionStorage.getItem('popupShown');
+  const mediaQuery = window.matchMedia('(max-width: 767px)');
 
-  if (!hasSeenPopup || !popupShown) {
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-
+  if (!hasSeenPopup || (!popupShown && mediaQuery.matches)) {
     function checkScreenOrientation() {
       if (window.innerHeight > window.innerWidth) {
         $('#modal-popup02').modal('show');
