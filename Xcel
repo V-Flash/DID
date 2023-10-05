@@ -2,29 +2,37 @@ $(document).ready(function() {
   const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
   let isPopupClosed = false; // Add a flag to track whether the popup is closed
 
-  if (!hasSeenPopup || !isPopupClosed) {
-    function checkScreenOrientation() {
-      if (window.innerHeight > window.innerWidth) {
+  if ((!hasSeenPopup || !isPopupClosed) && window.innerHeight > window.innerWidth) {
+    // Only show the popup if it hasn't been seen and the screen is in portrait mode
+    $('#modal-popup02').modal('show');
+    $("#landscapegif").css("display", "none");
+  }
+
+  function checkScreenOrientation() {
+    if (window.innerHeight > window.innerWidth) {
+      if (!isPopupClosed) { // Only show the popup if it's not closed
         $('#modal-popup02').modal('show');
         $("#landscapegif").css("display", "none");
-      } else {
-        $('#modal-popup02').modal('hide');
-        $("#landscapegif").css("display", "flex");
       }
+    } else {
+      $('#modal-popup02').modal('hide');
+      $("#landscapegif").css("display", "flex");
     }
-
-    checkScreenOrientation();
-    window.addEventListener('orientationchange', checkScreenOrientation);
-    window.addEventListener('resize', function() {
-      if (!isPopupClosed) { // Only call checkScreenOrientation if the popup is not closed
-        checkScreenOrientation();
-      }
-    });
-
-    // Handle closing of the popup
-    $('#modal-popup02').on('hidden.bs.modal', function () {
-      isPopupClosed = true; // Set the flag to indicate that the popup is closed
-      sessionStorage.setItem('hasSeenPopup', 'true');
-    });
   }
+
+  checkScreenOrientation();
+  window.addEventListener('orientationchange', checkScreenOrientation);
+  window.addEventListener('resize', function() {
+    if (!isPopupClosed) { // Only call checkScreenOrientation if the popup is not closed
+      checkScreenOrientation();
+    }
+  });
+
+  // Handle closing of the popup
+  $('#modal-popup02').on('hidden.bs.modal', function () {
+    isPopupClosed = true; // Set the flag to indicate that the popup is closed
+    if (!hasSeenPopup) {
+      sessionStorage.setItem('hasSeenPopup', 'true');
+    }
+  });
 });
