@@ -1,38 +1,32 @@
 // Check if the user has already seen the popup during this session
 const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
 
-const mediaQuery = window.matchMedia('(max-width: 767px)');
-
-function checkScreenOrientation() {
-  if (window.innerHeight > window.innerWidth) {
-    if ($('#modal-popup02').hasClass('show')) {
-      $('#landscapegif').css('display', 'none');
-    } else {
-      $('#modal-popup02').modal('hide');
-    }
-  } else {
-    if ($('#modal-popup02').hasClass('show')) {
-      $('#landscapegif').css('display', 'none');
-    } else {
-      $('#modal-popup02').modal('hide');
-      $('#landscapegif').css('display', 'flex');
-    }
-  }
-}
-
-// Check if the user has not seen the popup during this session
 if (!hasSeenPopup) {
+  const mediaQuery = window.matchMedia('(max-width: 767px)');
+
   if (mediaQuery.matches) {
+    function checkScreenOrientation() {
+      if (window.innerHeight > window.innerWidth) {
+        $('#modal-popup02').modal('show');
+        $("#landscapegif").css("display", "none");
+      } else {
+        $('#modal-popup02').modal('hide');
+        // Note: You don't need to hide #landscapegif here since the modal is hidden.
+      }
+    }
+
     checkScreenOrientation();
     window.addEventListener('orientationchange', checkScreenOrientation);
     window.addEventListener('resize', checkScreenOrientation);
+
+    // Add an event listener for the modal's close event
+    $('#modal-popup02').on('hidden.bs.modal', function () {
+      $("#landscapegif").css("display", "none");
+    });
   } else {
     $('#modal-popup02').modal('show');
   }
 
   // Set a flag in session storage to indicate that the user has seen the popup during this session
   sessionStorage.setItem('hasSeenPopup', 'true');
-} else {
-  // If the user has seen the popup during this session, show or hide the landscapegif based on screen orientation
-  checkScreenOrientation();
 }
