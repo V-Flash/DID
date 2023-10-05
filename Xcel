@@ -1,1 +1,30 @@
-(!modalPopup02.hasClass('show'))
+  $(document).ready(function() {
+
+    const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
+
+if (!hasSeenPopup) {
+  const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+  if (mediaQuery.matches) {
+    function checkScreenOrientation() {
+      if (window.innerHeight > window.innerWidth) {
+        $('#modal-popup02').modal('show');
+        $("#landscapegif").css("display", "none");
+      } else {
+        $('#modal-popup02').modal('hide');
+        $("#landscapegif").css("display", "flex");
+      }
+    }
+
+    checkScreenOrientation();
+    window.addEventListener('orientationchange', checkScreenOrientation);
+    window.addEventListener('resize', checkScreenOrientation);
+  } else {
+    $('#modal-popup02').modal('show');
+  }
+
+  
+  sessionStorage.setItem('hasSeenPopup', 'true');
+}
+
+});
