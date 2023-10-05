@@ -1,5 +1,9 @@
-/ Add an event listener to detect when the modal is closed
-    modalPopup02.on('hidden.bs.modal', function () {
-      // Do something when the modal is closed
-      console.log('Modal closed');
-    });
+const modalPopup02 = $('#modal-popup02'); // Store a reference to the modal
+
+if (modalPopup02.css('display') !== 'none') {
+  // The modal is not closed (it's open or opening)
+  console.log('Modal is open or opening');
+} else {
+  // The modal is closed
+  console.log('Modal is closed');
+}
