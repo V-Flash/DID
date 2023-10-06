@@ -1,38 +1,151 @@
-$(document).ready(function() {
-  const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
-  let isPopupClosed = false; // Add a flag to track whether the popup is closed
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter</title>
+  <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
 
-  if ((!hasSeenPopup || !isPopupClosed) && window.innerHeight > window.innerWidth) {
-    // Only show the popup if it hasn't been seen and the screen is in portrait mode
-    $('#modal-popup02').modal('show');
-    $("#landscapegif").css("display", "none");
-  }
+  <style>
 
-  function checkScreenOrientation() {
-    if (window.innerHeight > window.innerWidth) {
-      if (!isPopupClosed) { // Only show the popup if it's not closed
-        $('#modal-popup02').modal('show');
-        $("#landscapegif").css("display", "none");
+    .product {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      display: inline-block;
+    }
+
+    .no-products-found {
+      font-weight: bold;
+      color: red;
+    }
+    .price-range-slider {
+      margin-top: 20px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Checkboxes for filtering by category -->
+  <label><input type="checkbox" class="filter" data-category="1">1</label>
+  <label><input type="checkbox" class="filter" data-category="2">2</label>
+  <label><input type="checkbox" class="filter" data-category="3">3</label>
+  <label><input type="checkbox" class="filter" data-category="4">4</label>
+  <label><input type="checkbox" class="filter" data-category="5">5</label>
+
+  <!-- Checkboxes for filtering by exact weight -->
+  <label><input type="checkbox" class="weight-filter" data-weight="10">10g</label>
+  <label><input type="checkbox" class="weight-filter" data-weight="20">20g</label>
+  <label><input type="checkbox" class="weight-filter" data-weight="30">30g</label>
+
+  <!-- Price range slider -->
+  <div class="price-range-slider">
+    <p class="range-value">
+      <input type="text" id="amount" readonly>
+    </p>
+    <div id="slider-range" class="range-bar"></div>
+  </div>
+
+  <!-- Product list -->
+  <div class="product" data-categories="3 4" data-weight="30" >Product 5 (3, 4, Weight 30g,)
+
+    <div data-price="100"> Price ₹100</div>
+
+  </div>
+
+  <div class="product" data-categories="1 3" data-weight="20" >Product 3 (1, 3, Weight 20g, )
+
+
+    <div data-price="150">Price ₹150</div>
+
+  </div>
+
+  
+
+  <!-- Message for no products found -->
+  <p class="no-products-found" style="display: none;">No products found.</p>
+
+  <script>
+
+    $(document).ready(function() {
+      
+      var minPrice = 100; 
+      var maxPrice = 500;
+
+      $("#slider-range").slider({
+        step: 1,
+        range: true,
+        min: 100,
+        max: 500,
+        values: [minPrice, maxPrice], 
+        slide: function(event, ui) {
+          minPrice = ui.values[0]; 
+          maxPrice = ui.values[1]; 
+          $("#amount").val("₹" + minPrice + " - ₹" + maxPrice);
+          filterProducts();
+        }
+      });
+
+
+      $("#amount").val("₹" + minPrice + " - ₹" + maxPrice);
+
+    
+      $('.filter, .weight-filter').change(function() {
+        filterProducts();
+      });
+
+      function filterProducts() {
+        
+        var checkedCategories = $('.filter:checked').map(function() {
+          return $(this).data('category').toString();
+        }).get();
+
+        var selectedWeights = $('.weight-filter:checked').map(function() {
+          return parseInt($(this).data('weight'));
+        }).get();
+
+        console.log(checkedCategories);
+        console.log(selectedWeights);
+       
+        $('.product').hide();
+        
+        if (checkedCategories.length === 0 && selectedWeights.length === 0 && minPrice === 100 && maxPrice === 500) {
+          $('.product').show();
+          $('.no-products-found').hide();
+          return;
+        }
+
+       
+        var productsToShow = $('.product').filter(function() {
+
+          var productCategories = ($(this).data('categories').toString()).split(' ');
+          var productWeight = parseInt($(this).data('weight'));
+          var productPrice = parseInt($(this).data('price'));
+
+          var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
+
+          var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
+
+          var priceMatch = (minPrice === 100 && maxPrice === 500) || (productPrice >= minPrice && productPrice <= maxPrice);
+
+          return categoryMatch && weightMatch && priceMatch;
+
+        });
+
+     
+        if (productsToShow.length === 0) {
+          $('.no-products-found').show();
+        } else {
+          productsToShow.show();
+          $('.no-products-found').hide();
+        }
+
       }
-    } else {
-      $('#modal-popup02').modal('hide');
-      $("#landscapegif").css("display", "flex");
-    }
-  }
-
-  checkScreenOrientation();
-  window.addEventListener('orientationchange', checkScreenOrientation);
-  window.addEventListener('resize', function() {
-    if (!isPopupClosed) { // Only call checkScreenOrientation if the popup is not closed
-      checkScreenOrientation();
-    }
-  });
-
-  // Handle closing of the popup
-  $('#modal-popup02').on('hidden.bs.modal', function () {
-    isPopupClosed = true; // Set the flag to indicate that the popup is closed
-    if (!hasSeenPopup) {
-      sessionStorage.setItem('hasSeenPopup', 'true');
-    }
-  });
-});
+    });
+  </script>
+</body>
+</html>
