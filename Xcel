@@ -1,55 +1,57 @@
 <?php
-// Initialize an empty array to store product weights
-$product_weights = array();
+/**
+ * Single Product Image
+ *
+ * This template can be overridden by copying it to yourtheme/woocommerce/single-product/product-image.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce\Templates
+ * @version 7.8.0
+ */
 
-// Query all products (adjust the arguments as needed)
-$args = array(
-    'post_type' => 'product',
-    'posts_per_page' => -1, // Retrieve all products
-);
+defined( 'ABSPATH' ) || exit;
 
-$products = new WP_Query($args);
-
-while ($products->have_posts()) {
-    $products->the_post();
-    $product = wc_get_product(get_the_ID());
-    $product_weight = $product->get_weight();
-
-    // Store product weight in the array
-    $product_weights[] = $product_weight;
+// Note: `wc_get_gallery_image_html` was added in WC 3.3.2 and did not exist prior. This check protects against theme overrides being used on older versions of WC.
+if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
+	return;
 }
 
-// Reset post data
-wp_reset_postdata();
+global $product;
 
-// Count products by weight
-$product_counts = array_count_values($product_weights);
+$columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+$post_thumbnail_id = $product->get_image_id();
+$wrapper_classes   = apply_filters(
+	'woocommerce_single_product_image_gallery_classes',
+	array(
+		'woocommerce-product-gallery',
+		'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
+		'woocommerce-product-gallery--columns-' . absint( $columns ),
+		'images',
+	)
+);
 ?>
+<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
+	
+		<figure class="woocommerce-product-gallery__wrapper">
+		<?php
+		if ( $post_thumbnail_id ) {
+			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+		} else {
+			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+			$html .= '</div>';
+		}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Weight Counts</title>
-</head>
-<body>
-    <h1>Product Weight Counts</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Weight</th>
-                <th>Count</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($product_counts as $weight => $count): ?>
-                <tr>
-                    <td><?php echo $weight; ?> <?php echo get_option('woocommerce_weight_unit'); ?></td>
-                    <td><?php echo $count; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</body>
-</html>
+		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+		do_action( 'woocommerce_product_thumbnails' );
+		?>
+	</figure>
+</div>
+          
