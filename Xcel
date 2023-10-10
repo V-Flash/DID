@@ -25,11 +25,12 @@ if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
 global $product;
 
 $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+$gallery_images    = $product->get_gallery_image_ids(); // Get all gallery image IDs
 $wrapper_classes   = apply_filters(
 	'woocommerce_single_product_image_gallery_classes',
 	array(
 		'woocommerce-product-gallery',
-		'woocommerce-product-gallery--without-images', // Remove the 'with-images' class
+		'woocommerce-product-gallery--' . ( $gallery_images ? 'with-images' : 'without-images' ),
 		'woocommerce-product-gallery--columns-' . absint( $columns ),
 		'images',
 	)
@@ -38,12 +39,16 @@ $wrapper_classes   = apply_filters(
 <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
 	<figure class="woocommerce-product-gallery__wrapper">
 		<?php
-		// Always display a placeholder image or your custom content
-		$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-		$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-		$html .= '</div>';
+		foreach ( $gallery_images as $image_id ) {
+			$html = wc_get_gallery_image_html( $image_id, true );
 
-		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+			// Skip the featured image (image at index 0)
+			if ( $image_id === $product->get_image_id() ) {
+				continue;
+			}
+
+			echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $image_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+		}
 
 		do_action( 'woocommerce_product_thumbnails' );
 		?>
