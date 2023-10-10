@@ -1,21 +1,55 @@
 <?php
-$shop_page_url_with_slash = get_permalink(wc_get_page_id('shop'));
-$shop_page_url_without_slash = rtrim($shop_page_url_with_slash, '/');
+// Initialize an empty array to store product weights
+$product_weights = array();
 
-$current_url_with_slash = home_url(add_query_arg(array(), $wp->request));
-$current_url_without_slash = rtrim($current_url_with_slash, '/');
+// Query all products (adjust the arguments as needed)
+$args = array(
+    'post_type' => 'product',
+    'posts_per_page' => -1, // Retrieve all products
+);
 
-// Check if the current page is the WooCommerce shop page (with or without trailing slash)
-$is_shop_page = ($shop_page_url_with_slash == $current_url_with_slash) || ($shop_page_url_without_slash == $current_url_without_slash);
+$products = new WP_Query($args);
 
-if ($is_shop_page) {
-    $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(wc_get_page_id('shop')), 'full'); ?>
+while ($products->have_posts()) {
+    $products->the_post();
+    $product = wc_get_product(get_the_ID());
+    $product_weight = $product->get_weight();
 
-    <header class="inner-page-header">
-        <div class="wrap">
-            <img src="<?php echo $thumb[0]; ?>" class="img-fluid" alt="" width="250px"/>
-        </div>
-    </header>
-<?php
+    // Store product weight in the array
+    $product_weights[] = $product_weight;
 }
+
+// Reset post data
+wp_reset_postdata();
+
+// Count products by weight
+$product_counts = array_count_values($product_weights);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Weight Counts</title>
+</head>
+<body>
+    <h1>Product Weight Counts</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Weight</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($product_counts as $weight => $count): ?>
+                <tr>
+                    <td><?php echo $weight; ?> <?php echo get_option('woocommerce_weight_unit'); ?></td>
+                    <td><?php echo $count; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</body>
+</html>
