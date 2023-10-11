@@ -12,3 +12,49 @@
     display: flex;
     gap: 25px;
 }
+
+
+@media only screen and (max-width: 1200px)
+.name {
+    font-size: 3.2rem;
+}
+
+@media only screen and (max-width: 991px)
+.content-form {width: 100%;
+}
+
+@media (max-width: 730px)
+.name {
+    font-size: 2rem;
+}
+
+@media (max-width: 644px)
+.name {
+    font-size: 1.9rem;
+}
+
+@media (max-width: 644px)
+
+.about-detail {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.social li {
+    margin-left: 0;
+}
+
+.social {
+    gap: 20px;
+    display: flex;
+}
+
+.avi-img {
+    width: 35%;
+}
+
+
+
+aboutpage:-
+
+class="col-xl-4 col-md-12 content-card-col"
