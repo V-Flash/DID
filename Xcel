@@ -1,17 +1,11 @@
-function add_custom_weight_unit_field() {
-    echo '<div class="options_group">';
+function save_custom_product_weight($product_id) {
+    $weight = isset($_POST['_weight']) ? wc_clean($_POST['_weight']) : '';
+    $weight_unit = isset($_POST['_weight_unit']) ? wc_clean($_POST['_weight_unit']) : 'g';
 
-    woocommerce_wp_select(
-        array(
-            'id' => '_weight_unit',
-            'label' => __('Weight Unit', 'text-domain'),
-            'options' => array(
-                'g' => 'Grams',
-                'kg' => 'Kilograms',
-            ),
-        )
-    );
+    if ($weight_unit === 'kg') {
+        $weight = $weight * 1000; // Convert to grams
+    }
 
-    echo '</div>';
+    update_post_meta($product_id, '_weight', $weight);
 }
-add_action('woocommerce_product_options_shipping', 'add_custom_weight_unit_field');
+add_action('woocommerce_process_product_meta', 'save_custom_product_weight');
