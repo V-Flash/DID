@@ -4,6 +4,8 @@ function custom_weight_format($formatted_weight, $weight) {
     if ($weight >= 1000) {
         $converted_weight = $weight / 1000;
         $formatted_weight = number_format($converted_weight, 2) . ' kg';
+    } else {
+        $formatted_weight = number_format($weight, 2) . ' gm';
     }
     return $formatted_weight;
 }
