@@ -1,8 +1,8 @@
-add_filter('woocommerce_product_get_weight', 'convert_weight_to_kg', 10, 2);
+add_filter('woocommerce_format_weight', 'custom_weight_format', 10, 2);
 
-function convert_weight_to_kg($weight, $product) {
+function custom_weight_format($formatted_weight, $weight) {
     if ($weight >= 1000) {
-        $weight = $weight / 1000; // Convert grams to kilograms
+        $formatted_weight = ($weight / 1000) . ' kg';
     }
-    return $weight;
+    return $formatted_weight;
 }
