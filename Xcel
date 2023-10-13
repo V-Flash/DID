@@ -1,11 +1,8 @@
-function save_custom_product_weight($product_id) {
-    $weight = isset($_POST['_weight']) ? wc_clean($_POST['_weight']) : '';
-    $weight_unit = isset($_POST['_weight_unit']) ? wc_clean($_POST['_weight_unit']) : 'g';
+add_filter('woocommerce_product_get_weight', 'convert_weight_to_kg', 10, 2);
 
-    if ($weight_unit === 'kg') {
-        $weight = $weight * 1000; // Convert to grams
+function convert_weight_to_kg($weight, $product) {
+    if ($weight >= 1000) {
+        $weight = $weight / 1000; // Convert grams to kilograms
     }
-
-    update_post_meta($product_id, '_weight', $weight);
+    return $weight;
 }
-add_action('woocommerce_process_product_meta', 'save_custom_product_weight');
