@@ -2,7 +2,8 @@ add_filter('woocommerce_format_weight', 'custom_weight_format', 10, 2);
 
 function custom_weight_format($formatted_weight, $weight) {
     if ($weight >= 1000) {
-        $formatted_weight = ($weight / 1000) . ' kg';
+        $converted_weight = $weight / 1000;
+        $formatted_weight = number_format($converted_weight, 2) . ' kg';
     }
     return $formatted_weight;
 }
