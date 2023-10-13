@@ -1,13 +1,11 @@
-add_filter('woocommerce_product_get_weight', 'custom_get_weight', 10, 2);
+add_filter('woocommerce_format_weight', 'custom_format_weight', 10, 2);
 
-function custom_get_weight($weight, $product) {
+function custom_format_weight($formatted_weight, $weight) {
     if ($weight >= 1000) {
-        $weight = $weight / 1000;
-        $weight_unit = 'kg';
+        $converted_weight = $weight / 1000;
+        $formatted_weight = (int)$converted_weight . ' kg';
     } else {
-        $weight_unit = 'gm';
+        $formatted_weight = (int)$weight . ' gm';
     }
-
-    // Return the formatted weight with the unit
-    return number_format($weight, 2) . ' ' . $weight_unit;
+    return $formatted_weight;
 }
