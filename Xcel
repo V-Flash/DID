@@ -1,1 +1,11 @@
-update_option( 'woocommerce_weight_unit', 'grams' );
+add_filter('woocommerce_product_get_weight', 'convert_weight_and_update_unit', 10, 2);
+
+function convert_weight_and_update_unit($weight, $product) {
+    if ($weight >= 1000) {
+        $weight = $weight / 1000; // Convert grams to kilograms
+        update_option('woocommerce_weight_unit', 'kg');
+    } else {
+        update_option('woocommerce_weight_unit', 'gm');
+    }
+    return $weight;
+}
