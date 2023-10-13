@@ -1,11 +1,15 @@
 add_filter('woocommerce_format_weight', 'custom_format_weight', 10, 2);
 
 function custom_format_weight($formatted_weight, $weight) {
+    $weight_unit = 'gm'; // Default unit
+
     if ($weight >= 1000) {
         $converted_weight = $weight / 1000;
-        $formatted_weight = (int)$converted_weight . ' kg';
+        $weight_unit = 'kg';
+        $formatted_weight = (int)$converted_weight . ' ' . $weight_unit;
     } else {
-        $formatted_weight = (int)$weight . ' gm';
+        $formatted_weight = (int)$weight . ' ' . $weight_unit;
     }
+
     return $formatted_weight;
 }
