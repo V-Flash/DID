@@ -1,1 +1,21 @@
-woocommerce_product_loop()
+$args = array(
+    'post_type'      => 'product',
+    'posts_per_page' => -1,
+    'orderby'        => 'meta_value_num',
+    'meta_key'       => '_price',
+    'order'          => 'DESC',
+);
+
+$products = new WP_Query( $args );
+
+if ( $products->have_posts() ) {
+    while ( $products->have_posts() ) {
+        $products->the_post();
+        // Display the product content here
+    }
+} else {
+    // No products found
+}
+
+wp_reset_postdata();
+
