@@ -1,21 +1,55 @@
-$args = array(
-    'post_type'      => 'product',
-    'posts_per_page' => -1,
-    'orderby'        => 'meta_value_num',
-    'meta_key'       => '_price',
-    'order'          => 'DESC',
-);
-
-$products = new WP_Query( $args );
-
-if ( $products->have_posts() ) {
-    while ( $products->have_posts() ) {
-        $products->the_post();
-        // Display the product content here
-    }
-} else {
-    // No products found
-}
-
-wp_reset_postdata();
-
+<?php
+        if($product->get_sale_price()) {
+            $price = $product->get_sale_price();
+        } else { $price = $product->get_regular_price(); }
+        
+    ?>
+<div class="head-flour-img grid-box">
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+        <div class="image-card text-center">
+            <img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="img-fluid" alt=""/>
+        </div>
+        <div class="pro-detail mb-3">
+            <h5><?php the_title(); ?></h5>
+            
+            <h4 class="uttam_product_block_title2 price" data-price="<?php echo $price; ?>">₹ <?php echo $price; ?> </h4>
+        </div>
+    </a>
+    <form class="cart"  method="post" enctype='multipart/form-data'>
+        <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+        
+        <div class="purchase-box">
+            <div class="qut-number">
+                <?php
+                do_action( 'woocommerce_before_add_to_cart_quantity' );
+                // Check if the form has been submitted
+                if (isset($_POST['add-to-cart'])) {
+                // Set the input value to 1
+                $input_value = 1;
+                } else {
+                // Use the default input value as before
+                $input_value = isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity();
+                }
+                woocommerce_quantity_input(
+                array(
+                'min_value' => apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product),
+                'max_value' => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
+                'input_value' => $input_value, // Set the input value based on the condition
+                )
+                );
+                do_action( 'woocommerce_after_add_to_cart_quantity' );
+                ?>
+            </div>
+            
+            <div class="purchase-button">
+                <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"><i class="fa fa-shopping-cart"></i>
+                </button>
+                
+            </div>
+            
+            
+        </div>
+        
+        <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+    </form>
+</div>
