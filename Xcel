@@ -1,46 +1,21 @@
-
 <form class="woocommerce-ordering" method="get">
     <div class="price-selection float-right">
-    <div class="select-title">Sort By</div>
-	<select name="orderby" class="orderby form-select" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
-		<?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
-			<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
-		<?php endforeach; ?>
-	</select>
-   </div>
-	<input type="hidden" name="paged" value="1" />
-	<?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
+        <div class="select-title">Sort By</div>
+        <select name="orderby" class="orderby form-select" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
+            <?php
+            $catalog_orderby_options = array(
+                'title-az' => esc_html__('Name: A to Z', 'woocommerce'),
+                'title-za' => esc_html__('Name: Z to A', 'woocommerce'),
+                'price' => esc_html__('Price: Low to High', 'woocommerce'),
+                'price-desc' => esc_html__('Price: High to Low', 'woocommerce')
+            );
+
+            foreach ($catalog_orderby_options as $id => $name) :
+            ?>
+                <option value="<?php echo esc_attr($id); ?>" <?php selected($orderby, $id); ?>><?php echo esc_html($name); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <input type="hidden" name="paged" value="1" />
+    <?php wc_query_string_form_fields(null, array('orderby', 'submit', 'paged', 'product-page')); ?>
 </form>
-
-function woocommerce_product_sort( $woocommerce_sort_orderby ) {
-   $woocommerce_sort_orderby = str_replace("Default sorting", "WooCommerce Product Sorting", $woocommerce_sort_orderby);
-   return $woocommerce_sort_orderby;
-}
-add_filter( 'woocommerce_catalog_orderby', 'woocommerce_product_sort' );
-add_filter( 'woocommerce_default_catalog_orderby_options', 'woocommerce_product_sort' );
-
-// Custom Sorting A to Z on shop page
-add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_woocommerce_get_catalog_ordering_args' );
-
-function custom_woocommerce_get_catalog_ordering_args( $args ) {
-    $orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
-
-    if ( 'alphabetical_asc' == $orderby_value ) {
-        $args['orderby'] = 'title';
-        $args['order'] = 'ASC';
-    } elseif ( 'alphabetical_desc' == $orderby_value ) {
-        $args['orderby'] = 'title';
-        $args['order'] = 'DESC';
-    }
-
-    return $args;
-}
-
-add_filter( 'woocommerce_default_catalog_orderby_options', 'custom_woocommerce_catalog_orderby' );
-add_filter( 'woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby' );
-
-function custom_woocommerce_catalog_orderby( $sortby ) {
-    $sortby['alphabetical_asc'] = __( 'Name - A -> Z' );
-    $sortby['alphabetical_desc'] = __( 'Name - Z -> A' );
-    return $sortby;
-}
