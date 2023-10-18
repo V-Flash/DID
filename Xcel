@@ -1,20 +1,41 @@
-function custom_woocommerce_product_orderby( $query ) {
-    if ( is_shop() || is_product_category() || is_product() ) {
-        $query->set( 'orderby', 'meta_value_num' ); // Order by numeric value (price)
-        $query->set( 'meta_key', '_price' ); // Use the "_price" meta key
-        $query->set( 'order', 'DESC' ); // Sort in descending order (high to low)
+<script>
+$(document).ready(function(){
+    
+    
+    $("#grid-item").show();
+
+
+    var selectedView = localStorage.getItem('selectedView');
+
+    if (selectedView === 'list') {
+        $("#grid-item").hide();
+        $(".grid-box").hide();
+        $(".grid-weight").hide();
+    } else {
+        $("#list-item").hide();
+        $(".list-box").hide();
+        $(".grid-weight").show();
     }
-}
-add_action( 'pre_get_posts', 'custom_woocommerce_product_orderby' );
 
+    $(".grid").click(function(){
+         $("#grid-item").show();
+          $(".grid-box").show();
+          $(".grid-weight").show();
+          $("#list-item").hide();
+          $(".list-box").hide();
 
-<?php
-// Call the custom sorting function to modify the product query
-custom_woocommerce_product_orderby();
+ 
+        localStorage.setItem('selectedView', 'grid');
+    });
 
-if ( have_posts() ) :
-    while ( have_posts() ) : the_post();
-        // Your product content goes here
-    endwhile;
-endif;
-?>
+    $(".list").click(function(){
+        $("#grid-item").hide();
+         $(".grid-box").hide();
+         $(".grid-weight").hide();
+         $("#list-item").show();
+         $(".list-box").show();
+
+        localStorage.setItem('selectedView', 'list');
+    });
+});
+</script> 
