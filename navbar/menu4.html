@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #454545;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+body {
+  padding: 8em 3em 3em;
+}
+body main {
+  width: 100%;
+  height: auto;
+}
+body main img {
+  width: 100%;
+  display: block;
+}
+body main h1 {
+  font-size: 3em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #1e1e1e;
+}
+
+.hamburger {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: 3em;
+  right: 3em;
+  z-index: 10000;
+  background: transparent;
+  cursor: pointer;
+}
+.hamburger.is-active .hamburger--container .hamburger--bars {
+  background: white;
+}
+.hamburger.is-active .hamburger--container .hamburger--bars:before, .hamburger.is-active .hamburger--container .hamburger--bars:after {
+  background: white;
+}
+.hamburger.is-active .hamburger--container .hamburger--bars:before {
+  left: 0.25em;
+}
+.hamburger.is-active .hamburger--container .hamburger--bars:after {
+  left: -0.25em;
+}
+.hamburger .hamburger--container {
+  width: 100%;
+  padding: 0.25em;
+  position: relative;
+}
+.hamburger .hamburger--container .hamburger--bars {
+  height: 3px;
+  width: 1.5em;
+  background: #000;
+  position: absolute;
+  top: 0.9em;
+  transition: 0.3s ease;
+}
+.hamburger .hamburger--container .hamburger--bars:before, .hamburger .hamburger--container .hamburger--bars:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 1.5em;
+  background: inherit;
+  position: absolute;
+  left: 0;
+  transition: 0.3s ease;
+}
+.hamburger .hamburger--container .hamburger--bars:before {
+  top: -0.5em;
+}
+.hamburger .hamburger--container .hamburger--bars:after {
+  top: 0.5em;
+}
+
+.logo {
+  width: 5em;
+  height: 5em;
+  position: absolute;
+  top: 1.5em;
+  left: 3em;
+  z-index: 10000;
+  filter: invert(1);
+}
+.logo img {
+  width: 100%;
+  display: block;
+  transition: 0.3s linear 0.3s;
+}
+.logo.is-active img {
+  filter: invert(100%);
+}
+
+.fsmenu {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  overflow: hidden;
+  display: none;
+}
+.fsmenu .fsmenu--container {
+  width: 0;
+  height: 100vh;
+  padding: 8em 3em 3em;
+  background: #000;
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block {
+  width: 100%;
+  height: 100%;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container {
+  width: 100%;
+  height: 100%;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element {
+  width: 100%;
+  height: 25%;
+  list-style-type: none;
+  text-align: right;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: 0.2s ease;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element a:hover {
+  color: #E63946;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element a span {
+  font-size: 5em;
+  font-weight: 700;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  height: 1em;
+  display: inline-block;
+  position: relative;
+  z-index: 1002;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element a span:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  z-index: 1003;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element .fsmenu--scrolling-text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transform: translate(-20%, -100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element .fsmenu--scrolling-text span {
+  height: 1em;
+  font-size: 8em;
+  font-weight: 900;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #1e1e1e;
+  display: inline-block;
+  margin-right: 1em;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element:hover .fsmenu--scrolling-text {
+  opacity: 1;
+  -webkit-animation: animScrollingContactTextLeft 9s linear 0s infinite;
+          animation: animScrollingContactTextLeft 9s linear 0s infinite;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element .fsmenu--link-img {
+  width: 0px;
+  height: 100vh;
+  padding: 8em 3em 3em;
+  position: absolute;
+  top: 0;
+  right: calc(100vw - 720px);
+  z-index: 1001;
+  font-size: 16px;
+  pointer-events: none;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element .fsmenu--link-img .fsmenu--img-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element .fsmenu--link-img .fsmenu--img-container img {
+  width: 624px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element.open .fsmenu--link-img {
+  left: auto;
+  right: calc(100vw - 720px);
+  -webkit-animation: animMenuRevealImg 0.4s ease 0s forwards;
+          animation: animMenuRevealImg 0.4s ease 0s forwards;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element.open .fsmenu--link-img .fsmenu--img-container img {
+  right: 0;
+  left: auto;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element.is-closing .fsmenu--link-img {
+  left: 0;
+  right: auto;
+  -webkit-animation: animMenuCloseImg 0.4s ease 0s forwards;
+          animation: animMenuCloseImg 0.4s ease 0s forwards;
+}
+.fsmenu .fsmenu--container .fsmenu--text-block .fsmenu--text-container .fsmenu--list .fsmenu--list-element.is-closing .fsmenu--link-img .fsmenu--img-container img {
+  left: 0;
+  right: auto;
+}
+.fsmenu.is-active {
+  display: block;
+}
+.fsmenu.is-active .fsmenu--container {
+  -webkit-animation: animMenuReveal 0.6s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0s forwards;
+          animation: animMenuReveal 0.6s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0s forwards;
+}
+.fsmenu.is-active .fsmenu--container .fsmenu--text-container .fsmenu--list .fsmenu--list-element a span:before {
+  -webkit-animation: animMenuRevealLinks 0.4s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0.4s forwards;
+          animation: animMenuRevealLinks 0.4s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0.4s forwards;
+}
+.fsmenu.close-menu {
+  display: block;
+}
+.fsmenu.close-menu .fsmenu--container {
+  width: 100vw;
+  right: auto;
+  left: 0;
+  -webkit-animation: animMenuClose 0.6s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0.3s forwards;
+          animation: animMenuClose 0.6s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0.3s forwards;
+}
+.fsmenu.close-menu .fsmenu--container .fsmenu--text-container .fsmenu--list .fsmenu--list-element a span:before {
+  left: auto;
+  right: 0;
+  background: black;
+  -webkit-animation: animMenuCloseLinks 0.4s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0s forwards;
+          animation: animMenuCloseLinks 0.4s cubic-bezier(0.13, 0.13, 0.02, 1.07) 0s forwards;
+}
+
+@-webkit-keyframes animMenuReveal {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 100vw;
+  }
+}
+
+@keyframes animMenuReveal {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 100vw;
+  }
+}
+@-webkit-keyframes animMenuRevealLinks {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+@keyframes animMenuRevealLinks {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+@-webkit-keyframes animMenuClose {
+  0% {
+    width: 100vw;
+    padding: 8em 3em 3em;
+  }
+  100% {
+    width: 0vw;
+    padding: 8em 0 0;
+  }
+}
+@keyframes animMenuClose {
+  0% {
+    width: 100vw;
+    padding: 8em 3em 3em;
+  }
+  100% {
+    width: 0vw;
+    padding: 8em 0 0;
+  }
+}
+@-webkit-keyframes animMenuCloseLinks {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 110%;
+  }
+}
+@keyframes animMenuCloseLinks {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 110%;
+  }
+}
+@-webkit-keyframes animMenuRevealImg {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 720px;
+  }
+}
+@keyframes animMenuRevealImg {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 720px;
+  }
+}
+@-webkit-keyframes animMenuCloseImg {
+  0% {
+    width: 720px;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes animMenuCloseImg {
+  0% {
+    width: 720px;
+  }
+  100% {
+    width: 0;
+  }
+}
+@-webkit-keyframes animScrollingContactTextLeft {
+  0% {
+    transform: translate(-20%, -100%);
+  }
+  100% {
+    transform: translate(-40%, -100%);
+  }
+}
+@keyframes animScrollingContactTextLeft {
+  0% {
+    transform: translate(-20%, -100%);
+  }
+  100% {
+    transform: translate(-40%, -100%);
+  }
+}
+	</style>
+</head>
+<body>
+<div class="logo">
+		<img src="https://witwinkel.ch/themes/witwinkel/assets/images/logo/witwinkel_white.png">
+	</div>
+
+<div class="hamburger">
+	<div class="hamburger--container">
+		<div class="hamburger--bars">
+			
+		</div>
+	</div>
+</div>
+
+
+<div class="fsmenu">
+	<div class="fsmenu--container">
+		<div class="fsmenu--text-block">
+			<div class="fsmenu--text-container">
+				<ul class="fsmenu--list">
+					<li class="fsmenu--list-element">
+						<a href="#">
+							<span>Home</span>
+						</a>
+						<div class="fsmenu--scrolling-text">
+							<span>Home</span><span>Home</span><span>Home</span><span>Home</span><span>Home</span>
+						</div>
+						<div class="fsmenu--link-img">
+							<div class="fsmenu--img-container">
+								<img src="https://witwinkel.ch/themes/witwinkel/assets/images/content/WITWINKEL-buero-albisrieden-2019.jpg">
+							</div>
+						</div>
+					</li>
+					<li class="fsmenu--list-element">
+						<a href="#">
+							<span>Portfolio</span>
+						</a>
+						<div class="fsmenu--scrolling-text">
+							<span>Portfolio</span><span>Portfolio</span><span>Portfolio</span><span>Portfolio</span><span>Portfolio</span>
+						</div>
+						<div class="fsmenu--link-img">
+							<div class="fsmenu--img-container">
+								<img src="https://witwinkel.ch/themes/witwinkel/assets/projects/gourmet-festival-2019/content12.jpg">
+							</div>
+						</div>
+					</li>
+					<li class="fsmenu--list-element">
+						<a href="#">
+							<span>Team</span>
+						</a>
+						<div class="fsmenu--scrolling-text">
+							<span>Team</span><span>Team</span><span>Team</span><span>Team</span><span>Team</span>
+						</div>
+						<div class="fsmenu--link-img">
+							<div class="fsmenu--img-container">
+								<img src="https://witwinkel.ch/themes/witwinkel/assets/images/team/wirsind-witwinkel.jpg">
+							</div>
+						</div>
+					</li>
+					<li class="fsmenu--list-element">
+						<a href="#">
+							<span>Contact Us</span>
+						</a>
+						<div class="fsmenu--scrolling-text">
+							<span>Contact Us</span><span>Contact Us</span><span>Contact Us</span><span>Contact Us</span><span>Contact Us</span>
+						</div>
+						<div class="fsmenu--link-img">
+							<div class="fsmenu--img-container">
+								<img src="https://witwinkel.ch/themes/witwinkel/assets/projects/metzler/content1.jpg">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<main>
+	<img src="https://witwinkel.ch/themes/witwinkel/assets/projects/alfa-romeo-alfabet/content1.jpg">
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	
+	$('.hamburger').click(function(){
+		
+		var $this = $( this );
+		
+		if ($this.hasClass('is-active')){
+			$('.fsmenu, .logo').removeClass('is-active');
+			$('.fsmenu, .logo').addClass('close-menu');
+		} else{
+			$('.fsmenu, .logo').removeClass('close-menu');
+			$('.fsmenu, .logo').addClass('is-active');
+		};
+		$this.toggleClass('is-active');
+	});
+	
+	$( ".fsmenu--list-element" ).hover(
+		function() {
+			$( this ).addClass('open');
+			$( this ).removeClass('is-closing');
+		}, function() {
+			$( this ).removeClass('open');
+			$( this ).addClass('is-closing');
+		}
+	);
+				
+});
+</script>
+
+</body>
+</html>

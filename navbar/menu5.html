@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<style type="text/css">
+
+  :root {
+    font-size: 14px;
+  }
+
+  body {
+    margin: 0;
+    padding: 40px 30px;
+    height: 100vh;
+    background-color: #ffdb00;
+    font-family: 'Roboto', Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 120px;
+    overflow: hidden;
+  }
+
+  .logo--white path {
+    fill: #fff;
+  }
+
+  .logo svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .header__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: -18px;
+    outline: none;
+    animation-duration: 300ms;
+    animation-timing-function: ease;
+  }
+
+  .header__button[data-open='true'] {
+    background-color: hsl(52, 100%, 50%);
+    animation-name: scale;
+  }
+
+  .header__button[data-open='false'] {
+    transition: background-color 250ms linear;
+  }
+
+  @keyframes scale {
+    from {
+      transform: scale(0);
+    }
+
+    to {
+      transform: scale(100%);
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 3rem;
+  }
+
+  footer svg {
+    width: 15%;
+  }
+
+  .header__nav {
+    background-color: black;
+    position: fixed;
+    overflow: hidden;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    visibility: hidden;
+    clip-path: circle(var(--radius) at calc(100% - 55px) 47px);
+  }
+
+  .header__nav[data-active='true'] {
+    visibility: visible;
+  }
+
+  .header__menu {
+    padding: 0;
+    margin: 0;
+  }
+
+  .header__menu > .header__menu-item {
+    font-size: 10vh;
+  }
+
+  .header__menu > .header__menu-item:not(:last-of-type) {
+    margin-bottom: 0.1em;
+  }
+
+  .header__menu-item a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
+  .header__menu-item a:hover {
+    font-style: italic;
+  }
+
+  .menu-icon{    
+    color: white;
+    font-size: 33px;
+  }
+
+</style>
+
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">LOGO</a>
+
+    <div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      <button class="header__button nav-btn-js" type="button">
+        <span class="material-symbols-outlined menu-icon">menu</span>
+      </button>
+
+      <nav class="header__nav nav-js" data-active="false">
+        <a href="#" class="logo logo--white">LOGO</a>
+        <ul class="header__menu">
+          <li class="header__menu-item"><a href="#">Works</a></li>
+          <li class="header__menu-item"><a href="#">News</a></li>
+          <li class="header__menu-item"><a href="#">About</a></li>
+          <li class="header__menu-item"><a href="#">Help</a></li>
+          <li class="header__menu-item"><a href="#">Contacts</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+    <h1>What a great nav menu with circular reveal animation?</h1>
+    <footer>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.27 20"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:4px;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="first_screen" data-name="first screen"><path class="cls-1" d="M0,2C11.21,2,11.21,18,22.43,18S33.64,2,44.85,2,56.06,18,67.27,18,78.48,2,89.69,2s11.22,16,22.43,16S123.34,2,134.55,2,145.76,18,157,18,168.19,2,179.4,2s11.22,16,22.43,16S213.05,2,224.27,2"/></g></g></svg>
+    </footer>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/circular-revealer@0.0.8/dist/index.iife.js"></script>
+
+    <script>
+        
+
+document.addEventListener('DOMContentLoaded', () => {
+  const revealerNav = window.revealer({
+    revealElementSelector: '.nav-js',
+    options: {
+      anchorSelector: '.nav-btn-js',
+    },
+  });
+
+  const actionBtn = document.querySelector('.nav-btn-js');
+  actionBtn.addEventListener('click', () => {
+    if (!revealerNav.isRevealed()) {
+      revealerNav.reveal();
+      actionBtn.setAttribute('data-open', true);
+    } else {
+      revealerNav.hide();
+      actionBtn.setAttribute('data-open', false);
+    }
+  });
+});
+
+
+    </script>
+</body>
+</html>
