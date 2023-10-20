@@ -41,7 +41,7 @@
   </label>
 
   <label>
-    <input type checkbox" class="weight-filter" data-weight="20">
+    <input type a="checkbox" class="weight-filter" data-weight="20">
     20g
   </label>
 
@@ -77,8 +77,8 @@
       var minPrice = 100;
       var maxPrice = 500;
 
-      // Initialize the price range slider
       $(".slider-range").slider({
+        step: 1,
         range: true,
         min: 100,
         max: 500,
@@ -91,48 +91,58 @@
         }
       });
 
-      // Set initial values for the price range slider
       $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
 
-      // Event handler for filter checkboxes and weight checkboxes
       $('.filter, .weight-filter').change(function() {
         filterProducts();
       });
 
-      // Initial filter call to display products on page load
-      filterProducts();
-    });
+      function filterProducts() {
+        var checkedCategories = $('.filter:checked').map(function() {
+          return $(this).data('category').toString();
+        }).get();
 
-    function filterProducts() {
-      var checkedCategories = $('.filter:checked').map(function() {
-        return $(this).data('category').toString();
-      }).get();
+        var selectedWeights = $('.weight-filter:checked').map(function() {
+          return parseInt($(this).data('weight'));
+        }).get();
 
-      var selectedWeights = $('.weight-filter:checked').map(function() {
-        return parseInt($(this).data('weight'));
-      }).get();
+        var productsToShow = $('.product').filter(function() {
+          var productCategories = ($(this).data('categories').toString()).split(' ');
+          var productWeight = parseInt($(this).data('weight'));
+          var productPrice = parseInt($(this).find('div[data-price]').data('price'));
 
-      var productsToShow = $('.product').filter(function() {
-        var productCategories = ($(this).data('categories').toString()).split(' ');
-        var productWeight = parseInt($(this).data('weight'));
-        var productPrice = parseInt($(this).find('div[data-price]').data('price'));
+          var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
+          var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
+          var priceMatch = (minPrice === 100 && maxPrice === 500) || (productPrice >= minPrice && productPrice <= maxPrice);
 
-        var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
-        var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
-        var priceMatch = (minPrice === 100 && maxPrice === 500) || (productPrice >= minPrice && productPrice <= maxPrice);
+          return categoryMatch && weightMatch && priceMatch;
+        });
 
-        return categoryMatch && weightMatch && priceMatch;
-      });
+        if (productsToShow.length === 0) {
+          $('.no-products-found').show();
+        } else {
+          $('.no-products-found').hide();
+        }
 
-      if (productsToShow.length === 0) {
-        $('.no-products-found').show();
-      } else {
-        $('.no-products-found').hide();
+        $('.product').hide();
+        productsToShow.show();
       }
 
-      $('.product').hide();
-      productsToShow.show();
-    }
+      // Read filter parameters from the URL and apply filters on page load
+      var urlParams = new URLSearchParams(window.location.search);
+      urlParams.getAll('category').forEach(function(category) {
+        $(".filter[data-category='" + category + "']").prop('checked', true);
+      });
+      urlParams.getAll('weight').forEach(function(weight) {
+        $(".weight-filter[data-weight='" + weight + "']").prop('checked', true);
+      });
+      minPrice = parseInt(urlParams.get('minPrice')) || minPrice;
+      maxPrice = parseInt(urlParams.get('maxPrice')) || maxPrice;
+      $(".slider-range").slider('values', [minPrice, maxPrice]);
+      $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
+
+      filterProducts(); // Apply filters on page load
+    });
   </script>
 </body>
 </html>
