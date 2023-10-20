@@ -9,6 +9,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
 
   <style>
+
     .product {
       margin: 10px;
       padding: 10px;
@@ -41,7 +42,7 @@
   </label>
 
   <label>
-    <input type a="checkbox" class="weight-filter" data-weight="20">
+    <input type="checkbox" class="weight-filter" data-weight="20">
     20g
   </label>
 
@@ -95,6 +96,7 @@
 
       $('.filter, .weight-filter').change(function() {
         filterProducts();
+        saveFilterSelections();
       });
 
       function filterProducts() {
@@ -124,24 +126,56 @@
           $('.no-products-found').hide();
         }
 
+
         $('.product').hide();
         productsToShow.show();
       }
 
-      // Read filter parameters from the URL and apply filters on page load
-      var urlParams = new URLSearchParams(window.location.search);
-      urlParams.getAll('category').forEach(function(category) {
-        $(".filter[data-category='" + category + "']").prop('checked', true);
-      });
-      urlParams.getAll('weight').forEach(function(weight) {
-        $(".weight-filter[data-weight='" + weight + "']").prop('checked', true);
-      });
-      minPrice = parseInt(urlParams.get('minPrice')) || minPrice;
-      maxPrice = parseInt(urlParams.get('maxPrice')) || maxPrice;
-      $(".slider-range").slider('values', [minPrice, maxPrice]);
-      $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
 
-      filterProducts(); // Apply filters on page load
+        function saveFilterSelections() {
+    
+    var selectedFilters = {
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+      checkedCategories: $('.filter:checked').map(function() {
+        return $(this).data('category').toString();
+      }).get(),
+      selectedWeights: $('.weight-filter:checked').map(function() {
+        return parseInt($(this).data('weight'));
+      }).get()
+    };
+
+    
+    sessionStorage.setItem('filterSelections', JSON.stringify(selectedFilters));
+  }
+
+  function loadFilterSelections() {
+    
+    var savedFilters = sessionStorage.getItem('filterSelections');
+
+    if (savedFilters) {
+      savedFilters = JSON.parse(savedFilters);
+
+      
+      minPrice = savedFilters.minPrice;
+      maxPrice = savedFilters.maxPrice;
+      $(".slider-range").slider('values', [minPrice, maxPrice]);
+
+      
+      $('.filter, .weight-filter').prop('checked', false);
+      savedFilters.checkedCategories.forEach(function(category) {
+        $('.filter[data-category="' + category + '"]').prop('checked', true);
+      });
+      savedFilters.selectedWeights.forEach(function(weight) {
+        $('.weight-filter[data-weight="' + weight + '"]').prop('checked', true);
+      });
+
+      
+      $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
+      filterProducts();
+    }
+  }
+
     });
   </script>
 </body>
