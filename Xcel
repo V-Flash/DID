@@ -1,61 +1,99 @@
- $(document).ready(function() {
+$(document).ready(function() {
+  var minPrice = 100;
+  var maxPrice = 1000;
 
-      var minPrice = 100; 
-      var maxPrice = 1000;
-
-      $(".slider-range").slider({
-        step: 1,
-        range: true,
-        min: 100,
-        max: 1000,
-        values: [minPrice, maxPrice], 
-        slide: function(event, ui) {
-          minPrice = ui.values[0]; 
-          maxPrice = ui.values[1]; 
-          $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
-          filterProducts();
-        }
-      });
-
+  // Initialize the price range slider
+  $(".slider-range").slider({
+    step: 1,
+    range: true,
+    min: 100,
+    max: 1000,
+    values: [minPrice, maxPrice],
+    slide: function(event, ui) {
+      minPrice = ui.values[0];
+      maxPrice = ui.values[1];
       $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
+      filterProducts();
+      // Save filter selections whenever the slider changes
+      saveFilterSelections();
+    }
+  });
 
-      
-     $('.filter, .weight-filter').change(function() {
-        filterProducts();
+  // Load filter selections from localStorage when the page loads
+  loadFilterSelections();
+
+  function filterProducts() {
+    var checkedCategories = $('.filter:checked').map(function() {
+      return $(this).data('category').toString();
+    }).get();
+
+    var selectedWeights = $('.weight-filter:checked').map(function() {
+      return parseInt($(this).data('weight'));
+    }).get();
+
+    var productsToShow = $('.product').filter(function() {
+      var productCategories = ($(this).data('categories').toString()).split(' ');
+      var productWeight = parseInt($(this).data('weight'));
+      var productPrice = parseInt($(this).find('.price[data-price]').data('price'));
+
+      var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
+      var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
+      var priceMatch = (minPrice === 100 && maxPrice === 1000) || (productPrice >= minPrice && productPrice <= maxPrice);
+
+      return categoryMatch && priceMatch && weightMatch;
+    });
+
+    if (productsToShow.length === 0) {
+      $('.no-products-found').show();
+    } else {
+      $('.no-products-found').hide();
+    }
+
+    // Hide all products and show the filtered ones
+    $('.product').hide();
+    productsToShow.show();
+  }
+
+  function saveFilterSelections() {
+    var selectedFilters = {
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+      checkedCategories: $('.filter:checked').map(function() {
+        return $(this).data('category').toString();
+      }).get(),
+      selectedWeights: $('.weight-filter:checked').map(function() {
+        return parseInt($(this).data('weight'));
+      }).get()
+    };
+
+    // Save the filter selections to localStorage
+    localStorage.setItem('filterSelections', JSON.stringify(selectedFilters));
+  }
+
+  function loadFilterSelections() {
+    var savedFilters = localStorage.getItem('filterSelections');
+
+    if (savedFilters) {
+      savedFilters = JSON.parse(savedFilters);
+
+      minPrice = savedFilters.minPrice;
+      maxPrice = savedFilters.maxPrice;
+      // Set the slider values
+      $(".slider-range").slider('values', [minPrice, maxPrice]);
+
+      // Check the checkboxes based on saved filter selections
+      $('.filter, .weight-filter').prop('checked', false);
+      savedFilters.checkedCategories.forEach(function(category) {
+        $('.filter[data-category="' + category + '"]').prop('checked', true);
+      });
+      savedFilters.selectedWeights.forEach(function(weight) {
+        $('.weight-filter[data-weight="' + weight + '"]').prop('checked', true);
       });
 
-      function filterProducts() {
-        var checkedCategories = $('.filter:checked').map(function() {
-          return $(this).data('category').toString();
-        }).get();
-
-         var selectedWeights = $('.weight-filter:checked').map(function() {
-          return parseInt($(this).data('weight'));
-        }).get();  
-
-        var productsToShow = $('.product').filter(function() {
-          var productCategories = ($(this).data('category').toString()).split(' ');
-          var productWeight = parseInt($(this).data('weight'));
-          var productPrice = parseInt($(this).find('.price[data-price]').data('price'));
-
-          var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
-           var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
-          var priceMatch = (minPrice === 100 && maxPrice === 1000) || (productPrice >= minPrice && productPrice <= maxPrice);
-
-          return categoryMatch && priceMatch && weightMatch;
-        });
-
-        if (productsToShow.length === 0) {
-          $('.no-products-found').show();
-        } else {
-          $('.no-products-found').hide();
-        }
-
-        
-        $('.product').hide();
-        productsToShow.show();
-}
-
-    
-      
-    });
+      // Set the price range display
+      $(".amount").val("₹" + minPrice + " - ₹" + maxPrice);
+      // Apply the filters based on the loaded selections
+      filterProducts();
+    }
+  }
+});
