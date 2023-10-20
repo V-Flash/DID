@@ -1,12 +1,23 @@
-<form class="woocommerce-ordering" method="get">
-    <div class="price-selection float-right">
-    <div class="select-title">Sort By</div>
-        <select name="orderby" class="orderby form-select" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
-                <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
-                        <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
-                <?php endforeach; ?>
-        </select>
-   </div>
-        <input type="hidden" name="paged" value="1" />
-        <?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
-</form>
+function custom_woocommerce_catalog_ordering_args($args) {
+    if (isset($_GET['orderby']) && $_GET['orderby'] === 'alphabetical-asc') {
+        $args['orderby'] = 'title';
+        $args['order'] = 'ASC';
+    }
+    return $args;
+}
+
+function custom_woocommerce_catalog_ordering_args_desc($args) {
+    if (isset($_GET['orderby']) && $_GET['orderby'] === 'alphabetical-desc') {
+        $args['orderby'] = 'title';
+        $args['order'] = 'DESC';
+    }
+    return $args;
+}
+
+add_action('pre_get_posts', function ($q) {
+    if (is_shop() && ($q->is_main_query())) {
+        if (isset($_GET['orderby']) && ($_GET['orderby'] === 'alphabetical-asc' || $_GET['orderby'] === 'alphabetical-desc')) {
+            add_filter('woocommerce_get_catalog_ordering_args', 'custom_woocommerce_catalog_ordering_args');
+        }
+    }
+});
