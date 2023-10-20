@@ -1,26 +1,6 @@
-<div class="catagories-side-bar mb-5">
-        <h4>Weight</h4>
-        
-        <div class="catagories-under">
-                        <div class="form-check mb-2">
-                <input class="form-check-input weight-filter" type="checkbox" value="" id="500gm" data-weight="500gm">
-                
-                <label class="form-check-label" for="500gm">500gm <span>(3)</span></label>
-            </div>
-                        <div class="form-check mb-2">
-                <input class="form-check-input weight-filter" type="checkbox" value="" id="100gm" data-weight="100gm">
-                
-                <label class="form-check-label" for="100gm">100gm <span>(3)</span></label>
-            </div>
-                        <div class="form-check mb-2">
-                <input class="form-check-input weight-filter" type="checkbox" value="" id="25gm" data-weight="25gm">
-                
-                <label class="form-check-label" for="25gm">25gm <span>(1)</span></label>
-            </div>
-                        <div class="form-check mb-2">
-                <input class="form-check-input weight-filter" type="checkbox" value="" id="1kg" data-weight="1kg">
-                
-                <label class="form-check-label" for="1kg">1kg <span>(1)</span></label>
-            </div>
-                    </div>
-    </div>
+savedFilters.selectedWeights.forEach(function(weight) {
+  var $checkbox = $('.weight-filter[data-weight="' + weight + '"]');
+  if ($checkbox.length) {
+    $checkbox.prop('checked', true);
+  }
+});
