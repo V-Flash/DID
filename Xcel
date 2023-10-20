@@ -1,28 +1,12 @@
-add_filter('woocommerce_get_catalog_ordering_args', 'custom_woocommerce_catalog_ordering_args');
-
-function custom_woocommerce_catalog_ordering_args($args) {
-    $orderby_value = isset($_GET['orderby']) ? wc_clean($_GET['orderby']) : apply_filters('woocommerce_default_catalog_orderby', get_option('woocommerce_default_catalog_orderby'));
-
-    if ($orderby_value == 'alphabetical-asc') {
-        $args['orderby'] = 'title';
-        $args['order'] = 'ASC';
-    } elseif ($orderby_value == 'alphabetical-desc') {
-        $args['orderby'] = 'title';
-        $args['order'] = 'DESC';
-    }
-
-    return $args;
-}
-
-
-<div class="woocommerce-ordering">
-   <ul class="orderby">
-       <li class="title-sorting">
-           <a href="?orderby=alphabetical-asc" class="<?php echo 'alphabetical-asc' === $orderby_value ? 'active' : ''; ?>">Sort A-Z</a>
-       </li>
-       <li class="title-sorting">
-           <a href="?orderby=alphabetical-desc" class="<?php echo 'alphabetical-desc' === $orderby_value ? 'active' : ''; ?>">Sort Z-A</a>
-       </li>
-       <!-- Add other sorting options as needed -->
-   </ul>
-</div>
+<form class="woocommerce-ordering" method="get">
+    <div class="price-selection float-right">
+    <div class="select-title">Sort By</div>
+        <select name="orderby" class="orderby form-select" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
+                <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
+                        <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
+                <?php endforeach; ?>
+        </select>
+   </div>
+        <input type="hidden" name="paged" value="1" />
+        <?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
+</form>
