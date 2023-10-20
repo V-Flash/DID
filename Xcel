@@ -1,12 +1,29 @@
-<form class="woocommerce-ordering" method="get">
-    <div class="price-selection float-right">
-        <div class="select-title">Sort By</div>
-        <select name="orderby" class="orderby form-select" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
-            <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
-                <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    <input type="hidden" name="paged" value="1" />
-    <?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
-</form>
+// Add custom sorting options to the dropdown
+add_filter('woocommerce_catalog_orderby', 'custom_woocommerce_catalog_orderby');
+
+function custom_woocommerce_catalog_orderby($options) {
+    $options['alphabetical-asc'] = 'Sort A-Z';
+    $options['alphabetical-desc'] = 'Sort Z-A';
+    return $options;
+}
+
+// Modify the product query using the pre_get_posts hook
+add_action('pre_get_posts', 'custom_product_ordering');
+
+function custom_product_ordering($query) {
+    if (is_admin() || !$query->is_main_query()) {
+        return;
+    }
+
+    if (isset($_GET['orderby'])) {
+        $orderby = $_GET['orderby'];
+
+        if ($orderby === 'alphabetical-asc') {
+            $query->set('orderby', 'title');
+            $query->set('order', 'ASC');
+        } elseif ($orderby === 'alphabetical-desc') {
+            $query->set('orderby', 'title');
+            $query->set('order', 'DESC');
+        }
+    }
+}
