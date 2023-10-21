@@ -1,89 +1,60 @@
-lkks<<<<<<< HEAD
-const inputFields = document.querySelectorAll('.input-field');
+@media only screen and (max-width: 991px) 
 
-inputFields.forEach(input => {
-  const label = input.parentElement.querySelector('.form-label');
+.about-detail {justify-content: space-between;}
 
-  input.addEventListener('input', function() {
-    if (input.value.trim() !== '') {
-      label.style.opacity = '1';
-      label.style.top = '-20px';
-    } else {
-      label.style.opacity = '0';
-      label.style.top = '22px';
-    }
-  });
-});
-=======
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Checkbox Example</title>
-  <script>
-    function toggleSubOptions(mainCheckbox) {
-      var subCheckboxes = mainCheckbox.parentElement.nextElementSibling.querySelectorAll('input[type="checkbox"]');
+.content-form{width:100%}
 
-      for (var i = 0; i < subCheckboxes.length; i++) {
-        subCheckboxes[i].checked = mainCheckbox.checked;
-      }
-    }
-  </script>
-</head>
-<body>
+@media only screen and (max-width: 730px) 
 
-<ul>
-  <li>
-    <label>
-      <span class="wpcf7-form-control-wrap" data-name="en-cable">
-        <span class="wpcf7-form-control wpcf7-checkbox spacechekbox">
-          <span class="wpcf7-list-item first last">
-            <input type="checkbox" name="en-cable[]" value="Cables" onclick="toggleSubOptions(this)">
-            <span class="wpcf7-list-item-label">Cables</span>
-          </span>
-        </span>
-      </span>
-    </label>
-    <ul>
-      <li>
-        <label>
-          <span class="wpcf7-form-control-wrap" data-name="en-lv">
-            <span class="wpcf7-form-control wpcf7-checkbox subOption">
-              <span class="wpcf7-list-item first last">
-                <input type="checkbox" name="en-lv[]" value="LV">
-                <span class="wpcf7-list-item-label">LV</span>
-              </span>
-            </span>
-          </span>
-        </label>
-      </li>
-      <li>
-        <label>
-          <span class="wpcf7-form-control-wrap" data-name="en-hv">
-            <span class="wpcf7-form-control wpcf7-checkbox subOption">
-              <span class="wpcf7-list-item first last">
-                <input type="checkbox" name="en-hv[]" value="HV">
-                <span class="wpcf7-list-item-label">HV</span>
-              </span>
-            </span>
-          </span>
-        </label>
-      </li>
-      <li>
-        <label>
-          <span class="wpcf7-form-control-wrap" data-name="en-ehv">
-            <span class="wpcf7-form-control wpcf7-checkbox subOption">
-              <span class="wpcf7-list-item first last">
-                <input type="checkbox" name="en-ehv[]" value="EHV">
-                <span class="wpcf7-list-item-label">EHV</span>
-              </span>
-            </span>
-          </span>
-        </label>
-      </li>
-    </ul>
-  </li>
-</ul>
+.about-detail{display: block;}
 
-</body>
-</html>
->>>>>>> 5a6c6c451f2fe2ef679839b416d6f1e726a8d879
+.social {
+    display: flex;
+    gap: 25px;
+}
+
+
+@media only screen and (max-width: 1200px)
+.name {
+    font-size: 3.2rem;
+}
+
+@media only screen and (max-width: 991px)
+.content-form {width: 100%;
+}
+
+@media (max-width: 730px)
+.name {
+    font-size: 2rem;
+}
+
+@media (max-width: 644px)
+.name {
+    font-size: 1.9rem;
+}
+
+@media (max-width: 644px)
+
+.about-detail {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.social li {
+    margin-left: 0;
+}
+
+.social {
+    gap: 20px;
+    display: flex;
+}
+
+.avi-img {
+    width: 35%;
+}
+
+
+
+aboutpage:-
+
+class="col-xl-4 col-md-12 content-card-col"
