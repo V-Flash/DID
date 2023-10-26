@@ -1,25 +1,8 @@
-$(document).ready(function() {
-
-  const mediaQuery = window.matchMedia('(max-width: 620px)')
-
-  if (mediaQuery.matches) {
-    alert('620 or less')
-
-   function checkScreenOrientation() {
-          if (window.innerHeight > window.innerWidth) {
-            alert('landscape')
-            (".custom-col").css("display", "block ");
-            (".custom-col-mob").css("display", "none");
-            
-          } 
-        }
-
-        checkScreenOrientation();
-
-        
-        $(window).on('resize', function() {
-          checkScreenOrientation();
-        });
-
-      }
-});
+if (window.innerHeight > window.innerWidth) {
+  alert('landscape');
+  $(".custom-col").addClass("block-class");
+  $(".custom-col-mob").addClass("none-class");
+} else {
+  $(".custom-col").removeClass("block-class");
+  $(".custom-col-mob").removeClass("none-class");
+}
