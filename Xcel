@@ -1,8 +1,26 @@
-if (window.innerHeight > window.innerWidth) {
-  alert('landscape');
-  $(".custom-col").addClass("block-class");
-  $(".custom-col-mob").addClass("none-class");
-} else {
-  $(".custom-col").removeClass("block-class");
-  $(".custom-col-mob").removeClass("none-class");
-}
+$(document).ready(function() {
+  const mediaQuery = window.matchMedia('(max-width: 620px)');
+
+  function checkScreenOrientation() {
+    if (mediaQuery.matches) {
+      if (window.innerHeight > window.innerWidth) {
+        // Landscape mode and screen is 620px or less in portrait
+        alert('Landscape and 620px or less in portrait');
+        $(".custom-col").css("display", "block");
+        $(".custom-col-mob").css("display", "none");
+      } else {
+        // Portrait mode and screen is 620px or less
+        alert('Portrait and 620px or less');
+        $(".custom-col").css("display", "none");
+        $(".custom-col-mob").css("display", "block");
+      }
+    }
+  }
+
+  checkScreenOrientation();
+
+  $(window).on('resize', function() {
+    checkScreenOrientation();
+  });
+});
+
