@@ -16,4 +16,7 @@ $(document).ready(function() {
 
   // Listen for changes in viewport size and orientation
   window.addEventListener('resize', applyStyles);
+
+  // Additionally, you can listen for orientation changes
+  window.addEventListener('orientationchange', applyStyles);
 });
