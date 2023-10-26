@@ -1,28 +1,2 @@
-<div class="author-container">
-  <img src="https://assets.website-files.com/52f2c8085d8eed2b6b000300/52f3d2855d8eed2b6b0012ab_Profile-pic.jpg" width="125" alt="" class="author-image img-fluid">
-  <div class="author-details">
-    <h2 class="name">Vivek Parmar</h2>
-    <p class="about-text">Vivek started ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique</p>
-  </div>
-</div>
-.author-container {
-  display: flex;
-  align-items: center; /* Vertically align the content */
-  gap: 20px; /* Add spacing between the image and text */
-}
 
-.author-image {
-  /* Add any additional styling for the image here */
-}
-
-.author-details {
-  /* Add any additional styling for the details here */
-}
-
-.name {
-  font-size: 24px; /* Adjust the font size as needed */
-}
-
-.about-text {
-  font-size: 16px; /* Adjust the font size as needed */
-}
+@media  only screen and (max-width : 590px)
