@@ -1,20 +1,19 @@
 $(document).ready(function() {
-
-  const mediaQuery = window.matchMedia('(max-width: 620px)');
-
-
-
+  // Function to apply styles based on viewport size and orientation
+  function applyStyles() {
     if (window.matchMedia("(orientation: landscape)").matches) {
-        $('.title').css({"font-size": "35px","padding":"5px","margin-bottom":"10px","line-height": "50px"});
-        $('.tag').css({"font-size": "30px","margin-bottom":"10px","line-height": "normal"});
-        $('.tag-line').css({"margin-bottom":"45px"});
-    }
-    else{
+      $('.title').css({"font-size": "35px", "padding": "5px", "margin-bottom": "10px", "line-height": "50px"});
+      $('.tag').css({"font-size": "30px", "margin-bottom": "10px", "line-height": "normal"});
+      $('.tag-line').css({"margin-bottom": "45px"});
+    } else {
       $('.title').css({"font-size": "22px"});
-      $('.tag').css({"margin": " 10px 0px"});
+      $('.tag').css({"margin": "10px 0px"});
     }
+  }
 
+  // Initial application of styles
+  applyStyles();
 
- 
-
+  // Listen for changes in viewport size and orientation
+  window.addEventListener('resize', applyStyles);
 });
