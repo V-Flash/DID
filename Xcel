@@ -1,11 +1,25 @@
-$(document).ready(function() {
- 
-    $( window ).on( "orientationchange", function( event ) {
-  $( "#orientation" ).text( "This device is in " + event.orientation + " mode!" );
-  
- 
-});
- 
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="orientation">This device is in unknown mode!</div>
 
-$( window ).orientationchange();
-});
+    <script>
+        $(document).ready(function() {
+            $(window).on("orientationchange", function(event) {
+                // Determine the current orientation using window.orientation
+                var orientation = window.orientation;
+
+                // Check if the orientation is landscape (90 or -90 degrees)
+                if (orientation === 90 || orientation === -90) {
+                    $("#orientation").text("This device is in landscape mode!");
+                } else {
+                    $("#orientation").text("This device is not in landscape mode.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
