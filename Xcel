@@ -1,25 +1,20 @@
 $(document).ready(function() {
+
   const mediaQuery = window.matchMedia('(max-width: 620px)');
 
-  function checkScreenOrientation() {
-    if (mediaQuery.matches) {
-      if (window.innerHeight > window.innerWidth) {
-        console.log("Landscape and 620px or less in portrait");
-        $(".custom-col").addClass("display-none");
-        $(".custom-col-mob").addClass("display-block col-md-12").removeClass("col-md-6");
-        $(".footer-mob").addClass("display-block top");
-      } else {
-        console.log("Portrait and 620px or less");
-        $(".custom-col").removeClass("display-none");
-        $(".custom-col-mob").removeClass("display-block col-md-12").addClass("col-md-6");
-        $(".footer-mob").removeClass("top");
-      }
+
+
+    if (window.matchMedia("(orientation: landscape)").matches) {
+        $('.title').css({"font-size": "35px","padding":"5px","margin-bottom":"10px","line-height": "50px"});
+        $('.tag').css({"font-size": "30px","margin-bottom":"10px","line-height": "normal"});
+        $('.tag-line').css({"margin-bottom":"45px"});
     }
-  }
+    else{
+      $('.title').css({"font-size": "22px"});
+      $('.tag').css({"margin": " 10px 0px"});
+    }
 
-  checkScreenOrientation();
 
-  $(window).on('resize', function() {
-    checkScreenOrientation();
-  });
+ 
+
 });
