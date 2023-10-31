@@ -13,6 +13,7 @@
 
         .main-timeline .timeline {
             position: relative;
+            margin-top: -79px;
             display: inline-block;
             width: 30%;
             margin-right: 10px;
@@ -20,19 +21,34 @@
         }
 
         .main-timeline .year {
+            display: block;
+            width: 110px;
+            height: 110px;
+            line-height: 110px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            margin: auto;
+            font-size: 30px;
+            font-weight: bold;
+            color: #f44556;
+            text-align: center;
             position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            transform: rotate(-45deg);
         }
 
         .main-timeline .timeline-content {
             width: 100%;
+            float: right;
             background: #f44556;
             padding: 30px 20px;
+            margin: 50px 0;
             z-index: 1;
             position: relative;
-            text-align: center;
         }
 
         .main-timeline .timeline:before,
@@ -84,7 +100,7 @@
                     <div class="year">2016</div>
                     <div class="timeline-content">
                         <h3 class="title">Graphic Designer</h3>
-                        <p class="description">
+                        <p class "description">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia mi ultrices, luctus nunc ut, commodo enim. Vivamus sem erat.
                         </p>
                     </div>
