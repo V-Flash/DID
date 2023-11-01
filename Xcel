@@ -1,24 +1,28 @@
-<li class="has-children">
-  <i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
-  <a href="products.html" class="nav-link nav-link-dropdown">Shop</a>
-  <ul class="dropdown arrow-top dropdown-width">
-    <li><a href="#." class="nav-link">Flour</a></li>
-    <li><a href="#." class="nav-link">Instant Mix</a></li>
-    <li><a href="#." class="nav-link">Spices</a></li>
-    <li><a href="#." class="nav-link">Snacks</a></li>
-    <li><a href="#." class="nav-link">Ready to Serve</a></li>
-    <li><a href="#." class="nav-link">Combo</a></li>
-    <li class="has-children">
-      <i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
-      <a href="products.html" class="nav-link inner-dropdown">Shop1</a>
-      <ul class="dropdown arrow-top dropdown-width">
-        <li><a href="#." class="nav-link">Flour</a></li>
-        <li><a href="#." class="nav-link">Instant Mix</a></li>
-        <li><a href="#." class="nav-link">Spices</a></li>
-        <li><a href="#." class="nav-link">Snacks</a></li>
-        <li><a href="#." class="nav-link">Ready to Serve</a></li>
-        <li><a href="#." class="nav-link">Combo</a></li>
-      </ul>
-    </li>
-  </ul>
-</li>
+$('body').on('click', '.nav-link-dropdown, .arrow-expand', function (e) {
+  var $this = $(this);
+  var $parentListItem = $this.closest('li');
+  var $collapse = $parentListItem.find('.dropdown');
+  var $arrowExpand = $parentListItem.find('.arrow-expand');
+
+  // Check if the clicked element has the class "inner-dropdown"
+  var isInnerDropdown = $this.hasClass('inner-dropdown');
+
+  // Close all inner dropdowns by default
+  if (!isInnerDropdown) {
+    // Close all inner dropdowns
+    $('.inner-dropdown .dropdown').slideUp();
+    $('.inner-dropdown .arrow-expand').css('transform', 'rotate(0deg)');
+  }
+
+  if ($collapse.is(':visible')) {
+    $this.removeClass('active');
+    $collapse.slideUp();
+    $arrowExpand.css('transform', 'rotate(0deg)');
+  } else {
+    $this.addClass('active');
+    $collapse.slideDown();
+    $arrowExpand.css('transform', 'rotate(180deg)');
+  }
+
+  e.preventDefault();
+});
