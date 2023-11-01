@@ -1,8 +1,11 @@
 $('body').on('click', '.nav-link-dropdown', function(e) {
-        var $this = $(this);
+    var $this = $(this);
+    
+    // Check if the clicked element has the class .nav-link-dropdown
+    if ($this.hasClass('nav-link-dropdown')) {
         var $parent = $this.closest('.has-children');
         var $target = $parent.find('.collapse');
-        
+
         if ($target.is(':visible')) {
             $target.slideUp(300); // Adjust the animation duration as needed
             $this.find('.arrow-collapse').removeClass('active');
@@ -12,4 +15,5 @@ $('body').on('click', '.nav-link-dropdown', function(e) {
         }
 
         e.preventDefault();
-    });
+    }
+});
