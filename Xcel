@@ -1,15 +1,15 @@
 $('body').on('click', '.nav-link-dropdown', function(e) {
+  e.preventDefault();
+
   var $this = $(this);
   var $parentListItem = $this.closest('li');
   var $collapse = $parentListItem.find('.collapse');
 
   if ($collapse.hasClass('show')) {
     $this.removeClass('active');
-    $collapse.removeClass('show');
+    $collapse.slideUp(300); // Adjust the duration (in milliseconds) to control the speed of the animation
   } else {
     $this.addClass('active');
-    $collapse.addClass('show');
+    $collapse.slideDown(300); // Adjust the duration (in milliseconds) to control the speed of the animation
   }
-
-  e.preventDefault();
 });
