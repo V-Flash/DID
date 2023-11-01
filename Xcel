@@ -1,8 +1,4 @@
-var siteMenuClone = function() {
-    // ... (Your existing code)
-
-    // Add click event handling for .nav-link-dropdown
-    $('body').on('click', '.nav-link-dropdown', function(e) {
+$('body').on('click', '.nav-link-dropdown', function(e) {
         var $this = $(this);
         var $parent = $this.closest('.has-children');
         var $target = $parent.find('.collapse');
@@ -17,24 +13,3 @@ var siteMenuClone = function() {
 
         e.preventDefault();
     });
-
-    // Add click event handling for .arrow-collapse
-    $('body').on('click', '.arrow-collapse', function(e) {
-        var $this = $(this);
-        var $target = $this.siblings('.collapse');
-        
-        if ($target.is(':visible')) {
-            $target.slideUp(300); // Adjust the animation duration as needed
-            $this.removeClass('active');
-        } else {
-            $target.slideDown(300); // Adjust the animation duration as needed
-            $this.addClass('active');
-        }
-
-        e.preventDefault();
-    });
-
-    // ... (The rest of your code)
-};
-
-siteMenuClone();
