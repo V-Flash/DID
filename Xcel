@@ -1,23 +1,48 @@
-$('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
-  var $this = $(this);
-  var $parentListItem = $this.closest('li');
-  var $collapse = $parentListItem.find('.collapse');
-  var $arrowExpand = $parentListItem.find('.arrow-expand');
 
-  // Close all open dropdowns
-  $('.collapse').not($collapse).slideUp();
-  $('.nav-link-dropdown.active, .arrow-expand.active').removeClass('active');
-  $('.arrow-expand').css('transform', 'rotate(0deg)');
 
-  if ($collapse.is(':visible')) {
-    $this.removeClass('active');
-    $collapse.slideUp();
-    $arrowExpand.css('transform', 'rotate(0deg)');
-  } else {
-    $this.addClass('active');
-    $collapse.slideDown();
-    $arrowExpand.css('transform', 'rotate(180deg)');
-  }
+var siteMenuClone = function() {
+  $('.js-clone-nav').each(function() {
+    var $this = $(this);
+    $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
+  });
 
-  e.preventDefault();
-});
+ 
+  setTimeout(function() {
+    var counter = 0;
+    $('.site-mobile-menu .has-children').each(function(){
+      var $this = $(this)
+
+      $this.find('.arrow-collapse').attr({
+        'data-toggle': 'collapse',
+        'data-target': '#collapseItem' + counter,
+      });
+
+      $this.find('> ul').attr({
+        'class': 'collapse',
+        'id': 'collapseItem' + counter,
+      });
+
+      counter++;
+    });
+  }, 1000);
+
+
+  $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
+    var $this = $(this);
+    var $parentListItem = $this.closest('li');
+    var $collapse = $parentListItem.find('.collapse');
+    var $arrowExpand = $parentListItem.find('.arrow-expand');
+    
+    if ($collapse.is(':visible')) {
+      $this.removeClass('active');
+      $collapse.slideUp();
+        $arrowExpand.css('transform', 'rotate(0deg)');
+    } else {
+      $this.addClass('active');
+      $collapse.slideDown();
+      $arrowExpand.css('transform', 'rotate(180deg)');
+    }
+
+    e.preventDefault();
+  });
+siteMenuClone();
