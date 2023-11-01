@@ -1,11 +1,19 @@
-/* Initial state for the collapsible elements */
-.collapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out; /* You can adjust the duration and timing function as needed */
-}
+ $('body').on('click', '.nav-link-dropdown', function(e) {
+      var $this = $(this);
+      var $parentListItem = $this.closest('li');
+      var $collapse = $parentListItem.find('.collapse');
 
-/* When the .show class is added, expand the dropdown */
-.collapse.show {
-  max-height: 1000px; /* Use a sufficiently large value to ensure it can fully expand */
-}
+      if ($collapse.hasClass('show')) {
+        $this.removeClass('active');
+        $collapse.removeClass('show');
+        $('.site-mobile-menu .site-nav-wrap .arrow-collapse').css('transform', 'rotate(0deg)');
+       
+      } else {
+        $this.addClass('active'); 
+        $collapse.addClass('show');
+        $('.site-mobile-menu .site-nav-wrap .arrow-collapse').css('transform', 'rotate(180deg)');
+       
+      }
+
+      e.preventDefault();
+    });
