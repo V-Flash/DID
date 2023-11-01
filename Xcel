@@ -1,18 +1,28 @@
-$('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
-    var $this = $(this);
-    var $parentListItem = $this.closest('li');
-    var $collapse = $parentListItem.find('.collapse');
-    var $arrowExpand = $parentListItem.find('.arrow-expand');
-    
-    if ($collapse.is(':visible')) {
-      $this.removeClass('active');
-      $collapse.slideUp();
-        $arrowExpand.css('transform', 'rotate(0deg)');
-    } else {
-      $this.addClass('active');
-      $collapse.slideDown();
-      $arrowExpand.css('transform', 'rotate(180deg)');
-    }
+$('body').on('click', '.nav-link-dropdown, .arrow-expand', function (e) {
+  var $this = $(this);
+  var $parentListItem = $this.closest('li');
+  var $collapse = $parentListItem.find('.collapse');
+  var $arrowExpand = $parentListItem.find('.arrow-expand');
 
-    e.preventDefault();
-  });
+  // Check if the clicked element has the class "inner-dropdown"
+  var isInnerDropdown = $this.hasClass('inner-dropdown');
+
+  // Close all inner dropdowns by default
+  if (!isInnerDropdown) {
+    // Close all inner dropdowns
+    $('.inner-dropdown .collapse').slideUp();
+    $('.inner-dropdown .arrow-expand').css('transform', 'rotate(0deg)');
+  }
+
+  if ($collapse.is(':visible')) {
+    $this.removeClass('active');
+    $collapse.slideUp();
+    $arrowExpand.css('transform', 'rotate(0deg)');
+  } else {
+    $this.addClass('active');
+    $collapse.slideDown();
+    $arrowExpand.css('transform', 'rotate(180deg)');
+  }
+
+  e.preventDefault();
+});
