@@ -1,17 +1,18 @@
-  $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
-    var $this = $(this);
-    var $parentListItem = $this.closest('li');
-    var $collapse = $parentListItem.find('.collapse');
+$('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
+  var $this = $(this);
+  var $parentListItem = $this.closest('li');
+  var $collapse = $parentListItem.find('.collapse');
+  var $arrowExpand = $parentListItem.find('.arrow-expand');
 
-    if ($collapse.is(':visible')) {
-      $this.removeClass('active');
-      $collapse.slideUp();
-      $('.site-mobile-menu .site-nav-wrap .arrow-expand').css('transform', 'rotate(0deg)');
-    } else {
-      $this.addClass('active');
-      $collapse.slideDown();
-      $('.site-mobile-menu .site-nav-wrap .arrow-expand').css('transform', 'rotate(180deg)');
-    }
+  if ($collapse.is(':visible')) {
+    $this.removeClass('active');
+    $collapse.slideUp();
+    $arrowExpand.css('transform', 'rotate(0deg)');
+  } else {
+    $this.addClass('active');
+    $collapse.slideDown();
+    $arrowExpand.css('transform', 'rotate(180deg)');
+  }
 
-    e.preventDefault();
-  });
+  e.preventDefault();
+});
