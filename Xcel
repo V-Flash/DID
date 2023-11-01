@@ -4,19 +4,20 @@ $('body').on('click', '.nav-link-dropdown', function(e) {
   var $collapse = $parentListItem.find('.dropdown');
   var $arrowExpand = $parentListItem.find('.arrow-expand');
 
-  if ($collapse.is(':visible')) {
-    $this.removeClass('active');
-    $collapse.slideUp();
-    $arrowExpand.css('transform', 'rotate(0deg)');
-  } else {
-    // Close all other dropdowns except the current one
-    $('.nav-link-dropdown').not($this).removeClass('active');
-    $('.dropdown').not($collapse).slideUp();
-    $('.arrow-expand').not($arrowExpand).css('transform', 'rotate(0deg)');
+  if ($parentListItem.hasClass('has-children')) {
+    if ($collapse.is(':visible')) {
+      $this.removeClass('active');
+      $collapse.slideUp();
+      $arrowExpand.css('transform', 'rotate(0deg)');
+    } else {
+      // Close all other inner dropdowns
+      $('.nav-link-dropdown.active').removeClass('active').next('.dropdown').slideUp();
+      $('.arrow-expand').css('transform', 'rotate(0deg)');
     
-    $this.addClass('active');
-    $collapse.slideDown();
-    $arrowExpand.css('transform', 'rotate(180deg)');
+      $this.addClass('active');
+      $collapse.slideDown();
+      $arrowExpand.css('transform', 'rotate(180deg)');
+    }
   }
 
   e.preventDefault();
