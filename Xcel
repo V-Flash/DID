@@ -1,7 +1,11 @@
-<li class="has-children"> <a class="nav-link">About Us</a>
-			                    <ul class="dropdown arrow-top dropdown-width">
-			                    <li><a href="about-us.html" class="nav-link">Overview</a></li>
-			                    <li><a href="about-quality.html" class="nav-link">Quality</a></li>
-			                    <li><a href="about-Infrastructure.html" class="nav-link">Infrastructure</a></li>
-			                    </ul>
-			                </li>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Use event delegation to handle click events for .nav-link inside .has-children
+    $(document).on('click', '.has-children .nav-link', function() {
+        console.log('Click event triggered');
+        // Your code to handle the click event for 'nav-link' inside 'has-children' goes here
+        // For example, you can add code to open or close the dropdown menu
+    });
+});
+</script>
