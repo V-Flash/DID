@@ -1,31 +1,26 @@
 $('body').on('click', '.arrow-collapse', function(e) {
-         console.log('ok arrow')
-        var $this = $(this);
-        if ($this.closest('li').find('.collapse').hasClass('show')) {
-            $this.removeClass('active');
-        } else {
-            $this.addClass('active');
-        }
-        e.preventDefault();
-    });
-
-
-    $('body').on('click', '.nav-link-dropdown', function(e) {
+    e.stopPropagation(); // Stop the event from propagating to the parent elements
+    console.log('ok arrow');
     var $this = $(this);
-    
-        
-            console.log('ok')
-            var $parent = $this.closest('.has-children');
-            var $target = $parent.find('.collapse');
+    if ($this.closest('li').find('.collapse').hasClass('show')) {
+        $this.removeClass('active');
+    } else {
+        $this.addClass('active');
+    }
+    e.preventDefault();
+});
 
-            if ($target.is(':visible')) {
-                $target.slideUp(300); // Adjust the animation duration as needed
-                $this.find('.arrow-collapse').removeClass('active');
-            } else {
-                $target.slideDown(300); // Adjust the animation duration as needed
-                $this.find('.arrow-collapse').addClass('active');
-            }
-
-            e.preventDefault();
-        
-    });
+$('body').on('click', '.nav-link-dropdown', function(e) {
+    var $this = $(this);
+    console.log('ok');
+    var $parent = $this.closest('.has-children');
+    var $target = $parent.find('.collapse');
+    if ($target.is(':visible')) {
+        $target.slideUp(300);
+        $this.find('.arrow-collapse').removeClass('active');
+    } else {
+        $target.slideDown(300);
+        $this.find('.arrow-collapse').addClass('active');
+    }
+    e.preventDefault();
+});
