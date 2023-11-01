@@ -1,22 +1,18 @@
-$('body').on('click', '.nav-link-dropdown', function(e) {
-  var $this = $(this);
-  var $parentListItem = $this.closest('li');
-  var $collapse = $parentListItem.find('.collapse');
+$('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
+    var $this = $(this);
+    var $parentListItem = $this.closest('li');
+    var $collapse = $parentListItem.find('.collapse');
+    var $arrowExpand = $parentListItem.find('.arrow-expand');
+    
+    if ($collapse.is(':visible')) {
+      $this.removeClass('active');
+      $collapse.slideUp();
+        $arrowExpand.css('transform', 'rotate(0deg)');
+    } else {
+      $this.addClass('active');
+      $collapse.slideDown();
+      $arrowExpand.css('transform', 'rotate(180deg)');
+    }
 
-  // Check if this dropdown is currently open
-  var isOpen = $this.hasClass('active');
-
-  // Close all open dropdowns except the one clicked
-  $('.nav-link-dropdown').not($this).removeClass('active');
-  $('.collapse').not($collapse).removeClass('show');
-  $('.site-mobile-menu .site-nav-wrap .arrow-collapse').css('transform', 'rotate(0deg)');
-
-  if (!isOpen) {
-    // Open the clicked dropdown
-    $this.addClass('active');
-    $collapse.addClass('show');
-    $('.site-mobile-menu .site-nav-wrap .arrow-collapse').css('transform', 'rotate(180deg)');
-  }
-
-  e.preventDefault();
-});
+    e.preventDefault();
+  });
