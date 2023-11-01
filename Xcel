@@ -1,26 +1,32 @@
-$('body').on('click', '.arrow-collapse', function(e) {
-    e.stopPropagation(); // Stop the event from propagating to the parent elements
-    console.log('ok arrow');
-    var $this = $(this);
-    if ($this.closest('li').find('.collapse').hasClass('show')) {
-        $this.removeClass('active');
-    } else {
-        $this.addClass('active');
-    }
-    e.preventDefault();
-});
+$(document).ready(function () {
+    $('body').on('click', '.arrow-collapse', function (e) {
+        e.stopPropagation(); // Stop the event from propagating to the parent elements
+        console.log('ok arrow');
+        var $this = $(this);
+        if ($this.closest('li').find('.collapse').hasClass('show')) {
+            $this.removeClass('active');
+        } else {
+            $this.addClass('active');
+        }
+        e.preventDefault();
+    });
 
-$('body').on('click', '.nav-link-dropdown', function(e) {
-    var $this = $(this);
-    console.log('ok');
-    var $parent = $this.closest('.has-children');
-    var $target = $parent.find('.collapse');
-    if ($target.is(':visible')) {
-        $target.slideUp(300);
-        $this.find('.arrow-collapse').removeClass('active');
-    } else {
-        $target.slideDown(300);
-        $this.find('.arrow-collapse').addClass('active');
-    }
-    e.preventDefault();
+    $('body').on('click', '.nav-link-dropdown', function (e) {
+        var $this = $(this);
+        // Check if the clicked element has the class '.arrow-collapse'
+        if ($this.hasClass('arrow-collapse')) {
+            return; // Return early, don't execute the rest of the code
+        }
+        console.log('ok');
+        var $parent = $this.closest('.has-children');
+        var $target = $parent.find('.collapse');
+        if ($target.is(':visible')) {
+            $target.slideUp(300);
+            $this.find('.arrow-collapse').removeClass('active');
+        } else {
+            $target.slideDown(300);
+            $this.find('.arrow-collapse').addClass('active');
+        }
+        e.preventDefault();
+    });
 });
