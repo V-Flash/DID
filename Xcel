@@ -1,21 +1,18 @@
 $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
-  var $this = $(this);
-  var $parentListItem = $this.closest('li');
-  var $collapse = $parentListItem.find('.collapse');
-  var $arrowExpand = $parentListItem.find('.arrow-expand');
-
-  if ($parentListItem.hasClass('top-level-dropdown')) {
-    // If the clicked element is a top-level dropdown, toggle its visibility.
+    var $this = $(this);
+    var $parentListItem = $this.closest('li');
+    var $collapse = $parentListItem.find('.collapse');
+    var $arrowExpand = $parentListItem.find('.arrow-expand');
+    
     if ($collapse.is(':visible')) {
       $this.removeClass('active');
       $collapse.slideUp();
-      $arrowExpand.css('transform', 'rotate(0deg)');
+        $arrowExpand.css('transform', 'rotate(0deg)');
     } else {
       $this.addClass('active');
       $collapse.slideDown();
       $arrowExpand.css('transform', 'rotate(180deg)');
     }
-  }
 
-  e.preventDefault();
-});
+    e.preventDefault();
+  });
