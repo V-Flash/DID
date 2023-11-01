@@ -1,24 +1,24 @@
 <li class="has-children">
-								<i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
-								<a href="products.html" class="nav-link nav-link-dropdown">Shop</a>
-								<ul class="dropdown arrow-top dropdown-width">
-									<li><a href="#." class="nav-link">Flour</a></li>
-									<li><a href="#." class="nav-link">Instant Mix</a></li>
-									<li><a href="#." class="nav-link">Spices</a></li>
-									<li><a href="#." class="nav-link">Snacks</a></li>
-									<li><a href="#." class="nav-link">Ready to Serve</a></li>
-									<li><a href="#." class="nav-link">Combo</a></li>
-									<li class="has-children">
-								<i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
-								<a href="products.html" class="nav-link inner-dropdown">Shop1</a>
-								<ul class="dropdown arrow-top dropdown-width">
-									<li><a href="#." class="nav-link">Flour</a></li>
-									<li><a href="#." class="nav-link">Instant Mix</a></li>
-									<li><a href="#." class="nav-link">Spices</a></li>
-									<li><a href="#." class="nav-link">Snacks</a></li>
-									<li><a href="#." class="nav-link">Ready to Serve</a></li>
-									<li><a href="#." class="nav-link">Combo</a></li>
-								</ul>
-							</li>
-								</ul>
-							</li>
+  <i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
+  <a href="products.html" class="nav-link nav-link-dropdown">Shop</a>
+  <ul class="dropdown arrow-top dropdown-width">
+    <li><a href="#." class="nav-link">Flour</a></li>
+    <li><a href="#." class="nav-link">Instant Mix</a></li>
+    <li><a href="#." class="nav-link">Spices</a></li>
+    <li><a href="#." class="nav-link">Snacks</a></li>
+    <li><a href="#." class="nav-link">Ready to Serve</a></li>
+    <li><a href="#." class="nav-link">Combo</a></li>
+    <li class="has-children">
+      <i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
+      <a href="products.html" class="nav-link inner-dropdown">Shop1</a>
+      <ul class="dropdown arrow-top dropdown-width">
+        <li><a href="#." class="nav-link">Flour</a></li>
+        <li><a href="#." class="nav-link">Instant Mix</a></li>
+        <li><a href="#." class="nav-link">Spices</a></li>
+        <li><a href="#." class="nav-link">Snacks</a></li>
+        <li><a href="#." class="nav-link">Ready to Serve</a></li>
+        <li><a href="#." class="nav-link">Combo</a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
