@@ -4,24 +4,41 @@ var siteMenuClone = function() {
     $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
   });
 
-  $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
-    var $this = $(this);
-    var $parentListItem = $this.closest('li');
-    var $collapse = $parentListItem.find('.dropdown');
-    var $arrowExpand = $parentListItem.find('.arrow-expand');
-
+  // Function to toggle visibility of dropdown and sub-dropdowns
+  function toggleDropdown($element) {
+    var $collapse = $element.find('> ul');
+    var $arrowExpand = $element.find('.arrow-expand');
+    
     if ($collapse.length > 0) {
       if ($collapse.is(':visible')) {
-        $this.removeClass('active');
+        $element.removeClass('active');
         $collapse.slideUp();
         $arrowExpand.css('transform', 'rotate(0deg)');
       } else {
-        $this.addClass('active');
+        $element.addClass('active');
         $collapse.slideDown();
         $arrowExpand.css('transform', 'rotate(180deg)');
       }
-      e.preventDefault();
     }
+  }
+
+  $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
+    var $this = $(this);
+    var $parentListItem = $this.closest('li');
+
+    toggleDropdown($parentListItem);
+
+    e.preventDefault();
+  });
+
+  // Handle nested dropdowns
+  $('.has-children').each(function() {
+    var $parent = $(this);
+    
+    $parent.find('.nav-link-dropdown').on('click', function(e) {
+      toggleDropdown($parent);
+      e.preventDefault();
+    });
   });
 
   // ... Rest of your code ...
