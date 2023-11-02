@@ -1,30 +1,148 @@
+<div class="navigation-menu">
+					<nav class="site-navigation text-right ml-auto " role="navigation">
+						<ul class="site-menu  main-menu js-clone-nav ml-auto d-none d-lg-block p-0">
+							<!--<li class="site-menu02"><a href="#home-section" class="nav-link"><i class="fa fa-home"></i></a></li>-->
+							<li><a href="index.html" class="nav-link">Home</a></li>
+							<li class="has-children">
+								<i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
+								<a href="products.html" class="nav-link nav-link-dropdown">Shop</a>
+								<ul class="dropdown arrow-top dropdown-width">
+									<li><a href="#." class="nav-link">Flour</a></li>
+									<li><a href="#." class="nav-link">Instant Mix</a></li>
+									<li><a href="#." class="nav-link">Spices</a></li>
+									<li><a href="#." class="nav-link">Snacks</a></li>
+									<li><a href="#." class="nav-link">Ready to Serve</a></li>
+									<li><a href="#." class="nav-link">Combo</a></li>
+									<li class="has-children">
+								<i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i>
+								<a href="products.html" class="nav-link nav-link-dropdown">Shop</a>
+								<ul class="dropdown arrow-top dropdown-width">
+									<li><a href="#." class="nav-link">Flour</a></li>
+									<li><a href="#." class="nav-link">Instant Mix</a></li>
+									<li><a href="#." class="nav-link">Spices</a></li>
+									<li><a href="#." class="nav-link">Snacks</a></li>
+									<li><a href="#." class="nav-link">Ready to Serve</a></li>
+									<li><a href="#." class="nav-link">Combo</a></li>
+								</ul>
+							</li>
+								</ul>
+							</li>
+							<li><a href="#home-section" class="nav-link">Offers</a></li>
+							<li><a href="#home-section" class="nav-link">Recipes</a></li>
+							<li><a href="#home-section" class="nav-link">FAQs</a></li>
+							<li class="has-children">
+								<i class="material-symbols-outlined arrow-expand" style="transform: rotate(0deg)!important;">expand_more</i> 
+								<a href="#" class="nav-link nav-link-dropdown">About Us</a>
+								
+			                    <ul class="dropdown arrow-top dropdown-width">
+			                    <li><a href="about-us.html" class="nav-link">Overview</a></li>
+			                    <li><a href="about-quality.html" class="nav-link">Quality</a></li>
+			                    <li><a href="about-Infrastructure.html" class="nav-link">Infrastructure</a></li>
+			                    </ul>
+			                </li>
+							<li><a href="#home-section" class="nav-link">Contact</a></li>
+							<!--<li class="nav-link"><img src="assets/images/navigation.jpg" width="148" height="32" alt=""/></li>-->
+					     </ul>
+					</nav>
+				</div>
+
+
 var siteMenuClone = function() {
   $('.js-clone-nav').each(function() {
     var $this = $(this);
     $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
   });
 
+  
+  setTimeout(function() {
+    var counter = 0;
+    $('.site-mobile-menu .has-children').each(function(){
+      var $this = $(this);
+
+      // $this.prepend('<span class="arrow-collapse collapsed" >');
+
+      $this.find('.arrow-collapse').attr({
+        'data-toggle': 'collapse',
+        'data-target': '#collapseItem' + counter,
+      });
+
+      $this.find('> ul').attr({
+        'class': 'collapse',
+        'id': 'collapseItem' + counter,
+      });
+
+      counter++;
+    });
+  }, 1000);
+
+  // $('body').on('click', '.arrow-collapse', function(e) {
+  //   var $this = $(this);
+  //   var $parentListItem = $this.closest('li');
+  //   var $collapse = $parentListItem.find('.collapse');
+
+  //   if ($collapse.is(':visible')) {
+  //     $this.removeClass('active');
+  //     $collapse.slideUp();
+      
+  //   } else {
+  //     $this.addClass('active');
+  //     $collapse.slideDown();
+      
+  //   }
+
+  //   e.preventDefault();
+  // });
+
   $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
     var $this = $(this);
     var $parentListItem = $this.closest('li');
-    var $collapse = $parentListItem.find('.dropdown');
+    var $collapse = $parentListItem.find('.collapse');
     var $arrowExpand = $parentListItem.find('.arrow-expand');
-
-    // Check if the clicked element has children (nested dropdowns)
-    var hasChildren = $parentListItem.find('.has-children').length > 0;
-
-    if (hasChildren) {
-      // If it has children, toggle visibility as before
-      if ($collapse.is(':visible')) {
-        $this.removeClass('active');
-        $collapse.slideUp();
+    
+    if ($collapse.is(':visible')) {
+      $this.removeClass('active');
+      $collapse.slideUp();
         $arrowExpand.css('transform', 'rotate(0deg)');
-      } else {
-        $this.addClass('active');
-        $collapse.slideDown();
-        $arrowExpand.css('transform', 'rotate(180deg)');
+    } else {
+      $this.addClass('active');
+      $collapse.slideDown();
+      $arrowExpand.css('transform', 'rotate(180deg)');
+    }
+
+    e.preventDefault();
+  });
+
+  $(window).resize(function() {
+    var $this = $(this),
+      w = $this.width();
+
+    if (w > 768) {
+      if ($('body').hasClass('offcanvas-menu')) {
+        $('body').removeClass('offcanvas-menu');
       }
-      e.preventDefault(); // Prevent the default behavior for links with children
+    }
+  });
+
+  $('body').on('click', '.js-menu-toggle', function(e) {
+    var $this = $(this);
+    e.preventDefault();
+
+    if ($('body').hasClass('offcanvas-menu')) {
+      $('body').removeClass('offcanvas-menu');
+      $this.removeClass('active');
+    } else {
+      $('body').addClass('offcanvas-menu');
+      $this.addClass('active');
+    }
+  });
+
+  // Click outside offcanvas
+  $(document).mouseup(function(e) {
+    var container = $(".site-mobile-menu");
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      if ($('body').hasClass('offcanvas-menu')) {
+        $('body').removeClass('offcanvas-menu');
+      }
     }
   });
 };
