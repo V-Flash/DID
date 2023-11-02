@@ -9,10 +9,12 @@ var siteMenuClone = function() {
     var $parentListItem = $this.closest('li');
     var $collapse = $parentListItem.find('.collapse');
     var $arrowExpand = $parentListItem.find('.arrow-expand');
-
+    
     // Check if the clicked element has children (nested dropdowns)
-    if ($parentListItem.find('.has-children').length === 0) {
-      // If no children, toggle visibility as before
+    var hasChildren = $parentListItem.find('.has-children').length > 0;
+    
+    if (hasChildren) {
+      // If it has children, toggle visibility as before
       if ($collapse.is(':visible')) {
         $this.removeClass('active');
         $collapse.slideUp();
@@ -23,7 +25,7 @@ var siteMenuClone = function() {
         $arrowExpand.css('transform', 'rotate(180deg)');
       }
     }
-
+    
     e.preventDefault();
   });
 };
