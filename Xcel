@@ -1,2 +1,44 @@
-$('.nav-link-inner-dropdown .arrow-expand').css('transform', 'rotate(0deg');
+$(document).ready(function() {
+  // Click event to toggle outer dropdowns
+  $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
+    var $this = $(this).closest('li');
+    var $collapse = $this.find('.dropdown');
+    var $arrowExpand = $this.find('.arrow-expand');
+
+    if ($collapse.length > 0) {
+      if ($collapse.is(':visible')) {
+        $this.removeClass('active');
+        $collapse.slideUp();
+        $arrowExpand.css('transform', 'rotate(0deg)');
+      } else {
+        $this.addClass('active');
+        $collapse.slideDown();
+        $arrowExpand.css('transform', 'rotate(180deg)');
+      }
+      e.stopPropagation();
+    }
+  });
+
+  // Click event to toggle inner dropdowns
+  $('body').on('click', '.nav-link-inner-dropdown', function(e) {
+    var $this = $(this).closest('li');
+    var $innerCollapse = $this.find('.inner-dropdown');
+    var $innerArrowExpand = $this.find('.arrow-expand');
+
+    if ($innerCollapse.length > 0) {
+      if ($innerCollapse.is(':visible')) {
+        $this.removeClass('active');
+        $innerCollapse.slideUp();
+        $innerArrowExpand.css('transform', 'rotate(0deg)');
+      } else {
+        $this.addClass('active');
+        $innerCollapse.slideDown();
+        $innerArrowExpand.css('transform', 'rotate(180deg)');
+      }
+      e.stopPropagation();
+    }
+  });
+
+  // Set initial state of inner dropdown arrows
+  $('.nav-link-inner-dropdown .arrow-expand').css('transform', 'rotate(0deg');
 });
