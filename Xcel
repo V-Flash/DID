@@ -21,25 +21,11 @@ var siteMenuClone = function() {
         $childDropdown.slideDown();
         $arrowExpand.css('transform', 'rotate(180deg)');
       }
+      e.preventDefault();
     }
-    e.preventDefault();
-  });
-
-  // Rotate inner dropdown arrows
-  $('body').on('click', '.has-children .nav-link-dropdown, .has-children .arrow-expand', function(e) {
-    var $this = $(this);
-    var $parentListItem = $this.closest('li');
-    var $childDropdown = $parentListItem.find('.dropdown');
-    var $arrowExpand = $parentListItem.find('.arrow-expand');
-
-    if ($childDropdown.length > 0) {
-      if ($childDropdown.is(':visible')) {
-        $arrowExpand.css('transform', 'rotate(0deg)');
-      } else {
-        $arrowExpand.css('transform', 'rotate(180deg)');
-      }
-    }
-    e.preventDefault();
+    
+    // Stop event propagation to prevent closing parent dropdown
+    e.stopPropagation();
   });
 
   // ... Rest of your code ...
