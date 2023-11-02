@@ -1,35 +1,65 @@
-var siteMenuClone = function() {
-  $('.js-clone-nav').each(function() {
-    var $this = $(this);
-    $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
-  });
-
-  // Click event to toggle dropdowns
+<div class="navigation-menu">
+  <nav class="site-navigation text-right ml-auto" role="navigation">
+    <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block p-0">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li class="has-children">
+        <i class="material-symbols-outlined arrow-expand">expand_more</i>
+        <a href="products.html" class="nav-link nav-link-dropdown">Shop</a>
+        <ul class="dropdown arrow-top dropdown-width">
+          <li><a href="#." class="nav-link">Flour</a></li>
+          <li><a href="#." class="nav-link">Instant Mix</a></li>
+          <li class="has-inner-children">
+            <i class="material-symbols-outlined arrow-expand">expand_more</i>
+            <a href="products.html" class="nav-link nav-link-inner-dropdown">More Shop</a>
+            <ul class="inner-dropdown arrow-top dropdown-width">
+              <li><a href="#." class="nav-link">Spices</a></li>
+              <li><a href="#." class="nav-link">Snacks</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <!-- Add more menu items as needed -->
+    </ul>
+  </nav>
+</div>
+$(document).ready(function() {
+  // Click event to toggle outer dropdowns
   $('body').on('click', '.nav-link-dropdown, .arrow-expand', function(e) {
-    var $this = $(this);
-    var $parentListItem = $this.closest('li');
-    var $childDropdown = $parentListItem.find('.dropdown');
-    var $arrowExpand = $parentListItem.find('.arrow-expand');
+    var $this = $(this).closest('li');
+    var $collapse = $this.find('.dropdown');
+    var $arrowExpand = $this.find('.arrow-expand');
 
-    if ($childDropdown.length > 0) {
-      if ($childDropdown.is(':visible')) {
+    if ($collapse.length > 0) {
+      if ($collapse.is(':visible')) {
         $this.removeClass('active');
-        $childDropdown.slideUp();
+        $collapse.slideUp();
         $arrowExpand.css('transform', 'rotate(0deg)');
       } else {
         $this.addClass('active');
-        $childDropdown.slideDown();
+        $collapse.slideDown();
         $arrowExpand.css('transform', 'rotate(180deg)');
       }
-      e.preventDefault();
+      e.stopPropagation();
     }
-    
-    // Stop event propagation to prevent closing parent dropdown
-    e.stopPropagation();
   });
 
-  // ... Rest of your code ...
+  // Click event to toggle inner dropdowns
+  $('body').on('click', '.nav-link-inner-dropdown', function(e) {
+    var $this = $(this).closest('li');
+    var $innerCollapse = $this.find('.inner-dropdown');
+    var $innerArrowExpand = $this.find('.arrow-expand');
 
-};
-
-siteMenuClone();
+    if ($innerCollapse.length > 0) {
+      if ($innerCollapse.is(':visible')) {
+        $this.removeClass('active');
+        $innerCollapse.slideUp();
+        $innerArrowExpand.css('transform', 'rotate(0deg)');
+      } else {
+        $this.addClass('active');
+        $innerCollapse.slideDown();
+        $innerArrowExpand.css('transform', 'rotate(180deg)');
+      }
+      e.stopPropagation();
+    }
+  });
+});
