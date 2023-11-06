@@ -3,14 +3,6 @@
 <head>
     <style>
         /* Add your CSS styles here */
-
-        /* Hide the content of accordion items by default */
-        .a-content {
-            display: none;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-        }
     </style>
 </head>
 <body>
@@ -22,20 +14,24 @@
 <button id="closeAllButton">Close All</button>
 
 <script>
-    // Function to expand all accordion items
+    // Function to expand all accordion items with a slide-down effect
     document.getElementById("expandAllButton").addEventListener("click", function() {
         var accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach(function(item) {
             var content = item.querySelector(".a-content");
-            content.style.maxHeight = content.scrollHeight + "px";
+            var contentHeight = content.scrollHeight;
+            content.style.transition = "max-height 0.5s";
+            content.style.maxHeight = contentHeight + "px";
         });
     });
 
-    // Function to close all accordion items
+    // Function to close all accordion items with a slide-up effect
     document.getElementById("closeAllButton").addEventListener("click", function() {
         var accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach(function(item) {
-            item.querySelector(".a-content").style.maxHeight = "0";
+            var content = item.querySelector(".a-content");
+            content.style.transition = "max-height 0.5s";
+            content.style.maxHeight = "0";
         });
     });
 </script>
