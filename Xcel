@@ -7,6 +7,9 @@
         /* Hide the content of accordion items by default */
         .a-content {
             display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -23,7 +26,8 @@
     document.getElementById("expandAllButton").addEventListener("click", function() {
         var accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach(function(item) {
-            item.querySelector(".a-content").style.display = "block";
+            var content = item.querySelector(".a-content");
+            content.style.maxHeight = content.scrollHeight + "px";
         });
     });
 
@@ -31,7 +35,7 @@
     document.getElementById("closeAllButton").addEventListener("click", function() {
         var accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach(function(item) {
-            item.querySelector(".a-content").style.display = "none";
+            item.querySelector(".a-content").style.maxHeight = "0";
         });
     });
 </script>
