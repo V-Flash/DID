@@ -3,6 +3,11 @@
 <head>
     <style>
         /* Add your CSS styles here */
+        .a-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -14,24 +19,35 @@
 <button id="closeAllButton">Close All</button>
 
 <script>
+    var accordionItems = document.querySelectorAll(".accordion-item");
+
     // Function to expand all accordion items with a slide-down effect
     document.getElementById("expandAllButton").addEventListener("click", function() {
-        var accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach(function(item) {
             var content = item.querySelector(".a-content");
-            var contentHeight = content.scrollHeight;
-            content.style.transition = "max-height 0.5s";
-            content.style.maxHeight = contentHeight + "px";
+            content.style.maxHeight = content.scrollHeight + "px";
         });
     });
 
     // Function to close all accordion items with a slide-up effect
     document.getElementById("closeAllButton").addEventListener("click", function() {
-        var accordionItems = document.querySelectorAll(".accordion-item");
         accordionItems.forEach(function(item) {
             var content = item.querySelector(".a-content");
-            content.style.transition = "max-height 0.5s";
             content.style.maxHeight = "0";
+        });
+    });
+
+    // Toggle accordion item when its title is clicked
+    accordionItems.forEach(function(item) {
+        var title = item.querySelector(".a-title");
+
+        title.addEventListener("click", function() {
+            var content = item.querySelector(".a-content");
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
         });
     });
 </script>
