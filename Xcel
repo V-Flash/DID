@@ -1,31 +1,49 @@
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const questionLinks = document.querySelectorAll('h5 a[href^="#que"]');
+ <div class="accordion style-2 margin-bottom-30">
 
-    questionLinks.forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
+                                <div class="accordion-item">
+                                  <h2 class="a-title main active but">Q1. How is the Little Genius English Enrichment Program for KG to Level 6 designed for __________?<span class="plusminus">-</span></h2>
+                                  <div class="a-content content">
+                                    <div class="wrapper">
+                                      <p class="pb20">Ans: The English Enrichment Program for KG to Level 6 in _______ is divided into three sections. The first section caters to foundation building in phonics. This section is designed to develop phonic skills and phonemic awareness. It includes engaging activities to impress the importance of phonics upon the young minds. The second section ie. Level 1, Level 2 and Level 3 - focuses on the foundations of English Enrichment. The children learn grammar and vocabulary that helps them understand the structure of the language. They also learn communication skills that help them express themselves clearly in English. The third section includes Level 4, Level 5 and Level 6. It focuses more on application of the rules of grammar, usage of vocabulary and creative writing. The knowledge that the children already have is built upon and students learn to use it in their speech and writing. Our desire to boost our students' performance makes Little Genius the best English class in ______. The online form of teaching involves interactive teaching sessions along with time allotted for doubts.</p>
+                                    </div>
+                                  </div>
+                                </div>
 
-        const targetId = link.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-        const offset = 150;
+                                <div class="accordion-item">
+                                  <h6 class="a-title main but">Q2. What is the duration and course fee of the English Enrichment Program in ______?<span class="plusminus">+</span></h6>
+                                  <div class="a-content content" style="display:none;">
+                                    <div class="wrapper">
+                                      <p class="pb20">Ans: The duration of online English class for kids in KG to Level 2 is one hour, twice a week. Level 3 to Level 6 have two hour sessions, once a week. The course fee for each level is available here:<a class="org-hover" href="https://littlegeniusacademy.co.in/downloads.php.">https://littlegeniusacademy.co.in/downloads.php</a></p>
+                       
+                                    </div>
+                                  </div>
+                                </div>
 
-        // Reset the color of all paragraphs to their default state
-        const allParagraphs = document.querySelectorAll(".answer-paragraph");
-        allParagraphs.forEach(function (paragraph) {
-          paragraph.style.color = ""; // Reset to default color
-        });
+                                <div class="accordion-item">
+                                  <h6 class="a-title main but">Q3. What is the procedure to join the Little Genius English Enrichment Program in ______?<span class="plusminus">+</span></h6>
+                                  <div class="a-content content" style="display:none;">
+                                    <div class="wrapper">
+                                      <p  class="pb20">Ans: The process to enroll your child into our English and grammar classes is quite simple in _______. You can easily place a call or drop a WhatsApp text on the number provided on our website. Our staff will guide you through the steps of scheduling a level test for your child. Alternatively, you could click the 'Schedule a free level test' button on the website to do so. You could fill out the necessary details and our team will reach out to you after. Our free diagnostic level test works to assess your child's level of interest and knowledge. Once an appropriate level is assigned, you can select your payment tenure and get your child enrolled into the program.</p>
+                                    </div>
+                                  </div>
+                                </div>
 
-        const targetParagraph = targetElement.querySelector("p");
-        targetParagraph.style.color = "red"; // Change the color to red
+                                <div class="accordion-item">
+                                  <h6 class="a-title main but">Q4. How do I become a Little Genius teacher in ________?<span class="plusminus">+</span></h6>
+                                  <div class="a-content content" style="display:none;">
+                                    <div class="wrapper">
+                                      <p class="pb20">Ans: We look for resumés of English teachers on our website, Facebook or LinkedIn. We keep an eye out for candidates who will be able to conduct phonics and grammar classes. If we find your resumé to be favourable, we will contact you and set up a test to judge your proficiency in the language. This is to determine your command over English. If you clear the test with a reasonably good score, we will then set up an interview to discuss the other parameters of your position.</p>
+                                    </div>
+                                  </div>
+                                </div>
 
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+                                <div class="accordion-item">
+                                  <h6 class="a-title main but">Q5. What is the Little Genius Diagnostic Test and how will it help my child?<span class="plusminus">+</span></h6>
+                                  <div class="a-content content" style="display:none;">
+                                    <div class="wrapper">
+                                      <p class="pb20">Ans. Little Genius provides a diagnostic level test to determine the level of enthusiasm and knowledge in English your child has. This test especially helps us to understand exactly what your child needs and then to assign an appropriate level. It is possible that your child may study at a higher level in school but is assigned a lower level in our phonics and grammar classes. That is solely because we cover an extensive syllabus and your child will benefit well in the assigned level. We work with you parents as a team to give the best education and course of learning to your child.</p>
+                                    </div>
+                                  </div>
+                                </div>
 
-        window.scroll({
-          top: targetPosition,
-          behavior: "smooth",
-        });
-      });
-    });
-  });
-</script>
+                              </div>
