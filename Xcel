@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* Add your CSS styles here */
-        .a-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-        }
     </style>
 </head>
 <body>
@@ -16,38 +13,23 @@
 </div>
 
 <button id="expandAllButton">Expand All</button>
-<button id="closeAllButton">Close All</button>
+<button id "closeAllButton">Close All</button>
 
 <script>
-    var accordionItems = document.querySelectorAll(".accordion-item");
-
-    // Function to expand all accordion items with a slide-down effect
-    document.getElementById("expandAllButton").addEventListener("click", function() {
-        accordionItems.forEach(function(item) {
-            var content = item.querySelector(".a-content");
-            content.style.maxHeight = content.scrollHeight + "px";
+    $(document).ready(function() {
+        // Function to expand all accordion items with a slide-down effect
+        $("#expandAllButton").click(function() {
+            $(".a-content").slideDown(300);
         });
-    });
 
-    // Function to close all accordion items with a slide-up effect
-    document.getElementById("closeAllButton").addEventListener("click", function() {
-        accordionItems.forEach(function(item) {
-            var content = item.querySelector(".a-content");
-            content.style.maxHeight = "0";
+        // Function to close all accordion items with a slide-up effect
+        $("#closeAllButton").click(function() {
+            $(".a-content").slideUp(300);
         });
-    });
-
-    // Toggle accordion item when its title is clicked
-    accordionItems.forEach(function(item) {
-        var title = item.querySelector(".a-title");
-
-        title.addEventListener("click", function() {
-            var content = item.querySelector(".a-content");
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
+        
+        // Toggle accordion items when their titles are clicked
+        $(".a-title").click(function() {
+            $(this).next(".a-content").slideToggle(300);
         });
     });
 </script>
