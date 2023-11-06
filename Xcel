@@ -1,18 +1,30 @@
-<script>
-        $(document).ready(function () {
-            //toggle the component with class accordion_body
-            $(".but").click(function () {
-                if ($('.content').is(':visible')) {
-                    $(".content").slideUp(300);
-                    $(".plusminus").text('+');
-                }
-                if ($(this).next(".content").is(':visible')) {
-                    $(this).next(".content").slideUp(300);
-                    $(this).children(".plusminus").text('+');
-                } else {
-                    $(this).next(".content").slideDown(300);
-                    $(this).children(".plusminus").text('-');
-                }
-            });
-        });
-    </script> 
+$(document).ready(function () {
+    // Function to expand all
+    $("#expandAllBtn").click(function () {
+        $(".content").slideDown(300);
+        $(".plusminus").text('-');
+    });
+
+    // Function to collapse all
+    $("#collapseAllBtn").click(function () {
+        $(".content").slideUp(300);
+        $(".plusminus").text('+');
+    });
+
+    // Toggle the component with class accordion_body
+    $(".but").click(function () {
+        if ($('.content').is(':visible')) {
+            $(".content").slideUp(300);
+            $(".plusminus").text('+');
+        }
+        if ($(this).next(".content").is(':visible')) {
+            $(this).next(".content").slideUp(300);
+            $(this).children(".plusminus").text('+');
+        } else {
+            $(this).next(".content").slideDown(300);
+            $(this).children(".plusminus").text('-');
+        }
+    });
+});
+<button id="expandAllBtn">Expand All</button>
+<button id="collapseAllBtn">Collapse All</button>
