@@ -1,4 +1,33 @@
-[data-target]:target {
-  background-color: #f0f0f0; /* Change to your desired background color */
-  transition: background-color 0.5s ease-in-out;
-}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const questionLinks = document.querySelectorAll('h5 a[href^="#que"]');
+
+    questionLinks.forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Extract the target ID and Ans ID based on the clicked link
+        const targetId = link.getAttribute("href").substring(1);
+        const ansId = targetId.replace("que", "ans"); // Assuming your "Ans" sections have IDs like "ans1", "ans2", etc.
+
+        // Get the target and Ans elements
+        const targetElement = document.getElementById(targetId);
+        const ansElement = document.getElementById(ansId);
+
+        const offset = 50; // Change this value as needed
+
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scroll({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+
+        // Change the text color of the Ans section
+        ansElement.style.color = "#FF0000"; // Change to your desired text color
+      });
+    });
+  });
+</script>
+</div>
+</div>
