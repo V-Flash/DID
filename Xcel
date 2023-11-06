@@ -8,7 +8,16 @@
 
         const targetId = link.getAttribute("href").substring(1);
         const targetElement = document.getElementById(targetId);
-        const offset = 150; 
+        const offset = 150;
+
+        // Reset the color of all paragraphs to their default state
+        const allParagraphs = document.querySelectorAll(".answer-paragraph");
+        allParagraphs.forEach(function (paragraph) {
+          paragraph.style.color = ""; // Reset to default color
+        });
+
+        const targetParagraph = targetElement.querySelector("p");
+        targetParagraph.style.color = "red"; // Change the color to red
 
         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
 
