@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</head>
-<body>
+<?php
+                
+                $faqcatdata = getallfaqcat();
+                $f = 1;
+                for($i=0;$i<count($faqcatdata);$i++){
+                $fcat = getallfaqanswerbycategory($faqcatdata[$i]["id"]);
 
-  <p id="firstParagraph">This is the first paragraph.</p>
-  <p id="secondParagraph">This is the second paragraph.</p>
-
-  <script>
-    // Merge content of the second paragraph into the first one
-    var firstContent = $('#firstParagraph').text();
-    var secondContent = $('#secondParagraph').text();
-
-    // You can use text() or html() based on your requirement
-    $('#firstParagraph').text(firstContent + ' ' + secondContent);
-
-    // Now you can remove the second paragraph if needed
-    $('#secondParagraph').remove();
-  </script>
-
-</body>
-</html>
+                for($a = 0 ;$a<count($fcat);$a++){
+                $titleanswer=$fcat[$a]["title"];
+                    }}
+                ?>
