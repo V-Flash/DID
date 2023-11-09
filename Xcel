@@ -6,18 +6,22 @@
     faqItems.slice(1).find(".content3").hide();
     faqItems.slice(1).find(".plusminus4").text('+');
 
-    // Add a click event listener to the first item to toggle it
-    faqItems.first().find(".but3").click(function () {
-      var content = $(this).next(".content3");
-      var plusminus = $(this).children(".plusminus4");
+    // Add a click event listener to toggle each item individually
+    faqItems.each(function () {
+      var item = $(this);
 
-      if (content.is(':visible')) {
-        content.slideUp(300);
-        plusminus.text('+');
-      } else {
-        content.slideDown(300);
-        plusminus.text('-');
-      }
+      item.find(".but3").click(function () {
+        var content = item.find(".content3");
+        var plusminus = item.find(".plusminus4");
+
+        if (content.is(':visible')) {
+          content.slideUp(300);
+          plusminus.text('+');
+        } else {
+          content.slideDown(300);
+          plusminus.text('-');
+        }
+      });
     });
 
     // Add click event listeners for expanding/collapsing all items
