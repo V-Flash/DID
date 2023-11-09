@@ -1,28 +1,24 @@
-<?php
-$faqcatdata = getallfaqcat();
-$f = 1;
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
 
-for ($i = 0; $i < count($faqcatdata); $i++) {
-    $fcat = getallfaqanswerbycategory($faqcatdata[$i]["id"]);
+  <p id="firstParagraph">This is the first paragraph.</p>
+  <p id="secondParagraph">This is the second paragraph.</p>
 
-    // Shuffle the answers within the category
-    shuffle($fcat);
+  <script>
+    // Merge content of the second paragraph into the first one
+    var firstContent = $('#firstParagraph').text();
+    var secondContent = $('#secondParagraph').text();
 
-    // Check if there are answers in the category
-    if (count($fcat) > 0) {
-        $randomAnswer = $fcat[0]["title"];
-        ?>
+    // You can use text() or html() based on your requirement
+    $('#firstParagraph').text(firstContent + ' ' + secondContent);
 
-        <div class="accordion-item">
-            <h2 class="a-title main active but3">Q<?php echo $fcat[0]["id"];?>. <?php echo $fcat[0]["title2"];?><span class="plusminus4">-</span></h2>
-            <div class="a-content content3">
-                <div class="wrapper">
-                    <p class="pb20 ans"> <?php echo $randomAnswer; ?></p>
-                </div>
-            </div>
-        </div>
+    // Now you can remove the second paragraph if needed
+    $('#secondParagraph').remove();
+  </script>
 
-        <?php
-    }
-}
-?>
+</body>
+</html>
