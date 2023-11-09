@@ -1,39 +1,64 @@
-$(document).ready(function () {
-    var faqItems = $(".accordion-item"); // Select all FAQ items
+<div class="accordion style-2 margin-bottom-30">
 
-    // Function to expand all
+                              <div class="accordion-item">
+                                <h2 class="a-title main active but3">Q1. How is the Little Genius English Enrichment Program for KG to Level 6 designed for __________?<span class="plusminus4">-</span></h2>
+                                <div class="a-content content3">
+                                  <div class="wrapper">
+                                    <p class="pb20">Ans: The English Enrichment Program for KG to Level 6 in _______ is divided into three sections. The first section caters to foundation building in phonics. This section is designed to develop phonic skills and phonemic awareness. It includes engaging activities to impress the importance of phonics upon the young minds. The second section ie. Level 1, Level 2 and Level 3 - focuses on the foundations of English Enrichment. The children learn grammar and vocabulary that helps them understand the structure of the language. They also learn communication skills that help them express themselves clearly in English. The third section includes Level 4, Level 5 and Level 6. It focuses more on application of the rules of grammar, usage of vocabulary and creative writing. The knowledge that the children already have is built upon and students learn to use it in their speech and writing. Our desire to boost our students' performance makes Little Genius the best English class in ______. The online form of teaching involves interactive teaching sessions along with time allotted for doubts.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="accordion-item">
+                                <h2 class="a-title main active but3">Q1. How is the Little Genius English Enrichment Program for KG to Level 6 designed for __________?<span class="plusminus4">-</span></h2>
+                                <div class="a-content content3">
+                                  <div class="wrapper">
+                                    <p class="pb20">Ans: The English Enrichment Program for KG to Level 6 in _______ is divided into three sections. The first section caters to foundation building in phonics. This section is designed to develop phonic skills and phonemic awareness. It includes engaging activities to impress the importance of phonics upon the young minds. The second section ie. Level 1, Level 2 and Level 3 - focuses on the foundations of English Enrichment. The children learn grammar and vocabulary that helps them understand the structure of the language. They also learn communication skills that help them express themselves clearly in English. The third section includes Level 4, Level 5 and Level 6. It focuses more on application of the rules of grammar, usage of vocabulary and creative writing. The knowledge that the children already have is built upon and students learn to use it in their speech and writing. Our desire to boost our students' performance makes Little Genius the best English class in ______. The online form of teaching involves interactive teaching sessions along with time allotted for doubts.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+                             
+
+                            </div>
+
+
+  $(document).ready(function () {
+    var faqItems = $(".accordion-item");
+
     $("#expandAllBtn").click(function () {
         faqItems.each(function() {
-            var content = $(this).find(".content");
-            if (!content.is(':visible')) {
-                content.slideDown(300);
-                $(this).find(".plusminus").text('-');
-            }
+          var content = $(this).find(".content3");
+          if (!content.is(':visible')) {
+            content.slideDown(300);
+            $(this).find(".plusminus4").text('-');
+          }
         });
     });
 
-    // Function to collapse all
-    $("#collapseAllBtn").click(function () {
+
+    $("#closeAllBtn").click(function () {
         faqItems.each(function() {
-            var content = $(this).find(".content");
-            if (content.is(':visible')) {
-                content.slideUp(300);
-                $(this).find(".plusminus").text('+');
-            }
+          var content = $(this).find(".content3");
+          if (content.is(':visible')) {
+            content.slideUp(300);
+            $(this).find(".plusminus4").text('+');
+          }
         });
     });
 
-    // Toggle the component with class accordion_body
-    $(".but").click(function () {
-        var content = $(this).next(".content");
-        var plusminus = $(this).children(".plusminus");
+
+    $(".but3").click(function () {
+        var content = $(this).next(".content3");
+        var plusminus = $(this).children(".plusminus4");
 
         if (content.is(':visible')) {
-            content.slideUp(300);
-            plusminus.text('+');
+          content.slideUp(300);
+          plusminus.text('+');
         } else {
-            content.slideDown(300);
-            plusminus.text('-');
+          content.slideDown(300);
+          plusminus.text('-');
         }
     });
 });
+</script>
