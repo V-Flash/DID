@@ -1,20 +1,23 @@
 <?php
-$faqcatdata = getallfaqcat();
-$f = 1;
+                
+                $faqcatdata = getallfaqcat();
+                $f = 1;
+                for($i=0;$i<count($faqcatdata);$i++){
+                $fcat = getallfaqanswerbycategory($faqcatdata[$i]["id"]);
 
-for ($i = 0; $i < count($faqcatdata); $i++) {
-    $fcat = getallfaqanswerbycategory($faqcatdata[$i]["id"]);
+                for($a = 0 ;$a<count($fcat);$a++){
+                $titleanswer=$fcat[$a]["title"];
+                ?>
 
-    // Shuffle the answers within the category
-    shuffle($fcat);
-
-    // Check if there are answers in the category
-    if (count($fcat) > 0) {
-        $randomAnswer = $fcat[0]["title"];
-
-        // Now $randomAnswer contains the random answer from the current category
-        // You can use or display it as needed
-        echo $randomAnswer;
-    }
-}
-?>
+                <div class="accordion-item">
+                                <h2 class="a-title main active but3">Q<?php echo $fcat[$a]["id"];?>. <?php echo $fcat[$a]["title2"];?><span class="plusminus4">-</span></h2>
+                                <div class="a-content content3">
+                                  <div class="wrapper">
+                                    <p class="pb20 ans"> <?php echo $titleanswer; ?></p>
+                                  </div>
+                                </div>
+                              </div>
+                        <?php
+                                }
+                                }
+                            ?>  
