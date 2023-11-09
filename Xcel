@@ -1,38 +1,24 @@
-<script>
-  $(document).ready(function () {
-    var faqItems = $(".accordion-item");
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
 
-    // Close all items except the first one
-    faqItems.slice(1).find(".content3").hide();
-    faqItems.slice(1).find(".plusminus4").text('+');
+  <p id="firstParagraph">This is the first paragraph.</p>
+  <p id="secondParagraph">This is the second paragraph.</p>
 
-    // Add a click event listener to toggle each item individually
-    faqItems.each(function () {
-      var item = $(this);
+  <script>
+    // Merge content of the second paragraph into the first one
+    var firstContent = $('#firstParagraph').text();
+    var secondContent = $('#secondParagraph').text();
 
-      item.find(".but3").click(function () {
-        var content = item.find(".content3");
-        var plusminus = item.find(".plusminus4");
+    // You can use text() or html() based on your requirement
+    $('#firstParagraph').text(firstContent + ' ' + secondContent);
 
-        if (content.is(':visible')) {
-          content.slideUp(300);
-          plusminus.text('+');
-        } else {
-          content.slideDown(300);
-          plusminus.text('-');
-        }
-      });
-    });
+    // Now you can remove the second paragraph if needed
+    $('#secondParagraph').remove();
+  </script>
 
-    // Add click event listeners for expanding/collapsing all items
-    $("#expandAllBtn").click(function () {
-      faqItems.find(".content3").slideDown(300);
-      faqItems.find(".plusminus4").text('-');
-    });
-
-    $("#closeAllBtn").click(function () {
-      faqItems.find(".content3").slideUp(300);
-      faqItems.find(".plusminus4").text('+');
-    });
-  });
-</script>
+</body>
+</html>
