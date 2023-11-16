@@ -1,9 +1,9 @@
 <?php
-                           $mob = $address["factory_contactone"];
+$mob = $address["factory_contactone"];
 
-                           if ($mob == '') {
-                             echo "Have a good day!";
-                           }
-                        ?>
-                        <li class="phone"><a href="tel:<?php echo $address["factory_contactone"];?>"><?php echo $address["factory_contactone"];?></a> </li>
-                        ?>
+if ($mob === null) {
+    echo "Have a good day!";
+} else {
+    echo '<li class="phone"><a href="tel:' . $address["factory_contactone"] . '">' . $address["factory_contactone"] . '</a></li>';
+}
+?>
