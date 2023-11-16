@@ -1,1 +1,9 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<?php
+                           $mob = $address["factory_contactone"];
+
+                           if ($mob == '') {
+                             echo "Have a good day!";
+                           }
+                        ?>
+                        <li class="phone"><a href="tel:<?php echo $address["factory_contactone"];?>"><?php echo $address["factory_contactone"];?></a> </li>
+                        ?>
