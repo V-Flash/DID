@@ -1,60 +1,259 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+.nav__list {
+    width: 34%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    z-index: 10;
+    text-align: center;
+    background: white;
+    background: rgba(255,255,255,.54);
+    padding: 0 10px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    justify-content: space-between;
+}
 
-<head>
-  <style type="text/css">
-    .curved-text span {
-      display: inline-block;
-      transition: transform 1s ease, opacity 1s ease;
+.nav__list .btn-warning{padding: 12px 20px;font-weight: bold;}
+
+.nav-item-link{
+   display: flex;
+   gap: 10px;
+}
+
+.logo{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;	
+}
+
+.nav-link-a{color: black;text-decoration: none;font-weight: 400;cursor: pointer;}
+
+.dropdown-menu{
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 0px;
+      border-radius: 12px;
+      background: transparent;
+      border:none;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      padding-top: 40px;
+      top: 39px;
     }
 
-    .scroll-curve {
-      transform-origin: center bottom;
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      font-size: 55px;
-      color: green;
-    }
-  </style>
-</head>
+.list-group.list-group-flush {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+}   
 
-<body>
-  <div class="scroll-curve">
-    <span>G</span>
-    <span>e</span>
-    <span>e</span>
-    <span>k</span>
-    <span>s</span>
-    <span>f</span>
-    <span>o</span>
-    <span>r</span>
-    <span>G</span>
-    <span>e</span>
-    <span>e</span>
-    <span>k</span>
-    <span>s</span>
-  </div>
+.dropdown {cursor: pointer;}
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var textContainer = document.querySelector('.scroll-curve');
-      var textSpans = document.querySelectorAll('.scroll-curve span');
-      var initialTransform = Array.from(textSpans).map(span => getComputedStyle(span).transform);
+.list-group-item{display: flex;gap:10px;border: none;}
 
-      document.addEventListener("scroll", function () {
-        var scrollPosition = window.scrollY;
-        var curveAmount = scrollPosition / 10;
-        var opacity = 1 - scrollPosition / 500;
+.dropdown-heading{font-size: 18px;margin-bottom: 2px;}
 
-        textContainer.style.transform = `perspective(500px) rotateX(${curveAmount}deg)`;
-        textSpans.forEach((span, index) => {
-          span.style.transform = initialTransform[index] + ` rotate(${curveAmount}deg)`;
-          span.style.opacity = opacity;
-        });
-      });
-    });
-  </script>
-</body>
+.dropdown-para{font-size: 12px;color: gray;margin-bottom: 0;}
 
-</html>
+.dropdown-hover:hover>.dropdown-menu{display: inline-block;}
+
+.dropdown-hover>.dropdown-toggle:active{pointer-events: none;}
+
+.img-menu{
+  flex: 0 0 90px;
+  margin-right: 15px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.img-menu img{ 
+  width: 90px;
+  height: 100%;
+  object-fit: cover;
+}
+.list-group-two .dropdown-heading{line-height: 140%;}
+.dropdown-heading2{font-size: 13px;line-height: normal;font-weight: bold;}
+
+
+</style>
+
+
+
+
+<nav class="nav">
+  <ul class="nav__list">
+	  
+    <div>
+       <li><a href="index.html" class="logo">Vivek Parmar</a></li>
+    </div>
+	  
+    <div class="nav-item-link">
+	    
+        <li class=" dropdown dropdown-hover position-static">
+          <a class="nav-link-a dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Overview
+          </a>
+          <!-- Dropdown menu -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		  
+                  <div class="list-group list-group-flush">
+                    <div>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">person</span>
+                        <div>
+                          <h5 class="dropdown-heading">People</h5>
+                          <p class="dropdown-para">All people data on one place</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">credit_card</span>
+                        <div>
+                          <h5 class="dropdown-heading">Payroll</h5>
+                          <p class="dropdown-para">Fastest payroll in the UK</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">loyalty</span>
+                        <div>
+                          <h5 class="dropdown-heading">Benefits</h5>
+                          <p class="dropdown-para">Manage pension, healthcare and more</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">event_available</span>
+                        <div>
+                          <h5 class="dropdown-heading">Time Off</h5>
+                          <p class="dropdown-para"> Customisable time tracking for your team</p>
+                        </div>
+                      </a>
+
+                    </div>
+                    
+                    <div>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">apps</span>
+                        <div>
+                          <h5 class="dropdown-heading">Apps</h5>
+                          <p class="dropdown-para">Access management automated for your tools</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">computer</span>
+                        <div>
+                          <h5 class="dropdown-heading"> Devices</h5>
+                          <p class="dropdown-para">Buy, ship and configure computers via MDM</p>
+                        </div>
+                      </a>
+                     
+                    </div>
+
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#" class="nav-link-a">Goals</a></li>
+	  
+         <li class=" dropdown dropdown-hover position-static">
+          <a class="nav-link-a dropdown-toggle p-0" href="#" id="navbarDropdown1" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Resources
+          </a>
+          <!-- Dropdown menu -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+
+            <div class="list-group list-group-flush list-group-two">
+
+                    <div style="width: 80%;">
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <h5 class="dropdown-heading"> Case Studies</h5>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <h5 class="dropdown-heading">Knowledge center</h5>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <h5 class="dropdown-heading">About Us</h5>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">           
+                        <h5 class="dropdown-heading">Careers</h5>                         
+                      </a>
+
+                       <a href="" class="list-group-item list-group-item-action">   
+                        <h5 class="dropdown-heading">Blog</h5>                         
+                      </a>
+
+                    </div>
+                    
+                    <div>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                          <h5 class="dropdown-heading">Featured</h5> 
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        
+                        <div class="img-menu">
+                          <img src="https://zelt.app/wp-content/uploads/zelt.app-ex-revolut-coo-picks-zelt-as-people-operations-backbone-zelt.app-ex-revolut-coo-picks-zelt-as-people-operations-backbone-revolut1-1024x558-1.jpg" loading="lazy" alt="Revolut logo">
+                        </div>
+
+                        <div>
+                          <p class="dropdown-para">Case Studies</p>
+                          <h5 class="dropdown-heading2"> Former Revolut execs choose Zelt for Deblock</h5>              
+                        </div>
+                          
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">                  
+                        <div class="img-menu">
+                          <img src="https://zelt.app/wp-content/uploads/zelt.app-onedome-cover-1x.webp" loading="lazy" alt="Revolut logo">
+                        </div>
+
+                        <div>
+                          <p class="dropdown-para">Case Studies</p>
+                          <h5 class="dropdown-heading2">Private equity backed OneDome consolidates HR and payroll across group</h5>  
+                        </div>
+                          
+                      </a>
+                     
+                    </div>
+
+            </div>
+                
+          </div>
+	</div>
+       </div>
+        </li>
+	
+
+	  
+        <li><a href="#" class="nav-link-a">Profile</a></li>
+    </div>
+         
+	    
+     <li><a href="#" class="btn btn-warning">Get Started</a></li>    
+     
+	  
+  </ul>
+</nav>
