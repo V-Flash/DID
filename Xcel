@@ -3,104 +3,53 @@
 
 <head>
   <style type="text/css">
-    /* Apply the translate and rotate transformation 
-    for our text to look curved */
-
-    .G1 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .e1 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .e2 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .k1 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .s1 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .f {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .o {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .r {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .G2 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .e3 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .e4 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .k2 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    .s2 {
-      transform: translate(0, 0) rotate(0deg);
-    }
-
-    /* An inline-block element is placed as an inline 
-    element (on the same line as adjacent content), 
-    but it behaves like a block element */
-
-    span {
+    .curved-text span {
       display: inline-block;
       transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .scroll-curve {
+      transform-origin: center bottom;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 55px;
+      color: green;
     }
   </style>
 </head>
 
 <body>
-  <div style="text-align: center; padding-top: 250px;
-        font-size: 55px; color: green;">
-
-    <!-- Declare all the characters of text 
-      one-by-one, inside span tags -->
-    <span class="G1">G</span>
-    <span class="e1">e</span>
-    <span class="e2">e</span>
-    <span class="k1">k</span>
-    <span class="s1">s</span>
-    <span class="f">f</span>
-    <span class="o">o</span>
-    <span class="r">r</span>
-    <span class="G2">G</span>
-    <span class="e3">e</span>
-    <span class="e4">e</span>
-    <span class="k2">k</span>
-    <span class="s2">s</span>
+  <div class="scroll-curve">
+    <span>G</span>
+    <span>e</span>
+    <span>e</span>
+    <span>k</span>
+    <span>s</span>
+    <span>f</span>
+    <span>o</span>
+    <span>r</span>
+    <span>G</span>
+    <span>e</span>
+    <span>e</span>
+    <span>k</span>
+    <span>s</span>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var textSpans = document.querySelectorAll('.curved-text span');
+    document.addEventListener("DOMContentLoaded", function () {
+      var textContainer = document.querySelector('.scroll-curve');
+      var textSpans = document.querySelectorAll('.scroll-curve span');
       var initialTransform = Array.from(textSpans).map(span => getComputedStyle(span).transform);
 
-      document.addEventListener("scroll", function() {
+      document.addEventListener("scroll", function () {
         var scrollPosition = window.scrollY;
+        var curveAmount = scrollPosition / 10;
+        var opacity = 1 - scrollPosition / 500;
+
+        textContainer.style.transform = `perspective(500px) rotateX(${curveAmount}deg)`;
         textSpans.forEach((span, index) => {
-          var rotation = -scrollPosition / 10;
-          var opacity = 1 - scrollPosition / 500;
-          span.style.transform = initialTransform[index] + ` rotate(${rotation}deg)`;
+          span.style.transform = initialTransform[index] + ` rotate(${curveAmount}deg)`;
           span.style.opacity = opacity;
         });
       });
