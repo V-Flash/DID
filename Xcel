@@ -8,43 +8,40 @@
       margin: 0;
       overflow: hidden;
       font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
-    .bending-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .curved-text {
       font-size: 2em;
       white-space: nowrap;
       opacity: 1;
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transition: opacity 0.5s ease;
     }
 
-    .bending-text.bend {
-      transform: translate(-50%, -50%) rotate(-10deg);
-      opacity: 0;
+    .bend {
+      transform: perspective(500px) rotateX(-20deg);
     }
   </style>
 </head>
 <body>
-  <div class="bending-text">Give your people a platform</div>
+  <div class="curved-text">Give your people a platform</div>
 
   <script>
     document.addEventListener("scroll", function() {
       let scrollPosition = window.scrollY;
-      let bendingText = document.querySelector(".bending-text");
+      let curvedText = document.querySelector(".curved-text");
 
-      let rotation = -0.1 * scrollPosition;
       let opacity = 1 - scrollPosition / 500;
 
-      bendingText.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
-      bendingText.style.opacity = opacity;
+      curvedText.style.opacity = opacity;
 
-      if (scrollPosition > 500) {
-        bendingText.classList.add("bend");
+      if (scrollPosition > 100) {
+        curvedText.classList.add("bend");
       } else {
-        bendingText.classList.remove("bend");
+        curvedText.classList.remove("bend");
       }
     });
   </script>
