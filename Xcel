@@ -1,9 +1,91 @@
-<?php
-$mob = $address["factory_contactone"];
+.dropdown-menu{
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,.05);
+      transition: transform .6s cubic-bezier(.16,1,.3,1),opacity .3s,visibility 0s .3s;
+    }
 
-if ($mob === null) {
-    echo "Have a good day!";
-} else {
-    echo '<li class="phone"><a href="tel:' . $address["factory_contactone"] . '">' . $address["factory_contactone"] . '</a></li>';
-}
-?>
+   
+    .dropdown-hover:hover>.dropdown-menu{display: inline-block;}
+
+    .dropdown-hover>.dropdown-toggle:active{pointer-events: none;}
+    
+
+
+
+<li class=" dropdown dropdown-hover position-static">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Mega menu
+          </a>
+          <!-- Dropdown menu -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            
+                  <div class="list-group list-group-flush">
+
+                    <div>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">person</span>
+                        <div>
+                          <h5 class="dropdown-heading">People</h5>
+                          <p class="dropdown-para">All people data on one place</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">credit_card</span>
+                        <div>
+                          <h5 class="dropdown-heading">Payroll</h5>
+                          <p class="dropdown-para">Fastest payroll in the UK</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">loyalty</span>
+                        <div>
+                          <h5 class="dropdown-heading">Benefits</h5>
+                          <p class="dropdown-para">Manage pension, healthcare and more</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">event_available</span>
+                        <div>
+                          <h5 class="dropdown-heading">Time Off</h5>
+                          <p class="dropdown-para"> Customisable time tracking for your team</p>
+                        </div>
+                      </a>
+
+                    </div>
+                    
+                    <div>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">apps</span>
+                        <div>
+                          <h5 class="dropdown-heading">Apps</h5>
+                          <p class="dropdown-para">Access management automated for your tools</p>
+                        </div>
+                      </a>
+
+                      <a href="" class="list-group-item list-group-item-action">
+                        <span class="material-symbols-outlined">apps</span>
+                        <div>
+                          <h5 class="dropdown-heading"> Devices</h5>
+                          <p class="dropdown-para">Buy, ship and configure computers via MDM</p>
+                        </div>
+                      </a>
+                     
+                    </div>
+
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+        </li>
