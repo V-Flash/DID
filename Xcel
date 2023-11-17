@@ -1,1 +1,52 @@
-<h1>Give your people <br>a platform</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .bending-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      white-space: nowrap;
+      opacity: 1;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .bending-text.bend {
+      transform: translate(-50%, -50%) rotate(-10deg);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="bending-text">Give your people a platform</div>
+
+  <script>
+    document.addEventListener("scroll", function() {
+      let scrollPosition = window.scrollY;
+      let bendingText = document.querySelector(".bending-text");
+
+      let rotation = -0.1 * scrollPosition;
+      let opacity = 1 - scrollPosition / 500;
+
+      bendingText.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+      bendingText.style.opacity = opacity;
+
+      if (scrollPosition > 500) {
+        bendingText.classList.add("bend");
+      } else {
+        bendingText.classList.remove("bend");
+      }
+    });
+  </script>
+</body>
+</html>
