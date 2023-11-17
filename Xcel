@@ -1,49 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+<!DOCTYPE html> 
+<html lang="en"> 
 
-    .curved-text {
-      font-size: 2em;
-      white-space: nowrap;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
+<head> 
 
-    .bend {
-      transform: perspective(500px) rotateX(-20deg);
-    }
-  </style>
-</head>
-<body>
-  <div class="curved-text">Give your people a platform</div>
+  <!--Style to transform text in an arc -->
+  <style type=text/css> 
+    /* Apply the translate and rotate transformation 
+    for our text to look curved */ 
 
-  <script>
-    document.addEventListener("scroll", function() {
-      let scrollPosition = window.scrollY;
-      let curvedText = document.querySelector(".curved-text");
+    .G1 { 
+      transform: translate(20px, 85px) rotate(-30deg); 
+    } 
 
-      let opacity = 1 - scrollPosition / 500;
+    .e1 { 
+      transform: translate(13px, 60px) rotate(-25deg); 
+    } 
 
-      curvedText.style.opacity = opacity;
+    .e2 { 
+      transform: translate(6px, 40px) rotate(-20deg); 
+    } 
 
-      if (scrollPosition > 100) {
-        curvedText.classList.add("bend");
-      } else {
-        curvedText.classList.remove("bend");
-      }
-    });
-  </script>
-</body>
-</html>
+    .k1 { 
+      transform: translate(3px, 23px) rotate(-15deg); 
+    } 
+
+    .s1 { 
+      transform: translate(2px, 14px) rotate(-10deg); 
+    } 
+
+    .f { 
+      transform: translate(1px, 8px) rotate(-5deg); 
+    } 
+
+    .o { 
+      transform: translate(0px, 5px) rotate(0deg); 
+    } 
+
+    .r { 
+      transform: translate(-1px, 8px) rotate(5deg); 
+    } 
+
+    .G2 { 
+      transform: translate(-2px, 14px) rotate(10deg); 
+    } 
+
+    .e3 { 
+      transform: translate(-3px, 25px) rotate(15deg); 
+    } 
+
+    .e4 { 
+      transform: translate(-6px, 40px) rotate(20deg); 
+    } 
+
+    .k2 { 
+      transform: translate(-14px, 60px) rotate(25deg); 
+    } 
+
+    .s2 { 
+      transform: translate(-20px, 80px) rotate(30deg); 
+    } 
+
+    /* An inline-block element is placed as an inline 
+    element (on the same line as adjacent content), 
+    but it behaves like a block element */ 
+
+    span { 
+      display: inline-block; 
+    } 
+  </style> 
+</head> 
+
+<body> 
+  <div style="text-align: center; padding-top: 250px; 
+        font-size: 55px; color: green;"> 
+
+    <!-- Declare all the characters of text 
+      one-by-one, inside span tags -->
+    <span class="G1">G</span> 
+    <span class="e1">e</span> 
+    <span class="e2">e</span> 
+    <span class="k1">k</span> 
+    <span class="s1">s</span> 
+    <span class="f">f</span> 
+    <span class="o">o</span> 
+    <span class="r">r</span> 
+    <span class="G2">G</span> 
+    <span class="e3">e</span> 
+    <span class="e4">e</span> 
+    <span class="k2">k</span> 
+    <span class="s2">s</span> 
+  </div> 
+</body> 
+
+</html> 
