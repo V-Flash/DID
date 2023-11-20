@@ -1,37 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Progress Bar</title>
+  <style>
+    .header-top {
+      position: fixed;
+      top: 0;
+      z-index: 1;
+      width: 100%;
+      background-color: #f1f1f1;
+    }
 
-.header-top {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  background-color: #f1f1f1;
-}
+    .progress-container {
+      width: 100%;
+      height: 3px;
+      background: transparent;
+    }
 
-.progress-container{
-	width: 100%;
-	height: 3px;
-	background: transparent;
-}
+    .progress-bar {
+      height: 3px;
+      background: #ffc107;
+      width: 0%;
+    }
+  </style>
+</head>
+<body>
 
-.progress-bar{
-    height: 3px;
-    background: #ffc107;
-    width: 0%;
-}
-
-
-<div class="header-top">
+  <header class="header-top">
     <div class="progress-container">
       <div class="progress-bar" id="myBar"></div>
-  </div>  
-</div>
+    </div>
+  </header>
 
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(window).scroll(function() {
+        var winScroll = $(this).scrollTop();
+        var height = $(document).height() - $(window).height();
+        var scrolled = (winScroll / height) * 100;
+        $("#myBar").css("width", scrolled + "%");
+      });
+    });
+  </script>
 
-window.onscroll = myFunction();
-
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}
+</body>
+</html>
