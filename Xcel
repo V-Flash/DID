@@ -1,3 +1,17 @@
-<div class="mb-3">
-					  <input class="form-control file-input" type="file"  required="">
-					</div>
+<style>
+  /* Style for the file input container */
+  .file-input-container {
+    margin-bottom: 3px; /* You can adjust the margin as needed */
+  }
+
+  /* Style for the "Choose File" button */
+  .file-input-container input[type="file"] {
+    background-color: #your-color; /* Set your desired background color here */
+    color: #fff; /* Set text color if needed */
+    /* Add any additional styling as needed */
+  }
+</style>
+
+<div class="mb-3 file-input-container">
+  <input class="form-control file-input" type="file" required="">
+</div>
