@@ -34,7 +34,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Add 'white-colour' class to the <i> tag inside the default active tab
+        // Set 'white-colour' class to the <i> tag inside the default active tab
         $('.tab-link.tab-active i').addClass('white-colour');
 
         // Handle tab click event
