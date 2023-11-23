@@ -1,38 +1,28 @@
 <style>
-  /* Custom class for odd rows */
-  .odd-row {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-
-  /* Custom class for even rows */
-  .even-row {
-    display: flex;
-  }
-
-  /* Set order for columns */
-  .odd-row .col-md-6:first-child {
+  /* Set order for columns in odd rows */
+  .row:nth-child(odd) .col-md-6:first-child {
     order: 1;
   }
 
-  .odd-row .col-md-6:last-child {
+  .row:nth-child(odd) .col-md-6:last-child {
     order: 2;
   }
 
-  .even-row .col-md-6:first-child {
+  /* Set order for columns in even rows */
+  .row:nth-child(even) .col-md-6:first-child {
     order: 2;
   }
 
-  .even-row .col-md-6:last-child {
+  .row:nth-child(even) .col-md-6:last-child {
     order: 1;
   }
 </style>
 
-<!-- Your HTML with custom classes for odd and even rows -->
-<div class="row container-pd-lr-service align-items-center odd-row">
-  <!-- ... your odd row content ... -->
+<!-- Your HTML with alternating column orders -->
+<div class="row container-pd-lr-service align-items-center">
+  <!-- ... your row content ... -->
 </div>
 
-<div class="row container-pd-lr-service align-items-center even-row">
-  <!-- ... your even row content ... -->
+<div class="row container-pd-lr-service align-items-center">
+  <!-- ... your row content ... -->
 </div>
