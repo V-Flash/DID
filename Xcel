@@ -1,40 +1,38 @@
- <div class="row container-pd-lr-service align-items-center">
-      <div class="col-md-6 col-sm-6 p-0 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".2s">
-        <div id="carouselExampleIndicators" class="carousel slide home-slider" data-ride="carousel">
-          <div class="carousel-inner img-mobile-bottom-space">
-            <div class="carousel-item active"><img class="d-block w-100" src="assets/images/services01-img.webp" alt="First slide"></div>
-            <div class="carousel-item"><img class="d-block w-100" src="assets/images/services011-img.webp" alt="First slide"></div>
-          </div>
-          <div class="container arrow-theme arrow-center">
-            <nav class="nav-slide"> <a class="prev" href="#carouselExampleIndicators" data-slide="prev"> <span class="icon-wrap material-symbols-outlined">arrow_back_ios</span> </a> <a class="next" href="#carouselExampleIndicators" data-slide="next"> <span class="icon-wrap material-symbols-outlined">arrow_forward_ios</span> </a> </nav>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 p-0 pl-5 pl-mobile wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".3s"> 
-		  <img src="assets/images/icons/service-icon-1.webp" class="img-fluid service-icon" alt="service-icon">
-        <h4 class="hm-service-title">Manufacturing</h4>
-        <p class="hm-sercice-para text-muted">Koshambh is a leading manufacturing company. We manufacture Bakery products and biodegradable plastic bags in our manufacturing units based is Gujarat India.</p>
-        <div class="learn-more space-bottom pt-4"> <a href="manufacturing-unit-overview.html" class="learn-more-btn"><span class="material-symbols-outlined plus-icon">add</span> <span class="btn-text">Learn more</span></a> </div>
-      </div>
-    </div>
+<style>
+  /* Custom class for odd rows */
+  .odd-row {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 
- <div class="row container-pd-lr-service align-items-center">
-      <div class="col-md-6 col-sm-6 p-0 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".2s">
-        <div id="carouselExampleIndicators" class="carousel slide home-slider" data-ride="carousel">
-          <div class="carousel-inner img-mobile-bottom-space">
-            <div class="carousel-item active"><img class="d-block w-100" src="assets/images/services01-img.webp" alt="First slide"></div>
-            <div class="carousel-item"><img class="d-block w-100" src="assets/images/services011-img.webp" alt="First slide"></div>
-          </div>
-          <div class="container arrow-theme arrow-center">
-            <nav class="nav-slide"> <a class="prev" href="#carouselExampleIndicators" data-slide="prev"> <span class="icon-wrap material-symbols-outlined">arrow_back_ios</span> </a> <a class="next" href="#carouselExampleIndicators" data-slide="next"> <span class="icon-wrap material-symbols-outlined">arrow_forward_ios</span> </a> </nav>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 p-0 pl-5 pl-mobile wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".3s"> 
-		  <img src="assets/images/icons/service-icon-1.webp" class="img-fluid service-icon" alt="service-icon">
-        <h4 class="hm-service-title">Manufacturing</h4>
-        <p class="hm-sercice-para text-muted">Koshambh is a leading manufacturing company. We manufacture Bakery products and biodegradable plastic bags in our manufacturing units based is Gujarat India.</p>
-        <div class="learn-more space-bottom pt-4"> <a href="manufacturing-unit-overview.html" class="learn-more-btn"><span class="material-symbols-outlined plus-icon">add</span> <span class="btn-text">Learn more</span></a> </div>
-      </div>
+  /* Custom class for even rows */
+  .even-row {
+    display: flex;
+  }
 
-in this i have two row in that i have two column i want column order to b changed as per even and odd for odd row column one order to be 1 and column two oder 2 and for even reverse  
+  /* Set order for columns */
+  .odd-row .col-md-6:first-child {
+    order: 1;
+  }
+
+  .odd-row .col-md-6:last-child {
+    order: 2;
+  }
+
+  .even-row .col-md-6:first-child {
+    order: 2;
+  }
+
+  .even-row .col-md-6:last-child {
+    order: 1;
+  }
+</style>
+
+<!-- Your HTML with custom classes for odd and even rows -->
+<div class="row container-pd-lr-service align-items-center odd-row">
+  <!-- ... your odd row content ... -->
+</div>
+
+<div class="row container-pd-lr-service align-items-center even-row">
+  <!-- ... your even row content ... -->
+</div>
