@@ -1,16 +1,16 @@
 <div class="col-lg-9 col-md-8 order-md-2 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
     <!-- Content for Glucose Tab -->
-    <div id="GlucoseContent" class="margin-left-pro">
+    <div id="GlucoseContent" class="margin-left-pro tab-content">
         <!-- ... Existing Glucose content ... -->
     </div>
 
     <!-- Content for Nice Tab (hidden by default) -->
-    <div id="NiceContent" class="margin-left-pro" style="display: none;">
+    <div id="NiceContent" class="margin-left-pro tab-content" style="display: none;">
         <!-- ... Nice content ... -->
     </div>
 
     <!-- Content for Cream Tab (hidden by default) -->
-    <div id="CreamContent" class="margin-left-pro" style="display: none;">
+    <div id="CreamContent" class="margin-left-pro tab-content" style="display: none;">
         <!-- ... Cream content ... -->
     </div>
 </div>
@@ -19,14 +19,31 @@
     <div class="pro-auto-side-bar">
         <ul class="nav nav-tabs tabs-left">
             <li class="active">
-                <a href="#GlucoseContent" data-toggle="tab">Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+                <a href="#GlucoseContent">Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
             </li>
             <li>
-                <a href="#NiceContent" data-toggle="tab">Nice <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+                <a href="#NiceContent">Nice <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
             </li>
             <li>
-                <a href="#CreamContent" data-toggle="tab">Cream <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+                <a href="#CreamContent">Cream <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
             </li>
         </ul>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Handle tab click event
+        $('.nav-tabs a').click(function (e) {
+            e.preventDefault();
+            
+            // Hide all tab content with fade effect
+            $('.tab-content').fadeOut('fast');
+            
+            // Show the selected tab content with fade effect
+            var targetTab = $(this).attr('href');
+            $(targetTab).fadeIn('fast');
+        });
+    });
+</script>
