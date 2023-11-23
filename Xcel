@@ -19,13 +19,13 @@
     <div class="pro-auto-side-bar">
         <ul class="nav nav-tabs tabs-left">
             <li class="active">
-                <a href="#GlucoseContent">Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+                <a href="#GlucoseContent" class="tab-link">Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
             </li>
             <li>
-                <a href="#NiceContent">Nice <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+                <a href="#NiceContent" class="tab-link">Nice <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
             </li>
             <li>
-                <a href="#CreamContent">Cream <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+                <a href="#CreamContent" class="tab-link">Cream <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
             </li>
         </ul>
     </div>
@@ -35,8 +35,14 @@
 <script>
     $(document).ready(function () {
         // Handle tab click event
-        $('.nav-tabs a').click(function (e) {
+        $('.tab-link').click(function (e) {
             e.preventDefault();
+            
+            // Remove 'tab-active' class from all tabs
+            $('.tab-link').removeClass('tab-active');
+            
+            // Add 'tab-active' class to the clicked tab
+            $(this).addClass('tab-active');
             
             // Hide all tab content with fade effect
             $('.tab-content').fadeOut('fast');
