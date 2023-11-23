@@ -1,3 +1,71 @@
-   <ul class="footer-item">'
-<a class="footer-link" href=""><li>Distribution of Shareholding</li></a>
-</ul>
+<div class="col-lg-9 col-md-8 order-md-2 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
+				<div class="margin-left-pro">
+					<div class="text-center mb-5"><img src="assets/images/glucose-img01.png" class="img-fluid" alt=""/></div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="pro-detail-red-title">
+							<h3>Glucose</h3>
+							
+							<div class="pro-detail-table-glucose table-responsive">
+								<table class="table table-striped text-center ">
+								  <thead>
+									<tr>
+									  <th scope="col">Product Name</th>
+									  <th scope="col">Product Package</th>
+									  <th scope="col">Packaging</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									<tr>
+									  <td>Glucose</td>
+									  <td>10 gm</td>
+									  <td>10 gm X 300 pkts</td>
+									</tr>
+									<tr>
+									  <td>Glucose</td>
+									  <td>36 gm</td>
+									  <td>36 gm X 100 pkts</td>
+									</tr>
+									<tr>
+									  <td>Glucose</td>
+									  <td>36 gm</td>
+									  <td>36 gm X 200 pkts</td>
+									</tr>
+									<tr>
+									  <td>Glucose</td>
+									  <td>60 gm</td>
+									  <td>60 gm X 48 pkts</td>
+									</tr>
+								  </tbody>
+								</table>
+							</div>
+								
+								
+								
+						  </div>
+						</div>
+					</div>
+				</div>
+		  </div>
+			
+			<div class="col-lg-3 col-md-4 order-md-1 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
+				<div class="pro-auto-side-bar">
+				<!--<ul>
+					<li class="active"><a href="#">Truck & Car Tyres</a></li>
+					<li><a href="#">Two-Wheeler Tyres</a></li>	
+				</ul>-->
+					<ul class="nav nav-tabs tabs-left">
+						<li class="active">
+							<a href="#ClientInfo" data-toggle="tab">Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span></a>
+						</li>
+						<li>
+							<a href="#tab2" data-toggle="tab">Nice <span class="more-arrow"><i class="fa fa-caret-right"></i>
+						  </span></a>
+						</li>
+						<li>
+							<a href="#tab2" data-toggle="tab">Cream <span class="more-arrow"><i class="fa fa-caret-right"></i>
+						  </span></a>
+						</li>		
+					</ul>
+				</div>
+			</div>
