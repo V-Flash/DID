@@ -1,2 +1,58 @@
+<div class="col-lg-9 col-md-8 order-md-2 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
+    <!-- Content for Glucose Tab -->
+    <div id="GlucoseContent" class="margin-left-pro tab-content">
+        <!-- ... Existing Glucose content ... -->
+    </div>
 
-i want on hover this .nav-slide .icon-wrap:hover change this class fill colour .nav-slide svg.icon
+    <!-- Content for Nice Tab (hidden by default) -->
+    <div id="NiceContent" class="margin-left-pro tab-content" style="display: none;">
+        <!-- ... Nice content ... -->
+    </div>
+
+    <!-- Content for Cream Tab (hidden by default) -->
+    <div id="CreamContent" class="margin-left-pro tab-content" style="display: none;">
+        <!-- ... Cream content ... -->
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4 order-md-1 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
+    <div class="pro-auto-side-bar">
+        <div class="nav-tabs tabs-left">
+            <div class="tab active" data-tab="#GlucoseContent">
+                Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span>
+            </div>
+            <div class="tab" data-tab="#NiceContent">
+                Nice <span class="more-arrow"><i class="fa fa-caret-right"></i></span>
+            </div>
+            <div class="tab" data-tab="#CreamContent">
+                Cream <span class="more-arrow"><i class="fa fa-caret-right"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add 'active' class to the first tab and show its content by default
+        $('.tab:first').addClass('active');
+        $('.tab-content').hide();
+        $($('.tab:first').data('tab')).show();
+
+        // Handle tab click event
+        $('.tab').click(function () {
+            // Remove 'active' class from all tabs
+            $('.tab').removeClass('active');
+
+            // Add 'active' class to the clicked tab
+            $(this).addClass('active');
+
+            // Hide all tab content with fade effect
+            $('.tab-content').fadeOut('fast');
+
+            // Show the selected tab content with fade effect
+            var targetTab = $(this).data('tab');
+            $(targetTab).fadeIn('fast');
+        });
+    });
+</script>
