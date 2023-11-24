@@ -9,22 +9,23 @@
 <body>
 
 <div class="mb-3">
-  <a class="contact-link" href="tel:2652334401">+91 265 2334401</a>,
+  <a class="contact-link" href="tel:2652334401">+91 265 2334401</a>&nbsp;&nbsp;
   <a class="contact-link" href="tel:2652334402">+91 265 2334402</a>
-  <a class="contact-link" href="tel:2652334403">+91 265 2334403</a>
+  <br>
+  <a class="contact-link" href="tel:2652334403">+91 265 2334403</a>&nbsp;&nbsp;
   <a class="contact-link" href="tel:7574990060">+91 7574990060</a>
 </div>
 
 <script>
   // jQuery code
   $(document).ready(function() {
-    // Remove &nbsp; and ,
+    // Remove single quotes from the content of each anchor tag
     $(".contact-link").each(function() {
-      $(this).html($(this).html().replace(/&nbsp;/g, '').replace(/,/g, ''));
+      $(this).text($(this).text().replace(/'/g, ''));
     });
 
-    // Remove existing <br> tags and add new ones
-    $(".contact-link").not(":last").next("br").remove();
+    // Remove the comma after each anchor tag
+    $(".contact-link").after("&nbsp;&nbsp;").not(":last").next("br").remove();
     $(".contact-link").not(":last").after("<br>");
   });
 </script>
