@@ -1,18 +1,8 @@
-const mediaQuery = window.matchMedia('(max-width: 1048px) and (min-width: 768px)');
-
-function handleMediaChange(event) {
-  if (event.matches) {
-    // Run your jQuery code here
-    $(function() {
-      // Your jQuery code for the specified range (1048px to 768px)
-    });
-  } else {
-    // If the condition is not met, you can handle it here or leave it empty
-  }
-}
-
-// Initial check
-handleMediaChange(mediaQuery);
-
-// Add a listener to handle changes in the viewport width
-mediaQuery.addListener(handleMediaChange);
+<nav>
+					  <ol class="breadcrumb custome-breadcrumb">
+					    <li class="breadcrumb-item custome-breadcrumb-item"><a href="index.html">Home</a></li>
+					    <li class="breadcrumb-item custome-breadcrumb-item"><a href="javascript:void(0);">Products</a></li>
+						<li class="breadcrumb-item custome-breadcrumb-item"><a href="javascript:void(0);">Food Product</a></li>
+						<li class="breadcrumb-item custome-breadcrumb-item"><a href="javascript:void(0);">Biscuits</a></li>
+					    <li class="breadcrumb-item custome-breadcrumb-item active" aria-current="page">Glucose</li>
+					  </ol>
