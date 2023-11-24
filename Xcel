@@ -1,28 +1,7 @@
-<style>
-  /* Set order for columns in odd rows */
-  .row:nth-child(odd) .col-md-6:first-child {
-    order: 1;
-  }
-
-  .row:nth-child(odd) .col-md-6:last-child {
-    order: 2;
-  }
-
-  /* Set order for columns in even rows */
-  .row:nth-child(even) .col-md-6:first-child {
-    order: 2;
-  }
-
-  .row:nth-child(even) .col-md-6:last-child {
-    order: 1;
-  }
-</style>
-
-<!-- Your HTML with alternating column orders -->
-<div class="row container-pd-lr-service align-items-center">
-  <!-- ... your row content ... -->
-</div>
-
-<div class="row container-pd-lr-service align-items-center">
-  <!-- ... your row content ... -->
-</div>
+	<div class="mb-3">
+						<a class="contact-link" href="tel:2652334401">+91 265 2334401</a>,&nbsp;&nbsp;
+						<a class="contact-link" href="tel:2652334402">+91 265 2334402</a>,
+						<br>
+						<a class="contact-link" href="tel:2652334403">+91 265 2334403</a>,&nbsp;&nbsp;
+						<a class="contact-link" href="tel:7574990060">+91 7574990060</a>,
+					</div>
