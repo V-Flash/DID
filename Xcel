@@ -1,5 +1,34 @@
-<a class="contact-link" href="tel:2652334401">+91 265 2334401</a>,
-						<a class="contact-link" href="tel:2652334402">+91 265 2334402</a>,
-						<br>
-						<a class="contact-link" href="tel:2652334403">+91 265 2334403</a>,
-						<a class="contact-link" href="tel:7574990060">+91 7574990060</a>,
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div class="mb-3">
+  <a class="contact-link" href="tel:2652334401">+91 265 2334401</a>,
+  <a class="contact-link" href="tel:2652334402">+91 265 2334402</a>
+  <br>
+  <a class="contact-link" href="tel:2652334403">+91 265 2334403</a>,
+  <a class="contact-link" href="tel:7574990060">+91 7574990060</a>
+</div>
+
+<script>
+  // jQuery code
+  $(document).ready(function() {
+    // Remove single quotes and commas from the content of each anchor tag
+    $(".contact-link").each(function() {
+      $(this).text($(this).text().replace(/'|,/g, ''));
+    });
+
+    // Remove the comma after each anchor tag
+    $(".contact-link").after("&nbsp;&nbsp;").not(":last").next("br").remove();
+    $(".contact-link").not(":last").after("<br>");
+  });
+</script>
+
+</body>
+</html>
