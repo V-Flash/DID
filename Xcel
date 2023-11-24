@@ -3,13 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Contact Links</title>
+  <title>jQuery Example</title>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <style>
-    .mb-3 {
-      margin-bottom: 1em;
-    }
-  </style>
 </head>
 <body>
 
@@ -22,25 +17,11 @@
 </div>
 
 <script>
+  // jQuery code
   $(document).ready(function() {
-    adjustLayout();
-
-    // Handle window resize
-    $(window).resize(function() {
-      adjustLayout();
-    });
-
-    function adjustLayout() {
-      var screenWidth = $(window).width();
-
-      if (screenWidth <= 1000) {
-        // Remove <br> tags
-        $('.mb-3 br').remove();
-      } else {
-        // Add <br> tags after each anchor tag except the last one
-        $('.mb-3 a.contact-link:not(:last-child)').after('<br>');
-      }
-    }
+    // Remove existing <br> tags and add new ones
+    $(".contact-link").not(":last").next("br").remove();
+    $(".contact-link").not(":last").after("<br>");
   });
 </script>
 
