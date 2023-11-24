@@ -1,10 +1,18 @@
-const mediaQuery = window.matchMedia('(max-width: 1048px)')
+const mediaQuery = window.matchMedia('(max-width: 1048px) and (min-width: 768px)');
 
-if (mediaQuery.matches) {
+function handleMediaChange(event) {
+  if (event.matches) {
+    // Run your jQuery code here
+    $(function() {
+      // Your jQuery code for the specified range (1048px to 768px)
+    });
+  } else {
+    // If the condition is not met, you can handle it here or leave it empty
+  }
+}
 
-  $(function() {
+// Initial check
+handleMediaChange(mediaQuery);
 
-       
-      }); 
-
-i want to run a jquery from 1048px to 768px
+// Add a listener to handle changes in the viewport width
+mediaQuery.addListener(handleMediaChange);
