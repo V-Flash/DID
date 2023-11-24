@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jQuery Example</title>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</head>
-<body>
+const mediaQuery = window.matchMedia('(max-width: 1048px)')
 
-<div class="mb-3">
-  <a class="contact-link" href="tel:2652334401">+91 265 2334401</a>,
-  <a class="contact-link" href="tel:2652334402">+91 265 2334402</a>
-  <br>
-  <a class="contact-link" href="tel:2652334403">+91 265 2334403</a>,
-  <a class="contact-link" href="tel:7574990060">+91 7574990060</a>
-</div>
+if (mediaQuery.matches) {
 
-<script>
-  // jQuery code
-  $(document).ready(function() {
-    // Remove single quotes and commas from the content of each anchor tag
-    $(".contact-link").each(function() {
-      var text = $(this).text().replace(/'|,/g, '');
-      $(this).text(text);
-    });
+  $(function() {
 
-    // Remove the comma after each anchor tag
-    $(".contact-link").not(":last").after("&nbsp;&nbsp;").next("br").remove();
-  });
-</script>
+       
+      }); 
 
-</body>
-</html>
+i want to run a jquery from 1048px to 768px
