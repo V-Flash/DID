@@ -10,7 +10,9 @@
 
             shuffle($fcat);
 
-            foreach ($fcat as $faqItem) {
+            // Only take the first FAQ item for each htitle
+            if (!empty($fcat)) {
+                $faqItem = $fcat[0];
                 $htitle = $faqItem["htitle"];
                 $groupedData[$htitle][] = [
                     'question' => $faqItem["title2"],
