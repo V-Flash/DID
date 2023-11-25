@@ -8,6 +8,8 @@
         if ($faqCategory["is_visible"] != 0) {
             $fcat = getallfaqanswerbycategoryfront($faqCategory["id"]);
 
+            shuffle($fcat);
+
             foreach ($fcat as $faqItem) {
                 $htitle = $faqItem["htitle"];
                 $groupedData[$htitle][] = [
@@ -19,7 +21,7 @@
         }
     }
 
-    // Output the grouped FAQ items
+    // Output the grouped and shuffled FAQ items
     foreach ($groupedData as $htitle => $faqItems) {
         ?>
         <h3 class="faq-title"><?php echo $htitle; ?></h3>
