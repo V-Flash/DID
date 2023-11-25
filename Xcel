@@ -1,71 +1,36 @@
-<div class="col-lg-9 col-md-8 order-md-2 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
-    <!-- Content for Glucose Tab -->
-    <div id="GlucoseContent" class="margin-left-pro tab-content">
-        <!-- ... Existing Glucose content ... -->
-    </div>
+    <div class="accordion style-2 margin-bottom-30">
+                <?php
+                
+               $faqcatdata = getallfaqcat();
+                $f = 1;
 
-    <!-- Content for Nice Tab (hidden by default) -->
-    <div id="NiceContent" class="margin-left-pro tab-content" style="display: none;">
-        <!-- ... Nice content ... -->
-    </div>
+                for ($i = 0; $i < count($faqcatdata); $i++) {
+                    if($faqcatdata[$i]["is_visible"]!=0)
+                    {
+                      $fcat = getallfaqanswerbycategoryfront($faqcatdata[$i]["id"]);
 
-    <!-- Content for Cream Tab (hidden by default) -->
-    <div id="CreamContent" class="margin-left-pro tab-content" style="display: none;">
-        <!-- ... Cream content ... -->
-    </div>
-</div>
+                    shuffle($fcat);
 
-<div class="col-lg-3 col-md-4 order-md-1 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".5s">
-    <div class="pro-auto-side-bar">
-        <div class="nav-tabs tabs-left">
-            <div class="tab active" data-tab="#GlucoseContent">
-                Glucose <span class="more-arrow"><i class="fa fa-caret-right"></i></span>
-            </div>
-            <div class="tab" data-tab="#NiceContent">
-                Nice <span class="more-arrow"><i class="fa fa-caret-right"></i></span>
-            </div>
-            <div class="tab" data-tab="#CreamContent">
-                Cream <span class="more-arrow"><i class="fa fa-caret-right"></i></span>
-            </div>
-        </div>
-    </div>
-</div>
+                    if (count($fcat) > 0) {
+                        $randomAnswer = $fcat[0]["title"];
+                        $question = $fcat[0]["title2"];
+                        $fid = $fcat[0]["shortby"];
+                        $htitle = $fcat[0]["htitle"];
+                    
+                ?>
+                               <h3 class="faq-title"><?php echo $htitle; ?></h3>
+                              <div class="accordion-item">
+                                <h2 class="a-title main active but3">Q<?php echo $i+1;?>. <?php echo $question;?><span class="plusminus4">-</span></h2>
+                                <div class="a-content content3">
+                                  <div class="wrapper pb20">
+                                    <?php echo 'Ans: '.$randomAnswer; ?>
+                                  </div>
+                                </div>
+                              </div>
+                               <?php
+                                }
+                                }
+                                }
 
-<nav>
-    <ol class="breadcrumb custome-breadcrumb">
-        <li class="breadcrumb-item custome-breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item custome-breadcrumb-item"><a href="javascript:void(0);">Products</a></li>
-        <li class="breadcrumb-item custome-breadcrumb-item"><a href="javascript:void(0);">Food Product</a></li>
-        <li class="breadcrumb-item custome-breadcrumb-item"><a href="javascript:void(0);">Biscuits</a></li>
-        <li id="activeTabBreadcrumb" class="breadcrumb-item custome-breadcrumb-item active" aria-current="page">Glucose</li>
-    </ol>
-</nav>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Add 'active' class to the first tab and show its content by default
-        $('.tab:first').addClass('active');
-        $('.tab-content').hide();
-        $($('.tab:first').data('tab')).show();
-
-        // Handle tab click event
-        $('.tab').click(function () {
-            // Remove 'active' class from all tabs
-            $('.tab').removeClass('active');
-
-            // Add 'active' class to the clicked tab
-            $(this).addClass('active');
-
-            // Hide all tab content with fade effect
-            $('.tab-content').fadeOut('fast');
-
-            // Show the selected tab content with fade effect
-            var targetTab = $(this).data('tab');
-            $(targetTab).fadeIn('fast');
-
-            // Update the breadcrumb with the text of the active tab
-            $('#activeTabBreadcrumb').text($(this).text());
-        });
-    });
-</script>
+                            ?>   
+                           </div>
