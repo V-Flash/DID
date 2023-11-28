@@ -1,1 +1,4 @@
-<a href="https://koshambh.tigeronline.in/about-us/" class="learn-more-btn"><span class="material-symbols-outlined plus-icon">add</span> <span class="btn-text">Learn more</span></a>
+<a href="https://koshambh.tigeronline.in/about-us/" class="learn-more-btn">
+  <span class="material-symbols-outlined plus-icon" translate="no">add</span>
+  <span class="btn-text">Learn more</span>
+</a>
