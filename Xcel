@@ -1,1 +1,26 @@
-this.$router.replace('/work');
+<template>
+  <div>
+    <a href="#home" @click.prevent="navigateToIndex">Go to Home</a>
+    <!-- Your component content here -->
+  </div>
+</template>
+
+<script>
+import { gsap } from 'gsap';
+
+export default {
+  methods: {
+    navigateToIndex() {
+      // Optional: You can perform GSAP animations before the navigation
+      gsap.to('.your-element', { opacity: 0, duration: 1, onComplete: this.performNavigation });
+
+      // Alternatively, you can perform the navigation immediately without animations
+      // this.performNavigation();
+    },
+    performNavigation() {
+      // Use Vue Router to navigate to the index page
+      this.$router.replace({ path: '/' });
+    }
+  }
+}
+</script>
