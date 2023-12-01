@@ -1,81 +1,26 @@
 <template>
   <div>
+    <a href="#home" @click.prevent="navigateToIndex">Go to Home</a>
     <!-- Your component content here -->
   </div>
 </template>
 
 <script>
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 export default {
-  mounted() {
-    gsap.to('.main-div', {
-      opacity: 1,
-      ease: 'expo',
-    });
-
-    const isotopeScript = document.createElement('script');
-    isotopeScript.src = '/isotope-layout/isotope.pkgd.min.js?v=' + Date.now();
-    isotopeScript.async = false;
-
-    isotopeScript.onload = () => {
-      this.initIsotope();
-    };
-
-    document.head.appendChild(isotopeScript);
-  },
-
   methods: {
-    initIsotope() {
-      const select = (el, all = false) => {
-        el = el.trim();
-        if (all) {
-          return [...document.querySelectorAll(el)];
-        } else {
-          return document.querySelector(el);
-        }
-      };
+    navigateToIndex() {
+      // Optional: You can perform GSAP animations before the navigation
+      gsap.to('.your-element', { opacity: 0, duration: 1, onComplete: this.performNavigation });
 
-      const on = (type, el, listener, all = false) => {
-        let selectEl = select(el, all);
-        if (selectEl) {
-          if (all) {
-            selectEl.forEach(e => e.addEventListener(type, listener));
-          } else {
-            selectEl.addEventListener(type, listener);
-          }
-        }
-      };
-
-      const imagesLoaded = require('imagesloaded');
-
-      let portfolioContainer = select('.portfolio-container');
-      if (portfolioContainer) {
-        imagesLoaded(portfolioContainer, function () {
-          let portfolioIsotope = new Isotope(portfolioContainer, {
-            itemSelector: '.portfolio-item',
-            filter: '.filter-web',
-          });
-
-          // Arrange the Isotope grid after images have loaded
-          portfolioIsotope.layout();
-
-          let portfolioFilters = select('#portfolio-flters li', true);
-
-          on('click', '#portfolio-flters li', function (e) {
-            e.preventDefault();
-            portfolioFilters.forEach(function (el) {
-              el.classList.remove('filter-active');
-            });
-            this.classList.add('filter-active');
-
-            portfolioIsotope.arrange({
-              filter: this.getAttribute('data-fancyboxfilter'),
-            });
-          }, true);
-        });
-      }
+      // Alternatively, you can perform the navigation immediately without animations
+      // this.performNavigation();
     },
-  },
-};
+    performNavigation() {
+      // Use Vue Router to navigate to the index page
+      this.$router.replace({ path: '/' });
+    }
+  }
+}
 </script>
