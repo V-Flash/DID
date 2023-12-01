@@ -1,20 +1,32 @@
-import gsap from 'gsap'
+<template>
+  <div>
+    <!-- Your component content here -->
+  </div>
+</template>
 
-export default{
- 
-  mounted(){
-    
-    gsap.to('.main-div',{
-      opacity:1,
-      ease:'expo',
-    })
+<script>
+import gsap from 'gsap';
 
-    const imagesLoaded = require('imagesloaded');
+export default {
+  mounted() {
+    gsap.to('.main-div', {
+      opacity: 1,
+      ease: 'expo',
+    });
+
     const isotopeScript = document.createElement('script');
     isotopeScript.src = '/isotope-layout/isotope.pkgd.min.js?v=' + Date.now();
     isotopeScript.async = false;
 
-    isotopeScript.onload = function() {
+    isotopeScript.onload = () => {
+      this.initIsotope();
+    };
+
+    document.head.appendChild(isotopeScript);
+  },
+
+  methods: {
+    initIsotope() {
       const select = (el, all = false) => {
         el = el.trim();
         if (all) {
@@ -39,34 +51,31 @@ export default{
 
       let portfolioContainer = select('.portfolio-container');
       if (portfolioContainer) {
-        imagesLoaded(portfolioContainer, function() {
+        imagesLoaded(portfolioContainer, function () {
           let portfolioIsotope = new Isotope(portfolioContainer, {
             itemSelector: '.portfolio-item',
-            filter: '.filter-web'
+            filter: '.filter-web',
           });
+
           // Arrange the Isotope grid after images have loaded
           portfolioIsotope.layout();
 
           let portfolioFilters = select('#portfolio-flters li', true);
 
-          on('click', '#portfolio-flters li', function(e) {
+          on('click', '#portfolio-flters li', function (e) {
             e.preventDefault();
-            portfolioFilters.forEach(function(el) {
+            portfolioFilters.forEach(function (el) {
               el.classList.remove('filter-active');
             });
             this.classList.add('filter-active');
 
             portfolioIsotope.arrange({
-              filter: this.getAttribute('data-fancyboxfilter')
+              filter: this.getAttribute('data-fancyboxfilter'),
             });
           }, true);
         });
       }
-    };
-
-    document.head.appendChild(isotopeScript);
-
-  }  
-
- 
-}
+    },
+  },
+};
+</script>
