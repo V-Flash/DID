@@ -1,3 +1,29 @@
+// Example preloader logic
+function showPreloader() {
+  // Your preloader display logic here
+}
+
+function hidePreloader() {
+  // Your preloader hide logic here
+}
+
+// In your Vue component
+methods: {
+  navigateToIndex() {
+    // Show the preloader before navigation
+    showPreloader();
+
+    // Use Vue Router to navigate to the index page
+    this.$router.replace({ path: '/' });
+
+    // Optionally, hide the preloader after a delay or when your content has loaded
+    setTimeout(() => {
+      hidePreloader();
+    }, 1000); // Adjust the delay as needed
+  }
+}
+
+
 // In your home page component
 export default {
   beforeRouteLeave(to, from, next) {
