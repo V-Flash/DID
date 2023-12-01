@@ -1,26 +1,24 @@
-<template>
-  <div>
-    <a href="#home" @click.prevent="navigateToIndex">Go to Home</a>
-    <!-- Your component content here -->
-  </div>
-</template>
+// Example preloader logic
+function showPreloader() {
+  // Your preloader display logic here
+}
 
-<script>
-import { gsap } from 'gsap';
+function hidePreloader() {
+  // Your preloader hide logic here
+}
 
-export default {
-  methods: {
-    navigateToIndex() {
-      // Optional: You can perform GSAP animations before the navigation
-      gsap.to('.your-element', { opacity: 0, duration: 1, onComplete: this.performNavigation });
+// In your Vue component
+methods: {
+  navigateToIndex() {
+    // Show the preloader before navigation
+    showPreloader();
 
-      // Alternatively, you can perform the navigation immediately without animations
-      // this.performNavigation();
-    },
-    performNavigation() {
-      // Use Vue Router to navigate to the index page
-      this.$router.replace({ path: '/' });
-    }
+    // Use Vue Router to navigate to the index page
+    this.$router.replace({ path: '/' });
+
+    // Optionally, hide the preloader after a delay or when your content has loaded
+    setTimeout(() => {
+      hidePreloader();
+    }, 1000); // Adjust the delay as needed
   }
 }
-</script>
