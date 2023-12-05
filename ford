@@ -1,7 +1,141 @@
+<!DOCTYPE html>
+<html style="overflow-x: hidden;">
+<head>
 
-.ford-side-img{margin: -184px auto 0 0;}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+  <!-- Bootstrap CSS -->  
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
 
-.hero-heading{
-    font-size: 3rem;
-    margin: -230px auto 133px;
-}
+  <style>
+
+    .hero-div{margin:115px auto 39px;display:flex;flex-direction:column;align-items:center;}
+    
+    .bg-orange{background-color: #e56b1f;color: #ffffff;}  
+
+    .txt{
+      font-size: 3rem;
+      margin: -230px auto 133px;
+    }
+
+    .mustang-img{margin: -6px -76px 0;}
+
+    .car{
+      margin: -184px auto 0 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+
+    .about{
+      background-image: url('img/4.png');
+      background-position: 50% 50%;
+      object-fit: cover;
+      display: block;
+      vertical-align: middle;
+      background-size: cover;
+      background-position: 50% 20.99%;
+      background-repeat: no-repeat;
+    }
+
+    .big-text {
+        color: #e56b1f;
+        font-size: 35px;
+        font-weight: bold;
+        writing-mode: vertical-rl;
+        text-transform: uppercase;
+        transform: rotate(-180deg);
+        height: 37%;
+    }
+
+    .para{text-align: left;
+    font-size: 17px;}
+
+
+    @media query 1366{
+        .hero-div{margin: -247px 178px 150px 178px;}
+    }
+
+    @media (max-width: 991px){
+      
+      .hero-div{
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    }
+
+
+    @media (max-width: 575px){
+      .hero-div{
+          width: 340px;
+          margin: -262px 0 91px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<section class="bg-orange">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        
+        <div class="hero-div">
+          <img src="img/Untitled1.png" class="img-fluid mustang-img" alt="">
+          <img src="img/fordmustang.png" class="img-fluid car" alt="">
+          <img src="img/Untitled3.png" class="img-fluid" alt="">
+          <h5 class="txt text-center">1969 Mustang Body on a 2014 <br> GT500 Chassis?</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container">
+    
+    <div class="row pt-5">
+      <div class="col-lg-7">
+        <img src="img/6.png" class="img-fluid" alt="">
+      </div>
+    </div>
+
+    <div class="row">
+      
+      <div class="col-lg-6">
+        <div>
+          <p class="text-white">Classic Recreations of Yukon, Oklahoma has been building a variety of officially-licensed continuation Mustang Shelby models for the past decade, and has now secured the rights to do the same for the 1969-1970 Mach 1, Boss 302 and Boss 429.</p>
+
+          <h4 class="big-text">This company will sell yo a brand new 1969 ford mustang boss 429</h4>
+        </div>
+      </div>
+
+
+    </div> 
+
+      
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap Js --> 
+<script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
+  
+  </script>
+
+</body>
+
+</html>
