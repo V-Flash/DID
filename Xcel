@@ -1,65 +1,13 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
-    <title></title>
-  </head>
-  <body>
-
-<div id="myModal" class="modal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body text-center"> <a class="img-set-popup" href="javascript:void(0);"> <img src="assets/img/v-gujarat-1.png"  class="img-responsive" alt=""/> </a> </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light but-design btn-light-popup" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="modal-popup01" class="modal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body text-center"> <a class="img-set-popup" href="javascript:void(0);"> <img src="assets/img/CEO_Office.png"  class="img-responsive" alt=""/> </a> </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light but-design btn-light-popup" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-  
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 <script type="text/javascript">
-
   $(document).ready(function(){
-     $('#modal-popup01').modal('show');
-      $('#modal-popup01').removeClass('fade').addClass('fade-in');
+    // Show the modal-popup01 modal when the document is ready
+    $('#modal-popup01').modal('show');
+    $('#modal-popup01').removeClass('fade').addClass('fade-in');
 
-      $('#modal-popup01').on('hidden.bs.modal', function () {
-          $('#myModal').modal('show');
-          $('#myModal').removeClass('fade').addClass('fade-in');
-      });
-
-   });
-</script> 
-
-</body>
-</html>
+    // When modal-popup01 is hidden, show the myModal modal
+    $('#modal-popup01').on('hidden.bs.modal', function () {
+      $('#myModal').modal('show');
+      $('#myModal').removeClass('fade').addClass('fade-in');
+    });
+  });
+</script>
