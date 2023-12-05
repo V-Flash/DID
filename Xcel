@@ -1,13 +1,2 @@
-<script type="text/javascript">
-  $(document).ready(function(){
-    // Show the modal-popup01 modal when the document is ready
-    $('#modal-popup01').modal('show');
-    $('#modal-popup01').removeClass('fade').addClass('fade-in');
-
-    // When modal-popup01 is hidden, show the myModal modal
-    $('#modal-popup01').on('hidden.bs.modal', function () {
-      $('#myModal').modal('show');
-      $('#myModal').removeClass('fade').addClass('fade-in');
-    });
-  });
-</script>
+<a href="#modal-popup01" data-toggle="modal">Open modal-popup01</a>
+<a href="#myModal" data-toggle="modal">Open myModal</a>
