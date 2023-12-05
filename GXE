@@ -1,17 +1,14 @@
 @media only screen and (max-width: 786px)
 
-.about-headind-div .heading {
-    font-size: 5rem!important;
-}
+.about-headind-div .heading {font-size: 5rem!important;}
 
 
 @media only screen and (max-width: 680px)
 
-.about-headind-div .heading {
-    font-size: 4.36rem!important;
-
-
+.about-headind-div .heading {font-size: 4.36rem!important;
 .about-img {width: 100%!important;}
+
+
 
 @media only screen and (max-width: 590px)
 
