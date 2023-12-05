@@ -1,38 +1,33 @@
-$(function () {
-    
+$(document).ready(function () {
+    let darkMode = localStorage.getItem("dark-mode");
 
-let darkMode = localStorage.getItem("dark-mode");
+    // Function to change the style (not currently implemented)
     function style_change(stylename) {
+        // You can implement this function to change additional styles if needed
     }
 
-     $(document).ready(function(){
-        $("#aBlack").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/black-theme.css';
-            localStorage.setItem("dark-mode", "black");
-        });
+    // Event handlers for theme switches
+    $("#aBlack").click(function () {
+        $("#aStyleLink").attr("href", "frontend/css/black-theme.css");
+        localStorage.setItem("dark-mode", "black");
+    });
 
-        $("#aGreen").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-            localStorage.setItem("dark-mode", "green");
-        });
+    $("#aGreen").click(function () {
+        $("#aStyleLink").attr("href", "frontend/css/green-theme.css");
+        localStorage.setItem("dark-mode", "green");
+    });
 
-        $("#aNormal").click(function(){
-            document.getElementById('aStyleLink').href='#';
-            localStorage.setItem("dark-mode", "white");
+    $("#aNormal").click(function () {
+        $("#aStyleLink").attr("href", "#");
+        localStorage.setItem("dark-mode", "white");
+    });
 
-        });
-
-        if (darkMode === "black") {
-          document.getElementById('aStyleLink').href='frontend/css/black-theme.css'; // set state of darkMode on page load
-        }
-         else if (darkMode === "green") {
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-        }
-         else if (darkMode === "white") {
-          document.getElementById('aStyleLink').href='#';
-        }
-
-    });    
-    
-})
-
+    // Set the theme based on the stored value in local storage on page load
+    if (darkMode === "black") {
+        $("#aStyleLink").attr("href", "frontend/css/black-theme.css");
+    } else if (darkMode === "green") {
+        $("#aStyleLink").attr("href", "frontend/css/green-theme.css");
+    } else if (darkMode === "white") {
+        $("#aStyleLink").attr("href", "#");
+    }
+});
