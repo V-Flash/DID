@@ -29,7 +29,7 @@
 </div>
 
 <!-- Second Modal -->
-<div class="modal" id="modal2" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+<div class="modal" id="modal2" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -53,9 +53,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-  // Show modal2 when modal1 is hidden
-  $('#modal1').on('hidden.bs.modal', function () {
-    $('#modal2').modal('show');
+  $(document).ready(function(){
+    $('#modal1').modal('show');
+    
+    $('#modal1').on('hidden.bs.modal', function () {
+      $('#modal2').modal('show');
+    });
   });
 </script>
 
