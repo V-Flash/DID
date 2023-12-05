@@ -16,5 +16,15 @@
 .about-col{width: 100% !important;}
 
 .about-para{text-align:left !important;}
-
 .desgin-section{padding-top: 50px !important;padding-bottom: 50px !important;}
+
+
+
+@media only screen and (max-width: 375px)
+
+.art-section {padding-right: 30px!important;padding-left: 30px!important;}
+
+
+@media only screen and (max-width: 320px)
+
+.art-section {padding-right: 15px!important;padding-left: 15px!important;}
