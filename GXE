@@ -1,20 +1,23 @@
-.about  col-sm-6
+@media only screen and (max-width: 786px)
+
+.about-headind-div .heading {
+    font-size: 5rem!important;
+}
 
 
-art section 
+@media only screen and (max-width: 680px)
 
-    590px 
-    padding-right: 60px;
-    padding-left: 60px;
-
-    575px 
-    padding-right: 42px;
-    padding-left: 42px;
+.about-headind-div .heading {
+    font-size: 4.36rem!important;
 
 
-list  what we are -col-md-3 767px
+.about-img {width: 100%!important;}
 
-margin-bottom:30px;
+@media only screen and (max-width: 590px)
 
+.about-row{justify-content: center !important;}
+.about-col{width: 100% !important;}
 
-col-sm-8 to lab
+.about-para{text-align:left !important;}
+
+.desgin-section{padding-top: 50px !important;padding-bottom: 50px !important;}
