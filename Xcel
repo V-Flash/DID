@@ -1,47 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Two Modals</title>
+</head>
+<body>
 
-this script woring on jquery 3.4.1
-$(document).ready(function(){
+<!-- First Modal -->
+<div class="modal" id="modal1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal 1</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This is the content of Modal 1.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Modal -->
+<div class="modal" id="modal2" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal 2</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>This is the content of Modal 2.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Load jQuery 3.3.1 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Script for jQuery 3.3.1 -->
+<script>
+  var jq331 = jQuery.noConflict(true);
+
+  jq331(document).ready(function($) {
     $('#modal1').modal('show');
     
     $('#modal1').on('hidden.bs.modal', function () {
       $('#modal2').modal('show');
-    }); 
+    });
+  });
+</script>
 
+<!-- Load jQuery 3.4.1 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Script for jQuery 3.4.1 -->
+<script>
+  var jq341 = jQuery.noConflict(true);
 
-and this on 3.3.1
-$(function () {
+  jq341(function ($) {
+    let darkMode = localStorage.getItem("dark-mode");
 
-let darkMode = localStorage.getItem("dark-mode");
     function style_change(stylename) {
+      // Your style_change function code
     }
 
-     $(document).ready(function(){
-        $("#aBlack").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/black-theme.css';
-            localStorage.setItem("dark-mode", "black");
-        });
+    $(document).ready(function () {
+      // Your other code for jQuery 3.4.1
+    });
 
-        $("#aGreen").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-            localStorage.setItem("dark-mode", "green");
-        });
+    // Rest of your jQuery 3.4.1 code
+  });
+</script>
 
-        $("#aNormal").click(function(){
-            document.getElementById('aStyleLink').href='#';
-            localStorage.setItem("dark-mode", "white");
-
-        });
-
-        if (darkMode === "black") {
-          document.getElementById('aStyleLink').href='frontend/css/black-theme.css'; // set state of darkMode on page load
-        }
-         else if (darkMode === "green") {
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-        }
-         else if (darkMode === "white") {
-          document.getElementById('aStyleLink').href='#';
-        }
-
-    });    
-    
-})
+</body>
+</html>
