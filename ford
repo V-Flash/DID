@@ -32,6 +32,7 @@
     }
 
     .about{
+      color: #ffffff;
       background-image: url('img/4.png');
       background-position: 50% 50%;
       object-fit: cover;
@@ -43,39 +44,63 @@
     }
 
     .big-text {
-        color: #e56b1f;
-        font-size: 35px;
-        font-weight: bold;
-        writing-mode: vertical-rl;
-        text-transform: uppercase;
-        transform: rotate(-180deg);
-        height: 37%;
+      color: #e56b1f;
+      font-size: 35px;
+      font-weight: bold;
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      transform: rotate(-180deg);
+      height: 37%;
+      margin-top: -45%;
     }
 
-    .para{text-align: left;
-    font-size: 17px;}
+    .para{text-align: left;font-size: 17px;}
+
+    .para-div{margin: 25px 0;}
 
 
-    @media query 1366{
-        .hero-div{margin: -247px 178px 150px 178px;}
+    @media (max-width: 1199px){
+      .txt{margin: -247px 178px 150px 178px;}
     }
 
     @media (max-width: 991px){
       
-      .hero-div{
+      .txt{
+
         margin-left: auto;
         margin-right: auto;
       }
 
     }
 
+    @media (max-width: 767px){
+      
+      .txt {
+        font-size: 2.3rem;
+        margin-top: -149px;
+    }
+
+    .big-text{    
+      height: 32%;
+      margin-top: -10%;
+      margin-right: 35px;
+    }
+     
+  }
+
+
+
+
 
     @media (max-width: 575px){
-      .hero-div{
-          width: 340px;
-          margin: -262px 0 91px;
+      
+      .txt{
+   
+        margin: -262px 0 91px;
       }
+
     }
+
   </style>
 
 </head>
@@ -109,13 +134,42 @@
     </div>
 
     <div class="row">
+
+      <div class="col-md-6">
+        <h2>New 1969-70 Ford Mustang Mach 1, Boss 302 and Boss 429 now on sale</h2>
+
+        <div class="para-div">
+          <p>Ford has a new Mach 1 in the works.</p>
+
+          <p>It’s not a Mustang, but an all-electric performance utility vehicle that it plans to unveil in a couple of years.</p>
+
+          <p>If that’s not your thing, don’t worry, because now you can buy a brand new version of the original Mustang Mach 1.</p>
+
+          <p>At least the closest thing to it.</p>
+
+        </div>
+
+      </div>
+
       
-      <div class="col-lg-6">
-        <div>
+      <div class="col-md-6">
+
+        <div class="d-flex align-items-end">
+         
           <p class="text-white">Classic Recreations of Yukon, Oklahoma has been building a variety of officially-licensed continuation Mustang Shelby models for the past decade, and has now secured the rights to do the same for the 1969-1970 Mach 1, Boss 302 and Boss 429.</p>
 
           <h4 class="big-text">This company will sell yo a brand new 1969 ford mustang boss 429</h4>
+
         </div>
+
+        <div class="para-div">
+            
+          <p>They start with either a new body built by R3 or a standard Mustang donor car that they strip down, get in perfect shape and add all of the bits needed to recreate the original look of the high performance models.</p>
+
+          <p>Everything underneath gets a refresh, too, including a coilover suspension setup, modern brakes and a new Ford Performance engine.</p>
+
+        </div>    
+       
       </div>
 
 
