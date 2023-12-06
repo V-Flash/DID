@@ -1,13 +1,19 @@
-<div data-aos="fade-up" class="flex-col">
-    <p data-aos="fade-up" data-aos-delay="100" class="para" style="font-family: 'Open Sans', sans-serif;">Classic Recreations of Yukon, Oklahoma has been building a variety of officially-licensed continuation Mustang Shelby models for the past decade, and has now secured the rights to do the same for the 1969-1970 Mach 1, Boss 302 and Boss 429.</p>
-    <h4 class="big-vlt-text"><strong>This company will sell yo a brand new 1969 ford mustang boss 429</strong></h4>
-
-    
-    <div data-aos="fade-up" data-aos-delay="100" class="para-div">
-        <p class="para" style="font-family: 'Open Sans', sans-serif;">They start with either a new body built by R3 or a standard Mustang donor car that they strip down, get in perfect shape and add all of the bits needed to recreate the original look of the high performance models.</p>
-        <p class="para" style="font-family: 'Open Sans', sans-serif;">Everything underneath gets a refresh, too, including a coilover suspension setup, modern brakes and a new Ford Performance engine.</p>
+<!-- First Modal -->
+<div class="modal" id="modal1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document" style="max-width: 900px; margin:30px auto;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal 1</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="img-fluid" src="images/photo/86605g2-image.jpg" alt="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
-    
-</div>  
-
-i want display flex .flex-col div for p and h4 but not for para-div
+  </div>
+</div>
