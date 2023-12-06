@@ -1,40 +1,39 @@
-
 $(function () {
-    
+    let darkMode = localStorage.getItem("dark-mode");
 
-let darkMode = localStorage.getItem("dark-mode");
     function style_change(stylename) {
+        // Add your style change logic here
+        console.log("Changing style to " + stylename);
     }
 
-     $(document).ready(function(){
-        $("#aBlack").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/black-theme.css';
+    $(document).ready(function () {
+        $("#aBlack").click(function () {
+            document.getElementById('aStyleLink').href = 'frontend/css/black-theme.css';
             localStorage.setItem("dark-mode", "black");
+            style_change("black");
         });
 
-        $("#aGreen").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
+        $("#aGreen").click(function () {
+            document.getElementById('aStyleLink').href = 'frontend/css/green-theme.css';
             localStorage.setItem("dark-mode", "green");
+            style_change("green");
         });
 
-        $("#aNormal").click(function(){
-            document.getElementById('aStyleLink').href='#';
+        $("#aNormal").click(function () {
+            document.getElementById('aStyleLink').href = '#';
             localStorage.setItem("dark-mode", "white");
-
+            style_change("white");
         });
 
         if (darkMode === "black") {
-          document.getElementById('aStyleLink').href='frontend/css/black-theme.css'; // set state of darkMode on page load
+            document.getElementById('aStyleLink').href = 'frontend/css/black-theme.css';
+            style_change("black");
+        } else if (darkMode === "green") {
+            document.getElementById('aStyleLink').href = 'frontend/css/green-theme.css';
+            style_change("green");
+        } else if (darkMode === "white") {
+            document.getElementById('aStyleLink').href = '#';
+            style_change("white");
         }
-         else if (darkMode === "green") {
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-        }
-         else if (darkMode === "white") {
-          document.getElementById('aStyleLink').href='#';
-        }
-
-    });    
-    
-})
-Uncaught ReferenceError: style_change is not defined
-    at HTMLAnchorElement.onclick (index:112:98)
+    });
+});
