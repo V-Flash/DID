@@ -1,26 +1,2 @@
-function style_change(stylename) {
-    // Add your style change logic here
-    console.log("Changing style to " + stylename);
 
-    // Additional logic to change the style, if needed
-    if (stylename === 'normal') {
-        document.getElementById('aStyleLink').href = '#';
-    } else if (stylename === 'black') {
-        document.getElementById('aStyleLink').href = 'frontend/css/black-theme.css';
-    }
-}
-
-$(document).ready(function () {
-    let darkMode = localStorage.getItem("dark-mode");
-
-    if (darkMode === "black") {
-        document.getElementById('aStyleLink').href = 'frontend/css/black-theme.css';
-        style_change("black");
-    } else if (darkMode === "green") {
-        document.getElementById('aStyleLink').href = 'frontend/css/green-theme.css';
-        // Add a call to style_change("green") if needed
-    } else if (darkMode === "white") {
-        document.getElementById('aStyleLink').href = '#';
-        style_change("normal");
-    }
-});
+ i want css file change theme   localStorage.setItem the theme
