@@ -21,7 +21,14 @@
         $(document).ready(function() {
             // Toggle visibility of dropdowns on click
             $('.sidebar-navigation li').click(function() {
-                $(this).children('ul').slideToggle();
+                var clickedDropdown = $(this).children('ul');
+                var allOtherDropdowns = $('.sidebar-navigation li ul').not(clickedDropdown);
+
+                // Close all other dropdowns except the clicked one
+                allOtherDropdowns.slideUp();
+
+                // Toggle visibility of the clicked dropdown
+                clickedDropdown.slideToggle();
             });
 
             // Prevent following the link for items with dropdowns
