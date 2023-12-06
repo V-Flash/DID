@@ -1,47 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" id="aStyleLink" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <title>Theme Switcher</title>
-</head>
-<body>
+<div data-aos="fade-up" class="flex-col">
+    <p data-aos="fade-up" data-aos-delay="100" class="para" style="font-family: 'Open Sans', sans-serif;">Classic Recreations of Yukon, Oklahoma has been building a variety of officially-licensed continuation Mustang Shelby models for the past decade, and has now secured the rights to do the same for the 1969-1970 Mach 1, Boss 302 and Boss 429.</p>
+    <h4 class="big-vlt-text"><strong>This company will sell yo a brand new 1969 ford mustang boss 429</strong></h4>
 
-    <!-- Theme change buttons -->
-    <a href="javascript:void(0)" id="aBlack">Black Theme</a>
-    <a href="javascript:void(0)" id="aGreen">Green Theme</a>
-    <a href="javascript:void(0)" id="aNormal">Default Theme</a>
+    
+    <div data-aos="fade-up" data-aos-delay="100" class="para-div">
+        <p class="para" style="font-family: 'Open Sans', sans-serif;">They start with either a new body built by R3 or a standard Mustang donor car that they strip down, get in perfect shape and add all of the bits needed to recreate the original look of the high performance models.</p>
+        <p class="para" style="font-family: 'Open Sans', sans-serif;">Everything underneath gets a refresh, too, including a coilover suspension setup, modern brakes and a new Ford Performance engine.</p>
+    </div>
+    
+</div>  
 
-    <!-- Your content goes here -->
-
-    <script>
-        $(document).ready(function () {
-            let darkMode = localStorage.getItem("dark-mode");
-
-            function setTheme(theme) {
-                document.getElementById('aStyleLink').href = theme;
-                localStorage.setItem("dark-mode", theme);
-            }
-
-            $("#aBlack").click(function () {
-                setTheme('frontend/css/black-theme.css');
-            });
-
-            $("#aGreen").click(function () {
-                setTheme('frontend/css/green-theme.css');
-            });
-
-            $("#aNormal").click(function () {
-                setTheme('');
-            });
-
-            // Set the initial theme on page load
-            if (darkMode) {
-                setTheme(darkMode);
-            }
-        });
-    </script>
-</body>
-</html>
+i want display flex .flex-col div for p and h4 but not for para-div
