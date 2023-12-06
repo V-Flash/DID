@@ -1,75 +1,24 @@
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$(document).ready(function(){
-  var $ul = $('.sidebar-navigation > ul');
-  
-  $ul.on('click', 'li a', function(e){
-    var $li = $(this).parent();
-    
-    if($li.find('ul').length > 0){
-      e.preventDefault();
-      
-      if($li.hasClass('selected')){
-        $li.removeClass('selected').find('li').removeClass('selected');
-        $li.find('ul').slideUp(400);
-        $li.find('a em').removeClass('mdi-flip-v');
-      }else{
-        if($li.parents('li.selected').length == 0){
-          $ul.find('li').removeClass('selected');
-          $ul.find('ul').slideUp(400);
-          $ul.find('li a em').removeClass('mdi-flip-v');
-        }else{
-          $li.parent().find('li').removeClass('selected');
-          $li.parent().find('> li ul').slideUp(400);
-          $li.parent().find('> li a em').removeClass('mdi-flip-v');
-        }
-        
-        $li.addClass('selected');
-        $li.find('>ul').slideDown(400);
-        $li.find('>a>em').addClass('mdi-flip-v');
-      }
+<style>
+    .flex-col {
+        display: flex;
+        flex-direction: column;
     }
-  });
-  
-  $('.sidebar-navigation > ul ul').each(function(i){
-    if($(this).find('>li>ul').length > 0){
-      var paddingLeft = $(this).parent().parent().find('>li>a').css('padding-left');
-      var pIntPLeft   = parseInt(paddingLeft);
-      var result      = pIntPLeft + 10;
-      
-      $(this).find('>li>a').css('padding-left',result);
-    }else{
-      var paddingLeft = $(this).parent().parent().find('>li>a').css('padding-left');
-      var pIntPLeft   = parseInt(paddingLeft);
-      var result      = pIntPLeft + 10;
-      
-      $(this).find('>li>a').css('padding-left',result).parent().addClass('selected--last');
+
+    .para-div {
+        display: block; /* Set the display property to block for para-div */
     }
-  });
-  
-  var t = ' li > ul ';
-  for(var i=1; i<=10; i++){
-    $('.sidebar-navigation > ul > ' + t.repeat(i)).addClass('subMenuColor' + i);
-  }
-  
-  var activeLi = $('li.selected');
-  if(activeLi.length){
-    opener(activeLi);
-  }
-  
-  function opener(li){
-    var ul = li.closest('ul');
-    if(ul.length){
-      li.addClass('selected');
-      ul.addClass('open');
-      li.find('>a>em').addClass('mdi-flip-v');
-      
-      if(ul.closest('li').length){
-        opener(ul.closest('li'));
-      }else{
-        return false;
-      }
+
+    .para, .big-vlt-text {
+        margin-bottom: 10px; /* Add margin for better spacing */
     }
-  }
-});
-</script>
+</style>
+
+<div data-aos="fade-up" class="flex-col">
+    <p data-aos="fade-up" data-aos-delay="100" class="para" style="font-family: 'Open Sans', sans-serif;">Classic Recreations of Yukon, Oklahoma has been building a variety of officially-licensed continuation Mustang Shelby models for the past decade, and has now secured the rights to do the same for the 1969-1970 Mach 1, Boss 302 and Boss 429.</p>
+    <h4 class="big-vlt-text"><strong>This company will sell yo a brand new 1969 ford mustang boss 429</strong></h4>
+
+    <div data-aos="fade-up" data-aos-delay="100" class="para-div">
+        <p class="para" style="font-family: 'Open Sans', sans-serif;">They start with either a new body built by R3 or a standard Mustang donor car that they strip down, get in perfect shape and add all of the bits needed to recreate the original look of the high performance models.</p>
+        <p class="para" style="font-family: 'Open Sans', sans-serif;">Everything underneath gets a refresh, too, including a coilover suspension setup, modern brakes and a new Ford Performance engine.</p>
+    </div>
+</div>
