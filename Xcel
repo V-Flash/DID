@@ -25,8 +25,13 @@
             });
 
             // Prevent following the link for items with dropdowns
-            $('.sidebar-navigation li:has(ul)').children('a').click(function(e) {
+            $('.sidebar-navigation li:has(ul) > a').click(function(e) {
                 e.preventDefault();
+            });
+
+            // Close other dropdowns when a dropdown is clicked
+            $('.sidebar-navigation li ul li').click(function(e) {
+                e.stopPropagation();
             });
         });
     </script>
