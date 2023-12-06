@@ -20,12 +20,11 @@
     <script>
         $(document).ready(function() {
             // Toggle visibility of dropdowns on click
-            $('.sidebar-navigation li').click(function(e) {
+            $('.sidebar-navigation li:has(ul)').click(function(e) {
                 var clickedDropdown = $(this).children('ul');
-                var allOtherDropdowns = $('.sidebar-navigation li ul').not(clickedDropdown);
 
                 // Close all other dropdowns except the clicked one
-                allOtherDropdowns.slideUp();
+                $('.sidebar-navigation li ul').not(clickedDropdown).slideUp();
 
                 // Toggle visibility of the clicked dropdown
                 clickedDropdown.slideToggle();
