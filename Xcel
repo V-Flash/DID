@@ -20,7 +20,7 @@
     <script>
         $(document).ready(function() {
             // Toggle visibility of dropdowns on click
-            $('.sidebar-navigation li').click(function() {
+            $('.sidebar-navigation li').click(function(e) {
                 var clickedDropdown = $(this).children('ul');
                 var allOtherDropdowns = $('.sidebar-navigation li ul').not(clickedDropdown);
 
@@ -29,16 +29,14 @@
 
                 // Toggle visibility of the clicked dropdown
                 clickedDropdown.slideToggle();
+
+                // Prevent event propagation to parent dropdowns
+                e.stopPropagation();
             });
 
             // Prevent following the link for items with dropdowns
             $('.sidebar-navigation li:has(ul) > a').click(function(e) {
                 e.preventDefault();
-            });
-
-            // Close other dropdowns when a dropdown is clicked
-            $('.sidebar-navigation li ul li').click(function(e) {
-                e.stopPropagation();
             });
         });
     </script>
