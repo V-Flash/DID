@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" id="aStyleLink" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <title>Theme Switcher</title>
-    <script src="script.js"></script>
 </head>
 <body>
 
@@ -18,36 +17,30 @@
     <!-- Your content goes here -->
 
     <script>
-        $(function () {
+        $(document).ready(function () {
             let darkMode = localStorage.getItem("dark-mode");
-
-            function style_change(stylename) {
-                // You can add custom logic here if needed
-            }
 
             function setTheme(theme) {
                 document.getElementById('aStyleLink').href = theme;
                 localStorage.setItem("dark-mode", theme);
             }
 
-            $(document).ready(function () {
-                $("#aBlack").click(function () {
-                    setTheme('frontend/css/black-theme.css');
-                });
-
-                $("#aGreen").click(function () {
-                    setTheme('frontend/css/green-theme.css');
-                });
-
-                $("#aNormal").click(function () {
-                    setTheme('#');
-                });
-
-                // Set the initial theme on page load
-                if (darkMode) {
-                    setTheme(darkMode);
-                }
+            $("#aBlack").click(function () {
+                setTheme('frontend/css/black-theme.css');
             });
+
+            $("#aGreen").click(function () {
+                setTheme('frontend/css/green-theme.css');
+            });
+
+            $("#aNormal").click(function () {
+                setTheme('');
+            });
+
+            // Set the initial theme on page load
+            if (darkMode) {
+                setTheme(darkMode);
+            }
         });
     </script>
 </body>
