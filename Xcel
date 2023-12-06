@@ -1,2 +1,40 @@
+<link type="text/css" id="aStyleLink" rel="stylesheet" />
 
- i want css file change theme   localStorage.setItem the theme
+
+$(function () {
+    
+
+let darkMode = localStorage.getItem("dark-mode");
+    function style_change(stylename) {
+    }
+
+     $(document).ready(function(){
+        $("#aBlack").click(function(){
+            document.getElementById('aStyleLink').href='frontend/css/black-theme.css';
+            localStorage.setItem("dark-mode", "black");
+        });
+
+        $("#aGreen").click(function(){
+            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
+            localStorage.setItem("dark-mode", "green");
+        });
+
+        $("#aNormal").click(function(){
+            document.getElementById('aStyleLink').href='#';
+            localStorage.setItem("dark-mode", "white");
+
+        });
+
+        if (darkMode === "black") {
+          document.getElementById('aStyleLink').href='frontend/css/black-theme.css'; // set state of darkMode on page load
+        }
+         else if (darkMode === "green") {
+            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
+        }
+         else if (darkMode === "white") {
+          document.getElementById('aStyleLink').href='#';
+        }
+
+    });    
+    
+})
