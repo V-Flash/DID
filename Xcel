@@ -1,6 +1,6 @@
 <!-- First Modal -->
 <div class="modal" id="modal1" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document" style="max-width: 900px; margin:30px auto;">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Modal 1</h5>
