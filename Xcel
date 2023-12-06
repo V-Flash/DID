@@ -1,40 +1,54 @@
-<link type="text/css" id="aStyleLink" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" id="aStyleLink" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Theme Switcher</title>
+    <script src="script.js"></script>
+</head>
+<body>
 
+    <!-- Theme change buttons -->
+    <a href="javascript:void(0)" id="aBlack">Black Theme</a>
+    <a href="javascript:void(0)" id="aGreen">Green Theme</a>
+    <a href="javascript:void(0)" id="aNormal">Default Theme</a>
 
-$(function () {
-    
+    <!-- Your content goes here -->
 
-let darkMode = localStorage.getItem("dark-mode");
-    function style_change(stylename) {
-    }
+    <script>
+        $(function () {
+            let darkMode = localStorage.getItem("dark-mode");
 
-     $(document).ready(function(){
-        $("#aBlack").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/black-theme.css';
-            localStorage.setItem("dark-mode", "black");
+            function style_change(stylename) {
+                // You can add custom logic here if needed
+            }
+
+            function setTheme(theme) {
+                document.getElementById('aStyleLink').href = theme;
+                localStorage.setItem("dark-mode", theme);
+            }
+
+            $(document).ready(function () {
+                $("#aBlack").click(function () {
+                    setTheme('frontend/css/black-theme.css');
+                });
+
+                $("#aGreen").click(function () {
+                    setTheme('frontend/css/green-theme.css');
+                });
+
+                $("#aNormal").click(function () {
+                    setTheme('#');
+                });
+
+                // Set the initial theme on page load
+                if (darkMode) {
+                    setTheme(darkMode);
+                }
+            });
         });
-
-        $("#aGreen").click(function(){
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-            localStorage.setItem("dark-mode", "green");
-        });
-
-        $("#aNormal").click(function(){
-            document.getElementById('aStyleLink').href='#';
-            localStorage.setItem("dark-mode", "white");
-
-        });
-
-        if (darkMode === "black") {
-          document.getElementById('aStyleLink').href='frontend/css/black-theme.css'; // set state of darkMode on page load
-        }
-         else if (darkMode === "green") {
-            document.getElementById('aStyleLink').href='frontend/css/green-theme.css';
-        }
-         else if (darkMode === "white") {
-          document.getElementById('aStyleLink').href='#';
-        }
-
-    });    
-    
-})
+    </script>
+</body>
+</html>
