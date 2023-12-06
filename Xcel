@@ -1,19 +1,180 @@
-<!-- First Modal -->
-<div class="modal" id="modal1" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal 1</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <div id="close-sidebar"> <i class="fas fa-times" aria-hidden="true"></i> </div>
+        </div>
+        <div class="sidebar-navigation">
+          <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="#">About <em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <li><a href="about-overview.php">Overview</a></li>
+                <li><a href="about-overview.php#vision-mision">Vision &amp; Mission</a></li>
+                <li><a href="about-overview.php#amis-object">Aims &amp; Objectives</a></li>
+                <li><a href="about-organization-structure.php">Organization Structure</a></li>
+                <li><a href="about-gallery.php">Gallery</a></li>
+                                    <li><a href="video">Video</a></li>
+
+              </ul>
+            </li>
+            <li><a href="#">Education <em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <li><a href="courses-beginners-certificate-course-scd-I.php">Beginners Certificate Course (SCD - I)</a></li>
+                <li><a href="courses-intermediate-certificate-course-scd-II.php">Intermediate Certificate Course (SCD - II)</a></li>
+                <li><a href="courses-advanced-certificate-course-scd-III.php">Advanced Certificate Course (SCD - III)</a></li>
+                <li><a href="courses-diploma-scd-IV.php">Diploma (SCD - IV)</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Center <em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <li><a href="#">SAPTI Ambaji <em class="mdi mdi-chevron-down"></em></a>
+                  <ul>
+                    <li><a href="ambaji-overview.php">Overview</a></li>
+                    <li><a href="ambaji-education.php">Education</a></li>
+                    <li><a href="ambaji-infrastructure.php">Infrastructure</a></li>
+                    <li><a href="ambaji-prospeets.php">Prospects</a></li>
+                    <li><a href="admission.php">Admission</a></li>
+                    <li><a href="ambaji-gallery.php">Gallery</a></li>
+                    <li><a href="ambaji-contact.php">Contact</a></li>
+                    <!--<li><a href="#">Activity <em class="mdi mdi-chevron-down"></em></a>
+                      <ul>
+                        <li><a href="#">Social media</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Activity</a></li>
+                      </ul>
+                    </li>-->
+                  </ul>
+                </li>
+                <li><a href="#">SAPTI Dhrangadhra <em class="mdi mdi-chevron-down"></em></a>
+                  <ul>
+                    <li><a href="dhrangadhra-overview.php">Overview</a></li>
+                    <li><a href="dhrangadhra-education.php">Education</a></li>
+                    <li><a href="dhrangadhra-infrastructure.php">Infrastructure</a></li>
+                    <li><a href="dhrangadhra-prospeets.php">Prospects</a></li>
+                    <li><a href="admission.php">Admission</a></li>
+                    <li><a href="dhrangadhra-gallery.php">Gallery</a></li>
+                    <li><a href="dhrangadhra-contact.php">Contact</a></li>
+                    <!--<li><a href="#">Activity <em class="mdi mdi-chevron-down"></em></a>
+                      <ul>
+                        <li><a href="#">Social media</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Activity</a></li>
+                      </ul>
+                    </li>-->
+                  </ul>
+                </li>
+                
+                <!--<li><a href="#">Internet</a></li>-->
+              </ul>
+            </li>
+            <li><a href="admission.php">Admission</a></li>
+            <li><a href="enquiery.php">Enquiry</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="tenders.php">Tender</a></li>
+            <li><a href="download.php">Downloads</a></li>
+            <li><a href="faq.php">FAQ</a></li>
+            <li><a href="career.php">Career</a></li>
+            <li><a href="news.php">News &amp; Events</a></li>
+            <li><a href="login.php">Login</a></li>
+            <!--<li><a href="#"> Register</a></li>-->
+            <!--<li><a href="#"> Enquiry</a></li>
+            <li><a href="admission.php"> Apply</a></li>-->
+          </ul>
+        </div>
+        
+        <!-- sidebar-menu  --> 
       </div>
-      <div class="modal-body">
-        <img class="img-fluid" src="images/photo/86605g2-image.jpg" alt="">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="sidebar-content">
+        <div class="sidebar-brand">
+          <div id="close-sidebar"> <i class="fas fa-times" aria-hidden="true"></i> </div>
+        </div>
+        <div class="sidebar-navigation">
+          <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="#">About <em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <li><a href="about-overview.php">Overview</a></li>
+                <li><a href="about-overview.php#vision-mision">Vision &amp; Mission</a></li>
+                <li><a href="about-overview.php#amis-object">Aims &amp; Objectives</a></li>
+                <li><a href="about-organization-structure.php">Organization Structure</a></li>
+                <li><a href="about-gallery.php">Gallery</a></li>
+                                    <li><a href="video">Video</a></li>
+
+              </ul>
+            </li>
+            <li><a href="#">Education <em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <li><a href="courses-beginners-certificate-course-scd-I.php">Beginners Certificate Course (SCD - I)</a></li>
+                <li><a href="courses-intermediate-certificate-course-scd-II.php">Intermediate Certificate Course (SCD - II)</a></li>
+                <li><a href="courses-advanced-certificate-course-scd-III.php">Advanced Certificate Course (SCD - III)</a></li>
+                <li><a href="courses-diploma-scd-IV.php">Diploma (SCD - IV)</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Center <em class="mdi mdi-chevron-down"></em></a>
+              <ul>
+                <li><a href="#">SAPTI Ambaji <em class="mdi mdi-chevron-down"></em></a>
+                  <ul>
+                    <li><a href="ambaji-overview.php">Overview</a></li>
+                    <li><a href="ambaji-education.php">Education</a></li>
+                    <li><a href="ambaji-infrastructure.php">Infrastructure</a></li>
+                    <li><a href="ambaji-prospeets.php">Prospects</a></li>
+                    <li><a href="admission.php">Admission</a></li>
+                    <li><a href="ambaji-gallery.php">Gallery</a></li>
+                    <li><a href="ambaji-contact.php">Contact</a></li>
+                    <!--<li><a href="#">Activity <em class="mdi mdi-chevron-down"></em></a>
+                      <ul>
+                        <li><a href="#">Social media</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Activity</a></li>
+                      </ul>
+                    </li>-->
+                  </ul>
+                </li>
+                <li><a href="#">SAPTI Dhrangadhra <em class="mdi mdi-chevron-down"></em></a>
+                  <ul>
+                    <li><a href="dhrangadhra-overview.php">Overview</a></li>
+                    <li><a href="dhrangadhra-education.php">Education</a></li>
+                    <li><a href="dhrangadhra-infrastructure.php">Infrastructure</a></li>
+                    <li><a href="dhrangadhra-prospeets.php">Prospects</a></li>
+                    <li><a href="admission.php">Admission</a></li>
+                    <li><a href="dhrangadhra-gallery.php">Gallery</a></li>
+                    <li><a href="dhrangadhra-contact.php">Contact</a></li>
+                    <!--<li><a href="#">Activity <em class="mdi mdi-chevron-down"></em></a>
+                      <ul>
+                        <li><a href="#">Social media</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Activity</a></li>
+                      </ul>
+                    </li>-->
+                  </ul>
+                </li>
+                
+                <!--<li><a href="#">Internet</a></li>-->
+              </ul>
+            </li>
+            <li><a href="admission.php">Admission</a></li>
+            <li><a href="enquiery.php">Enquiry</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="tenders.php">Tender</a></li>
+            <li><a href="download.php">Downloads</a></li>
+            <li><a href="faq.php">FAQ</a></li>
+            <li><a href="career.php">Career</a></li>
+            <li><a href="news.php">News &amp; Events</a></li>
+            <li><a href="login.php">Login</a></li>
+            <!--<li><a href="#"> Register</a></li>-->
+            <!--<li><a href="#"> Enquiry</a></li>
+            <li><a href="admission.php"> Apply</a></li>-->
+          </ul>
+        </div>
+        
+        <!-- sidebar-menu  --> 
+      </div><!-- sidebar-content  --> 
+    </nav>
