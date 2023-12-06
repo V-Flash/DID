@@ -1,39 +1,5 @@
-function style_change(stylename) {
-    // Add your style change logic here
-    console.log("Changing style to " + stylename);
-}
-
-$(function () {
-    let darkMode = localStorage.getItem("dark-mode");
-
-    $(document).ready(function () {
-        $("#aBlack").click(function () {
-            document.getElementById('aStyleLink').href = 'frontend/css/black-theme.css';
-            localStorage.setItem("dark-mode", "black");
-            style_change("black");
-        });
-
-        $("#aGreen").click(function () {
-            document.getElementById('aStyleLink').href = 'frontend/css/green-theme.css';
-            localStorage.setItem("dark-mode", "green");
-            style_change("green");
-        });
-
-        $("#aNormal").click(function () {
-            document.getElementById('aStyleLink').href = '#';
-            localStorage.setItem("dark-mode", "white");
-            style_change("white");
-        });
-
-        if (darkMode === "black") {
-            document.getElementById('aStyleLink').href = 'frontend/css/black-theme.css';
-            style_change("black");
-        } else if (darkMode === "green") {
-            document.getElementById('aStyleLink').href = 'frontend/css/green-theme.css';
-            style_change("green");
-        } else if (darkMode === "white") {
-            document.getElementById('aStyleLink').href = '#';
-            style_change("white");
-        }
-    });
-});
+<a href="javascript:void(0)" id="aNormal" onclick="style_change('normal')">
+                      <div><img title="" alt="" src="../com-images/theme1.jpg" /></div>
+                      </a> <a href="javascript:void(0)" id="aBlack" onclick="style_change('black')">
+                      <div><img title="" alt="" src="../com-images/theme2.jpg" /></div>
+                      </a>
