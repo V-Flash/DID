@@ -3,22 +3,39 @@
 <script>
 $(document).ready(function() {
     var fixmeTop = $('.fixme').offset().top;
-    var contentHeight = $('#content').outerHeight();
-    var fixmeHeight = $('.fixme').outerHeight();
+    var fixme = $('.fixme');
+    
+    function updateHeights() {
+        var contentHeight = $('#content').outerHeight();
+        var fixmeHeight = fixme.outerHeight();
+        
+        $(window).scroll(function() {
+            var currentScroll = $(window).scrollTop();
+    
+            if (currentScroll >= fixmeTop && currentScroll <= (contentHeight - fixmeHeight)) {
+                fixme.css({
+                    position: 'fixed',
+                    top: '150px'
+                });
+            } else {
+                fixme.css({
+                    position: 'static'
+                });
+            }
+        });
+    }
 
-    $(window).scroll(function() {
-        var currentScroll = $(window).scrollTop();
+    // Initial heights setup
+    updateHeights();
 
-        if (currentScroll >= fixmeTop && currentScroll <= (contentHeight - fixmeHeight)) {
-            $('.fixme').css({
-                position: 'fixed',
-                top: '150px'
-            });
-        } else {
-            $('.fixme').css({
-                position: 'static'
-            });
-        }
+    // Update heights when window is resized
+    $(window).resize(function() {
+        updateHeights();
+    });
+
+    // Update heights when accordion is opened/closed (adjust this based on your accordion implementation)
+    $('.accordion').on('click', function() {
+        updateHeights();
     });
 });
 </script>
