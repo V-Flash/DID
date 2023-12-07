@@ -1,24 +1,29 @@
-<style>
-    .flex-col {
-        display: flex;
-        flex-direction: column;
+<div id="content" style="margin-bottom: 735px;"> 
+    
+<div class="widget fixme" >
+                <div class="info-links"><img src="images/side-img1.png" alt="Little Genius - 5000+ students"></div>
+                <div class="info-links"><img src="images/side-img2.png" alt="Little Genius - 20+ Years of Experience"></div>
+                <div class="info-links"><img src="images/side-img3.png" alt="Little Genius - 40+ Passionate Pedagogues"></div>
+                <div class="info-links"><img src="images/side-img4.png" alt="Little Genius - 5 Learning Programs"></div>
+                <div class="info-links"><img src="images/side-img5.png" alt="Little Genius - 3 centres"></div>
+              </div>
+  </div>
+
+<script>
+    
+var fixmeTop = $('.fixme').offset().top;
+$(window).scroll(function() {
+    var currentScroll = $(window).scrollTop();
+    if (currentScroll >= fixmeTop) {
+        $('.fixme').css({
+            position: 'fixed',
+            top: '150px'
+            /*left: '0'*/
+        });
+    } else {
+        $('.fixme').css({
+            position: 'static'             
+        });
     }
-
-    .para-div {
-        display: block; /* Set the display property to block for para-div */
-    }
-
-    .para, .big-vlt-text {
-        margin-bottom: 10px; /* Add margin for better spacing */
-    }
-</style>
-
-<div data-aos="fade-up" class="flex-col">
-    <p data-aos="fade-up" data-aos-delay="100" class="para" style="font-family: 'Open Sans', sans-serif;">Classic Recreations of Yukon, Oklahoma has been building a variety of officially-licensed continuation Mustang Shelby models for the past decade, and has now secured the rights to do the same for the 1969-1970 Mach 1, Boss 302 and Boss 429.</p>
-    <h4 class="big-vlt-text"><strong>This company will sell yo a brand new 1969 ford mustang boss 429</strong></h4>
-
-    <div data-aos="fade-up" data-aos-delay="100" class="para-div">
-        <p class="para" style="font-family: 'Open Sans', sans-serif;">They start with either a new body built by R3 or a standard Mustang donor car that they strip down, get in perfect shape and add all of the bits needed to recreate the original look of the high performance models.</p>
-        <p class="para" style="font-family: 'Open Sans', sans-serif;">Everything underneath gets a refresh, too, including a coilover suspension setup, modern brakes and a new Ford Performance engine.</p>
-    </div>
-</div>
+});    
+</script>
