@@ -3,11 +3,13 @@
 <script>
 $(document).ready(function() {
     var fixmeTop = $('.fixme').offset().top;
+    var contentHeight = $('#content').outerHeight();
+    var fixmeHeight = $('.fixme').outerHeight();
 
     $(window).scroll(function() {
         var currentScroll = $(window).scrollTop();
 
-        if (currentScroll >= fixmeTop) {
+        if (currentScroll >= fixmeTop && currentScroll <= (contentHeight - fixmeHeight)) {
             $('.fixme').css({
                 position: 'fixed',
                 top: '150px'
