@@ -4,38 +4,41 @@
 $(document).ready(function() {
     var fixmeTop = $('.fixme').offset().top;
     var fixme = $('.fixme');
-    
+
     function updateHeights() {
         var contentHeight = $('#content').outerHeight();
         var fixmeHeight = fixme.outerHeight();
-        
-        $(window).scroll(function() {
-            var currentScroll = $(window).scrollTop();
-    
-            if (currentScroll >= fixmeTop && currentScroll <= (contentHeight - fixmeHeight)) {
-                fixme.css({
-                    position: 'fixed',
-                    top: '150px'
-                });
-            } else {
-                fixme.css({
-                    position: 'static'
-                });
-            }
-        });
+
+        return { contentHeight, fixmeHeight };
+    }
+
+    function handleScroll() {
+        var { contentHeight, fixmeHeight } = updateHeights();
+        var currentScroll = $(window).scrollTop();
+
+        if (currentScroll >= fixmeTop && currentScroll <= (contentHeight - fixmeHeight)) {
+            fixme.css({
+                position: 'fixed',
+                top: '150px'
+            });
+        } else {
+            fixme.css({
+                position: 'static'
+            });
+        }
     }
 
     // Initial heights setup
-    updateHeights();
+    handleScroll();
 
     // Update heights when window is resized
     $(window).resize(function() {
-        updateHeights();
+        handleScroll();
     });
 
-    // Update heights when accordion is opened/closed (adjust this based on your accordion implementation)
-    $('.accordion').on('click', function() {
-        updateHeights();
+    // Update heights on scroll
+    $(window).scroll(function() {
+        handleScroll();
     });
 });
 </script>
