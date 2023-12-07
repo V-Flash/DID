@@ -1,31 +1,22 @@
-<div id="content" style="margin-bottom: 735px;"> 
-    
-<div class="widget fixme" >
-                <div class="info-links"><img src="images/side-img1.png" alt="Little Genius - 5000+ students"></div>
-                <div class="info-links"><img src="images/side-img2.png" alt="Little Genius - 20+ Years of Experience"></div>
-                <div class="info-links"><img src="images/side-img3.png" alt="Little Genius - 40+ Passionate Pedagogues"></div>
-                <div class="info-links"><img src="images/side-img4.png" alt="Little Genius - 5 Learning Programs"></div>
-                <div class="info-links"><img src="images/side-img5.png" alt="Little Genius - 3 centres"></div>
-              </div>
-  </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-    
-var fixmeTop = $('.fixme').offset().top;
-$(window).scroll(function() {
-    var currentScroll = $(window).scrollTop();
-    if (currentScroll >= fixmeTop) {
-        $('.fixme').css({
-            position: 'fixed',
-            top: '150px'
-            /*left: '0'*/
-        });
-    } else {
-        $('.fixme').css({
-            position: 'static'             
-        });
-    }
-});    
-</script>  
+$(document).ready(function() {
+    var fixmeTop = $('.fixme').offset().top;
 
-when this id="content" div is finsied i want fixme to be static and when  id="content" div show on agian it change to fixed
+    $(window).scroll(function() {
+        var currentScroll = $(window).scrollTop();
+
+        if (currentScroll >= fixmeTop) {
+            $('.fixme').css({
+                position: 'fixed',
+                top: '150px'
+            });
+        } else {
+            $('.fixme').css({
+                position: 'static'
+            });
+        }
+    });
+});
+</script>
