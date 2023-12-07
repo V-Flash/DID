@@ -26,4 +26,6 @@ $(window).scroll(function() {
         });
     }
 });    
-</script>
+</script>  
+
+when this id="content" div is finsied i want fixme to be static and when  id="content" div show on agian it change to fixed
