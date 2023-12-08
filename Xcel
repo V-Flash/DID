@@ -1,62 +1,35 @@
-  $(document).ready(function () {
+$(document).ready(function () {
+  const mediaQuery = window.matchMedia('(max-width: 980px)');
+  var customOffset = mediaQuery.matches ? 60 : 180;
+  var mainAccordionClicked = false;
 
-  const mediaQuery = window.matchMedia('(max-width: 980px)')
-
-  if (mediaQuery.matches) {
-
-     var customOffset = 60;
-    var mainAccordionClicked = false;
-
-    $('.collapse').on('shown.bs.collapse', function () {
-      if (mainAccordionClicked) {
-        var offset = $(this).offset();
-        $('html, body').animate({
-          scrollTop: offset.top - customOffset
-        }, 500);
-      }
-      mainAccordionClicked = false;
-    });
-
-    $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
-      var offset = $(this).offset();
-      $('html, body').animate({
-        scrollTop: offset.top - 60
-      }, 500);
-    });
-
-   
-    $('.card-link').on('click', function () {
-      mainAccordionClicked = true;
-    });
-
-  }
-
-  else{
-
-    var customOffset = 180;
-    var mainAccordionClicked = false;
-
-    $('.collapse').on('shown.bs.collapse', function () {
-      if (mainAccordionClicked) {
-        var offset = $(this).offset();
-        $('html, body').animate({
-          scrollTop: offset.top - customOffset
-        }, 500);
-      }
-      mainAccordionClicked = false;
-    });
-
-    $('.sub-accordion .collapse').on('shown.bs.collapse', function () {
-      var offset = $(this).offset();
-      $('html, body').animate({
-        scrollTop: offset.top - 175
-      }, 500);
-    });
-
-   
-    $('.card-link').on('click', function () {
-      mainAccordionClicked = true;
-    });
+  $(".hed-title").click(function () {
+    if ($('.hed-content').is(':visible')) {
+      $(".hed-content").slideUp(300);
+      $(".plusminus").text('+');
     }
-  
+
+    if ($(this).next(".hed-content").is(':visible')) {
+      $(this).next(".hed-content").slideUp(300);
+      $(this).children(".plusminus").text('+');
+    } else {
+      $(this).next(".hed-content").slideDown(300);
+      $(this).children(".plusminus").text('-');
+
+      // Scroll to the clicked accordion section
+      if (mainAccordionClicked) {
+        var offset = $(this).next(".hed-content").offset();
+        $('html, body').animate({
+          scrollTop: offset.top - customOffset
+        }, 500);
+      }
+      mainAccordionClicked = false;
+    }
+  });
+
+  $('.card-link').on('click', function () {
+    mainAccordionClicked = true;
+  });
+
+  // Additional code for handling scrolling based on window width can be added here
 });
