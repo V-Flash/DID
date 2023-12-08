@@ -1,18 +1,1 @@
-<li class="has-children dropdown-megamenu">
-								<a  class="nav-link nav-link-dropdown">MegaMenu</a>
-								<ul class="dropdown arrow-top megamenu">
-								<div class="container-fluid">
-									<ul>
-				                	<li>
-				                		<a href="about-us.html" class="nav-link">Overview</a>
-				                	</li>
-				                  <li>
-				                    <a href="about-quality.html" class="nav-link">Quality</a>
-				                	</li>
-				                  <li>
-				                  	<a href="about-Infrastructure.html" class="nav-link">Infrastructure</a>
-				                  </li>
-					            </ul>
-								</div>
-							</ul>
-							</li>
+<hr style="border-top: 1px dotted #000;">
