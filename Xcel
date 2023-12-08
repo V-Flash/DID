@@ -1,94 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Class Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    /* Your existing CSS styles here */
+  </style>
+</head>
+<body>
 
-                <div class="pedagogy-innerpadding blog-innermain">
+  <!-- Your HTML content here -->
 
-                  <div class="blog-title1">
-                    <h2>Active and Passive Voice Worksheets</h2>
-                  </div>
+  <script>
+    $(document).ready(function() {
+      // Remove 'desc-line-2' class from the last 'pedagogy-innerpadding' div
+      $('.pedagogy-innerpadding:last').removeClass('desc-line-2');
+    });
+  </script>
 
-                  <div class="clearfix"></div>
-    
-                  <div class="pt30">
-                    <div class="row">
-                      <div class="pedagogy-content-element">
-                        <div class="col-lg-12 blog-text-top">
-                          <h4 class="title desc-title">What is Active and Passive Voice?</h4>
-                            <div class="">
-                              <p>Active voice means that a sentence has a subject that acts upon its verb. Passive voice means that a subject is a recipient of a verb's action.</p>
-                            </div>
-                        </div>      
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                  <div class="pt30">
-                    <div class="row">
-                      <div class="pedagogy-content-element">
-                        <div class="col-lg-12 blog-text-top">
-                          <h4 class="title desc-title">How are Active and Passive Voice Worksheets designed?</h4>
-                            <div class="">
-                              <p>The worksheets will include questions for students to identify what is active voice and what is passive voice. Students will also solve questions on converting sentences from one voice to another. They will also learn how to convert the sentences in various tenses using easy-to-remember formulae.</p>
-                            </div>
-                        </div>      
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="pt30">
-                    <div class="row">
-                      <div class="pedagogy-content-element">
-                        <div class="col-lg-12 blog-text-top">
-                          <h4 class="title desc-title">What are the benefits of solving Active and Passive Voice Worksheets?</h4>
-                            <div class="">
-                              <p>These worksheets subject students to several different types of questions which help them to get enough practice of the topic. Thus, they inevitably get good grades while having crystal clear concepts. Most real world conversations employ the use of active and passive voice. Hence, students feel comfortable to use it in their speech themselves, making them confident speakers. The use of these techniques make us the best online grammar classes for kids.</p>
-                            </div>
-                        </div>      
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="pt30">
-                    <div class="row">
-                      <div class="pedagogy-content-element">
-                        <div class="col-lg-12 blog-text-top">
-                          <h4 class="title desc-title">What are the benefits of solving Active and Passive Voice Worksheets?</h4>
-                            <div class="">
-                              <p>These worksheets subject students to several different types of questions which help them to get enough practice of the topic. Thus, they inevitably get good grades while having crystal clear concepts. Most real world conversations employ the use of active and passive voice. Hence, students feel comfortable to use it in their speech themselves, making them confident speakers. The use of these techniques make us the best online grammar classes for kids.</p>
-                            </div>
-                        </div>      
-                      </div>
-                     
-                    </div>
-
-                  </div>
-
-                  <div class="col-lg-12 blog-border1 desc-line"></div>
-
-                  <div class="pdf-download-entry entry pt40"> 
-
-                    <div class="margin-bottom30">
-
-                      <h4 class="title desc-title">Download Active and Passive Voice Worksheet PDFs</h4>
-
-                      <p>The best part about these worksheets is that they are engaging, easy to use and are free to download. Most importantly, our English and grammar classes have worksheets that combine fun with studies to provide a well rounded educational experience for students.</p>
-
-                    </div>
-
-                    <div class="row">
-
-                      <div class="entry-body col-md-8">
-                        <h5 class="entry-title-download pdf-download"><a href="" target="_blank">Active and Passive Voice Worksheet PDFs<i class="pdf-img"><img src="images/PDF.png" alt=""/></i></a></h5>
-                      </div>
-            
-                      <div class="entry-body col-md-8">
-                        <h5 class="entry-title-download pdf-download"><a href="" target="_blank">Active and Passive Voice Worksheet PDFs<i class="pdf-img"><img src="images/PDF.png" alt=""/></i></a></h5>
-                      </div>
-
-                    </div>
-                  
-                  </div>
-
-                     <div class="col-lg-12 blog-border1 desc-line desc-line-2"></div>
-                                             
-                </div>
-i have multiple pedagogy-innerpadding div in that i have desc-line-2 i want to remove desc-line-2 from last pedagogy-innerpadding div only
+</body>
+</html>
