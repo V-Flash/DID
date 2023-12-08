@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remove Class Example</title>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <style>
     /* Your existing CSS styles here */
   </style>
@@ -14,9 +13,12 @@
   <!-- Your HTML content here -->
 
   <script>
-    $(document).ready(function() {
-      // Remove 'desc-line-2' class from the last 'pedagogy-innerpadding' div
-      $('.pedagogy-innerpadding:last').removeClass('desc-line-2');
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get all elements with class 'pedagogy-innerpadding'
+      var elements = document.querySelectorAll('.pedagogy-innerpadding');
+      
+      // Remove 'desc-line-2' class from the last element
+      elements[elements.length - 1].classList.remove('desc-line-2');
     });
   </script>
 
