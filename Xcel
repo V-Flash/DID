@@ -1,20 +1,16 @@
 $(document).ready(function () {
-    // toggle the component with class accordion_body
-    $(".hed-title").click(function () {
-        var content = $(this).next(".hed-content");
-
-        if (content.is(':visible')) {
-            content.slideUp(300);
+    //toggle the component with class accordion_body
+    $(".but").click(function () {
+        if ($('.content').is(':visible')) {
+            $(".content").slideUp(300);
+            $(".plusminus").text('+');
+        }
+        if ($(this).next(".content").is(':visible')) {
+            $(this).next(".content").slideUp(300);
             $(this).children(".plusminus").text('+');
         } else {
-            // Slide down the content
-            content.slideDown(300);
+            $(this).next(".content").slideDown(300);
             $(this).children(".plusminus").text('-');
-
-            // Scroll to the opened accordion
-            $('html, body').animate({
-                scrollTop: content.offset().top
-            }, 300);
         }
     });
 });
