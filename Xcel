@@ -1,16 +1,37 @@
 $(document).ready(function () {
-        //toggle the component with class accordion_body
-        $(".but2").click(function () {
-            if ($('.content2').is(':visible')) {
-                $(".content2").slideUp(300);
-                $(".plusminus3").text('+');
-            }
-            if ($(this).next(".content2").is(':visible')) {
-                $(this).next(".content2").slideUp(300);
-                $(this).children(".plusminus3").text('+');
-            } else {
-                $(this).next(".content2").slideDown(300);
-                $(this).children(".plusminus3").text('-');
-            }
-        });
-    });
+  var customOffset, mainAccordionClicked;
+
+  const mediaQuery = window.matchMedia('(max-width: 980px)');
+  
+  if (mediaQuery.matches) {
+    customOffset = 60;
+  } else {
+    customOffset = 180;
+  }
+
+  $(".but2").click(function () {
+    if ($('.content2').is(':visible')) {
+      $(".content2").slideUp(300);
+      $(".plusminus3").text('+');
+    }
+    if ($(this).next(".content2").is(':visible')) {
+      $(this).next(".content2").slideUp(300);
+      $(this).children(".plusminus3").text('+');
+    } else {
+      $(this).next(".content2").slideDown(300, function () {
+        if (mainAccordionClicked) {
+          var offset = $(this).offset();
+          $('html, body').animate({
+            scrollTop: offset.top - customOffset
+          }, 500);
+        }
+        mainAccordionClicked = false;
+      });
+      $(this).children(".plusminus3").text('-');
+    }
+  });
+
+  $('.card-link').on('click', function () {
+    mainAccordionClicked = true;
+  });
+});
