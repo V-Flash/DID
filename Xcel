@@ -11,6 +11,23 @@
 <body>
 
 <!-- Your HTML content -->
+<section class="section-in-view" style="background-color: orange;">
+    <!-- Content of the section -->
+    <img src="path/to/image1.jpg" alt="Background Image">
+</section>
+
+<section class="section-in-view" style="background-image: url('path/to/image2.jpg');">
+    <!-- Content of the section -->
+</section>
+
+<section class="section-in-view" style="background-color: purple;">
+    <!-- Content of the section -->
+    <img src="path/to/image3.jpg" alt="Background Image">
+</section>
+
+<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" style="position: fixed;">
+    <img class="img-fluid" src="assets/img/logo.png" width="75em" height="100%"> Ford Mustang
+</button>
 
 <script>
     $(document).ready(function () {
@@ -37,11 +54,18 @@
             if (backgroundImage && backgroundImage !== 'none') {
                 // Get the dominant color of the background image
                 var colorThief = new ColorThief();
-                var image = $('.section-in-view').find('img')[0]; // Change the selector based on your structure
-                var dominantColor = colorThief.getColor(image);
+                var image = $('.section-in-view').find('img')[0];
+                
+                // Check if the image is loaded
+                if (image.complete) {
+                    var dominantColor = colorThief.getColor(image);
 
-                // Convert RGB values to CSS color format
-                currentSectionColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+                    // Convert RGB values to CSS color format
+                    currentSectionColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+                } else {
+                    // Handle the case where the image is not yet loaded
+                    currentSectionColor = ''; // Set a default color or handle accordingly
+                }
             } else {
                 // Get the background color of the section
                 currentSectionColor = $('.section-in-view').css('background-color');
