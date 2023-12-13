@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <title>Your Website</title>
     <style>
         .section-in-view {
@@ -25,7 +24,7 @@
 <!-- Your HTML content -->
 <section class="section-in-view" style="background-color: orange;">
     <!-- Content of the section -->
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...your_base64_encoded_image_data..." alt="Background Image">
+    <img src="path/to/image1.jpg" alt="Background Image">
 </section>
 
 <section class="section-in-view" style="background-image: url('path/to/image2.jpg');">
@@ -34,7 +33,7 @@
 
 <section class="section-in-view" style="background-color: purple;">
     <!-- Content of the section -->
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...your_base64_encoded_image_data..." alt="Background Image">
+    <img src="path/to/image3.jpg" alt="Background Image">
 </section>
 
 <button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">
@@ -59,16 +58,9 @@
         function getSectionColorInViewport() {
             // Get the section currently in view
             var $currentSection = getCurrentSection();
-            
-            // Check if the section has a background image
-            var backgroundImage = $currentSection.css('background-image');
-            if (backgroundImage && backgroundImage !== 'none') {
-                // Use a default color for cross-origin images
-                return '#ffffff'; // Set a default color or choose a predefined color
-            } else {
-                // Get the background color of the section
-                return $currentSection.css('background-color');
-            }
+
+            // Get the computed background color of the section
+            return window.getComputedStyle($currentSection[0]).getPropertyValue('background-color');
         }
 
         function getCurrentSection() {
