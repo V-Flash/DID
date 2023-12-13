@@ -1,79 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <title>Your Website</title>
-    <style>
-        .section-in-view {
-            height: 400px; /* Set the height as needed */
-            position: relative;
-        }
+LEADERSHIP
 
-        .menu-icon {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
-        }
-    </style>
-</head>
-<body>
 
-<!-- Your HTML content -->
-<section class="section-in-view" style="background-color: orange;">
-    <!-- Content of the section -->
-    <img src="path/to/image1.jpg" alt="Background Image">
-</section>
+CAREERS
 
-<section class="section-in-view" style="background-image: url('path/to/image2.jpg');">
-    <!-- Content of the section -->
-</section>
 
-<section class="section-in-view" style="background-color: purple;">
-    <!-- Content of the section -->
-    <img src="path/to/image3.jpg" alt="Background Image">
-</section>
+PARTNERSHIPS
 
-<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">
-    <img class="img-fluid" src="assets/img/logo.png" width="75em" height="100%"> Ford Mustang
-</button>
 
-<script>
-    $(document).ready(function () {
-        // Listen for scroll events
-        $(window).scroll(function () {
-            updateMenuIconColor();
-        });
-
-        function updateMenuIconColor() {
-            // Get the current background color of the section in view
-            var currentSectionColor = getSectionColorInViewport();
-
-            // Update the background color of the menu-icon button
-            $('.menu-icon').css('background-color', currentSectionColor);
-        }
-
-        function getSectionColorInViewport() {
-            // Get the section currently in view
-            var $currentSection = getCurrentSection();
-
-            // Get the computed background color of the section
-            return window.getComputedStyle($currentSection[0]).getPropertyValue('background-color');
-        }
-
-        function getCurrentSection() {
-            // Find the first section with a positive offset from the top
-            var $sections = $('.section-in-view');
-            var $currentSection = $sections.filter(function () {
-                return $(this).offset().top <= $(window).scrollTop() + $(window).height() / 2;
-            }).last();
-
-            return $currentSection;
-        }
-    });
-</script>
-
-</body>
-</html>
+PRESS
+ these all are my heading of my section
