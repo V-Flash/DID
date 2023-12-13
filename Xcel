@@ -43,8 +43,6 @@
 
 <script>
     $(document).ready(function () {
-        updateMenuIconColor();
-
         // Listen for scroll events
         $(window).scroll(function () {
             updateMenuIconColor();
@@ -59,8 +57,6 @@
         }
 
         function getSectionColorInViewport() {
-            var currentSectionColor;
-
             // Get the section currently in view
             var $currentSection = getCurrentSection();
             
@@ -76,17 +72,15 @@
                     var dominantColor = colorThief.getColor(image);
 
                     // Convert RGB values to CSS color format
-                    currentSectionColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+                    return `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
                 } else {
                     // Handle the case where the image is not yet loaded
-                    currentSectionColor = ''; // Set a default color or handle accordingly
+                    return ''; // Set a default color or handle accordingly
                 }
             } else {
                 // Get the background color of the section
-                currentSectionColor = $currentSection.css('background-color');
+                return $currentSection.css('background-color');
             }
-
-            return currentSectionColor;
         }
 
         function getCurrentSection() {
