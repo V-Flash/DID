@@ -1,37 +1,4 @@
-$(document).ready(function () {
-  var customOffset, mainAccordionClicked;
 
-  const mediaQuery = window.matchMedia('(max-width: 980px)');
-  
-  if (mediaQuery.matches) {
-    customOffset = 60;
-  } else {
-    customOffset = 180;
-  }
+A Boss 302 and Mach 1 Are Also Available
 
-  $(".but2").click(function () {
-    if ($('.content2').is(':visible')) {
-      $(".content2").slideUp(300);
-      $(".plusminus3").text('+');
-    }
-    if ($(this).next(".content2").is(':visible')) {
-      $(this).next(".content2").slideUp(300);
-      $(this).children(".plusminus3").text('+');
-    } else {
-      $(this).next(".content2").slideDown(300, function () {
-        if (mainAccordionClicked) {
-          var offset = $(this).offset();
-          $('html, body').animate({
-            scrollTop: offset.top - customOffset
-          }, 500);
-        }
-        mainAccordionClicked = false;
-      });
-      $(this).children(".plusminus3").text('-');
-    }
-  });
-
-  $('.card-link').on('click', function () {
-    mainAccordionClicked = true;
-  });
-});
+Combo Platter: Jim Weigle’s 1969/2014 Mustang is an exercise in mating old and new to create one amazing Mustang
