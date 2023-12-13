@@ -1,5 +1,56 @@
-<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" style="position: fixed;">
-            <img class="img-fluid" src="assets/img/logo.png" width="75em" height="100%"> Ford Mustang
-        </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/your/css/style.css">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Your Website</title>
+</head>
+<body>
 
-i want menu-icon background colour to be chaanged same as the background colour of  the section on which menu-icon is for example on hero section te backgound is oragne that change the menu-icon background to that colour when scroll down the backgroudn is purple the change to that
+<!-- Your HTML content -->
+
+<script>
+    // Wait for the document to be ready
+    $(document).ready(function () {
+        // Get the initial background color of the hero section
+        var heroSectionColor = $('.hero-section').css('background-color');
+        
+        // Set the initial background color of the menu-icon button
+        $('.menu-icon').css('background-color', heroSectionColor);
+        
+        // Listen for scroll events
+        $(window).scroll(function () {
+            // Get the current background color of the section in view
+            var currentSectionColor = getSectionColorInViewport();
+            
+            // Update the background color of the menu-icon button
+            $('.menu-icon').css('background-color', currentSectionColor);
+        });
+        
+        // Function to get the background color of the section currently in view
+        function getSectionColorInViewport() {
+            var currentSectionColor;
+            
+            // Loop through each section on the page
+            $('section').each(function () {
+                var sectionTop = $(this).offset().top;
+                var sectionBottom = sectionTop + $(this).outerHeight();
+                
+                // Check if the section is currently in view
+                if ($(window).scrollTop() >= sectionTop && $(window).scrollTop() < sectionBottom) {
+                    // Get the background color of the current section
+                    currentSectionColor = $(this).css('background-color');
+                    return false; // Exit the loop
+                }
+            });
+            
+            return currentSectionColor;
+        }
+    });
+</script>
+
+</body>
+</html>
