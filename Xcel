@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="path/to/your/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <title>Your Website</title>
+    <style>
+        .section-in-view {
+            height: 400px; /* Set the height as needed */
+            position: relative;
+        }
+
+        .menu-icon {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +37,7 @@
     <img src="path/to/image3.jpg" alt="Background Image">
 </section>
 
-<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" style="position: fixed;">
+<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">
     <img class="img-fluid" src="assets/img/logo.png" width="75em" height="100%"> Ford Mustang
 </button>
 
@@ -49,13 +61,16 @@
         function getSectionColorInViewport() {
             var currentSectionColor;
 
+            // Get the section currently in view
+            var $currentSection = getCurrentSection();
+            
             // Check if the section has a background image
-            var backgroundImage = $('.section-in-view').css('background-image');
+            var backgroundImage = $currentSection.css('background-image');
             if (backgroundImage && backgroundImage !== 'none') {
                 // Get the dominant color of the background image
                 var colorThief = new ColorThief();
-                var image = $('.section-in-view').find('img')[0];
-                
+                var image = $currentSection.find('img')[0];
+
                 // Check if the image is loaded
                 if (image.complete) {
                     var dominantColor = colorThief.getColor(image);
@@ -68,10 +83,20 @@
                 }
             } else {
                 // Get the background color of the section
-                currentSectionColor = $('.section-in-view').css('background-color');
+                currentSectionColor = $currentSection.css('background-color');
             }
 
             return currentSectionColor;
+        }
+
+        function getCurrentSection() {
+            // Find the first section with a positive offset from the top
+            var $sections = $('.section-in-view');
+            var $currentSection = $sections.filter(function () {
+                return $(this).offset().top <= $(window).scrollTop() + $(window).height() / 2;
+            }).last();
+
+            return $currentSection;
         }
     });
 </script>
