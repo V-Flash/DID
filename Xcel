@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +14,7 @@
 
 <script>
     $(document).ready(function () {
-        // Wait for the image to be loaded
-        $('.hero-section img').on('load', function () {
-            updateMenuIconColor();
-        });
+        updateMenuIconColor();
 
         // Listen for scroll events
         $(window).scroll(function () {
@@ -36,13 +32,20 @@
         function getSectionColorInViewport() {
             var currentSectionColor;
 
-            // Get the dominant color of the background image in the hero section
-            var colorThief = new ColorThief();
-            var image = $('.hero-section img')[0]; // Change the selector based on your structure
-            var dominantColor = colorThief.getColor(image);
+            // Check if the section has a background image
+            var backgroundImage = $('.section-in-view').css('background-image');
+            if (backgroundImage && backgroundImage !== 'none') {
+                // Get the dominant color of the background image
+                var colorThief = new ColorThief();
+                var image = $('.section-in-view').find('img')[0]; // Change the selector based on your structure
+                var dominantColor = colorThief.getColor(image);
 
-            // Convert RGB values to CSS color format
-            currentSectionColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+                // Convert RGB values to CSS color format
+                currentSectionColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
+            } else {
+                // Get the background color of the section
+                currentSectionColor = $('.section-in-view').css('background-color');
+            }
 
             return currentSectionColor;
         }
