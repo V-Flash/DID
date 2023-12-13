@@ -1,32 +1,42 @@
-"Performance Models"
-"Special Editions"
-"High-Performance Classics"
-"Explore Boss 302 & Mach 1"
-"Muscle Car Lineup"
-"Exclusive Models"
-"Boss 302 & Mach 1 Options"
-"Limited Edition Classics"
-"Performance Variants"
-"Discover Boss 302 & Mach 1"
-Choose a name that best fits the overall theme and structure of your website or platform.
+   <div>
+        <button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" style="position: fixed;">
+            <img class="img-fluid" src="assets/img/logo.png" width="75em" height="100%"> Ford Mustang
+        </button>
+   </div>
 
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
 
+  <div class="offcanvas-header">
 
+    <h5 class="offcanvas-title text-black" id="offcanvasTopLabel">
+        <img class="img-fluid" src="assets/img/logo.png" width="75em" height="100%">
+        Ford Mustang
+    </h5>
 
-User
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 
-Combo Platter: Jim Weigle’s 1969/2014 Mustang is an exercise in mating old and new to create one amazing Mustang
-ChatGPT
-Based on the heading "Combo Platter: Jim Weigle’s 1969/2014 Mustang is an exercise in mating old and new to create one amazing Mustang," here are some navigation link name suggestions:
+  </div>
 
-"Hybrid Mustang Build"
-"Vintage & Modern Fusion"
-"1969/2014 Combo Platter"
-"Classic-Modern Integration"
-"Jim Weigle's Mustang Fusion"
-"Marrying Old & New"
-"Amazing Mustang Builds"
-"Unique Mustang Transformations"
-"Vintage & Contemporary Blend"
-"Mustang Evolution Project"
-Choose a name that aligns with the tone
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="#hero">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#boss302">Discover Boss 302 & Mach 1</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#comboplatter">1969/2014 Combo Platter</a>
+        </li>
+
+    </ul>
+  </div>
+
+i want when user click is should be change to active
