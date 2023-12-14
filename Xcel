@@ -22,17 +22,17 @@
       top: 0;
       left: 0;
       opacity: 0;
-      transform: rotate(180deg); /* Initial rotation for the second image */
+      transform: rotateX(180deg); /* Initial rotation for the second image */
     }
 
     .image-container:hover img:first-child {
       opacity: 0;
-      transform: rotate(-180deg); /* Rotate the first image */
+      transform: rotateX(-180deg); /* Rotate the first image around the x-axis */
     }
 
     .image-container:hover img:last-child {
       opacity: 1;
-      transform: rotate(0deg); /* Remove rotation for the second image */
+      transform: rotateX(0deg); /* Remove rotation for the second image */
     }
   </style>
 </head>
