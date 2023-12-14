@@ -1,22 +1,67 @@
- <main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-      <div class="container-fluid">
-        
+    .container-fluid {
+      padding: 20px;
+    }
 
-        <div class="row">
-          
-          <div class="col-lg-6 sticky-slide-down">
-            <img src="img/pro1.jpg" class="img-fluid" alt="">
-            <img src="img/pro2.jpg" class="img-fluid" alt="">
-            <img src="img/pro3.jpg" class="img-fluid" alt="">
-          </div>
+    .row {
+      display: flex;
+    }
 
-          <div class="col-lg-6">
-            <h1>Content</h1>
-          </div>
+    .col-lg-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
 
+    .sticky-container {
+      position: relative;
+    }
+
+    .sticky-slide-down {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .img-fluid {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 sticky-container">
+        <div class="sticky-slide-down">
+          <img src="img/pro1.jpg" class="img-fluid" alt="">
+          <img src="img/pro2.jpg" class="img-fluid" alt="">
+          <img src="img/pro3.jpg" class="img-fluid" alt="">
         </div>
-
       </div>
+      <div class="col-lg-6 content">
+        <h1>Content</h1>
+        <!-- Other content goes here -->
+      </div>
+    </div>
+  </div>
 
-    </main>
+</body>
+</html>
