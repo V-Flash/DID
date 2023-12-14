@@ -1,4 +1,18 @@
-<button type="submit" name="save">Submit</button>
+<form id="pgpaddform">
+    <!-- Your form fields go here -->
+    <button type="submit" name="save">Submit</button>
+</form>
 
+<script>
+    $(document).ready(function () {
+        $("button[name='save']").on('click', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+            $("#pgpaddform").submit(); // Manually submit the form
+        });
 
-$("#pgpaddform").on('submit',(function(e) {}
+        $("#pgpaddform").on('submit', function (e) {
+            // Your form submission handling code goes here
+            alert("Form submitted!"); // Replace this with your actual submission logic
+        });
+    });
+</script>
