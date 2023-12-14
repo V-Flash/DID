@@ -7,32 +7,38 @@
     .image-container {
       position: relative;
       display: inline-block;
-      overflow: hidden; /* Hide the overflow to prevent the rotated image from being visible outside the container */
+      perspective: 1000px; /* Add perspective to create a 3D effect */
+    }
+
+    .image-container a {
+      display: block;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease-in-out;
     }
 
     .image-container img {
       max-width: 100%;
       height: auto;
       display: block;
-      transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out; /* Added transform transition */
+    }
+
+    .image-container img:first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
 
     .image-container img:last-child {
       position: absolute;
       top: 0;
       left: 0;
-      opacity: 0;
-      transform: rotateZ(180deg); /* Initial rotation for the second image around the z-axis */
+      z-index: 0;
+      transform: scale(0.9) translateZ(-30px); /* Initial scaling and translation for the second image */
     }
 
-    .image-container:hover img:first-child {
-      opacity: 0;
-      transform: rotateZ(-180deg); /* Rotate the first image around the z-axis */
-    }
-
-    .image-container:hover img:last-child {
-      opacity: 1;
-      transform: rotateZ(0deg); /* Remove rotation for the second image */
+    .image-container:hover a {
+      transform: rotateY(180deg); /* Rotate the container on hover to reveal the second image */
     }
   </style>
 </head>
