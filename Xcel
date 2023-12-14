@@ -1,7 +1,45 @@
-<a href="" style="text-decoration: none;">
-  		<img src="1.webp" class="img-fluid" alt="">
-  		<img src="2.webp" class="img-fluid" alt="">
-  	</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
 
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s ease-in-out;
+    }
 
-  	i want by default only first image to be show and when hover 1st img to be change by 2nd image with smooth transition and 2nd image to be show over 1st image
+    .image-container img:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .image-container:hover img:first-child {
+      opacity: 0;
+    }
+
+    .image-container:hover img:last-child {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-container">
+    <a href="" style="text-decoration: none;">
+      <img src="1.webp" class="img-fluid" alt="">
+      <img src="2.webp" class="img-fluid" alt="">
+    </a>
+  </div>
+
+</body>
+</html>
