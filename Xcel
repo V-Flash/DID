@@ -40,7 +40,7 @@
 <div class="container-fluid">
   <div class="row">
     <!-- Sidebar Toggle Button -->
-    <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
       Toggle Filters
     </button>
 
