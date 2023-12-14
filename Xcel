@@ -36,28 +36,15 @@
   </div>
 </nav>
 
-<!-- Filter Sidebar as Slide Bar -->
+<!-- Filter Sidebar -->
 <div class="container-fluid">
   <div class="row">
-    <!-- Sidebar Toggle Button -->
-    <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-      Toggle Filters
-    </button>
-
-    <!-- Main Content -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- Your main content goes here -->
-      <h2>Main Content</h2>
-      <p>This is where your main content will be displayed.</p>
-    </main>
-
     <!-- Sidebar -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebarLabel">Filters</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+      <div class="position-sticky">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          Filters
+        </h6>
         <!-- Add your filter options here -->
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -73,7 +60,14 @@
           <!-- Add more filter options as needed -->
         </ul>
       </div>
-    </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <!-- Your main content goes here -->
+      <h2>Main Content</h2>
+      <p>This is where your main content will be displayed.</p>
+    </main>
   </div>
 </div>
 
