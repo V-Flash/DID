@@ -36,13 +36,20 @@
   </div>
 </nav>
 
-<!-- Filter Sidebar for Small Screens -->
-<div class="container-fluid d-md-none">
+<!-- Filter Sidebar as Slide Bar -->
+<div class="container-fluid">
   <div class="row">
     <!-- Sidebar Toggle Button -->
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+    <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
       Toggle Filters
     </button>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <!-- Your main content goes here -->
+      <h2>Main Content</h2>
+      <p>This is where your main content will be displayed.</p>
+    </main>
 
     <!-- Sidebar -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
@@ -67,41 +74,6 @@
         </ul>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Filter Sidebar for Large Screens -->
-<div class="container-fluid d-none d-md-block">
-  <div class="row">
-    <!-- Sidebar -->
-    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-      <div class="position-sticky">
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          Filters
-        </h6>
-        <!-- Add your filter options here -->
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              Filter 1
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Filter 2
-            </a>
-          </li>
-          <!-- Add more filter options as needed -->
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- Your main content goes here -->
-      <h2>Main Content</h2>
-      <p>This is where your main content will be displayed.</p>
-    </main>
   </div>
 </div>
 
