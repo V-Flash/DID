@@ -11,8 +11,13 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <style>
-    /* Your existing styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #00b09b, #96c93d);
+    }
 
+    /* Your existing styles */
     .rtl-slider-flex .rtl-slider-slide img,
     .rtl-slider-flex .rtl-slider-nav .rtl-slider-slide img {
       width: 100%;
