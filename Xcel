@@ -1,25 +1,35 @@
-      <div class="container-fluid">
-        
+<style>
+  .sticky-container {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
 
-        <div class="row">
-          
-          <div class="col-lg-6">
-            <div class="img-group">
-                <img src="img/pro1.jpg" class="img-fluid" alt="">
-                <img src="img/pro2.jpg" class="img-fluid" alt="">
-                <img src="img/pro3.jpg" class="img-fluid" alt="">
-            </div>
+  .img-group {
+    /* Add styles if needed */
+  }
 
-           
-          </div>
+  /* Add any additional styles you need */
 
+</style>
 
-          <div class="col-lg-6  sticky-container">
-            <h1>content</h1>
-           
-          </div>
+<div class="container-fluid">
 
+  <div class="row">
 
-        </div>
-
+    <div class="col-lg-6">
+      <div class="img-group">
+        <img src="img/pro1.jpg" class="img-fluid" alt="">
+        <img src="img/pro2.jpg" class="img-fluid" alt="">
+        <img src="img/pro3.jpg" class="img-fluid" alt="">
       </div>
+    </div>
+
+    <div class="col-lg-6 sticky-container">
+      <h1>content</h1>
+      <!-- Additional content goes here if needed -->
+    </div>
+
+  </div>
+
+</div>
