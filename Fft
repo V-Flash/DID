@@ -77,6 +77,53 @@ https://shelter-html5-template.webflow.io/
                                                   
                                                                                                                                                       
                                                   
+$(document).ready(function () {
+    $("button[name='submit']").on('click', function (e) {
+        e.preventDefault();
+
+        var title = $("#title").val();
+        var pc_id = $("#pc_id").val();
+
+        if (title.length !== 0 && pc_id.length !== 0) {
+            $("#titleerror").hide(200);
+            $("#file_linkerror").hide(200);
+            $("#pgciderror").hide(200);
+
+            // Perform form submission using AJAX
+            $.ajax({
+                url: "proanscreateapi.php",
+                type: "POST",
+                data: new FormData($("#pgpaddform")[0]),
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    console.log(data);
+                    if (data !== 0) {
+                        $("#modalh5").css("color", "green");
+                        $("#modalh5").text('Question and Answer Created Successfully!');
+                        $("#myalert").modal("show");
+                        var timer = setTimeout(navigate, 1000);
+                        $("#pgpaddform")[0].reset();
+                    } else {
+                        $("#modalh5").css("color", "red");
+                        $("#modalh5").text('Sorry Unable to Create Question and Answer!');
+                        $("#myalert").modal("show");
+                        var timer = setTimeout(navigate, 1000);
+                    }
+                },
+            });
+        } else {
+            $("#titleerror").show(200);
+            $("#file_linkerror").show(200);
+            $("#pgciderror").show(200);
+        }
+    });
+
+    function navigate() {
+        window.location.assign("program_que_ans.php");
+    }
+});
                                   
                                   
                                        
