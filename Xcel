@@ -1,47 +1,94 @@
-$(document).ready(function () {
-    $("button[name='submit']").on('click', function (e) {
-        e.preventDefault();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  
+  <!-- Your existing stylesheets -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        var title = $("#title").val();
-        var pc_id = $("#pc_id").val();
+  <!-- Add zoom.jquery stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/zoom/2.0.7/zoom.css">
 
-        if (title.length !== 0 && pc_id.length !== 0) {
-            $("#titleerror").hide(200);
-            $("#file_linkerror").hide(200);
-            $("#pgciderror").hide(200);
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #00b09b, #96c93d);
+    }
 
-            // Perform form submission using AJAX
-            $.ajax({
-                url: "proanscreateapi.php",
-                type: "POST",
-                data: new FormData($("#pgpaddform")[0]),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function (data) {
-                    console.log(data);
-                    if (data !== 0) {
-                        $("#modalh5").css("color", "green");
-                        $("#modalh5").text('Question and Answer Created Successfully!');
-                        $("#myalert").modal("show");
-                        var timer = setTimeout(navigate, 1000);
-                        $("#pgpaddform")[0].reset();
-                    } else {
-                        $("#modalh5").css("color", "red");
-                        $("#modalh5").text('Sorry Unable to Create Question and Answer!');
-                        $("#myalert").modal("show");
-                        var timer = setTimeout(navigate, 1000);
-                    }
-                },
-            });
-        } else {
-            $("#titleerror").show(200);
-            $("#file_linkerror").show(200);
-            $("#pgciderror").show(200);
-        }
+    /* Your existing styles */
+    .rtl-slider-flex .rtl-slider-slide img,
+    .rtl-slider-flex .rtl-slider-nav .rtl-slider-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<div class="rtl-slider-flex">
+  <div class="rtl-slider">
+    <div class="rtl-slider-slide">
+      <img class="zoom" src="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 1">
+    </div>
+    <div class="rtl-slider-slide">
+      <img class="zoom" src="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 2">
+    </div>
+    <div class="rtl-slider-slide">
+      <img class="zoom" src="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 3">
+    </div>
+  </div>
+  <div class="rtl-slider-nav">
+    <div class="rtl-slider-slide">
+      <img class="zoom" src="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 1">
+    </div>
+    <div class="rtl-slider-slide">
+      <img class="zoom" src="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 2">
+    </div>
+    <div class="rtl-slider-slide">
+      <img class="zoom" src="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 3">
+    </div>
+  </div>
+  <span class="thumb-prev"><i class="fa fa-angle-up fa-lg"></i></span>
+  <span class="thumb-next"><i class="fa fa-angle-down fa-lg"></i></span>
+</div>
+
+<!-- Your existing scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+<!-- Add zoom.jquery script -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zoom/2.0.7/jquery.zoom.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('.rtl-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.rtl-slider-nav'
+    });
+    $('.rtl-slider-nav').slick({
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      vertical: true,
+      asNavFor: '.rtl-slider',
+      centerMode: false,
+      focusOnSelect: true,
+      prevArrow: ".thumb-prev",
+      nextArrow: ".thumb-next",
     });
 
-    function navigate() {
-        window.location.assign("program_que_ans.php");
-    }
-});
+    // Initialize zoom on images
+    $('.zoom').zoom();
+  });
+</script>
+
+</body>
+</html>
