@@ -1,12 +1,38 @@
-.item.slide-left {
-    animation: slideLeftAnimation 0.5s ease-in-out;
-}
+$(function() {
+    // Initialize Owl Carousel
+    var owl = $('.owl-1').owlCarousel({
+        nav: true,
+        margin: 0,
+        autoplay: true,
+        stagePadding: 0,
+        smartSpeed: 450,
+        navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">'],
+        responsiveClass: true,
+        responsive: {
+            0:{
+              items: 1,
+              loop: true,
+            },
+            680: {
+                items: 2,
+                loop: true,
+            },
+            1024: {
+                items: 3,
+                loop: true,
+                margin: 0
+            },
+            1600: {
+                items: 5,
+                loop: false,
+                margin: 0,
+            }
+        }
+    });
 
-@keyframes slideLeftAnimation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+    // Handle button click event
+    $('.button').on('click', function() {
+        // Trigger Owl Carousel to move the next item to the beginning
+        owl.trigger('to.owl.carousel', [0, 1, true]); // Change [0, 1, true] based on your needs
+    });
+});
