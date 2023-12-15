@@ -1,11 +1,30 @@
-    $window.on('scroll', function () {
-        if ($window.scrollTop() > 230) {
-    
-            $('.header_main').addClass('is-sticky');
-        } else {
-    
-            $('.header_main').removeClass('is-sticky');
-        }
+<div class="owl-carousel">
+  <!-- Your carousel items go here -->
+</div>
+
+<button id="nextBtn">Next (Only if Index is 0)</button>
+
+<script>
+  $(document).ready(function () {
+    var owl = $(".owl-carousel");
+
+    owl.owlCarousel({
+      // Your Owl Carousel options here
     });
 
-main.js:136 Uncaught ReferenceError: $window is not defined
+    // Handle next button click
+    $("#nextBtn").on("click", function () {
+      // Get the current index
+      var currentIndex = owl.trigger("currentPosition.owl.carousel");
+
+      // Check if the current index is 0
+      if (currentIndex === 0) {
+        // Trigger "next.owl.carousel" only if the index is 0
+        owl.trigger("next.owl.carousel");
+      } else {
+        // Handle the case when the index is not 0 (optional)
+        console.log("Button action only allowed when index is 0.");
+      }
+    });
+  });
+</script>
