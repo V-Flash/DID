@@ -13,8 +13,8 @@
   <!-- Add zoom.jquery stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/zoom/2.0.7/zoom.css">
   
-  <!-- Add LightGallery styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/lightgallery/1.10.0/css/lightgallery.min.css">
+  <!-- Add Fotorama styles -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css">
 
   <style>
     body {
@@ -68,8 +68,8 @@
 <!-- Add zoom.jquery script -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zoom/2.0.7/jquery.zoom.min.js"></script>
 
-<!-- Add LightGallery scripts -->
-<script src="https://cdn.jsdelivr.net/lightgallery/1.10.0/js/lightgallery-all.min.js"></script>
+<!-- Add Fotorama script -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 
 <script>
   $(document).ready(function(){
@@ -94,14 +94,8 @@
     // Initialize zoom on images
     $('.zoom').zoom();
 
-    // Initialize LightGallery on the main slider
-    $('.rtl-slider').lightGallery({
-      selector: '.rtl-slider-slide',
-      thumbnail: false,
-      fullScreen: true,
-      zoom: false,
-      download: false
-    });
+    // Initialize Fotorama on the main slider
+    $('.rtl-slider').fotorama();
   });
 </script>
 
