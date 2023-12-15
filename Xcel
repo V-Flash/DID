@@ -1,38 +1,11 @@
-$(function() {
-    // Initialize Owl Carousel
-    var owl = $('.owl-1').owlCarousel({
-        nav: true,
-        margin: 0,
-        autoplay: true,
-        stagePadding: 0,
-        smartSpeed: 450,
-        navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">'],
-        responsiveClass: true,
-        responsive: {
-            0:{
-              items: 1,
-              loop: true,
-            },
-            680: {
-                items: 2,
-                loop: true,
-            },
-            1024: {
-                items: 3,
-                loop: true,
-                margin: 0
-            },
-            1600: {
-                items: 5,
-                loop: false,
-                margin: 0,
-            }
+    $window.on('scroll', function () {
+        if ($window.scrollTop() > 230) {
+    
+            $('.header_main').addClass('is-sticky');
+        } else {
+    
+            $('.header_main').removeClass('is-sticky');
         }
     });
 
-    // Handle button click event
-    $('.button').on('click', function() {
-        // Trigger Owl Carousel to scroll left by one item
-        owl.trigger('prev.owl.carousel');
-    });
-});
+main.js:136 Uncaught ReferenceError: $window is not defined
