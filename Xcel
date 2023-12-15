@@ -44,24 +44,36 @@
 <div class="rtl-slider-flex">
   <div class="rtl-slider">
     <div class="rtl-slider-slide">
-      <img class="zoom" src="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 1">
+      <a href="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-fancybox="gallery">
+        <img class="zoom" src="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 1">
+      </a>
     </div>
     <div class="rtl-slider-slide">
-      <img class="zoom" src="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 2">
+      <a href="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-fancybox="gallery">
+        <img class="zoom" src="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 2">
+      </a>
     </div>
     <div class="rtl-slider-slide">
-      <img class="zoom" src="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 3">
+      <a href="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-fancybox="gallery">
+        <img class="zoom" src="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Slide 3">
+      </a>
     </div>
   </div>
   <div class="rtl-slider-nav">
     <div class="rtl-slider-slide">
-      <img class="zoom" src="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 1">
+      <a href="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-fancybox="gallery">
+        <img class="zoom" src="https://images.pexels.com/photos/91216/pexels-photo-91216.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 1">
+      </a>
     </div>
     <div class="rtl-slider-slide">
-      <img class="zoom" src="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 2">
+      <a href="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-fancybox="gallery">
+        <img class="zoom" src="https://images.pexels.com/photos/375732/pexels-photo-375732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 2">
+      </a>
     </div>
     <div class="rtl-slider-slide">
-      <img class="zoom" src="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 3">
+      <a href="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" data-fancybox="gallery">
+        <img class="zoom" src="https://images.pexels.com/photos/40023/aurora-northern-lights-aurora-borealis-borealis-40023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Nav Slide 3">
+      </a>
     </div>
   </div>
   <span class="thumb-prev"><i class="fa fa-angle-up fa-lg"></i></span>
@@ -80,14 +92,17 @@
 
 <script>
   $(document).ready(function(){
-    $('.rtl-slider').slick({
+    // Initialize Slick Carousel for the main slider
+    var mainSlider = $('.rtl-slider').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
       fade: true,
       asNavFor: '.rtl-slider-nav'
     });
-    $('.rtl-slider-nav').slick({
+
+    // Initialize Slick Carousel for the navigation slider
+    var navSlider = $('.rtl-slider-nav').slick({
       slidesToShow: 2,
       slidesToScroll: 1,
       vertical: true,
@@ -99,21 +114,13 @@
     // Initialize zoom on images
     $('.zoom').zoom();
 
-    // Initialize Fancybox on the images
-    $('.zoom').on('click', function() {
-      var images = $('.zoom');
-      var currentIndex = images.index(this);
+    // Handle Slick Carousel navigation
+    $('.thumb-prev').on('click', function() {
+      mainSlider.slick('slickPrev');
+    });
 
-      $.fancybox.open(images, {
-        thumbs: {
-          autoStart: true,
-          axis: 'y'
-        },
-        loop: true,
-        index: currentIndex
-      });
-
-      return false;
+    $('.thumb-next').on('click', function() {
+      mainSlider.slick('slickNext');
     });
   });
 </script>
