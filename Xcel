@@ -1,27 +1,28 @@
 var lastScrollTop = 0;
-var isScrollingUp = false;
+    var isScrollingUp = false;
 
-$(window).scroll(function () {
-    var scrollTop = $(this).scrollTop();
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
 
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
-        if (isScrollingUp) {
-            // If previously scrolling up, now scrolling down
-            isScrollingUp = false;
-            // Remove the class
-            $(".your-element").removeClass("your-class");
+        if (scrollTop > lastScrollTop) {
+           
+            if (isScrollingUp) {
+                
+                isScrollingUp = false;
+                $(".header").removeClass("header_sticky-active");
+               
+            }
+        } else {
+            
+            if (!isScrollingUp) {
+                $(".header").addClass("header_sticky-active");
+                isScrollingUp = true;
+                
+            }
         }
-    } else {
-        // Scrolling up
-        if (!isScrollingUp) {
-            // If previously scrolling down, now scrolling up
-            isScrollingUp = true;
-            // Add the class
-            $(".your-element").addClass("your-class");
-        }
-    }
 
-    // Update last scroll position
-    lastScrollTop = scrollTop;
-});
+        // Update last scroll position
+        lastScrollTop = scrollTop;
+    });
+
+      
