@@ -1,28 +1,26 @@
 var lastScrollTop = 0;
-    var isScrollingUp = false;
+var isScrollingUp = false;
+
+$(document).ready(function () {
+    // Set scroll position to top when the page loads
+    $(this).scrollTop(0);
 
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
 
         if (scrollTop > lastScrollTop) {
-           
             if (isScrollingUp) {
-                
                 isScrollingUp = false;
                 $(".header").removeClass("header_sticky-active");
-               
             }
         } else {
-            
             if (!isScrollingUp) {
                 $(".header").addClass("header_sticky-active");
                 isScrollingUp = true;
-                
             }
         }
 
         // Update last scroll position
         lastScrollTop = scrollTop;
     });
-
-      
+});
