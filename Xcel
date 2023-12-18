@@ -1,17 +1,25 @@
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script>
-$(document).ready(function(){
-    // Assuming $test_id is a valid ID received from the URL
-    var testId = <?php echo json_encode($test_id); ?>;
+$("#pc_id").on("change", function(){
+        var pc_id = $(this).val();
+        $("#sortby").html("");
+        $.post( "procountapi.php", { "action":"getpgcidcount",pc_id: pc_id })
+        .done(function( data ) {
 
-    // Loop through each option in the dropdown
-    $("#pc_id option").each(function(){
-        // Compare the option's value with $test_id
-        if ($(this).val() == testId) {
-            // If there is a match, make the option selected
-            $(this).prop("selected", true);
+        if(data!=null){
+                
+                for(var c=1;c<Number(data)+1;c++){
+                        
+                if(c==data){
+                        $("#sortby").append("<option value='"+c+"' selected>"+c+"</option>");
+                }else{
+                                $("#sortby").append("<option value='"+c+"'>"+c+"</option>");
+                }
+                
+            }
+                
         }
-    });
+        
 });
-</script>
+});
+
+insted of on change can you make which ever is selcted then do this same 
