@@ -1,3 +1,18 @@
-if ($(window).scrollTop() === 0) {
-        $(".header").removeClass("header_sticky-active");
-    }
+$test_id=$_GET["pid"];
+
+<?php $allcat = getallprocat(); ?>
+					<div class="form-group">
+						<label for="sel1">Select Program Category:</label>
+						<select class="form-control" id="pc_id" name="pc_id">
+							<option value="">Select Program Category</option>
+							<?php
+							for($c=0;$c<count($allcat);$c++){
+							?>
+							<option value="<?php echo $allcat[$c]["id"];?>"><?php echo $allcat[$c]["title"];?></option>
+							<?php
+							}
+							?>
+						</select>
+						<small id="pgciderror" class="text-danger">This Filed is Empty !</small>
+					</div>
+<?php } ?>
