@@ -1,3 +1,1 @@
-  let pcid = 1;
-
-  window.location.assign("program_que_ans_add.php?id="+pcid);
+var pc_id = document.getElementById('pc_id').value();
