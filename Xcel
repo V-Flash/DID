@@ -1,38 +1,39 @@
-var lastScrollTop = 0;
+ let $window = $(window);
 
-$window.on('scroll', function () {
-    var scrollTop = $window.scrollTop();
-
-    if (scrollTop > 230) {
-        if (scrollTop < lastScrollTop) {
-            $('.header').addClass('is-sticky');
+    $window.on('scroll', function () {
+        if ($window.scrollTop() > 230) {
+          $('.header').addClass('is-sticky');
         } else {
-            $('.header').removeClass('is-sticky');
+          $('.header').removeClass('is-sticky');
         }
-    } else {
-        $('.header').removeClass('is-sticky');
-    }
-
-    // Update last scroll position
-    lastScrollTop = scrollTop;
-});
-
-$window.on('scroll', function () {
-    var scrollTop = $window.scrollTop();
-
-    if (scrollTop > 0) {
-        if (scrollTop < lastScrollTop) {
-            $('.header').addClass('sticky-header');
-            $('.top_bar').hide();
+    });
+  
+    $window.on('scroll', function () {
+        if ($window.scrollTop() > 0) {
+        $('.header').addClass('sticky-header');
+        $('.top_bar').hide();
         } else {
-            $('.header').removeClass('sticky-header');
-            $('.top_bar').show();
-        }
-    } else {
         $('.header').removeClass('sticky-header');
-        $('.top_bar').show();
-    }
 
-    // Update last scroll position
-    lastScrollTop = scrollTop;
-});
+        $('.top_bar').show();  
+        }
+    });
+
+
+.is-sticky {
+    position: fixed;
+    animation: moveDown .5s;
+    background-color: #ffffff;
+    box-shadow: 0 8px 25px 0 rgba(140, 152, 164, 0.15);
+    z-index: 1020;
+}
+
+.sticky-header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 9;
+    transition: all .3s ease;
+}
+when user srcoll up then only the .is-sticky  should add
