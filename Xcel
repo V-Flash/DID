@@ -1,25 +1,27 @@
-
-$("#pc_id").on("change", function(){
-        var pc_id = $(this).val();
-        $("#sortby").html("");
-        $.post( "procountapi.php", { "action":"getpgcidcount",pc_id: pc_id })
-        .done(function( data ) {
-
-        if(data!=null){
-                
-                for(var c=1;c<Number(data)+1;c++){
-                        
-                if(c==data){
-                        $("#sortby").append("<option value='"+c+"' selected>"+c+"</option>");
-                }else{
-                                $("#sortby").append("<option value='"+c+"'>"+c+"</option>");
+// Define a function to perform the desired actions
+function updateSortBy() {
+    var pc_id = $("#pc_id").val();
+    $("#sortby").html("");
+    $.post("procountapi.php", { "action": "getpgcidcount", pc_id: pc_id })
+        .done(function (data) {
+            if (data != null) {
+                for (var c = 1; c < Number(data) + 1; c++) {
+                    if (c == data) {
+                        $("#sortby").append("<option value='" + c + "' selected>" + c + "</option>");
+                    } else {
+                        $("#sortby").append("<option value='" + c + "'>" + c + "</option>");
+                    }
                 }
-                
             }
-                
-        }
-        
-});
+        });
+}
+
+// Call the function on page load
+$(document).ready(function () {
+    updateSortBy();
 });
 
-insted of on change can you make which ever is selcted then do this same 
+// Call the same function when the #pc_id select element changes
+$("#pc_id").on("change", function () {
+    updateSortBy();
+});
