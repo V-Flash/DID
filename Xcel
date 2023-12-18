@@ -1,36 +1,39 @@
-$("#pc_id").on("change", function(){
-	var pc_id = $(this).val();
-	var faqcid = $("#faqcid").val();
-	var oshortby = $("#oshortby").val();
-	$("#sortby").html("");
-	$.post( "procountapi.php", { "action":"getpgcidcount",pc_id: pc_id })
-.done(function( data ) {
+// Define a function to perform the desired actions
+function updateSortBy() {
+    var pc_id = $("#pc_id").val();
+    var faqcid = $("#faqcid").val();
+    var oshortby = $("#oshortby").val();
+    $("#sortby").html("");
+    $.post("procountapi.php", { "action": "getpgcidcount", pc_id: pc_id })
+        .done(function(data) {
+            if (data != null) {
+                if (pc_id != faqcid) {
+                    for (var c = 1; c <= Number(data); c++) {
+                        if (c == data) {
+                            $("#sortby").append("<option value='" + c + "' selected>" + c + "</option>");
+                        } else {
+                            $("#sortby").append("<option value='" + c + "'>" + c + "</option>");
+                        }
+                    }
+                } else {
+                    for (var c = 1; c < Number(data); c++) {
+                        if (c == oshortby) {
+                            $("#sortby").append("<option value='" + c + "' selected>" + c + "</option>");
+                        } else {
+                            $("#sortby").append("<option value='" + c + "'>" + c + "</option>");
+                        }
+                    }
+                }
+            }
+        });
+}
 
-		if(data!=null){
-			
-			if(pc_id!=faqcid){
-				for(var c=1;c<Number(data)+1;c++){
-					
-					if(c==data){
-						$("#sortby").append("<option value='"+c+"' selected>"+c+"</option>");
-					}else{
-							$("#sortby").append("<option value='"+c+"'>"+c+"</option>");
-					}
-					
-				}
-			}else{
-				for(var c=1;c<Number(data);c++){
-					
-					if(c==oshortby){
-						$("#sortby").append("<option value='"+c+"' selected>"+c+"</option>");
-					}else{
-							$("#sortby").append("<option value='"+c+"'>"+c+"</option>");
-					}
-					
-				}
-			}
-			
-		}
-	
+// Call the function on page load
+$(document).ready(function () {
+    updateSortBy();
 });
+
+// Update the #sortby select element whenever #pc_id, #faqcid, or #oshortby changes
+$("#pc_id, #faqcid, #oshortby").on("change", function () {
+    updateSortBy();
 });
