@@ -1,36 +1,16 @@
 var lastScrollTop = 0;
 
-$window.on('scroll', function () {
-    var scrollTop = $window.scrollTop();
+$(window).scroll(function () {
+    var scrollTop = $(this).scrollTop();
 
-    if (scrollTop > 230) {
-        if (scrollTop < lastScrollTop) {
-            $('.header').addClass('is-sticky');
-        } else {
-            $('.header').removeClass('is-sticky');
-        }
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        // Remove the class
+        $(".your-element").removeClass("your-class");
     } else {
-        $('.header').removeClass('is-sticky');
-    }
-
-    // Update last scroll position
-    lastScrollTop = scrollTop;
-});
-
-$window.on('scroll', function () {
-    var scrollTop = $window.scrollTop();
-
-    if (scrollTop > 0) {
-        if (scrollTop < lastScrollTop) {
-            $('.header').addClass('sticky-header');
-            $('.top_bar').hide();
-        } else {
-            $('.header').removeClass('sticky-header');
-            $('.top_bar').show();
-        }
-    } else {
-        $('.header').removeClass('sticky-header');
-        $('.top_bar').show();
+        // Scrolling up
+        // Add the class
+        $(".your-element").addClass("your-class");
     }
 
     // Update last scroll position
