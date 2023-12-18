@@ -1,10 +1,5 @@
-    $window.on('scroll', function () {
-        if ($window.scrollTop() > 230) {
-          $('.header').addClass('is-sticky');
-          $(".product-content").css("top":"200px");
-        } else {
-          $('.header').removeClass('is-sticky');
-        }
-    });
+if $('.header').hasClass('is-sticky') &&  $('.header').hasClass('is-sticky'){
+      $(".product-content").css({"top":"200px"});
+    }
 
-main.js:148 Uncaught SyntaxError: missing ) after argument list (at main.js:148:35)
+Uncaught SyntaxError: Unexpected identifier '$' (at main.js:155:8)
