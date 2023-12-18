@@ -1,36 +1,3 @@
-var lastScrollTop = 0;
-var isScrollingUp = false;
-
-// Check if the page is being refreshed
-var isPageRefreshed = sessionStorage.getItem('isPageRefreshed');
-if (isPageRefreshed) {
-    // Clear the sessionStorage flag
-    sessionStorage.removeItem('isPageRefreshed');
-} else {
-    // Set scroll position to top when the page loads
-    $(document).scrollTop(0);
-}
-
-$(window).scroll(function () {
-    var scrollTop = $(this).scrollTop();
-
-    if (scrollTop > lastScrollTop) {
-        if (isScrollingUp) {
-            isScrollingUp = false;
-            $(".header").removeClass("header_sticky-active");
-        }
-    } else {
-        if (!isScrollingUp) {
-            $(".header").addClass("header_sticky-active");
-            isScrollingUp = true;
-        }
+if ($(window).scrollTop() === 0) {
+        $(".header").removeClass("header_sticky-active");
     }
-
-    // Update last scroll position
-    lastScrollTop = scrollTop;
-});
-
-// Detect page refresh and set the sessionStorage flag
-$(window).on('beforeunload', function () {
-    sessionStorage.setItem('isPageRefreshed', 'true');
-});
