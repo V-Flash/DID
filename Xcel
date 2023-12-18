@@ -1,39 +1,48 @@
 <div class="owl-carousel owl-1 container-pd-pro-lr">
-   <div class="item">
-  </div>
+    <div class="item">
+        <button class="btn-hello">Click me</button>
+    </div>
+    <!-- Add more items as needed -->
 </div>
 
+<script>
+    $(document).ready(function() {
+        var owl = $('.owl-1');
 
-$(function() {
-    $('.owl-1').owlCarousel({
-        nav: true,
-        dots:true,
-        margin: 0,
-        stagePadding: 0,
-        smartSpeed: 450,
-        navText: ['<i class="bi bi-chevron-left owl-left-icon"></i>', '<i class="bi bi-chevron-right owl-right-icon"></i>'],
-        responsiveClass: true,
-        responsive: {
-            0:{
-              items: 1,
-              loop: true,
+        owl.owlCarousel({
+            // Your existing configuration
+            nav: true,
+            dots: true,
+            // ... other options
+            responsive: {
+                0: { items: 1, loop: true },
+                680: { items: 2, loop: true },
+                1024: { items: 3, loop: true, margin: 0 },
+                1600: { items: 4, loop: true, margin: 0 }
             },
-            680: {
-                items: 2,
-                loop: true,
+            onInitialized: function(event) {
+                // Get the initial index
+                var currentIndex = event.item.index;
+
+                // Attach the index to the button's data attribute
+                $('.btn-hello').data('owl-index', currentIndex);
             },
-            1024: {
-                items: 3,
-                loop: true,
-                margin: 0
-            },
-            1600: {
-                items: 4,
-                loop: true,
-                margin: 0,
+            onChanged: function(event) {
+                // Get the updated index when the carousel changes
+                var currentIndex = event.item.index;
+
+                // Update the data attribute of the button
+                $('.btn-hello').data('owl-index', currentIndex);
             }
-        }
-    });
-});
+        });
 
-so i have a button with class .btn-hello in each .item div i want current owl index of that item when click on .btn-hello
+        // Button click event
+        $('.btn-hello').on('click', function() {
+            // Get the current index from the button's data attribute
+            var currentIndex = $(this).data('owl-index');
+
+            // Do something with the index (e.g., alert or console.log)
+            alert('Button in item at index ' + currentIndex + ' clicked!');
+        });
+    });
+</script>
