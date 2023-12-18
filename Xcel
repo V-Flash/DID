@@ -1,5 +1,42 @@
-if $('.header').hasClass('is-sticky') &&  $('.header').hasClass('is-sticky'){
-      $(".product-content").css({"top":"200px"});
-    }
+ let $window = $(window);
 
-Uncaught SyntaxError: Unexpected identifier '$' (at main.js:155:8)
+    $window.on('scroll', function () {
+        if ($window.scrollTop() > 230) {
+          $('.header').addClass('is-sticky');
+        } else {
+          $('.header').removeClass('is-sticky');
+        }
+    });
+  
+    $window.on('scroll', function () {
+        if ($window.scrollTop() > 0) {
+        $('.header').addClass('sticky-header');
+        $('.top_bar').hide();
+        } else {
+        $('.header').removeClass('sticky-header');
+
+        $('.top_bar').show();  
+        }
+    });
+
+
+.sticky-header.is-sticky {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.sticky-header {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  -webkit-transition: all .5s ease 0s;
+  transition: all .5s ease 0s;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+when user srcoll up then only the .sticky-header and .is-sticky  should add
