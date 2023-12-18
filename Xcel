@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <!-- Draw the letter "I" -->
-  <text x="10" y="40" font-family="Arial" font-size="40" fill="black">I</text>
+  <!-- Draw the lowercase letter "i" -->
+  <text x="10" y="40" font-family="Arial" font-size="40" fill="black">i</text>
   
-  <!-- Draw the dot of the letter "I" with a different color -->
-  <circle cx="30" cy="25" r="5" fill="red" />
+  <!-- Draw the dot on the letter "i" with a different color -->
+  <circle cx="30" cy="60" r="5" fill="red" />
 </svg>
