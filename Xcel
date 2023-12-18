@@ -1,16 +1,25 @@
 var lastScrollTop = 0;
+var isScrollingUp = false;
 
 $(window).scroll(function () {
     var scrollTop = $(this).scrollTop();
 
     if (scrollTop > lastScrollTop) {
         // Scrolling down
-        // Remove the class
-        $(".your-element").removeClass("your-class");
+        if (isScrollingUp) {
+            // If previously scrolling up, now scrolling down
+            isScrollingUp = false;
+            // Remove the class
+            $(".your-element").removeClass("your-class");
+        }
     } else {
         // Scrolling up
-        // Add the class
-        $(".your-element").addClass("your-class");
+        if (!isScrollingUp) {
+            // If previously scrolling down, now scrolling up
+            isScrollingUp = true;
+            // Add the class
+            $(".your-element").addClass("your-class");
+        }
     }
 
     // Update last scroll position
