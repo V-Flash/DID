@@ -1,1 +1,41 @@
-var pc_id = document.getElementById('pc_id').value();
+<div class="owl-carousel owl-1 container-pd-pro-lr">
+    <div class="item">
+        <button class="btn-hello">Click me</button>
+    </div>
+    <!-- Add more items as needed -->
+</div>
+
+<script>
+    $(document).ready(function () {
+        var owl = $('.owl-1');
+
+        owl.owlCarousel({
+            // Your existing configuration
+            nav: true,
+            dots: true,
+            // ... other options
+            responsive: {
+                0: { items: 1, loop: true },
+                680: { items: 2, loop: true },
+                1024: { items: 3, loop: true, margin: 0 },
+                1600: { items: 4, loop: true, margin: 0 }
+            },
+            onInitialized: function (event) {
+                // Get the initial index
+                var currentIndex = event.item.index;
+
+                // Attach the index to the button's data attribute
+                $('.btn-hello').data('owl-index', currentIndex);
+            }
+        });
+
+        // Button click event
+        $('.btn-hello').on('click', function () {
+            // Get the current index from the Owl Carousel instance
+            var currentIndex = owl.trigger('to.owl.carousel').find('.active').index();
+
+            // Do something with the index (e.g., alert or console.log)
+            alert('Button in item at index ' + currentIndex + ' clicked!');
+        });
+    });
+</script>
