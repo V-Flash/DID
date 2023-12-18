@@ -1,55 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</head>
-<body>
+$("#pc_id").on("change", function(){
+	var pc_id = $(this).val();
+	var faqcid = $("#faqcid").val();
+	var oshortby = $("#oshortby").val();
+	$("#sortby").html("");
+	$.post( "procountapi.php", { "action":"getpgcidcount",pc_id: pc_id })
+.done(function( data ) {
 
-<!-- Your HTML select elements -->
-<select id="pc_id">
-    <!-- Add options if needed -->
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <!-- ... -->
-</select>
-
-<select id="sortby">
-    <!-- Options will be dynamically added here -->
-</select>
-
-<script>
-    // Define a function to perform the desired actions
-    function updateSortBy() {
-        var pc_id = $("#pc_id").val();
-        $("#sortby").html("");
-        $.post("procountapi.php", { "action": "getpgcidcount", pc_id: pc_id })
-            .done(function (data) {
-                if (data != null) {
-                    for (var c = 1; c <= Number(data); c++) {
-                        if (c == data) {
-                            $("#sortby").append("<option value='" + c + "' selected>" + c + "</option>");
-                        } else {
-                            $("#sortby").append("<option value='" + c + "'>" + c + "</option>");
-                        }
-                    }
-                }
-            });
-    }
-
-    // Call the function on page load
-    $(document).ready(function () {
-        updateSortBy();
-    });
-
-    // Call the same function when the #pc_id select element changes
-    $("#pc_id").on("change", function () {
-        updateSortBy();
-    });
-</script>
-
-</body>
-</html>
+		if(data!=null){
+			
+			if(pc_id!=faqcid){
+				for(var c=1;c<Number(data)+1;c++){
+					
+					if(c==data){
+						$("#sortby").append("<option value='"+c+"' selected>"+c+"</option>");
+					}else{
+							$("#sortby").append("<option value='"+c+"'>"+c+"</option>");
+					}
+					
+				}
+			}else{
+				for(var c=1;c<Number(data);c++){
+					
+					if(c==oshortby){
+						$("#sortby").append("<option value='"+c+"' selected>"+c+"</option>");
+					}else{
+							$("#sortby").append("<option value='"+c+"'>"+c+"</option>");
+					}
+					
+				}
+			}
+			
+		}
+	
+});
+});
