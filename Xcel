@@ -20,28 +20,18 @@
                 1024: { items: 3, loop: true, margin: 0 },
                 1600: { items: 4, loop: true, margin: 0 }
             },
-            onInitialized: function(event) {
-                // Get the initial index
-                var currentIndex = event.item.index;
-
-                // Attach the index to the button's data attribute
-                $('.btn-hello').data('owl-index', currentIndex);
-            },
             onChanged: function(event) {
-                // Get the updated index when the carousel changes
-                var currentIndex = event.item.index;
+                // Get the current index when the carousel changes
+                var currentPosition = event.item.index;
 
-                // Update the data attribute of the button
-                $('.btn-hello').data('owl-index', currentIndex);
+                // Do something with the current position (e.g., alert or console.log)
+                console.log('Current position:', currentPosition);
             }
         });
 
-        // Button click event
+        // You can still have a separate button click event if needed
         $('.btn-hello').on('click', function() {
-            // Get the current index from the button's data attribute
             var currentIndex = $(this).data('owl-index');
-
-            // Do something with the index (e.g., alert or console.log)
             alert('Button in item at index ' + currentIndex + ' clicked!');
         });
     });
