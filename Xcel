@@ -6,7 +6,7 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var owl = $('.owl-1');
 
         owl.owlCarousel({
@@ -20,18 +20,28 @@
                 1024: { items: 3, loop: true, margin: 0 },
                 1600: { items: 4, loop: true, margin: 0 }
             },
-            onChanged: function(event) {
+            onInitialized: function (event) {
+                // Get the initial index
+                var currentIndex = event.item.index;
+
+                // Attach the index to the button's data attribute
+                $('.btn-hello').data('owl-index', currentIndex);
+            },
+            onChanged: function (event) {
                 // Get the current index when the carousel changes
                 var currentPosition = event.item.index;
 
-                // Do something with the current position (e.g., alert or console.log)
-                console.log('Current position:', currentPosition);
+                // Update the data attribute of the button
+                $('.btn-hello').data('owl-index', currentPosition);
             }
         });
 
-        // You can still have a separate button click event if needed
-        $('.btn-hello').on('click', function() {
-            var currentIndex = $(this).data('owl-index');
+        // Button click event
+        $('.btn-hello').on('click', function () {
+            // Get the current index from the Owl Carousel instance
+            var currentIndex = owl.trigger('to.owl.carousel').data('owl.carousel').relative($('.btn-hello').data('owl-index'));
+
+            // Do something with the index (e.g., alert or console.log)
             alert('Button in item at index ' + currentIndex + ' clicked!');
         });
     });
