@@ -61,8 +61,14 @@
 
 <script>
   $(document).ready(function() {
-    // Trigger fade-up effect on slide change
+    // Trigger fade-up effect on slide change and load
     $('#carouselExampleDark').on('slide.bs.carousel', function() {
+      var activeCaption = $(this).find('.carousel-item.active .carousel-caption');
+      activeCaption.addClass('show');
+    });
+
+    // Trigger fade-up effect on initial load
+    $('#carouselExampleDark').on('loaded.bs.carousel', function() {
       var activeCaption = $(this).find('.carousel-item.active .carousel-caption');
       activeCaption.addClass('show');
     });
