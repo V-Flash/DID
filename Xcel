@@ -1,14 +1,13 @@
-<script>
-  $(document).ready(function() {
-    // Add anin-active class to carousel-caption on page load
-    $('.carousel-caption').addClass('anin-active');
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
 
-    // Add an event listener to the carousel to detect slide changes
-    $('#carouselExample').on('slid.bs.carousel', function() {
-      // Remove anin-active class from all carousel-caption elements
-      $('.carousel-caption').removeClass('anin-active');
-      // Add anin-active class to the currently active carousel-caption
-      $('.carousel-item.active .carousel-caption').addClass('anin-active');
-    });
-  });
-</script>
+i want nested dropdown
