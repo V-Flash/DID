@@ -2,37 +2,42 @@ $(function(){
   $('.carousel-item').eq(0).addClass('active');
   var total = $('.carousel-item').length;
   var current = 0;
+
   $('#moveRight').on('click', function(){
-    var next=current;
-    current= current+1;
+    var next = current;
+    current = current + 1;
     setSlide(next, current);
   });
+
   $('#moveLeft').on('click', function(){
-    var prev=current;
-    current = current- 1;
+    var prev = current;
+    current = current - 1;
     setSlide(prev, current);
   });
+
   function setSlide(prev, next){
-    var slide= current;
-    if(next>total-1){
-     slide=0;
-      current=0;
-    }
-    if(next<0){
-      slide=total - 1;
-      current=total - 1;
-    }
-           $('.carousel-item').eq(prev).removeClass('active');
-           $('.carousel-item').eq(slide).addClass('active');
-      setTimeout(function(){
+    var slide = current;
 
-      },800);
-    
+    if(next > total - 1){
+      slide = 0;
+      current = 0;
+    }
 
+    if(next < 0){
+      slide = total - 1;
+      current = total - 1;
+    }
+
+    $('.carousel-item').eq(prev).removeClass('active');
+    $('.carousel-item').eq(slide).addClass('active');
     
-    // console.log('current '+current);
-    // console.log('prev '+prev);
+    // Add anin-active class to the currently active carousel-caption
+    $('.carousel-caption').removeClass('anin-active');
+    $('.carousel-item.active .carousel-caption').addClass('anin-active');
+    
+    // You can add a delay if needed
+    // setTimeout(function(){
+
+    // }, 800);
   }
-}); 
-
-someting like this i want
+});
