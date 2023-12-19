@@ -1,35 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Color SVG</title>
-</head>
-<body>
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
 
-<svg id="mySvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <!-- Draw the uppercase letter "I" -->
-  <text x="10" y="40" font-family="Arial" font-size="40" fill="black">I</text>
+  <div class="carousel-inner">
+    
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="container d-flex flex-column justify-content-center h-100">
+          <div class="row">
+            <div class="col-md-6 col-xl-4 offset-md-2">
+              <div>
+                <h1 class="text-uppercase fw-bold">Biben dum<br>fringi dictum</h1>
+                <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                <a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
   
-  <!-- Draw the dot on the letter "I" with a different color -->
-  <circle id="myCircle" cx="30" cy="30" r="5" fill="red" />
-</svg>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Get the circle element
-  var circle = document.getElementById('myCircle');
-
-  // Array of possible colors
-  var colors = ['red', 'blue', 'orange'];
-
-  // Get a random color from the array
-  var randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-  // Set the fill color of the circle to the random color
-  circle.setAttribute('fill', randomColor);
-});
-</script>
-
-</body>
-</html>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+i want carousel-caption at the center vertical
