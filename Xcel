@@ -1,13 +1,21 @@
 <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-submenu">
+            <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Nested Dropdown
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Nested Action 1</a></li>
+                <li><a class="dropdown-item" href="#">Nested Action 2</a></li>
+                <!-- You can add more nested items here -->
             </ul>
-          </li>
-
-i want nested dropdown
+        </li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</li>
