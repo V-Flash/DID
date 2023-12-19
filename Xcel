@@ -9,24 +9,57 @@
     
     <div class="carousel-item active" data-bs-interval="10000">
       <img src="img/slide-1.webp" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <div class="container d-flex flex-column justify-content-center h-100">
+      <div class="carousel-caption d-flex h-100">
+        <div class="container d-flex align-items-center">
           <div class="row">
-            <div class="col-md-6 col-xl-4 offset-md-2">
+            <div class="col-md-12">
               <div>
-                <h1 class="text-uppercase fw-bold">Biben dum<br>fringi dictum</h1>
-                <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                <a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a>
+                <h1 class="text-uppercase fw-bold" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
+                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
               </div>
-
             </div>
           </div>
-        </div>
+        </div> 
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="10000">
+      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-flex h-100">
+        <div class="container d-flex align-items-center">
+          <div class="row">
+            <div class="col-md-12">
+              <div>
+                <h1 class="text-uppercase fw-bold" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
+                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="10000">
+      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-flex h-100">
+        <div class="container d-flex align-items-center">
+          <div class="row">
+            <div class="col-md-12">
+              <div>
+                <h1 class="text-uppercase fw-bold" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
+                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
+              </div>
+            </div>
+          </div>
+        </div> 
       </div>
     </div>
 
   </div>
-  
+
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -36,4 +69,5 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-i want carousel-caption at the center vertical
+
+i have use aos now i want when user click on carousel-indicators buttons  or carousel-control buttons the aos in the carousel should tigger 
