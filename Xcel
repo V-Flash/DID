@@ -1,54 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
-  <title>Slider Animation</title>
-  <style>
-    .heading-slider {
-      transform: translateY(25%);
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.4s all ease-in-out;
-    }
-
-    .anin-active .heading-slider {
-      transform: translateY(0);
-      opacity: 1;
-      transition: 0.6s all ease-in-out;
-      visibility: visible;
-    }
-  </style>
-</head>
-<body>
-
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-flex h-100 anin-active">
-        <div class="container d-flex align-items-center">
-          <div class="row">
-            <div class="col-md-10">
-              <div>
-                <h1 class="text-uppercase fw-bold heading-slider" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
-                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </div>
-    </div>
-    <!-- Add more carousel items as needed -->
-  </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-
 <script>
   $(document).ready(function() {
     // Add anin-active class to carousel-caption on page load
@@ -63,6 +12,3 @@
     });
   });
 </script>
-
-</body>
-</html>
