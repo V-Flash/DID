@@ -4,7 +4,7 @@
     $('.carousel-caption').addClass('anin-active');
 
     // Add an event listener to the carousel to detect slide changes
-    $('#carouselExample').on('slide.bs.carousel slid.bs.carousel', function() {
+    $('#carouselExample').on('slid.bs.carousel', function() {
       // Remove anin-active class from all carousel-caption elements
       $('.carousel-caption').removeClass('anin-active');
       // Add anin-active class to the currently active carousel-caption
