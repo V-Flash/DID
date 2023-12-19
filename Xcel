@@ -1,15 +1,23 @@
 <script>
-      $(document).ready(function() {
-       
-        $('.carousel-caption').addClass('anin-active');
+  $(document).ready(function() {
+    // Function to add anin-active class to the active carousel-caption
+    function addAninActiveClass() {
+      $('.carousel-caption').removeClass('anin-active');
+      $('.carousel-item.active .carousel-caption').addClass('anin-active');
+    }
 
+    // Add anin-active class to carousel-caption on page load
+    addAninActiveClass();
 
-        $('.carousel-control-next').click(function(){
-          $('.carousel-caption').addClass('anin-active');
-        });
+    // Add an event listener to the carousel to detect slide changes
+    $('#carouselExample').on('slid.bs.carousel', function() {
+      // Add anin-active class after the transition to the next slide is complete
+      addAninActiveClass();
+    });
 
-
-      });
-
-      i want to run anin-active for each slider when change through carousel control manually aur automatily
-    </script>
+    // Optionally, you can also add the class when clicking on carousel controls manually
+    $('.carousel-control-next').click(function() {
+      addAninActiveClass();
+    });
+  });
+</script>
