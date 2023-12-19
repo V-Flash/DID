@@ -15,6 +15,14 @@
       addAninActiveClass();
     });
 
+    // Add an event listener to the carousel to detect the start of slide transition
+    $('#carouselExample').on('slide.bs.carousel', function() {
+      // Add anin-active class with a slight delay
+      setTimeout(function() {
+        addAninActiveClass();
+      }, 50);
+    });
+
     // Optionally, you can also add the class when clicking on carousel controls manually
     $('.carousel-control-next').click(function() {
       addAninActiveClass();
