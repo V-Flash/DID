@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Add your AOS and Bootstrap CSS/JS links here -->
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+
 <div id="carouselExampleDark" class="carousel carousel-dark slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -6,58 +18,7 @@
   </div>
 
   <div class="carousel-inner">
-    
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-flex h-100">
-        <div class="container d-flex align-items-center">
-          <div class="row">
-            <div class="col-md-12">
-              <div>
-                <h1 class="text-uppercase fw-bold" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
-                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </div>
-    </div>
-
-    <div class="carousel-item" data-bs-interval="10000">
-      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-flex h-100">
-        <div class="container d-flex align-items-center">
-          <div class="row">
-            <div class="col-md-12">
-              <div>
-                <h1 class="text-uppercase fw-bold" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
-                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </div>
-    </div>
-
-    <div class="carousel-item" data-bs-interval="10000">
-      <img src="img/slide-1.webp" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-flex h-100">
-        <div class="container d-flex align-items-center">
-          <div class="row">
-            <div class="col-md-12">
-              <div>
-                <h1 class="text-uppercase fw-bold" data-aos="fade-up">Biben dum<br>fringi dictum</h1>
-                <p class="my-3" data-aos="fade-up" data-aos-delay="100">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                <a class="btn btn-primary btn-lg me-2" role="button" href="#" data-aos="fade-up" data-aos-delay="150">Button</a>
-              </div>
-            </div>
-          </div>
-        </div> 
-      </div>
-    </div>
-
+    <!-- Your carousel items here (unchanged) -->
   </div>
 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -70,4 +31,22 @@
   </button>
 </div>
 
-i have use aos now i want when user click on carousel-indicators buttons  or carousel-control buttons the aos in the carousel should tigger 
+<script>
+  $(document).ready(function() {
+    // Initialize AOS
+    AOS.init();
+
+    // Trigger AOS when clicking on carousel indicators
+    $('#carouselExampleDark .carousel-indicators button').click(function() {
+      AOS.refresh();
+    });
+
+    // Trigger AOS when clicking on carousel control buttons
+    $('#carouselExampleDark .carousel-control-prev, #carouselExampleDark .carousel-control-next').click(function() {
+      AOS.refresh();
+    });
+  });
+</script>
+
+</body>
+</html>
