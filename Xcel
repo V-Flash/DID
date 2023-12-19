@@ -36,13 +36,8 @@
     // Initialize AOS
     AOS.init();
 
-    // Trigger AOS when clicking on carousel indicators
-    $('#carouselExampleDark .carousel-indicators button').click(function() {
-      AOS.refresh();
-    });
-
-    // Trigger AOS when clicking on carousel control buttons
-    $('#carouselExampleDark .carousel-control-prev, #carouselExampleDark .carousel-control-next').click(function() {
+    // Trigger AOS on carousel slide event
+    $('#carouselExampleDark').on('slide.bs.carousel', function() {
       AOS.refresh();
     });
   });
