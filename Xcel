@@ -1,14 +1,19 @@
 <script type="text/javascript">
   $(".search-open").click(function() {
     var menuSearchContainer = $(".menu-search-container");
+    var navIcon = $(".nav-icon");
+
     if (menuSearchContainer.is(":hidden")) {
       // Slide down with fade effect
       menuSearchContainer.slideDown();
-      $(".nav-icon").fadeToggle();
+      navIcon.fadeToggle();
     } else {
       // Slide up with fade effect
-      menuSearchContainer.slideUp();
-      $(".nav-icon").fadeToggle();
+      menuSearchContainer.slideUp(function() {
+        // Change icon class after slideUp is complete
+        navIcon.toggleClass("bi-search bi-x");
+      });
+      navIcon.fadeToggle();
     }
   });
 </script>
@@ -16,9 +21,8 @@
 <ul class="navbar-nav ml-auto nav-3 justify-content-center">
   <button type="button" class="btn btn-link search-open nav-btn-link position-relative">
     <div>
-      <i class="bi bi-search nav-icon"></i>
+      <i class="bi nav-icon"></i>
     </div>
     <div class="ml-20"></div>
   </button>
-  <i class="bi bi-x nav-icon" style="display: none;"></i>
 </ul>
