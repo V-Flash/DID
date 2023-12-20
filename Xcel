@@ -1,12 +1,16 @@
 $(document).ready(function() {
-  var container = $('.container');
-  var backgroundImage = $('.background-image');
+  var containers = $('.container');
 
-  container.on('mouseenter', function() {
-    backgroundImage.css('transform', 'scale(1.1)'); // You can adjust the scale factor
-  });
+  containers.each(function() {
+    var container = $(this);
+    var backgroundImage = container.find('.background-image');
 
-  container.on('mouseleave', function() {
-    backgroundImage.css('transform', 'scale(1)');
+    container.on('mouseenter', function() {
+      backgroundImage.css('background-position', 'top');
+    });
+
+    container.on('mouseleave', function() {
+      backgroundImage.css('background-position', 'bottom');
+    });
   });
 });
