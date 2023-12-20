@@ -1,23 +1,24 @@
-  <script type="text/javascript">
-    
-    $(".search-open").click(function(){
-      $(".menu-search-container").slideToggle();
-    });
+<script type="text/javascript">
+  $(".search-open").click(function() {
+    var menuSearchContainer = $(".menu-search-container");
+    if (menuSearchContainer.is(":hidden")) {
+      // Slide down with fade effect
+      menuSearchContainer.slideDown();
+      $(".nav-icon").fadeToggle();
+    } else {
+      // Slide up with fade effect
+      menuSearchContainer.slideUp();
+      $(".nav-icon").fadeToggle();
+    }
+  });
+</script>
 
-  </script>
-
-<ul class="navbar-nav ml-auto nav-3 justify-content-center ">
-
-          <button type="button" class="btn btn-link search-open nav-btn-link position-relative">
-            
-            <div>
-              <i class="bi bi-search nav-icon"></i>
-            </div>  
-
-            <div class="ml-20"></div>
-
-          </button>
-
- <i class="bi bi-x nav-icon"></i> 
-
-in this if slideDown then change  <i class="bi bi-search nav-icon"></i> to  <i class="bi bi-x nav-icon"></i>  with fade effect and if slideUp  then change <i class="bi bi-x nav-icon"></i>   to <i class="bi bi-search nav-icon"></i> <i class="bi bi-x nav-icon"></i> 
+<ul class="navbar-nav ml-auto nav-3 justify-content-center">
+  <button type="button" class="btn btn-link search-open nav-btn-link position-relative">
+    <div>
+      <i class="bi bi-search nav-icon"></i>
+    </div>
+    <div class="ml-20"></div>
+  </button>
+  <i class="bi bi-x nav-icon" style="display: none;"></i>
+</ul>
