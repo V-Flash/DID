@@ -1,2 +1,10 @@
+var answer = $('#answer').summernote('code');
 
-var answer = $('#answer[name="answer"]').val();
+// Check if the content is not empty and not equal to the default <p><br></p> tag
+if (answer.trim() !== '' && answer.trim() !== '<p><br></p>') {
+    // Summernote content is not empty
+    console.log('Summernote content is not empty:', answer);
+} else {
+    // Summernote content is empty or contains only the default tag
+    console.log('Summernote content is empty');
+}
