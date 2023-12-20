@@ -1,1 +1,49 @@
-<textarea class="form-control summernote" id="answer" name="answer"><?php echo $res[0]["answer"]; ?></textarea>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="background-image"></div>
+</div>
+
+</body>
+</html>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.background-image {
+  background-image: url('your-image-url.jpg'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
+  height: 100%;
+  transition: background-position 0.5s ease;
+}
+$(document).ready(function() {
+  var container = $('.container');
+  var backgroundImage = $('.background-image');
+
+  container.on('mouseenter', function() {
+    backgroundImage.css('background-position', 'top');
+  });
+
+  container.on('mouseleave', function() {
+    backgroundImage.css('background-position', 'bottom');
+  });
+});
