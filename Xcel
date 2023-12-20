@@ -5,17 +5,15 @@
 
     if (menuSearchContainer.is(":hidden")) {
       // Slide down with fade effect
-      menuSearchContainer.slideDown();
-      navIcon.fadeToggle(function() {
-        // Change icon class after fadeToggle is complete
-        navIcon.removeClass("bi-search").addClass("bi-x");
+      menuSearchContainer.slideDown(function() {
+        // Change icon class after slideDown is complete
+        navIcon.fadeToggle().removeClass("bi-search").addClass("bi-x");
       });
     } else {
       // Slide up with fade effect
-      menuSearchContainer.slideUp();
-      navIcon.fadeToggle(function() {
-        // Change icon class after fadeToggle is complete
-        navIcon.removeClass("bi-x").addClass("bi-search");
+      menuSearchContainer.slideUp(function() {
+        // Change icon class after slideUp is complete
+        navIcon.fadeToggle().removeClass("bi-x").addClass("bi-search");
       });
     }
   });
@@ -28,4 +26,5 @@
     </div>
     <div class="ml-20"></div>
   </button>
+  <i class="bi nav-icon" style="display: none;"></i>
 </ul>
