@@ -1,21 +1,42 @@
 <script type="text/javascript">
-  $(".search-open").click(function() {
-    var menuSearchContainer = $(".menu-search-container");
-    var navIcon = $(".nav-icon");
+  // Variables to keep track of menu state
+  var menuSearchContainer = $(".menu-search-container");
+  var navIcon = $(".nav-icon");
+
+  $(".search-open").click(function(e) {
+    // Prevent click event propagation to document
+    e.stopPropagation();
 
     if (menuSearchContainer.is(":hidden")) {
       // Slide down with fade effect
-      menuSearchContainer.slideDown(function() {
-        // Change icon class after slideDown is complete
-        navIcon.fadeToggle().removeClass("bi-search").addClass("bi-x");
+      menuSearchContainer.slideDown();
+      navIcon.fadeTo("fast", 0, function() {
+        // Set visibility to hidden after fading out
+        navIcon.css("visibility", "hidden").fadeTo("fast", 1);
       });
     } else {
       // Slide up with fade effect
       menuSearchContainer.slideUp(function() {
-        // Change icon class after slideUp is complete
-        navIcon.fadeToggle().removeClass("bi-x").addClass("bi-search");
+        // Set visibility to visible before fading in
+        navIcon.css("visibility", "visible").fadeTo("fast", 1);
       });
     }
+  });
+
+  // Handle clicks outside the menuSearchContainer
+  $(document).click(function() {
+    if (!menuSearchContainer.is(":hidden")) {
+      // Slide up the menuSearchContainer if it's not hidden
+      menuSearchContainer.slideUp(function() {
+        // Set visibility to visible before fading in
+        navIcon.css("visibility", "visible").fadeTo("fast", 1);
+      });
+    }
+  });
+
+  // Prevent clicks inside the menuSearchContainer from closing it
+  menuSearchContainer.click(function(e) {
+    e.stopPropagation();
   });
 </script>
 
@@ -26,5 +47,8 @@
     </div>
     <div class="ml-20"></div>
   </button>
-  <i class="bi nav-icon" style="display: none;"></i>
+  <i class="bi nav-icon" style="visibility: hidden;"></i>
 </ul>
+<div class="menu-search-container" style="display: none;">
+  <!-- Your menu content goes here -->
+</div>
