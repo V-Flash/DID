@@ -1,31 +1,23 @@
-<script>
-  $(document).ready(function() {
-    // Function to add anin-active class to the active carousel-caption
-    function addAninActiveClass() {
-      $('.carousel-caption').removeClass('anin-active');
-      $('.carousel-item.active .carousel-caption').addClass('anin-active');
-    }
-
-    // Add anin-active class to carousel-caption on page load
-    addAninActiveClass();
-
-    // Add an event listener to the carousel to detect slide changes
-    $('#carouselExample').on('slid.bs.carousel', function() {
-      // Add anin-active class after the transition to the next slide is complete
-      addAninActiveClass();
+  <script type="text/javascript">
+    
+    $(".search-open").click(function(){
+      $(".menu-search-container").slideToggle();
     });
 
-    // Add an event listener to the carousel to detect the start of slide transition
-    $('#carouselExample').on('slide.bs.carousel', function() {
-      // Add anin-active class with a slight delay
-      setTimeout(function() {
-        addAninActiveClass();
-      }, 50);
-    });
+  </script>
 
-    // Optionally, you can also add the class when clicking on carousel controls manually
-    $('.carousel-control-next').click(function() {
-      addAninActiveClass();
-    });
-  });
-</script>
+<ul class="navbar-nav ml-auto nav-3 justify-content-center ">
+
+          <button type="button" class="btn btn-link search-open nav-btn-link position-relative">
+            
+            <div>
+              <i class="bi bi-search nav-icon"></i>
+            </div>  
+
+            <div class="ml-20"></div>
+
+          </button>
+
+ <i class="bi bi-x nav-icon"></i> 
+
+in this if slideDown then change  <i class="bi bi-search nav-icon"></i> to  <i class="bi bi-x nav-icon"></i>  with fade effect and if slideUp  then change <i class="bi bi-x nav-icon"></i>   to <i class="bi bi-search nav-icon"></i> <i class="bi bi-x nav-icon"></i> 
