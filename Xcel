@@ -1,28 +1,2 @@
-$(document).on("click", function(event) {
-    var menuSearchContainer = $(".menu-search-container");
-    var navIcon = $(".menu-search-icon");
 
-    // Check if the clicked element is not within the menuSearchContainer
-    if (!menuSearchContainer.is(event.target) && menuSearchContainer.has(event.target).length === 0) {
-        // If menuSearchContainer is visible, slide it up
-        if (menuSearchContainer.is(":visible")) {
-            menuSearchContainer.slideUp(function() {
-                navIcon.css({ "visibility": "visible" }).fadeTo("slow", 1);
-            });
-        }
-    }
-});
-
-$(".search-open").click(function(event) {
-    // Stop the click event from propagating to the document
-    event.stopPropagation();
-
-    var menuSearchContainer = $(".menu-search-container");
-    var navIcon = $(".menu-search-icon");
-
-    if (menuSearchContainer.is(":hidden")) {
-        menuSearchContainer.slideDown(function() {
-            navIcon.css({ "visibility": "hidden" }).fadeTo("slow", 0);
-        });
-    }
-});
+var answer = $('#answer[name="answer"]').val();
