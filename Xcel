@@ -6,14 +6,17 @@
     if (menuSearchContainer.is(":hidden")) {
       // Slide down with fade effect
       menuSearchContainer.slideDown();
-      navIcon.fadeToggle();
+      navIcon.fadeToggle(function() {
+        // Change icon class after fadeToggle is complete
+        navIcon.removeClass("bi-search").addClass("bi-x");
+      });
     } else {
       // Slide up with fade effect
-      menuSearchContainer.slideUp(function() {
-        // Change icon class after slideUp is complete
-        navIcon.toggleClass("bi-search bi-x");
+      menuSearchContainer.slideUp();
+      navIcon.fadeToggle(function() {
+        // Change icon class after fadeToggle is complete
+        navIcon.removeClass("bi-x").addClass("bi-search");
       });
-      navIcon.fadeToggle();
     }
   });
 </script>
@@ -21,7 +24,7 @@
 <ul class="navbar-nav ml-auto nav-3 justify-content-center">
   <button type="button" class="btn btn-link search-open nav-btn-link position-relative">
     <div>
-      <i class="bi nav-icon"></i>
+      <i class="bi bi-search nav-icon"></i>
     </div>
     <div class="ml-20"></div>
   </button>
