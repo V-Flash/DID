@@ -1,9 +1,16 @@
-.background-image {
-  background-image: url('your-image-url.jpg'); /* Regular resolution image */
-  background-image: -webkit-image-set(url('your-image-url.jpg') 1x, url('your-high-res-image-url.jpg') 2x);
-  background-size: cover;
-  background-position: bottom;
-  width: 100%;
-  height: 100%;
-  transition: background-position 0.5s ease;
-}
+$(document).ready(function() {
+  var containers = $('.container');
+
+  containers.each(function() {
+    var container = $(this);
+    var backgroundImage = container.find('.background-image');
+
+    container.on('mouseenter', function() {
+      backgroundImage.css('transform', 'translateY(-50%)');
+    });
+
+    container.on('mouseleave', function() {
+      backgroundImage.css('transform', 'translateY(0)');
+    });
+  });
+});
