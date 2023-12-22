@@ -1,6 +1,5 @@
 <script>
 import gsap from 'gsap';
-import $ from 'jquery'; // Import jQuery
 
 export default {
   mounted() {
@@ -19,7 +18,7 @@ export default {
 
     document.head.appendChild(isotopeScript);
 
-    // jQuery script
+    // Your jQuery script
     this.initBackgroundImageEffects();
   },
 
