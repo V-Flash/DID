@@ -1,16 +1,1 @@
-$(document).ready(function() {
-  var containers = $('.container');
-
-  containers.each(function() {
-    var container = $(this);
-    var backgroundImage = container.find('.background-image');
-
-    container.on('mouseenter', function() {
-      backgroundImage.css('transform', 'translateY(-50%)');
-    });
-
-    container.on('mouseleave', function() {
-      backgroundImage.css('transform', 'translateY(0)');
-    });
-  });
-});
+ <img src="~/static/images/portfolio/website/mustang-ford.png" class="img-fluid" alt="404 not found">
