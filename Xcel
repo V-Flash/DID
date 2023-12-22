@@ -1,71 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <style>
-    /* Custom CSS for right-aligned sub-dropdown */
-    .dropdown-submenu {
-      position: relative;
-    }
+  $(document).ready(function() {
+      var containers = $('.container-img');
+    
+      containers.each(function() {
+        var container = $(this);
+        var backgroundImage = container.find('.background-image');
+    
+        container.on('mouseenter', function() {
+          backgroundImage.css('background-position', 'bottom');
+        });
+    
+        container.on('mouseleave', function() {
+          backgroundImage.css('background-position', 'top');
+        });
+      });
+    });
 
-    .dropdown-submenu .dropdown-menu {
-      left: 100%;
-      margin-top: 0;
-      margin-left: 10px;
-      border-radius: 0;
-      display: none; /* Hide the sub-menu by default */
-    }
+<script>
+import gsap from 'gsap';
 
-    .dropdown-submenu:hover .dropdown-menu {
-      display: block; /* Display the sub-menu on hover */
-    }
-  </style>
-</head>
-<body>
+export default {
+  mounted() {
+    gsap.to('.main-div', {
+      opacity: 1,
+      ease: 'expo',
+    });
 
-  <div class="container">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Your Brand</a>
-        </div>
+    const isotopeScript = document.createElement('script');
+    isotopeScript.src = '/isotope-layout/isotope.pkgd.min.js?v=' + Date.now();
+    isotopeScript.async = false;
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Products <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="products">Overview</a></li>
-                <li><a href="product-bearing">Bearings</a></li>
-                <li><a href="product-seals">Seals</a></li>
-                <li><a href="product-gearboxes">Gearboxes</a></li>
-                <li><a href="product-pump">Pumps</a></li>
-                <li class="dropdown-submenu">
-                  <a href="#">Belts</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="https://www.gulfoilindia.com/products/industrial-lubricants/" target="_blank">Oil & Grease</a></li>
-                    <li><a href="https://jkfenner.com/poly-f-plus/" target="_blank">V-Belts/Timing Belts</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-  </div>
+    isotopeScript.onload = () => {
+      this.initIsotope();
+    };
 
-</body>
-</html>
+    document.head.appendChild(isotopeScript);
+  },
+
+  methods: {
+    
+    initIsotope() {
+      const select = (el, all = false) => {
+        el = el.trim();
+        if (all) {
+          return [...document.querySelectorAll(el)];
+        } else {
+          return document.querySelector(el);
+        }
+      };
+
+      const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all);
+        if (selectEl) {
+          if (all) {
+            selectEl.forEach(e => e.addEventListener(type, listener));
+          } else {
+            selectEl.addEventListener(type, listener);
+          }
+        }
+      };
+
+      const imagesLoaded = require('imagesloaded');
+
+      let portfolioContainer = select('.portfolio-container');
+      if (portfolioContainer) {
+        imagesLoaded(portfolioContainer, function () {
+          let portfolioIsotope = new Isotope(portfolioContainer, {
+            itemSelector: '.portfolio-item',
+            filter: '.filter-web',
+          });
+
+          // Arrange the Isotope grid after images have loaded
+          portfolioIsotope.layout();
+
+          let portfolioFilters = select('#portfolio-flters li', true);
+
+          on('click', '#portfolio-flters li', function (e) {
+            e.preventDefault();
+            portfolioFilters.forEach(function (el) {
+              el.classList.remove('filter-active');
+            });
+            this.classList.add('filter-active');
+
+            portfolioIsotope.arrange({
+              filter: this.getAttribute('data-fancyboxfilter'),
+            });
+          }, true);
+        });
+      }
+    },
+  },
+};
+</script>
