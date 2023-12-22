@@ -17,6 +17,11 @@
       margin-top: 0;
       margin-left: 10px;
       border-radius: 0;
+      display: none; /* Hide the sub-menu by default */
+    }
+
+    .dropdown-submenu:hover .dropdown-menu {
+      display: block; /* Display the sub-menu on hover */
     }
   </style>
 </head>
