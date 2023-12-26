@@ -1,48 +1,6 @@
-<script>
-import gsap from 'gsap';
+ABOUT OUR CAFE
+Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.
 
-export default {
-  mounted() {
-    gsap.to('.main-div', {
-      opacity: 1,
-      ease: 'expo',
-    });
+We guarantee that you will fall in lust with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.
 
-    const isotopeScript = document.createElement('script');
-    isotopeScript.src = '/isotope-layout/isotope.pkgd.min.js?v=' + Date.now();
-    isotopeScript.async = false;
-
-    isotopeScript.onload = () => {
-      this.initIsotope();
-    };
-
-    document.head.appendChild(isotopeScript);
-
-    // Your jQuery script
-    this.initBackgroundImageEffects();
-  },
-
-  methods: {
-    initIsotope() {
-      // ... existing Isotope initialization code ...
-    },
-
-    initBackgroundImageEffects() {
-      var containers = $('.container-img');
-
-      containers.each(function () {
-        var container = $(this);
-        var backgroundImage = container.find('.background-image');
-
-        container.on('mouseenter', function () {
-          backgroundImage.css('background-position', 'bottom');
-        });
-
-        container.on('mouseleave', function () {
-          backgroundImage.css('background-position', 'top');
-        });
-      });
-    },
-  },
-};
-</script>
+sugggest me brand name
