@@ -6,6 +6,9 @@
   <title></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
   <style type="text/css">
     
 :after,
@@ -32,6 +35,7 @@ h2 {
 }
 
 .hero-slider {
+  padding:0px;
   width: 100%;
   height: 700px;
   display: -webkit-box;
@@ -196,7 +200,7 @@ h2 {
   #hero-style
 --------------------------------------------------------------*/
 .hero-style {
-  height: 850px;
+  height: 953px;
   transition:all .4s ease;
 }
 
@@ -335,6 +339,72 @@ a:hover {
   }
 }
 
+
+.sllearnMore .learnMoreButton2 {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    color: #FFF;
+}
+.learnMoreButton2 {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+    line-height: .8;
+}
+
+.learnMoreButton2:after {
+    width: 40px;
+    height: 2px;
+    background: #b89840;
+    content: "";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.learnMoreButton2:hover{color: #b89840;}
+
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{    
+  border: 2px solid #b89840;
+  background: #353232;
+  padding: 0px;
+}
+
+section{padding:130px 0;}
+
+.sectionTitle2 {
+    font-size: 46px;
+    margin: 0 0 58px;
+    font-family: Georgia;
+    line-height: .8;
+}
+
+
+.sectionTitle2 small {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #b89841;
+    display: block;
+    line-height: .8;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+    font-family: Roboto;
+}
+
+p{font-size: 18px;
+    line-height: 36px;
+    margin: 0px;
+    letter-spacing: 0;}
+
 </style>
 
 </head>
@@ -348,15 +418,23 @@ a:hover {
      
       <div class="swiper-slide">
         <div class="slide-inner slide-bg-image" data-background="http://nasfactor.com/themes/stellar/images/slide/1.jpg">
+
           <div class="container text-center">
+
             <div data-swiper-parallax="300" class="slide-title">
               <h2>We Create Idea</h2>
             </div>
+
             <div data-swiper-parallax="400" class="slide-text">
               <p>It's Awesome</p>
             </div>
+
+            <div data-swiper-parallax="500" class="slide-text sllearnMore text-center">
+              <a href="#features" class="scrolls learnMoreButton2">Learn More</a>
+            </div>
             
           </div>
+
         </div>
         <!-- end slide-inner -->
       </div>
@@ -372,13 +450,43 @@ a:hover {
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
-
-  <div class="sllearnMore text-center">
-      <a href="#features" class="scrolls learnMoreButton2">Learn More</a>
-  </div>
-
 </section>
 <!-- end of hero slider -->
+
+
+<section>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="sectionTitle2 text-center">
+          <small>Welcome to stellar agency</small>
+            We craft beautiful websites.
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-5">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum justo ac 
+          volutpat sodaleset malesuada fames ac ante ipsum primis in faucibus. Duis 
+          ligula enim, auctor quis dui id, elementum sagittis ligula.</p>
+      </div>
+
+      <div class="col-lg-5">
+        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per 
+        inceptos himenaeos. Pellentesque vel fermentum. Donec ullamcorper 
+        dui bibendum. Praesent velit elit, placerat at lorem sagittis, 
+        ullamcorper sem.</p>
+      </div>
+
+  </div>
+
+
+  </div>
+</section>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
