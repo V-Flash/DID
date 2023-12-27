@@ -1,1 +1,23 @@
-Starting my career with [Company Name] has been a fantastic experience! Supportive team, great learning environment, and exciting opportunities for growth." 🚀
+      <div class="col-lg-3 col-sm-3">
+          <div class="counters counters2 text-center">
+            <i class="bi bi-window-desktop"></i>
+            <h2 class="timer" data-counter="452">434</h2>
+            <h4>Website Launched</h4> 
+          </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-3">
+        <div class="counters counters2 text-center">
+          <i class="bi bi-clock"></i>
+          <h2 class="timer" data-counter="1250"><span>1,</span>200</h2>
+          <h4>working Hours</h4>
+        </div>
+      </div>  
+      
+      <div class="col-lg-3 col-sm-3">
+        <div class="counters counters2 text-center">
+          <i class="bi bi-people"></i>
+          <h2 class="timer" data-counter="524">503</h2>
+          <h4>Satisfied Clients</h4>
+        </div>
+      </div>
