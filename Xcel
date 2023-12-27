@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Interactive Image Map with Taggd</title>
+  <meta charset="UTF-8">
+  <title>Taggd</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- Taggd CSS -->
-    <link rel="stylesheet" href="path/to/taggd.css">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <!-- Taggd JS -->
-    <script src="path/to/taggd.min.js"></script>
+  <link rel="stylesheet" href="assets/layout.css">
+  <link rel="stylesheet" href="../../dist/taggd.css">
+  <link rel="stylesheet" href="themes/taggd-classic.css">
 </head>
 <body>
 
-<div class="container mt-5">
-    <h1 class="text-center">Interactive Image Map with Taggd</h1>
+  <main class="container">
+    <img src="../assets/1024x512.jpg" alt="" id="image">
+  </main>
 
-    <div class="text-center mt-3">
-        <img id="taggd-image" src="path/to/your/image.jpg" alt="Interactive Image">
-    </div>
-</div>
 
-<script>
-    $(document).ready(function () {
-        // Initialize Taggd
-        var image = $('#taggd-image');
-        var data = [
-            { x: 0.2, y: 0.4, text: 'Tag 1' },
-            { x: 0.5, y: 0.7, text: 'Tag 2' },
-            // Add more tags as needed
-        ];
+  <script src="../../dist/taggd.js"></script>
+  <script src="../functions.js"></script>
+  <script>
+    var image = document.getElementById('image');
 
-        image.taggd(data);
+    var taggd = new Taggd(image);
+    taggd.setTags([
+      createTag(),
+      createTag(),
+      createTag(),
+    ]);
+
+    document.getElementById('action-add').addEventListener('click', function addRandomTags() {
+      for (var i = 0; i < 4; i++) {
+        taggd.addTag(createTag());
+      }
     });
-</script>
+
+    document.getElementById('action-delete').addEventListener('click', function deleteTags() {
+      taggd.deleteTags();
+    });
+  </script>
 
 </body>
 </html>
