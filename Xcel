@@ -1,23 +1,56 @@
-      <div class="col-lg-3 col-sm-3">
-          <div class="counters counters2 text-center">
-            <i class="bi bi-window-desktop"></i>
-            <h2 class="timer" data-counter="452">434</h2>
-            <h4>Website Launched</h4> 
-          </div>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Counters</title>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- Include countTo plugin -->
+  <script src="path/to/jquery.countTo.js"></script>
+  <style>
+    /* Add any additional styling here */
+  </style>
+</head>
+<body>
 
-      <div class="col-lg-3 col-sm-3">
-        <div class="counters counters2 text-center">
-          <i class="bi bi-clock"></i>
-          <h2 class="timer" data-counter="1250"><span>1,</span>200</h2>
-          <h4>working Hours</h4>
-        </div>
-      </div>  
+  <div class="col-lg-3 col-sm-3">
+    <div class="counters counters2 text-center">
+      <i class="bi bi-window-desktop"></i>
+      <h2 class="timer" data-counter="452">434</h2>
+      <h4>Website Launched</h4> 
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-sm-3">
+    <div class="counters counters2 text-center">
+      <i class="bi bi-clock"></i>
+      <h2 class="timer" data-counter="1250"><span>1,</span>200</h2>
+      <h4>Working Hours</h4>
+    </div>
+  </div>  
       
-      <div class="col-lg-3 col-sm-3">
-        <div class="counters counters2 text-center">
-          <i class="bi bi-people"></i>
-          <h2 class="timer" data-counter="524">503</h2>
-          <h4>Satisfied Clients</h4>
-        </div>
-      </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="counters counters2 text-center">
+      <i class="bi bi-people"></i>
+      <h2 class="timer" data-counter="524">503</h2>
+      <h4>Satisfied Clients</h4>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('.timer').each(function () {
+        var $this = $(this);
+        $this.countTo({
+          from: 0,
+          to: $this.data('counter'),
+          speed: 1000, // Adjust the speed as needed
+          refreshInterval: 50,
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
