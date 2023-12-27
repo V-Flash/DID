@@ -3,43 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Interactive Image Map with Taggd</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <title>Interactive Map</title>
+
+    <!-- Taggd CSS -->
+    <link rel="stylesheet" href="path/to/taggd.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Taggd JS -->
+    <script src="path/to/taggd.min.js"></script>
 </head>
 <body>
-    <div id="map" style="height: 500px;"></div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Sample locations with information
-            var locations = [
-                { lat: 28.6139, lng: 77.2090, title: 'New Delhi', content: 'Information about New Delhi' },
-                // Add more locations as needed
-            ];
+<div class="container mt-5">
+    <h1 class="text-center">Interactive Image Map with Taggd</h1>
 
-            // Initialize the map centered at a specific location in India
-            var map = L.map('map').setView([20.5937, 78.9629], 5);
+    <div class="text-center mt-3">
+        <img id="taggd-image" src="path/to/your/image.jpg" alt="Interactive Image">
+    </div>
+</div>
 
-            // Add OpenStreetMap as the base layer
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
+<script>
+    $(document).ready(function () {
+        // Initialize Taggd
+        var image = $('#taggd-image');
+        var data = [
+            { x: 0.2, y: 0.4, text: 'Tag 1' },
+            { x: 0.5, y: 0.7, text: 'Tag 2' },
+            // Add more tags as needed
+        ];
 
-            // Loop through locations and add markers
-            locations.forEach(function (location) {
-                var marker = L.marker([location.lat, location.lng]).addTo(map);
+        image.taggd(data);
+    });
+</script>
 
-                // Add a hover box (Bootstrap popover) for each marker
-                marker.bindPopup('<div class="popover-content">' +
-                    '<h5>' + location.title + '</h5>' +
-                    '<p>' + location.content + '</p>' +
-                    '</div>');
-            });
-        });
-    </script>
 </body>
 </html>
