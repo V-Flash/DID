@@ -42,15 +42,21 @@
       // Calculate the offset of the target section
       var targetSectionOffset = $('#' + targetSectionId).offset().top;
 
+      // Flag to track whether the alert has been shown
+      var alertShown = false;
+
       // Attach a scroll event listener to the window
       $(window).scroll(function() {
         // Get the current scroll position
         var scrollPosition = $(window).scrollTop();
 
         // Check if the user has scrolled to or past the target section
-        if (scrollPosition >= targetSectionOffset) {
+        if (scrollPosition >= targetSectionOffset && !alertShown) {
           // Display an alert when the target section is reached
           alert('You have reached ' + targetSectionId + '!');
+          
+          // Set the flag to true to indicate that the alert has been shown
+          alertShown = true;
         }
       });
     });
