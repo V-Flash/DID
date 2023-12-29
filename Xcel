@@ -1,3 +1,13 @@
+// Get all elements with the class 'color-pattern'
+const colorPatterns = document.querySelectorAll('.color-pattern');
+
+// Define an array of background colors
+const colors = ['#ff0000', '#00ff00', '#0000ff'];
+
+// Apply background colors dynamically
+colorPatterns.forEach((pattern, index) => {
+  pattern.style.backgroundColor = colors[index % colors.length];
+});
 							<div>
 							  <div class="">
 									<div class="pro-img"><img src="assets/images/bs-01.png" class="img-fluid" alt=""/></div>
