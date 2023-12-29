@@ -18,7 +18,6 @@ $(function() {
         $this.prepend('<span class="arrow-collapse collapsed">');
 
         $this.find('.arrow-collapse').attr({
-          'data-toggle': 'collapse',
           'data-target': '#collapseItem' + counter,
         });
 
@@ -42,7 +41,7 @@ $(function() {
         $this.addClass('active');
       }
 
-      $collapse.toggleClass('show');
+      $collapse.slideToggle('fast'); // Use slideToggle with a specified duration for a smooth animation
       e.preventDefault();
     });
 
