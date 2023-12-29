@@ -1,4 +1,90 @@
-$(document).ready(function() {
-    // Initialize Bootstrap components
-    $('.dropdown-toggle').dropdown();
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Sticky Header
+  var siteSticky = function () {
+    new bootstrap.ScrollSpy(document.body, {
+      target: '.js-sticky-header',
+    });
+  };
+  siteSticky();
+
+  // Mobile Menu Clone
+  var siteMenuClone = function () {
+    document.querySelectorAll('.js-clone-nav').forEach(function (element) {
+      var clone = element.cloneNode(true);
+      clone.classList.remove('js-clone-nav');
+      clone.classList.add('site-nav-wrap');
+      document.querySelector('.site-mobile-menu-body').appendChild(clone);
+    });
+
+    setTimeout(function () {
+      var counter = 0;
+      document.querySelectorAll('.site-mobile-menu .has-children').forEach(function (element) {
+        var arrowCollapse = document.createElement('span');
+        arrowCollapse.classList.add('arrow-collapse', 'collapsed');
+        element.insertBefore(arrowCollapse, element.firstChild);
+
+        arrowCollapse.setAttribute('data-bs-toggle', 'collapse');
+        arrowCollapse.setAttribute('data-bs-target', '#collapseItem' + counter);
+
+        var ul = element.querySelector('> ul');
+        ul.classList.add('collapse');
+        ul.setAttribute('id', 'collapseItem' + counter);
+
+        counter++;
+      });
+    }, 1000);
+
+    document.body.addEventListener('click', function (e) {
+      if (e.target.classList.contains('arrow-collapse')) {
+        var parentLi = e.target.closest('li');
+        var collapse = parentLi.querySelector('.collapse');
+        if (collapse.classList.contains('show')) {
+          e.target.classList.remove('active');
+        } else {
+          e.target.classList.add('active');
+        }
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      var w = window.innerWidth;
+
+      if (w > 768) {
+        var body = document.body;
+        if (body.classList.contains('offcanvas-menu')) {
+          body.classList.remove('offcanvas-menu');
+        }
+      }
+    });
+
+    document.body.addEventListener('click', function (e) {
+      var target = e.target;
+      if (target.classList.contains('js-menu-toggle')) {
+        var body = document.body;
+        if (body.classList.contains('offcanvas-menu')) {
+          body.classList.remove('offcanvas-menu');
+          target.classList.remove('active');
+        } else {
+          body.classList.add('offcanvas-menu');
+          target.classList.add('active');
+        }
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('mouseup', function (e) {
+      var container = document.querySelector('.site-mobile-menu');
+      if (!container.contains(e.target) && !container.isSameNode(e.target)) {
+        var body = document.body;
+        if (body.classList.contains('offcanvas-menu')) {
+          body.classList.remove('offcanvas-menu');
+        }
+      }
+    });
+  };
+
+  siteMenuClone();
+
 });
