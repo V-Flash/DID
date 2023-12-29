@@ -1,9 +1,79 @@
- $('.timer').each(function () {
-              var $this = $(this);
-              $this.countTo({
-                from: 0,
-                to: $this.data('counter'),
-                speed: 5000,
-                refreshInterval: 100,
-              });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Alert</title>
+  <style>
+    body {
+      height: 1500px; /* Add enough content to make scrolling possible */
+    }
+
+    section {
+      height: 500px; /* Adjust the height based on your section's content */
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.rawgit.com/graingert/WOW/1.0.1/dist/wow.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countto/1.2.0/jquery.countTo.min.js"></script>
+</head>
+<body>
+
+  <section id="section1">
+    <h2>Section 1</h2>
+    <p>Content of section 1</p>
+  </section>
+
+  <section id="section2" class="timer" data-counter="100">
+    <h2>Section 2</h2>
+    <p>Content of section 2</p>
+  </section>
+
+  <section id="section3">
+    <h2>Section 3</h2>
+    <p>Content of section 3</p>
+  </section>
+
+  <script>
+    $(document).ready(function() {
+      // Set the ID of the section you want to trigger the code for
+      var targetSectionId = 'section2';
+
+      // Calculate the offset of the target section
+      var targetSectionOffset = $('#' + targetSectionId).offset().top;
+
+      // Flag to track whether the code has been executed
+      var codeExecuted = false;
+
+      // Attach a scroll event listener to the window
+      $(window).scroll(function() {
+        // Get the current scroll position
+        var scrollPosition = $(window).scrollTop();
+
+        // Check if the user has scrolled to or past the target section
+        if (scrollPosition >= targetSectionOffset && !codeExecuted) {
+          // Display an alert when the target section is reached
+          alert('You have reached ' + targetSectionId + '!');
+
+          // Execute the provided code for each element with the "timer" class
+          $('.timer').each(function () {
+            var $this = $(this);
+            $this.countTo({
+              from: 0,
+              to: $this.data('counter'),
+              speed: 5000,
+              refreshInterval: 100,
             });
+          });
+
+          // Set the flag to true to indicate that the code has been executed
+          codeExecuted = true;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
