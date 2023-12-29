@@ -81,13 +81,14 @@
         // Check if the user has scrolled to or past the target section
         if (scrollPosition >= targetSectionOffset && !codeExecuted) {
           // Execute the provided code for each element with the "timer" class
-          $('.timer').each(function () {
+          $('.num.timer').each(function () {
             var $this = $(this);
-            $this.countTo({
-              from: 0,
-              to: $this.data('counter'),
-              speed: 5000,
-              refreshInterval: 100,
+            $({ Counter: 0 }).animate({ Counter: $this.data('counter') }, {
+              duration: 5000,
+              easing: 'swing',
+              step: function() {
+                $this.text(Math.ceil(this.Counter));
+              }
             });
           });
 
