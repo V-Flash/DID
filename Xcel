@@ -1,87 +1,60 @@
-$(function() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Alert</title>
+  <style>
+    body {
+      height: 1500px; /* Add enough content to make scrolling possible */
+    }
 
-  var siteSticky = function() {
-    $(".js-sticky-header").sticky({ topSpacing: 0 });
-  };
-  siteSticky();
+    section {
+      height: 500px; /* Adjust the height based on your section's content */
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
 
-  var siteMenuClone = function() {
-    $('.js-clone-nav').each(function() {
-      var $this = $(this);
-      $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
-    });
-    setTimeout(function() {
-      var counter = 0;
-      $('.site-mobile-menu .has-children').each(function() {
-        var $this = $(this);
+  <section id="section1">
+    <h2>Section 1</h2>
+    <p>Content of section 1</p>
+  </section>
 
-        $this.prepend('<span class="arrow-collapse collapsed">');
+  <section id="section2">
+    <h2>Section 2</h2>
+    <p>Content of section 2</p>
+  </section>
 
-        $this.find('.arrow-collapse').attr({
-          'data-target': '#collapseItem' + counter,
-        });
+  <section id="section3">
+    <h2>Section 3</h2>
+    <p>Content of section 3</p>
+  </section>
 
-        $this.find('> ul').attr({
-          'class': 'collapse',
-          'id': 'collapseItem' + counter,
-        });
+  <script>
+    $(document).ready(function() {
+      // Set the ID of the section you want to trigger the alert for
+      var targetSectionId = 'section2';
 
-        counter++;
-      });
+      // Calculate the offset of the target section
+      var targetSectionOffset = $('#' + targetSectionId).offset().top;
 
-    }, 1000);
+      // Attach a scroll event listener to the window
+      $(window).scroll(function() {
+        // Get the current scroll position
+        var scrollPosition = $(window).scrollTop();
 
-    $('body').on('click', '.arrow-collapse', function(e) {
-      var $this = $(this);
-      var $collapse = $this.closest('li').find('.collapse');
-
-      if ($collapse.hasClass('show')) {
-        $this.removeClass('active');
-      } else {
-        $this.addClass('active');
-      }
-
-      $collapse.slideToggle('fast', function() {
-        $this.toggleClass('collapsed', !$collapse.hasClass('show'));
-      });
-
-      e.preventDefault();
-    });
-
-    $(window).resize(function() {
-      var $this = $(this),
-        w = $this.width();
-
-      if (w > 768) {
-        if ($('body').hasClass('offcanvas-menu')) {
-          $('body').removeClass('offcanvas-menu');
+        // Check if the user has scrolled to or past the target section
+        if (scrollPosition >= targetSectionOffset) {
+          // Display an alert when the target section is reached
+          alert('You have reached ' + targetSectionId + '!');
         }
-      }
+      });
     });
+  </script>
 
-    $('body').on('click', '.js-menu-toggle', function(e) {
-      var $this = $(this);
-      e.preventDefault();
-
-      if ($('body').hasClass('offcanvas-menu')) {
-        $('body').removeClass('offcanvas-menu');
-        $this.removeClass('active');
-      } else {
-        $('body').addClass('offcanvas-menu');
-        $this.addClass('active');
-      }
-    });
-
-    // click outside offcanvas
-    $(document).mouseup(function(e) {
-      var container = $(".site-mobile-menu");
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        if ($('body').hasClass('offcanvas-menu')) {
-          $('body').removeClass('offcanvas-menu');
-        }
-      }
-    });
-  };
-  siteMenuClone();
-
-});
+</body>
+</html>
