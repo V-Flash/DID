@@ -1,83 +1,85 @@
-document.addEventListener('DOMContentLoaded', function () {
+$(function() {
 
-  var siteMenuClone = function () {
-    document.querySelectorAll('.js-clone-nav').forEach(function (element) {
-      var clone = element.cloneNode(true);
-      clone.classList.remove('js-clone-nav');
-      clone.classList.add('site-nav-wrap');
-      document.querySelector('.site-mobile-menu-body').appendChild(clone);
+  var siteSticky = function() {
+    $(".js-sticky-header").sticky({ topSpacing: 0 });
+  };
+  siteSticky();
+
+  var siteMenuClone = function() {
+    $('.js-clone-nav').each(function() {
+      var $this = $(this);
+      $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
     });
-
-    setTimeout(function () {
+    setTimeout(function() {
       var counter = 0;
-      document.querySelectorAll('.site-mobile-menu .has-children').forEach(function (element) {
-        var arrowCollapse = document.createElement('span');
-        arrowCollapse.classList.add('arrow-collapse', 'collapsed');
-        element.insertBefore(arrowCollapse, element.firstChild);
+      $('.site-mobile-menu .has-children').each(function() {
+        var $this = $(this);
 
-        arrowCollapse.setAttribute('data-bs-toggle', 'collapse');
-        arrowCollapse.setAttribute('data-bs-target', '#collapseItem' + counter);
+        $this.prepend('<span class="arrow-collapse collapsed">');
 
-        var ul = element.querySelector('> ul');
-        ul.classList.add('collapse');
-        ul.setAttribute('id', 'collapseItem' + counter);
+        $this.find('.arrow-collapse').attr({
+          'data-toggle': 'collapse',
+          'data-target': '#collapseItem' + counter,
+        });
+
+        $this.find('> ul').attr({
+          'class': 'collapse',
+          'id': 'collapseItem' + counter,
+        });
 
         counter++;
       });
+
     }, 1000);
 
-    document.body.addEventListener('click', function (e) {
-      if (e.target.classList.contains('arrow-collapse')) {
-        var parentLi = e.target.closest('li');
-        var collapse = parentLi.querySelector('.collapse');
-        if (collapse.classList.contains('show')) {
-          e.target.classList.remove('active');
-          collapse.classList.remove('show');
-        } else {
-          e.target.classList.add('active');
-          collapse.classList.add('show');
-        }
-        e.preventDefault();
+    $('body').on('click', '.arrow-collapse', function(e) {
+      var $this = $(this);
+      var $collapse = $this.closest('li').find('.collapse');
+
+      if ($collapse.hasClass('show')) {
+        $this.removeClass('active');
+      } else {
+        $this.addClass('active');
       }
+
+      $collapse.toggleClass('show');
+      e.preventDefault();
     });
 
-    window.addEventListener('resize', function () {
-      var w = window.innerWidth;
+    $(window).resize(function() {
+      var $this = $(this),
+        w = $this.width();
 
       if (w > 768) {
-        var body = document.body;
-        if (body.classList.contains('offcanvas-menu')) {
-          body.classList.remove('offcanvas-menu');
+        if ($('body').hasClass('offcanvas-menu')) {
+          $('body').removeClass('offcanvas-menu');
         }
       }
     });
 
-    document.body.addEventListener('click', function (e) {
-      var target = e.target;
-      if (target.classList.contains('js-menu-toggle')) {
-        var body = document.body;
-        if (body.classList.contains('offcanvas-menu')) {
-          body.classList.remove('offcanvas-menu');
-          target.classList.remove('active');
-        } else {
-          body.classList.add('offcanvas-menu');
-          target.classList.add('active');
-        }
-        e.preventDefault();
+    $('body').on('click', '.js-menu-toggle', function(e) {
+      var $this = $(this);
+      e.preventDefault();
+
+      if ($('body').hasClass('offcanvas-menu')) {
+        $('body').removeClass('offcanvas-menu');
+        $this.removeClass('active');
+      } else {
+        $('body').addClass('offcanvas-menu');
+        $this.addClass('active');
       }
     });
 
-    document.addEventListener('mouseup', function (e) {
-      var container = document.querySelector('.site-mobile-menu');
-      if (!container.contains(e.target) && !container.isSameNode(e.target)) {
-        var body = document.body;
-        if (body.classList.contains('offcanvas-menu')) {
-          body.classList.remove('offcanvas-menu');
+    // click outside offcanvas
+    $(document).mouseup(function(e) {
+      var container = $(".site-mobile-menu");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($('body').hasClass('offcanvas-menu')) {
+          $('body').removeClass('offcanvas-menu');
         }
       }
     });
   };
-
   siteMenuClone();
 
 });
