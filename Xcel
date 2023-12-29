@@ -41,7 +41,10 @@ $(function() {
         $this.addClass('active');
       }
 
-      $collapse.slideToggle('fast'); // Use slideToggle with a specified duration for a smooth animation
+      $collapse.slideToggle('fast', function() {
+        $this.toggleClass('collapsed', !$collapse.hasClass('show'));
+      });
+
       e.preventDefault();
     });
 
