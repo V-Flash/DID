@@ -1,85 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Custom CSS for background colors and images */
-    .row > div:nth-child(1) .card {
-      background-color: #ff0000;
-      background-image: url('red_background_image.jpg'); /* Replace 'red_background_image.jpg' with the actual image URL */
-      background-size: cover;
-    }
+/* Navbar menu Start js  */
+$(function() {
 
-    .row > div:nth-child(2) .card {
-      background-color: #0000ff;
-      background-image: url('blue_background_image.jpg'); /* Replace 'blue_background_image.jpg' with the actual image URL */
-      background-size: cover;
-    }
+  var siteSticky = function() {
+		$(".js-sticky-header").sticky({topSpacing:0});
+	};
+	siteSticky();
 
-    .row > div:nth-child(3) .card {
-      background-color: #00ff00;
-      background-image: url('green_background_image.jpg'); /* Replace 'green_background_image.jpg' with the actual image URL */
-      background-size: cover;
-    }
+	var siteMenuClone = function() {
+		$('.js-clone-nav').each(function() {
+			var $this = $(this);
+			$this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
+		});
+		setTimeout(function() {
+			var counter = 0;
+      $('.site-mobile-menu .has-children').each(function(){
+        var $this = $(this);
+        
+        $this.prepend('<span class="arrow-collapse collapsed">');
 
-    .row > div:nth-child(4) .card {
-      background-color: #808080;
-      background-image: url('gray_background_image.jpg'); /* Replace 'gray_background_image.jpg' with the actual image URL */
-      background-size: cover;
-    }
-  </style>
-  <title>Colorful Cards with Background Images</title>
-</head>
-<body>
+        $this.find('.arrow-collapse').attr({
+          'data-toggle' : 'collapse',
+          'data-target' : '#collapseItem' + counter,
+        });
 
-<div class="container mt-5">
-  <div class="row">
-    <!-- First Card - Red -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card 1</h5>
-          <p class="card-text">This card has a red background and image.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Second Card - Blue -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card 2</h5>
-          <p class="card-text">This card has a blue background and image.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Third Card - Green -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card 3</h5>
-          <p class="card-text">This card has a green background and image.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Fourth Card - Gray -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card 4</h5>
-          <p class="card-text">This card has a gray background and image.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        $this.find('> ul').attr({
+          'class' : 'collapse',
+          'id' : 'collapseItem' + counter,
+        });
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+        counter++;
+
+      });
+
+    }, 1000);
+
+		$('body').on('click', '.arrow-collapse', function(e) {
+      var $this = $(this);
+      if ( $this.closest('li').find('.collapse').hasClass('show') ) {
+        $this.removeClass('active');
+      } else {
+        $this.addClass('active');
+        
+      }
+      e.preventDefault();  
+      
+    });
+
+		$(window).resize(function() {
+			var $this = $(this),
+				w = $this.width();
+
+			if ( w > 768 ) {
+				if ( $('body').hasClass('offcanvas-menu') ) {
+					$('body').removeClass('offcanvas-menu');
+				}
+			}
+		})
+
+		$('body').on('click', '.js-menu-toggle', function(e) {
+			var $this = $(this);
+			e.preventDefault();
+
+			if ( $('body').hasClass('offcanvas-menu') ) {
+				$('body').removeClass('offcanvas-menu');
+				$this.removeClass('active');
+			} else {
+				$('body').addClass('offcanvas-menu');
+				$this.addClass('active');
+			}
+		}) 
+
+		// click outisde offcanvas
+		$(document).mouseup(function(e) {
+	    var container = $(".site-mobile-menu");
+	    if (!container.is(e.target) && container.has(e.target).length === 0) {
+	      if ( $('body').hasClass('offcanvas-menu') ) {
+					$('body').removeClass('offcanvas-menu');
+				}
+	    }
+		});
+	}; 
+	siteMenuClone();
+
+});
