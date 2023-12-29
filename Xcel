@@ -1,3 +1,11 @@
-nth-child(2n+0)
+.color-pattern:nth-child(3n+1) {
+  background-color: #ff0000; /* Red */
+}
 
-nth-child(1n+0)
+.color-pattern:nth-child(3n+2) {
+  background-color: #00ff00; /* Green */
+}
+
+.color-pattern:nth-child(3n+3) {
+  background-color: #0000ff; /* Blue */
+}
