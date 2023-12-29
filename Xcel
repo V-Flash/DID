@@ -1,79 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scroll Alert</title>
-  <style>
-    body {
-      height: 1500px; /* Add enough content to make scrolling possible */
-    }
+	<section class="mobile-space" id="counter-section">
+		<div class="red-bg01 wow fadeInUp" data-wow-duration=".2s" data-wow-delay=".4s">
+			<div class="container-custom container ">		
+				<div class="row">
+					<div class="col-lg-12">
+					  <img src="assets/images/tottle-pro-img.png" class="img-fluid" alt=""/>
 
-    section {
-      height: 500px; /* Adjust the height based on your section's content */
-      border: 1px solid #ccc;
-      margin-bottom: 20px;
-    }
-  </style>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://cdn.rawgit.com/graingert/WOW/1.0.1/dist/wow.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-countto/1.2.0/jquery.countTo.min.js"></script>
-</head>
-<body>
+					  <div class="row total-pro-info">
+							
+							<div class="col-lg-3 total-pro-col">
+					  		<p class="para">Total</p>
+					  		<h5 class="title">products</h5>
+					  		<h2 class="num timer" data-counter="2000">2000</h2>
+					  	</div>
 
-  <section id="section1">
-    <h2>Section 1</h2>
-    <p>Content of section 1</p>
-  </section>
+					  	<div class="col-lg-3 total-pro-col">
+						  	<p class="para">Sculpture</p>
+					  		<h5 class="title">artist</h5>
+					  		<h2 class="num timer" data-counter="100">100</h2>
+						  </div>
 
-  <section id="section2" class="timer" data-counter="100">
-    <h2>Section 2</h2>
-    <p>Content of section 2</p>
-  </section>
+						  <div class="col-lg-3 total-pro-col">
+						  	<p class="para">Total</p>
+					  		<h5 class="title">products</h5>
+					  		<h2 class="num timer" data-counter="1200">1200</h2>
+						  </div>
 
-  <section id="section3">
-    <h2>Section 3</h2>
-    <p>Content of section 3</p>
-  </section>
+						  <div class="col-lg-3 total-pro-col">
+						  	<p class="para">Sculpture</p>
+					  		<h5 class="title">artist</h5>
+					  		<h2 class="num timer" data-counter="120">120</h2>
+						  </div>
 
-  <script>
-    $(document).ready(function() {
-      // Set the ID of the section you want to trigger the code for
-      var targetSectionId = 'section2';
+					  </div>
 
-      // Calculate the offset of the target section
-      var targetSectionOffset = $('#' + targetSectionId).offset().top;
-
-      // Flag to track whether the code has been executed
-      var codeExecuted = false;
-
-      // Attach a scroll event listener to the window
-      $(window).scroll(function() {
-        // Get the current scroll position
-        var scrollPosition = $(window).scrollTop();
-
-        // Check if the user has scrolled to or past the target section
-        if (scrollPosition >= targetSectionOffset && !codeExecuted) {
-          // Display an alert when the target section is reached
-          alert('You have reached ' + targetSectionId + '!');
-
-          // Execute the provided code for each element with the "timer" class
-          $('.timer').each(function () {
-            var $this = $(this);
-            $this.countTo({
-              from: 0,
-              to: $this.data('counter'),
-              speed: 5000,
-              refreshInterval: 100,
-            });
-          });
-
-          // Set the flag to true to indicate that the code has been executed
-          codeExecuted = true;
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</section>
