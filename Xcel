@@ -1,14 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Sticky Header
-  var siteSticky = function () {
-    new bootstrap.ScrollSpy(document.body, {
-      target: '.js-sticky-header',
-    });
-  };
-  siteSticky();
-
-  // Mobile Menu Clone
   var siteMenuClone = function () {
     document.querySelectorAll('.js-clone-nav').forEach(function (element) {
       var clone = element.cloneNode(true);
@@ -41,8 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var collapse = parentLi.querySelector('.collapse');
         if (collapse.classList.contains('show')) {
           e.target.classList.remove('active');
+          collapse.classList.remove('show');
         } else {
           e.target.classList.add('active');
+          collapse.classList.add('show');
         }
         e.preventDefault();
       }
