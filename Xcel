@@ -1,273 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Map</title>
-    <meta name="author" content="Codeconvey" />
-    
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!--Only for demo purpose - no need to add.-->
-    <link rel="stylesheet" type="text/css" href="css/demo.css" />
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS for background colors and images */
+    .row > div:nth-child(1) .card {
+      background-color: #ff0000;
+      background-image: url('red_background_image.jpg'); /* Replace 'red_background_image.jpg' with the actual image URL */
+      background-size: cover;
+    }
 
+    .row > div:nth-child(2) .card {
+      background-color: #0000ff;
+      background-image: url('blue_background_image.jpg'); /* Replace 'blue_background_image.jpg' with the actual image URL */
+      background-size: cover;
+    }
+
+    .row > div:nth-child(3) .card {
+      background-color: #00ff00;
+      background-image: url('green_background_image.jpg'); /* Replace 'green_background_image.jpg' with the actual image URL */
+      background-size: cover;
+    }
+
+    .row > div:nth-child(4) .card {
+      background-color: #808080;
+      background-image: url('gray_background_image.jpg'); /* Replace 'gray_background_image.jpg' with the actual image URL */
+      background-size: cover;
+    }
+  </style>
+  <title>Colorful Cards with Background Images</title>
 </head>
 <body>
-    
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="Scriptcontent">
-                
-            <div id="image-map">
 
-               <img class="img-fluid" src="Group 8792.png">   
-
-              <div class="pin pin-down" data-xpos="130" data-ypos="100">  
-                <h2>Ludhiana</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="170" data-ypos="100">  
-                <h2>Haridwar</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="200" data-ypos="110">  
-                <h2>Rudrapur</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="360" data-ypos="305">  
-                
-                <h2>Kanpur</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="220" data-ypos="255">  
-                
-                <h2>Bhiwadi</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="260" data-ypos="263">  
-                
-                <h2>Gurugram</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="265" data-ypos="225">  
-                
-                <h2>Ghaziabad</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="129" data-ypos="545">  
-                
-                <h2>Mumbai</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="380" data-ypos="485">  
-                
-                <h2>Raipur</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="420" data-ypos="485">  
-                
-                <h2>Baloda Bazar</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-              <div class="pin pin-down" data-xpos="450" data-ypos="445">  
-                
-                <h2>Raigarh</h2>     
-                <ul>
-                  <li><strong>123 Street Address</strong></li>
-                  <li>City, ST, 12345</li>
-                  <li><strong>(555) 555-5555</strong></li>
-                  <li><a href="#" target="_blank">Website</a></li>
-                  <li>Coming in Spring 2015</li>
-                </ul>
-              </div>
-
-            </div>
-
-            <!-- partial -->
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-            <script  src="./script.js"></script>
-
-          </div>
+<div class="container mt-5">
+  <div class="row">
+    <!-- First Card - Red -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card 1</h5>
+          <p class="card-text">This card has a red background and image.</p>
         </div>
       </div>
     </div>
-  </section>
-     
+    
+    <!-- Second Card - Blue -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card 2</h5>
+          <p class="card-text">This card has a blue background and image.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Third Card - Green -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card 3</h5>
+          <p class="card-text">This card has a green background and image.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Fourth Card - Gray -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card 4</h5>
+          <p class="card-text">This card has a gray background and image.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-   <!-- ANALYTICS -->
-
-  </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>
-
-
-$(document).ready(function(){
-
-    // set the image-map width and height to match the img size
-    $('#image-map').css({'width':$('#image-map img').width(),
-                      'height':$('#image-map img').height()
-    })
-    
-    //tooltip direction
-    var tooltipDirection;
-                 
-    for (i=0; i<$(".pin").length; i++)
-    {               
-        // set tooltip direction type - up or down             
-        if ($(".pin").eq(i).hasClass('pin-down')) {
-            tooltipDirection = 'tooltip-down';
-        } else {
-            tooltipDirection = 'tooltip-up';
-            }
-    
-        // append the tooltip
-        $("#image-map").append("<div style='left:"+$(".pin").eq(i).data('xpos')+"px;top:"+$(".pin").eq(i).data('ypos')+"px' class='" + tooltipDirection +"'>\
-                                            <div class='tooltip11'>" + $(".pin").eq(i).html() + "</div>\
-                                    </div>");
-    }    
-    
-    // show/hide the tooltip
-    $('.tooltip-up, .tooltip-down').mouseenter(function(){
-                $(this).children('.tooltip11').fadeIn(100);
-            }).mouseleave(function(){
-                $(this).children('.tooltip11').fadeOut(100);
-            })
-});
-
-.tooltip-up, .tooltip-down {
-    position: absolute;
-    background: url(https://i.imgur.com/13rZbuk.png);
-    width: 25px;
-    height: 37px;
-}
-
-.tooltip-down {
-    background-position: 0 -37px;
-}
-
-.tooltip11 {
-    display: none;
-    width: 200px;
-    cursor: help;
-    text-shadow: 0 1px 0 #fff;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    z-index: 999;
-    margin-left: -115px;
-    padding:15px;
-    color: #222;
-    border-radius: 5px;
-    box-shadow: 0 3px 0 rgba(0,0,0,.7);
-    background: #fff1d3;
-    background: linear-gradient(top, #fff1d3, #ffdb90);         
-}
-
-.tooltip11::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    margin-left: -10px;
-    border-bottom: 10px solid #fff1d3;
-    border-left: 10px solid transparent;
-    border-right : 10px solid transparent;
-}
-
-.tooltip-down .tooltip11 {
-    bottom: 12px;
-    top: auto;
-}
-
-.tooltip-down .tooltip::after {
-    bottom: -10px;
-    top: auto;
-    border-bottom: 0;
-    border-top: 10px solid #ffdb90;
-}
-
-.tooltip11 h2 {
-    font: bold 1.3em 'Trebuchet MS', Tahoma, Arial;
-    margin: 0 0 10px;
-}
-
-.tooltip11 ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
