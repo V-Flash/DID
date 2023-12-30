@@ -1,20 +1,22 @@
+$(".search-open").click(function() {
 
-							<ul class="list-inline mb-0">
+  var menuSearchContainer = $(".menu-search-container");
+  var navIcon = $(".menu-search-icon");
 
-								<li class="list-inline-item">
-									<a href="" class="footer-socail-icon"><i class="fa-facebook"></i></a>
-								</li>
+  if (menuSearchContainer.is(":hidden")) {
+    
+    menuSearchContainer.slideDown(function() {
+      
+      navIcon.css({"visibility":"hidden"}).fadeTo("slow", 0);
+    });
 
-								<li class="list-inline-item">
-									<a href="" class="footer-socail-icon"><i class="fa-twitter"></i></a>
-								</li>
+  } 
 
-								<li class="list-inline-item">
-									<a href="" class="footer-socail-icon"><i class="fa-instagram"></i></a>
-								</li>
 
-								<li class="list-inline-item">
-									<a href="" class="footer-socail-icon"><i class="fa-youtube"></i></a>
-								</li>
+});
 
-							</ul>
+$(".search-close").click(function() {
+  var navIcon = $(".menu-search-icon");
+  $(".menu-search-container").slideUp();
+  navIcon.css({"visibility":"visible"}).fadeTo("slow", 1);
+});
