@@ -1,22 +1,39 @@
-$(".search-open").click(function() {
+$(document).ready(function() {
 
-  var menuSearchContainer = $(".menu-search-container");
-  var navIcon = $(".menu-search-icon");
+  // Function to close search container
+  function closeSearchContainer() {
+    var navIcon = $(".menu-search-icon");
+    var menuSearchContainer = $(".menu-search-container");
+    menuSearchContainer.slideUp();
+    navIcon.css({"visibility":"visible"}).fadeTo("slow", 1);
+  }
 
-  if (menuSearchContainer.is(":hidden")) {
-    
-    menuSearchContainer.slideDown(function() {
-      
-      navIcon.css({"visibility":"hidden"}).fadeTo("slow", 0);
-    });
+  // Open search container when ".search-open" is clicked
+  $(".search-open").click(function(event) {
+    event.stopPropagation(); // Prevent the click from propagating to the document
+    var menuSearchContainer = $(".menu-search-container");
+    var navIcon = $(".menu-search-icon");
 
-  } 
+    if (menuSearchContainer.is(":hidden")) {
+      menuSearchContainer.slideDown(function() {
+        navIcon.css({"visibility":"hidden"}).fadeTo("slow", 0);
+      });
+    } 
+  });
 
+  // Close search container when ".search-close" is clicked
+  $(".search-close").click(function() {
+    closeSearchContainer();
+  });
 
-});
+  // Close search container when clicking outside of it
+  $(document).click(function(event) {
+    var menuSearchContainer = $(".menu-search-container");
 
-$(".search-close").click(function() {
-  var navIcon = $(".menu-search-icon");
-  $(".menu-search-container").slideUp();
-  navIcon.css({"visibility":"visible"}).fadeTo("slow", 1);
+    // Check if the click is outside the search container
+    if (!menuSearchContainer.is(event.target) && menuSearchContainer.has(event.target).length === 0) {
+      closeSearchContainer();
+    }
+  });
+
 });
