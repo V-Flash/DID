@@ -1,19 +1,20 @@
-.image-container {
-  position: relative;
-  width: 952px; /* Adjust according to your image dimensions */
-  height: 596px; /* Adjust according to your image dimensions */
-}
 
-.icon-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+							<ul class="list-inline mb-0">
 
-/* Style your icon as needed */
-.fa-icon {
-  font-size: 24px; /* Adjust the size of your icon */
-  color: #ffffff; /* Set the color of your icon */
-  /* Add any additional styles as needed */
-}
+								<li class="list-inline-item">
+									<a href="" class="footer-socail-icon"><i class="fa-facebook"></i></a>
+								</li>
+
+								<li class="list-inline-item">
+									<a href="" class="footer-socail-icon"><i class="fa-twitter"></i></a>
+								</li>
+
+								<li class="list-inline-item">
+									<a href="" class="footer-socail-icon"><i class="fa-instagram"></i></a>
+								</li>
+
+								<li class="list-inline-item">
+									<a href="" class="footer-socail-icon"><i class="fa-youtube"></i></a>
+								</li>
+
+							</ul>
