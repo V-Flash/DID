@@ -4,8 +4,11 @@ $(document).ready(function() {
   function closeSearchContainer() {
     var navIcon = $(".menu-search-icon");
     var menuSearchContainer = $(".menu-search-container");
+    var overlay = $(".overlay");
+
     menuSearchContainer.slideUp();
     navIcon.css({"visibility":"visible"}).fadeTo("slow", 1);
+    overlay.fadeOut("slow");
   }
 
   // Open search container when ".search-open" is clicked
@@ -13,8 +16,12 @@ $(document).ready(function() {
     event.stopPropagation(); // Prevent the click from propagating to the document
     var menuSearchContainer = $(".menu-search-container");
     var navIcon = $(".menu-search-icon");
+    var overlay = $(".overlay");
 
     if (menuSearchContainer.is(":hidden")) {
+      // Show overlay with fade effect
+      overlay.fadeIn("slow");
+
       menuSearchContainer.slideDown(function() {
         navIcon.css({"visibility":"hidden"}).fadeTo("slow", 0);
       });
