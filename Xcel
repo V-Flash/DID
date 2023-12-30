@@ -27,7 +27,7 @@ $(document).ready(function() {
   });
 
   // Close search container when clicking outside of it
-  $(document).click(function(event) {
+  $(document).on("click", function(event) {
     var menuSearchContainer = $(".menu-search-container");
 
     // Check if the click is outside the search container
