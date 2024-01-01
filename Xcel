@@ -1,21 +1,14 @@
 $(function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 2500,
-      max: 12000,
-      values: [ 0, 12000 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "₹" + ui.values[ 0 ] + " - ₹" + ui.values[ 1 ] );
-      }
+    $("#slider-range").slider({
+        range: true,
+        min: 2500,
+        max: 12000,
+        values: [0, 12000],
+        slide: function(event, ui) {
+            $("#amount").val("Min: " + ui.values[0] + " - Max: " + ui.values[1]);
+        }
     });
-    $( "#amount" ).val( "₹" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - ₹" + $( "#slider-range" ).slider( "values", 1 ) );
+
+    $("#amount").val("Min: " + $("#slider-range").slider("values", 0) +
+        " - Max: " + $("#slider-range").slider("values", 1));
 });
-            <div class="catagories-under price-under"> 
-              <div class="price-range-slider">
-							  <p class="range-value">
-							    <input type="text" id="amount" readonly>
-							  </p>
-							  <div id="slider-range" class="range-bar"></div>
-							</div>
-            </div>
