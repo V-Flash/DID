@@ -11,3 +11,11 @@ $(function() {
     $( "#amount" ).val( "₹" + $( "#slider-range" ).slider( "values", 0 ) +
       " - ₹" + $( "#slider-range" ).slider( "values", 1 ) );
 });
+            <div class="catagories-under price-under"> 
+              <div class="price-range-slider">
+							  <p class="range-value">
+							    <input type="text" id="amount" readonly>
+							  </p>
+							  <div id="slider-range" class="range-bar"></div>
+							</div>
+            </div>
