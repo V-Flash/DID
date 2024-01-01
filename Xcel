@@ -1,15 +1,6 @@
-.btn-2::before {
-  background-color: rgb(28, 31, 30);
-  transition: 0.3s ease-out;
-}
+<a href="" class="hover-slide-right"><div class="card-body">
+									    <p class="card-text">sculptures</p>
+									    <i class="bi bi-arrow-right-short right-arw-icon"></i>
+									  </div></a>
 
-.btn.hover-slide-right::before {
-  top: 0; bottom: 0; left: 0; 
-  height: 100%; width: 0%;
-}
-.btn.hover-slide-right:hover::before {
-  width: 100%;
-}
-  <button class="btn btn-2 hover-slide-right">
-    <span>hover me</span>
-  </button>
+.owl-1 .card-gray .card-body{background-color: #abbcbc;}
