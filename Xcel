@@ -1,6 +1,34 @@
-<a href="" class="hover-slide-right"><div class="card-body">
-									    <p class="card-text">sculptures</p>
-									    <i class="bi bi-arrow-right-short right-arw-icon"></i>
-									  </div></a>
+<style>
+  .hover-slide-right::before {
+    background-color: rgb(28, 31, 30);
+    transition: 0.3s ease-out;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+  }
 
-.owl-1 .card-gray .card-body{background-color: #abbcbc;}
+  .hover-slide-right:hover::before {
+    width: 100%;
+  }
+
+  .card-body {
+    position: relative;
+    z-index: 1; /* Ensure the content is above the pseudo-element */
+  }
+
+  .owl-1 .card-gray .card-body {
+    background-color: #abbcbc;
+  }
+</style>
+
+<a href="" class="hover-slide-right">
+  <div class="card-body">
+    <p class="card-text">sculptures</p>
+    <i class="bi bi-arrow-right-short right-arw-icon"></i>
+  </div>
+</a>
