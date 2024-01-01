@@ -1,39 +1,31 @@
-.owl-1 .card-body::before {
-    transition: 0.3s ease-out;
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    z-index: -1; 
-}
+// Initialize Fancybox on the main slider
+$('.zoom-img').on('click', function() {
+  var images = $('.zoom');
+  var currentIndex = images.index(this);
 
-.pro-1 .owl-item:nth-child(4n+1) .card-body::before{background-color: #c97548;}
-.pro-1 .owl-item:nth-child(4n+2) .card-body::before{background-color: #8ac2ca;}
-.pro-1 .owl-item:nth-child(4n+3) .card-body::before{background-color: #abbcbc;}
-.pro-1 .owl-item:nth-child(4n+4) .card-body::before{background-color: #99b88d;}
+  $.fancybox.open(images, {
+    thumbs: {
+      autoStart: true,
+      axis: 'y'
+    },
+    loop: true,
+    index: currentIndex
+  });
 
-.owl-1 .card-body:hover::before {
-    width: 100%;
-}
+  return false;
+});
 
-.owl-1 .card-body {
-    position: relative;
-    z-index: 1;
-}
 
-div class="">
-								<a href="">
-									<div class="pro-img">
-										<div class="card">
-										  <img src="assets/images/pro1.png" class="img-fluid pro-card-img" alt="...">
-										  <div class="card-body">
-										    <p class="card-text">sculptures</p>
-										    <i class="bi bi-arrow-right-short right-arw-icon"></i>
-										  </div>
-										</div>
-							  	</div>
-						  	</a>
-							</div>
+<div class="image-container zoom" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+<a href="assets/images/video-img.png" class="zoom-img" data-fancybox="gallery">
+	<img src="assets/images/video-img.png" class="img-fluid" alt=""/>
+	<div class="icon-container">
+		<i class="bi bi-play-circle-fill play-btn"></i>
+	</div>
+</a>
+</div>	
+
+		<!-- FancyBox Js -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+error VM79705 jquery.fancybox.min.js:12 Uncaught ReferenceError: jQuery is not defined
