@@ -1,2 +1,25 @@
-background:#b54b22
-linkcolour : #ffffff
+.owl-1 .card-body::before {
+    transition: 0.3s ease-out;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    z-index: -1; 
+}
+
+.pro-1 .owl-item:nth-child(4n+1) .card-body::before{background-color: #c97548;}
+.pro-1 .owl-item:nth-child(4n+2) .card-body::before{background-color: #8ac2ca;}
+.pro-1 .owl-item:nth-child(4n+3) .card-body::before{background-color: #abbcbc;}
+.pro-1 .owl-item:nth-child(4n+4) .card-body::before{background-color: #99b88d;}
+
+.owl-1 .card-body:hover::before {
+    width: 100%;
+}
+
+.owl-1 .card-body {
+    position: relative;
+    z-index: 1;
+}
