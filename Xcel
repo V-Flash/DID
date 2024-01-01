@@ -1,14 +1,41 @@
-$(function() {
-    $("#slider-range").slider({
-        range: true,
-        min: 2500,
-        max: 12000,
-        values: [0, 12000],
-        slide: function(event, ui) {
-            $("#amount").val("Min: " + ui.values[0] + " - Max: " + ui.values[1]);
-        }
-    });
+<style>
+    .range-bar {
+        width: 80%; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the slider */
+    }
 
-    $("#amount").val("Min: " + $("#slider-range").slider("values", 0) +
-        " - Max: " + $("#slider-range").slider("values", 1));
-});
+    #amount {
+        display: flex;
+        justify-content: space-between; /* Add space between Min and Max values */
+        padding: 10px; /* Add padding for better visual appearance */
+        font-size: 14px; /* Adjust font size as needed */
+    }
+
+    #amount span {
+        flex: 1; /* Equal space distribution for Min and Max values */
+    }
+</style>
+
+<script>
+    $(function() {
+        $("#slider-range").slider({
+            range: true,
+            min: 2500,
+            max: 12000,
+            values: [0, 12000],
+            slide: function(event, ui) {
+                $("#amount").html("<span>Min:</span> " + ui.values[0] + "<span>Max:</span> " + ui.values[1]);
+            }
+        });
+
+        $("#amount").html("<span>Min:</span> " + $("#slider-range").slider("values", 0) +
+            "<span>Max:</span> " + $("#slider-range").slider("values", 1));
+    });
+</script>
+
+<div class="catagories-under price-under">
+    <div class="price-range-slider">
+        <p class="range-value" id="amount"></p>
+        <div id="slider-range" class="range-bar"></div>
+    </div>
+</div>
