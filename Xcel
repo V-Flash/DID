@@ -23,3 +23,17 @@
     position: relative;
     z-index: 1;
 }
+
+div class="">
+								<a href="">
+									<div class="pro-img">
+										<div class="card">
+										  <img src="assets/images/pro1.png" class="img-fluid pro-card-img" alt="...">
+										  <div class="card-body">
+										    <p class="card-text">sculptures</p>
+										    <i class="bi bi-arrow-right-short right-arw-icon"></i>
+										  </div>
+										</div>
+							  	</div>
+						  	</a>
+							</div>
