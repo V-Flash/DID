@@ -4,40 +4,34 @@
         margin: 0 auto; /* Center the slider */
     }
 
-    #amount {
+    .min-max-container {
         display: flex;
         justify-content: space-between; /* Add space between Min and Max values */
         padding: 10px; /* Add padding for better visual appearance */
         font-size: 14px; /* Adjust font size as needed */
     }
 
-    #amount span {
+    .min-max-container div {
         flex: 1; /* Equal space distribution for Min and Max values */
-    }
-
-    #min-label,
-    #max-label {
-        text-align: left;
-        flex: 0; /* Disable flex for labels to keep them on the left and right */
     }
 </style>
 
 <script>
     function initializeSlider() {
-        var amountElement = document.getElementById("amount");
+        var minMaxContainer = document.getElementById("min-max-container");
 
         $("#slider-range").slider({
             range: true,
             min: 2500,
             max: 12000,
-            values: [0, 12000],
+            values: [2500, 12000],
             slide: function(event, ui) {
-                amountElement.innerHTML = "<span id='min-label'>Min:</span> " + ui.values[0] + "<span id='max-label'>Max:</span> " + ui.values[1];
+                minMaxContainer.innerHTML = "<div><span>Min:</span> " + ui.values[0] + "</div><div><span>Max:</span> " + ui.values[1] + "</div>";
             }
         });
 
-        amountElement.innerHTML = "<span id='min-label'>Min:</span> " + $("#slider-range").slider("values", 0) +
-            "<span id='max-label'>Max:</span> " + $("#slider-range").slider("values", 1);
+        minMaxContainer.innerHTML = "<div><span>Min:</span> " + $("#slider-range").slider("values", 0) +
+            "</div><div><span>Max:</span> " + $("#slider-range").slider("values", 1) + "</div>";
     }
 
     $(document).ready(function() {
@@ -47,7 +41,7 @@
 
 <div class="catagories-under price-under">
     <div class="price-range-slider">
-        <p class="range-value" id="amount"></p>
+        <div class="min-max-container" id="min-max-container"></div>
         <div id="slider-range" class="range-bar"></div>
     </div>
 </div>
