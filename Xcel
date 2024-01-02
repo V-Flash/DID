@@ -11,7 +11,7 @@
         font-size: 14px; /* Adjust font size as needed */
     }
 
-    .min-max-container div {
+    .min-max-item {
         flex: 1; /* Equal space distribution for Min and Max values */
     }
 </style>
@@ -26,12 +26,12 @@
             max: 12000,
             values: [2500, 12000],
             slide: function(event, ui) {
-                minMaxContainer.innerHTML = "<div><span>Min:</span> " + ui.values[0] + "</div><div><span>Max:</span> " + ui.values[1] + "</div>";
+                minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min:</span> " + ui.values[0] + "</div><div class='min-max-item'><span>Max:</span> " + ui.values[1] + "</div>";
             }
         });
 
-        minMaxContainer.innerHTML = "<div><span>Min:</span> " + $("#slider-range").slider("values", 0) +
-            "</div><div><span>Max:</span> " + $("#slider-range").slider("values", 1) + "</div>";
+        minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min:</span> " + $("#slider-range").slider("values", 0) +
+            "</div><div class='min-max-item'><span>Max:</span> " + $("#slider-range").slider("values", 1) + "</div>";
     }
 
     $(document).ready(function() {
