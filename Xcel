@@ -1,47 +1,18 @@
-<style>
-    .range-bar {
-        width: 80%; /* Adjust the width as needed */
-        margin: 0 auto; /* Center the slider */
-    }
+.banner-title{
+    position: relative;
+    font-size: 43px;
+    color: #891f1f;
+    font-weight: 600;
+}
 
-    .min-max-container {
-        display: flex;
-        justify-content: space-between; /* Add space between Min and Max values */
-        padding: 10px; /* Add padding for better visual appearance */
-        font-size: 14px; /* Adjust font size as needed */
-    }
 
-    .min-max-item {
-        flex: 1; /* Equal space distribution for Min and Max values */
-    }
-</style>
 
-<script>
-    function initializeSlider() {
-        var minMaxContainer = document.getElementById("min-max-container");
-
-        $("#slider-range").slider({
-            range: true,
-            min: 2500,
-            max: 12000,
-            values: [2500, 12000],
-            slide: function(event, ui) {
-                minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min:</span> " + ui.values[0] + "</div><div class='min-max-item'><span>Max:</span> " + ui.values[1] + "</div>";
-            }
-        });
-
-        minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min:</span> " + $("#slider-range").slider("values", 0) +
-            "</div><div class='min-max-item'><span>Max:</span> " + $("#slider-range").slider("values", 1) + "</div>";
-    }
-
-    $(document).ready(function() {
-        initializeSlider();
-    });
-</script>
-
-<div class="catagories-under price-under">
-    <div class="price-range-slider">
-        <div class="min-max-container" id="min-max-container"></div>
-        <div id="slider-range" class="range-bar"></div>
-    </div>
-</div>
+.banner-title:before {
+    content: '';
+    position: absolute;
+    background: #891f1f;
+    width: 4%;
+    height: 8%;
+    top: 50%;
+    margin-left: 12px;
+}
