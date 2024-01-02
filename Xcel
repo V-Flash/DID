@@ -1,18 +1,15 @@
-.banner-title{
-    position: relative;
-    font-size: 43px;
-    color: #891f1f;
-    font-weight: 600;
-}
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck1">
+                  <label class="form-check-label" for="customCheck1">Select All</label>
+                </div>
 
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck2">
+                  <label class="form-check-label" for="customCheck2">Vase</label>
+                </div>
 
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck3">
+                  <label class="form-check-label" for="customCheck3">Plates & Bowls</label>
+                </div>
 
-.banner-title:before {
-    content: '';
-    position: absolute;
-    background: #891f1f;
-    width: 4%;
-    height: 8%;
-    top: 50%;
-    margin-left: 12px;
-}
