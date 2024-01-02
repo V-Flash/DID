@@ -14,6 +14,12 @@
     #amount span {
         flex: 1; /* Equal space distribution for Min and Max values */
     }
+
+    #min-label,
+    #max-label {
+        text-align: left;
+        flex: 0; /* Disable flex for labels to keep them on the left and right */
+    }
 </style>
 
 <script>
@@ -26,12 +32,12 @@
             max: 12000,
             values: [0, 12000],
             slide: function(event, ui) {
-                amountElement.innerHTML = "<span>Min:</span> " + ui.values[0] + "<span>Max:</span> " + ui.values[1];
+                amountElement.innerHTML = "<span id='min-label'>Min:</span> " + ui.values[0] + "<span id='max-label'>Max:</span> " + ui.values[1];
             }
         });
 
-        amountElement.innerHTML = "<span>Min:</span> " + $("#slider-range").slider("values", 0) +
-            "<span>Max:</span> " + $("#slider-range").slider("values", 1);
+        amountElement.innerHTML = "<span id='min-label'>Min:</span> " + $("#slider-range").slider("values", 0) +
+            "<span id='max-label'>Max:</span> " + $("#slider-range").slider("values", 1);
     }
 
     $(document).ready(function() {
