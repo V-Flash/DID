@@ -17,19 +17,25 @@
 </style>
 
 <script>
-    $(function() {
+    function initializeSlider() {
+        var amountElement = document.getElementById("amount");
+
         $("#slider-range").slider({
             range: true,
             min: 2500,
             max: 12000,
             values: [0, 12000],
             slide: function(event, ui) {
-                $("#amount").html("<span>Min:</span> " + ui.values[0] + "<span>Max:</span> " + ui.values[1]);
+                amountElement.innerHTML = "<span>Min:</span> " + ui.values[0] + "<span>Max:</span> " + ui.values[1];
             }
         });
 
-        $("#amount").html("<span>Min:</span> " + $("#slider-range").slider("values", 0) +
-            "<span>Max:</span> " + $("#slider-range").slider("values", 1));
+        amountElement.innerHTML = "<span>Min:</span> " + $("#slider-range").slider("values", 0) +
+            "<span>Max:</span> " + $("#slider-range").slider("values", 1);
+    }
+
+    $(document).ready(function() {
+        initializeSlider();
     });
 </script>
 
