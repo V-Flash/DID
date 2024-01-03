@@ -1,10 +1,8 @@
-$(window).on('load', function() {
-  // Slick slider initialization code here
-  $('.rtl-slider').slick({
-    // your settings
-  });
+					    	 	<a href="" data-bs-toggle="modal" data-bs-target="#ProductModel1" class="btn btn-dark black-btn show-btn">
+					    	 		<i class="bi bi-eye"></i>
+					    	 	</a>
 
-  $('.rtl-slider-nav').slick({
-    // your settings
-  });
-});
+<span class="thumb-prev slick-arrow" style=""></span>
+
+when user click on show-btn make this <span class="thumb-prev slick-arrow" style=""></span>
+ auto click 2 times
