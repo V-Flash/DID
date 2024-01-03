@@ -18,18 +18,26 @@
     var ratingContainer = document.getElementById("ratingContainer");
     var stars = ratingContainer.querySelectorAll(".ratings i");
 
-    // Add click event listener to each star
+    // Add mouseenter event listener to each star
     stars.forEach(function(star, index) {
-        star.addEventListener("click", function() {
+        star.addEventListener("mouseenter", function() {
             // Remove the "rating-active" class from all stars
             stars.forEach(function(innerStar) {
                 innerStar.classList.remove("rating-active");
             });
 
-            // Mark the clicked star and all previous stars as active
+            // Mark the hovered star and all previous stars as active
             for (var i = 0; i <= index; i++) {
                 stars[i].classList.add("rating-active");
             }
+        });
+
+        // Add mouseleave event listener to reset the stars on mouse out
+        star.addEventListener("mouseleave", function() {
+            // Remove the "rating-active" class from all stars on mouse leave
+            stars.forEach(function(innerStar) {
+                innerStar.classList.remove("rating-active");
+            });
         });
     });
 </script>
