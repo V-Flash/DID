@@ -14,20 +14,22 @@
 </div>
 
 <script>
-    // Number of stars to set as active
-    var activeStars = 3;
-
     // Select the star container
     var ratingContainer = document.getElementById("ratingContainer");
     var stars = ratingContainer.querySelectorAll(".ratings i");
 
-    // Remove the "rating-active" class from all stars
-    stars.forEach(function(star) {
-        star.classList.remove("rating-active");
-    });
+    // Add click event listener to each star
+    stars.forEach(function(star, index) {
+        star.addEventListener("click", function() {
+            // Remove the "rating-active" class from all stars
+            stars.forEach(function(innerStar) {
+                innerStar.classList.remove("rating-active");
+            });
 
-    // Mark the desired number of stars as active
-    for (var i = 0; i < activeStars; i++) {
-        stars[i].classList.add("rating-active");
-    }
+            // Mark the clicked star and all previous stars as active
+            for (var i = 0; i <= index; i++) {
+                stars[i].classList.add("rating-active");
+            }
+        });
+    });
 </script>
