@@ -3,10 +3,10 @@
     <div class="review-card card" id="ratingContainer">
         <div class="d-flex">
             <div class="ratings">
-                <i class="fa fa-star rating-active"></i>
-                <i class="fa fa-star rating-active"></i>
-                <i class="fa fa-star rating-active"></i>
-                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
             </div>
         </div>
@@ -14,13 +14,20 @@
 </div>
 
 <script>
-    // Select the third star and mark it as active
+    // Number of stars to set as active
+    var activeStars = 3;
+
+    // Select the star container
     var ratingContainer = document.getElementById("ratingContainer");
     var stars = ratingContainer.querySelectorAll(".ratings i");
 
-    // Assuming you want to select the third star (index 2, as indexing starts from 0)
-    var selectedStarIndex = 2;
+    // Remove the "rating-active" class from all stars
+    stars.forEach(function(star) {
+        star.classList.remove("rating-active");
+    });
 
-    // Mark the selected star as active
-    stars[selectedStarIndex].classList.add("rating-active");
+    // Mark the desired number of stars as active
+    for (var i = 0; i < activeStars; i++) {
+        stars[i].classList.add("rating-active");
+    }
 </script>
