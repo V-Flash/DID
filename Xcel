@@ -1,29 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Product Page</title>
+  <!-- Add your CSS and Bootstrap links here -->
+</head>
+<body>
 
-				<nav>
-				  <div class="nav nav-tabs product-tab justify-content-center" id="nav-tab" role="tablist">
-				    
-				    <button class="nav-link text-muted" id="decs-tab" data-bs-toggle="tab" data-bs-target="#decs" type="button" role="tab" aria-controls="decs" aria-selected="true">Description</button>
+<nav>
+  <div class="nav nav-tabs product-tab justify-content-center" id="nav-tab" role="tablist">
+    <button class="nav-link text-muted" id="decs-tab" data-bs-toggle="tab" data-bs-target="#decs" type="button" role="tab" aria-controls="decs" aria-selected="true">Description</button>
+    <button class="nav-link text-muted" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Additional information</button>
+    <button class="nav-link text-muted active" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Reviews(1)</button>
+  </div>
+</nav>
 
-				    <button class="nav-link text-muted" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Additional information</button>
-
-				    <button class="nav-link text-muted active" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Reviews(1)</button>
-
-				  </div>
-				</nav>
-
-				<div class="tab-content" id="nav-tabContent">
-
-				  <div class="tab-pane fade tabcontent" id="decs" role="tabpanel" aria-labelledby="decs-tab" tabindex="0">
-                </div>
-
-                
-				  <div class="tab-pane fade tabcontent" id="info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
-                </div>
-
-				  <div class="tab-pane fade show active tabcontent" id="review" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade tabcontent" id="decs" role="tabpanel" aria-labelledby="decs-tab" tabindex="0">
+    <!-- Add your description content here -->
+  </div>
+  <div class="tab-pane fade tabcontent" id="info" role="tabpanel" aria-labelledby="info-tab" tabindex="0">
+    <!-- Add your additional information content here -->
+  </div>
+  <div class="tab-pane fade show active tabcontent" id="review" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
+    <!-- Add your review content here -->
+  </div>
 </div>
 
+<!-- Add a Review link with href and JavaScript -->
+<a href="#review" class="add-review" onclick="switchToReviewTab()">Add a Review</a>
 
- <a href="" class="add-review">Add a Review</a> 
+<!-- Add your JavaScript script -->
+<script>
+  function switchToReviewTab() {
+    // Trigger the click event on the "Review" tab
+    document.getElementById('review-tab').click();
+  }
+</script>
 
-i and jumplink to id="review" tab when click on add a revuew link
+<!-- Add your Bootstrap and other script links here -->
+
+</body>
+</html>
