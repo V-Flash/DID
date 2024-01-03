@@ -1,15 +1,61 @@
-$('.zoom-img').on('click', function() {
-  var images = $('.zoom');
-  var currentIndex = images.index(this);
+<!-- Product list -->
+<div class="product" data-price="100">
+    Product 5 (Weight 30g)
+    <div data-price="100">Price ₹100</div>
+</div>
 
-  $.fancybox.open(images, {
-    thumbs: {
-      autoStart: true,
-      axis: 'y'
-    },
-    loop: true,
-    index: currentIndex
-  });
+<div class="product" data-price="150">
+    Product 3 (Weight 20g)
+    <div data-price="150">Price ₹150</div>
+</div>
 
-  return false;
-});
+<!-- Message for no products found -->
+<p class="no-products-found" style="display: none;">No products found.</p>
+
+<div id="min-max-container"></div>
+<div id="slider-range"></div>
+
+<script>
+    function initializeSlider() {
+        var minMaxContainer = document.getElementById("min-max-container");
+
+        $("#slider-range").slider({
+            range: true,
+            min: 100,
+            max: 500,
+            values: [100, 500],
+            slide: function(event, ui) {
+                minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min Price:</span> ₹" + ui.values[0] + "</div><div class='min-max-item'><span>Max Price:</span> ₹" + ui.values[1] + "</div>";
+                filterProducts();
+            }
+        });
+
+        minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min Price:</span> ₹" + $("#slider-range").slider("values", 0) +
+            "</div><div class='min-max-item'><span>Max Price:</span> ₹" + $("#slider-range").slider("values", 1) + "</div>";
+    }
+
+    $(document).ready(function() {
+        initializeSlider();
+
+        function filterProducts() {
+            var selectedPrices = $("#slider-range").slider("values");
+
+            var productsToShow = $('.product').filter(function() {
+                var productPrice = parseInt($(this).data('price'));
+
+                var priceMatch = (selectedPrices[0] === 100 && selectedPrices[1] === 500) || (productPrice >= selectedPrices[0] && productPrice <= selectedPrices[1]);
+
+                return priceMatch;
+            });
+
+            if (productsToShow.length === 0) {
+                $('.no-products-found').show();
+            } else {
+                $('.no-products-found').hide();
+            }
+
+            $('.product').hide();
+            productsToShow.show();
+        }
+    });
+</script>
