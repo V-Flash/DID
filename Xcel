@@ -1,9 +1,96 @@
-	      <div class="catagories-side-bar padding-bottom-50">
-	        <h4>Price</h4>
-						<div class="catagories-under price-under">
-					    <div class="price-range-slider">
-				        <div id="slider-range" class="range-bar"></div>
-				        <div class="min-max-container" id="min-max-container"></div>
-					    </div>
-						</div>
-	      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Range Slider</title>
+    <!-- Include jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Include your CSS styles -->
+    <style>
+        .range-bar {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .min-max-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="catagories-side-bar padding-bottom-50">
+    <h4>Price</h4>
+    <div class="catagories-under price-under">
+        <div class="price-range-slider">
+            <div id="slider-range" class="range-bar"></div>
+            <div class="min-max-container" id="min-max-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Product list -->
+<div class="product" data-price="100">
+    Product 5 (Weight 30g)
+    <div data-price="100">Price ₹100</div>
+</div>
+
+<div class="product" data-price="150">
+    Product 3 (Weight 20g)
+    <div data-price="150">Price ₹150</div>
+</div>
+
+<!-- Message for no products found -->
+<p class="no-products-found" style="display: none;">No products found.</p>
+
+<script>
+    function initializeSlider() {
+        var minMaxContainer = document.getElementById("min-max-container");
+
+        $("#slider-range").slider({
+            range: true,
+            min: 100,
+            max: 500,
+            values: [100, 500],
+            slide: function (event, ui) {
+                minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min Price:</span> ₹" + ui.values[0] + "</div><div class='min-max-item'><span>Max Price:</span> ₹" + ui.values[1] + "</div>";
+                filterProducts();
+            }
+        });
+
+        minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min Price:</span> ₹" + $("#slider-range").slider("values", 0) +
+            "</div><div class='min-max-item'><span>Max Price:</span> ₹" + $("#slider-range").slider("values", 1) + "</div>";
+    }
+
+    function filterProducts() {
+        var selectedPrices = $("#slider-range").slider("values");
+
+        var productsToShow = $('.product').filter(function() {
+            var productPrice = parseInt($(this).data('price'));
+
+            var priceMatch = (selectedPrices[0] === 100 && selectedPrices[1] === 500) || (productPrice >= selectedPrices[0] && productPrice <= selectedPrices[1]);
+
+            return priceMatch;
+        });
+
+        if (productsToShow.length === 0) {
+            $('.no-products-found').show();
+        } else {
+            $('.no-products-found').hide();
+        }
+
+        $('.product').hide();
+        productsToShow.show();
+    }
+
+    $(document).ready(function () {
+        initializeSlider();
+
+        // Add event listeners or integrate your existing JavaScript logic here
+    });
+</script>
+
+</body>
+</html>
