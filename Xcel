@@ -9,10 +9,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Include your CSS styles -->
     <style>
-        .range-bar {
-            width: 100%;
-            margin-top: 10px;
-        }
         .min-max-item {
             display: inline-block;
             margin-right: 10px;
@@ -25,7 +21,7 @@
     <h4>Price</h4>
     <div class="catagories-under price-under">
         <div class="price-range-slider">
-            <div id="slider-range" class="range-bar"></div>
+            <div id="slider-range"></div>
             <div class="min-max-container" id="min-max-container"></div>
         </div>
     </div>
