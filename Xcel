@@ -1,14 +1,30 @@
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+<!-- Include AOS library -->
+<script src="path/to/aos.js"></script>
 
-	<div class="container" data-aos="fade-up">
-		<div class="row">
-			<div class="col-md-12">	
+<!-- Your HTML code -->
 
-				<nav>
-				  <div class="nav nav-tabs product-tab justify-content-center" id="nav-tab" role="tablist">
-        <nav>
-  </div>
-</div>
-</div>
+<script>
+  $(document).ready(function() {
+    // Initialize AOS
+    AOS.init();
 
-i have use bootstap 5 tab and aos so the problem is then i scoll to the nav-tab section is not showing up but whne i get to the bottom of the page then it show it is beacue of aos so is there and soluction for this?
+    // Add an event listener to the tab to reinitialize AOS when the tab is shown
+    $('#nav-tab').on('shown.bs.tab', function (e) {
+      AOS.refresh();
+    });
+
+    // Add an event listener to check if the user has scrolled to the nav-tab section
+    $(window).on('scroll', function() {
+      var navTabSection = $('.container[data-aos="fade-up"]');
+      var windowHeight = $(window).height();
+      var scrollTop = $(window).scrollTop();
+
+      if (scrollTop + windowHeight > navTabSection.offset().top) {
+        AOS.refresh();
+      }
+    });
+  });
+</script>
