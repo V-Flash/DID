@@ -42,21 +42,36 @@
         });
 
         function filterProducts() {
-            // Your existing filterProducts logic here
+            var checkedCategories = $('.filter:checked').map(function() {
+                return $(this).data('category').toString();
+            }).get();
 
-            // Example:
-            // var checkedCategories = $('.filter:checked').map(function() { /* ... */ }).get();
-            // var selectedWeights = $('.weight-filter:checked').map(function() { /* ... */ }).get();
-            // var selectedPrices = $("#slider-range").slider("values");
+            var selectedWeights = $('.weight-filter:checked').map(function() {
+                return parseInt($(this).data('weight'));
+            }).get();
 
-            // Update your product filtering logic accordingly
+            var selectedPrices = $("#slider-range").slider("values");
 
-            // ...
+            var productsToShow = $('.product').filter(function() {
+                var productCategories = ($(this).data('categories').toString()).split(' ');
+                var productWeight = parseInt($(this).data('weight'));
+                var productPrice = parseInt($(this).data('price'));
 
-            // Display or hide products based on the filtering results
-            // and show/hide the "No products found" message as needed
+                var categoryMatch = checkedCategories.length === 0 || productCategories.some(category => checkedCategories.includes(category));
+                var weightMatch = selectedWeights.length === 0 || selectedWeights.includes(productWeight);
+                var priceMatch = (selectedPrices[0] === 100 && selectedPrices[1] === 500) || (productPrice >= selectedPrices[0] && productPrice <= selectedPrices[1]);
 
-            // ...
+                return categoryMatch && weightMatch && priceMatch;
+            });
+
+            if (productsToShow.length === 0) {
+                $('.no-products-found').show();
+            } else {
+                $('.no-products-found').hide();
+            }
+
+            $('.product').hide();
+            productsToShow.show();
         }
     });
 </script>
