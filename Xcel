@@ -18,26 +18,49 @@
     var ratingContainer = document.getElementById("ratingContainer");
     var stars = ratingContainer.querySelectorAll(".ratings i");
 
-    // Add mouseenter event listener to each star
-    stars.forEach(function(star, index) {
-        star.addEventListener("mouseenter", function() {
-            // Remove the "rating-active" class from all stars
-            stars.forEach(function(innerStar) {
-                innerStar.classList.remove("rating-active");
-            });
+    var activeStars = 0; // Variable to store the active stars
 
-            // Mark the hovered star and all previous stars as active
-            for (var i = 0; i <= index; i++) {
-                stars[i].classList.add("rating-active");
-            }
+    // Add click event listener to each star
+    stars.forEach(function(star, index) {
+        star.addEventListener("click", function() {
+            // Update the active stars on click
+            activeStars = index + 1;
+
+            // Remove the "rating-active" class from all stars
+            stars.forEach(function(innerStar, innerIndex) {
+                innerStar.classList.remove("rating-active");
+
+                // Mark the clicked star and all previous stars as active
+                if (innerIndex < activeStars) {
+                    innerStar.classList.add("rating-active");
+                }
+            });
         });
 
-        // Add mouseleave event listener to reset the stars on mouse out
+        // Add mouseenter event listener to show hover effect
+        star.addEventListener("mouseenter", function() {
+            // Remove the "rating-active" class from all stars
+            stars.forEach(function(innerStar, innerIndex) {
+                innerStar.classList.remove("rating-active");
+
+                // Show hover effect for the hovered star and all previous stars
+                if (innerIndex <= index) {
+                    innerStar.classList.add("rating-active");
+                }
+            });
+        });
+
+        // Add mouseleave event listener to reset the hover effect on mouse out
         star.addEventListener("mouseleave", function() {
             // Remove the "rating-active" class from all stars on mouse leave
             stars.forEach(function(innerStar) {
                 innerStar.classList.remove("rating-active");
             });
+
+            // Set the active stars when mouse leaves based on the click event
+            for (var i = 0; i < activeStars; i++) {
+                stars[i].classList.add("rating-active");
+            }
         });
     });
 </script>
