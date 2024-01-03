@@ -1,30 +1,26 @@
-										<div class="d-flex gap-3">
-											<p class="mb-0">Your rating*</p>
-											<div class="review-card card">
-								        <div class="d-flex">
-							            <div class="ratings">
-						                <i class="fa fa-star rating-active"></i>
-						                <i class="fa fa-star rating-active"></i>
-						                <i class="fa fa-star rating-active"></i>
-						                <i class="fa fa-star rating-color"></i>
-						                <i class="fa fa-star"></i>
-							            </div>
-								        </div>
-					        		</div>
+<div class="d-flex gap-3">
+    <p class="mb-0">Your rating*</p>
+    <div class="review-card card" id="ratingContainer">
+        <div class="d-flex">
+            <div class="ratings">
+                <i class="fa fa-star rating-active"></i>
+                <i class="fa fa-star rating-active"></i>
+                <i class="fa fa-star rating-active"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
-										</div>
+<script>
+    // Select the third star and mark it as active
+    var ratingContainer = document.getElementById("ratingContainer");
+    var stars = ratingContainer.querySelectorAll(".ratings i");
 
+    // Assuming you want to select the third star (index 2, as indexing starts from 0)
+    var selectedStarIndex = 2;
 
-.ratings{
-    margin-right:10px;
-}
-
-.ratings i{
-    color:#cecece;
-    font-size:16px;
-}
-
-.rating-active{
-    color:#fbc634 !important;
-}
- i want js to to select start rating 
+    // Mark the selected star as active
+    stars[selectedStarIndex].classList.add("rating-active");
+</script>
