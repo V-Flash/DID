@@ -1,49 +1,9 @@
-<style>
-  .custom-select {
-    position: relative;
-    width: 150px;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    background-color: #fff;
-  }
-
-  .custom-select select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 100%;
-    padding: 8px;
-    border: none;
-    box-sizing: border-box;
-    cursor: pointer;
-  }
-
-  .custom-options {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-  }
-
-  .custom-select:hover .custom-options {
-    display: block;
-  }
-
-  .custom-option:hover {
-    background-color: #c0c0c0;
-  }
-</style>
-
-<div class="custom-select">
-  <select>
-    <option selected>Showing 1-9</option>
-    <option value="1">Showing 1-12</option>
-    <option value="2">Showing 1-15</option>
-  </select>
-  <div class="custom-options">
-    <div class="custom-option">Showing 1-9</div>
-    <div class="custom-option" value="1">Showing 1-12</div>
-    <div class="custom-option" value="2">Showing 1-15</div>
-  </div>
-</div>
+	      <div class="catagories-side-bar padding-bottom-50">
+	        <h4>Price</h4>
+						<div class="catagories-under price-under">
+					    <div class="price-range-slider">
+				        <div id="slider-range" class="range-bar"></div>
+				        <div class="min-max-container" id="min-max-container"></div>
+					    </div>
+						</div>
+	      </div>
