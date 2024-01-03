@@ -1,5 +1,24 @@
-<select class="form-select show-box-select" aria-label="Default select example">
-              	<option selected>Showing 1-9</option>
-                <option value="1">Showing 1-12</option>
-                <option value="2">Showing 1-15</option>
-              </select>
+<!-- Your HTML code with the select element -->
+<select class="form-select show-box-select" aria-label="Default select example" id="mySelect">
+  <option selected>Showing 1-9</option>
+  <option value="1">Showing 1-12</option>
+  <option value="2">Showing 1-15</option>
+</select>
+
+<script>
+  // Initialize Select2 on your select element
+  $(document).ready(function() {
+    $('#mySelect').select2();
+
+    // You can further customize the appearance and behavior using Select2 options
+    // For example, to change the background color when hovered:
+    $('.select2-results__option').hover(
+      function() {
+        $(this).css('background-color', '#c0c0c0');
+      },
+      function() {
+        $(this).css('background-color', '');
+      }
+    );
+  });
+</script>
