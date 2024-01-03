@@ -1,8 +1,34 @@
-					    	 	<a href="" data-bs-toggle="modal" data-bs-target="#ProductModel1" class="btn btn-dark black-btn show-btn">
-					    	 		<i class="bi bi-eye"></i>
-					    	 	</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Click Example</title>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- Include Bootstrap CSS and JS (for modal) -->
+  <!-- Add your Bootstrap CDN links here -->
+</head>
+<body>
+
+<a href="" data-bs-toggle="modal" data-bs-target="#ProductModel1" class="btn btn-dark black-btn show-btn">
+  <i class="bi bi-eye"></i>
+</a>
 
 <span class="thumb-prev slick-arrow" style=""></span>
 
-when user click on show-btn make this <span class="thumb-prev slick-arrow" style=""></span>
- auto click 2 times
+<!-- Include Bootstrap JS (for modal) -->
+<!-- Add your Bootstrap CDN link here -->
+
+<script>
+  $(document).ready(function() {
+    $(".show-btn").on("click", function() {
+      // Auto click the span element two times
+      $(".thumb-prev").click();
+      $(".thumb-prev").click();
+    });
+  });
+</script>
+
+</body>
+</html>
