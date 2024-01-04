@@ -2,40 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto Click Example</title>
-  <!-- Include jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <!-- Include Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Styled Share Button</title>
+  <style>
+    .share-btn {
+      background-color: #0078D4;
+      color: #fff;
+      border-radius: 50%;
+      padding: 10px;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .share-icon {
+      font-size: 1.5rem;
+    }
+
+    .share-dropdown {
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
 
-<a href="" data-bs-toggle="modal" data-bs-target="#ProductModel1" class="btn btn-dark black-btn show-btn">
-  <i class="bi bi-eye"></i>
-</a>
+<div class="container mt-5">
+  <h1>Styled Share Button</h1>
+  
+  <!-- Share button with styled dropdown -->
+  <div class="position-relative">
+    <button type="button" class="btn share-btn">
+      <i class="bi bi-three-dots share-icon"></i>
+    </button>
+    <div class="dropdown position-absolute top-100 start-50 translate-middle share-dropdown">
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Share on Facebook</a>
+        <a class="dropdown-item" href="#">Share on Twitter</a>
+        <a class="dropdown-item" href="#">Share via Email</a>
+        <a class="dropdown-item" href="#">Copy Link</a>
+        <!-- Add more sharing options as needed -->
+      </div>
+    </div>
+  </div>
+</div>
 
-<span class="thumb-prev slick-arrow" style=""></span>
-
-<!-- Include Bootstrap JS (for modal) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  $(document).ready(function() {
-    $(".show-btn").on("click", function() {
-      // Auto click the span element after a delay
-      setTimeout(function() {
-        $(".thumb-prev").click();
-      }, 500); // Adjust the delay time as needed
-    });
-
-    // Listen for modal shown event
-    $('#ProductModel1').on('shown.bs.modal', function () {
-      // Auto click the span element when the modal is opened
-      $(".thumb-prev").click();
-    });
-  });
-</script>
 
 </body>
 </html>
