@@ -1,21 +1,12 @@
-$(document).ready(function() {
-  var lastScrollTop = 0;
-
-  $(window).scroll(function() {
-    var currentScrollTop = $(this).scrollTop();
-
-    if (currentScrollTop > lastScrollTop) {
-      // Scrolling down
-      $(".header_sticky").removeClass("header_sticky-active");
-    } else {
-      // Scrolling up
-      if (currentScrollTop > 195) {
-        $(".header_sticky").addClass("header_sticky-active");
-      } else {
-        $(".header_sticky").removeClass("header_sticky-active");
-      }
-    }
-
-    lastScrollTop = currentScrollTop;
-  });
-});
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<input type="text" class="form-control input-field careerdata" name="Name" placeholder="Name" value="Video Editor and Motion Graphic Artist">
+<input class="wpcf7-form-control wpcf7-hidden" id="careerdata1" value="" type="hidden" name="career">
+</body>
+</html>
