@@ -1,24 +1,2 @@
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var accordionButtons = document.querySelectorAll('.accordion button');
+i want when user scroll up then add header_sticky-active in  header_sticky div when user scroll down then remove header_sticky-active 
 
-    accordionButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        var plusMinusSign = button.querySelector('.plus-minus-sign');
-
-        accordionButtons.forEach(function (otherButton) {
-          if (otherButton !== button) {
-            var otherPlusMinusSign = otherButton.querySelector('.plus-minus-sign');
-            otherPlusMinusSign.innerText = '+';
-          }
-        });
-
-        if (button.getAttribute('aria-expanded') === 'true') {
-          plusMinusSign.innerText = '-';
-        } else {
-          plusMinusSign.innerText = '+';
-        }
-      });
-    });
-  });
-</script>
