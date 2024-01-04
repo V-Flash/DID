@@ -1,56 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Your regular header styles go here */
-    .header_sticky {
-      background-color: #333;
-      color: #fff;
-      padding: 15px;
-      transition: background-color 0.3s;
-    }
-
-    /* Styling for the active state */
-    .header_sticky-active {
-      background-color: #555;
-    }
-
-    /* Some content to create scrollable space */
-    body {
-      height: 1500px;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Your regular content goes here -->
-
-  <div id="header_sticky" class="header_sticky">
-    <!-- Your header content goes here -->
-    Sticky Header
-  </div>
-
-  <script>
-    // JavaScript to handle scroll events
-    let lastScrollTop = 0;
-
-    window.addEventListener("scroll", function() {
-      let st = window.pageYOffset || document.documentElement.scrollTop;
-      const header = document.getElementById("header_sticky");
-
-      // Check scroll direction and toggle the class
-      if (st > lastScrollTop) {
-        // Scrolling down, remove active class
-        header.classList.remove("header_sticky-active");
-      } else {
-        // Scrolling up, add or toggle active class
-        header.classList.add("header_sticky-active");
-      }
-
-      lastScrollTop = st <= 0 ? 0 : st;
-    });
-  </script>
-</body>
-</html>
+			$(document).ready(function() {
+			  $(window).scroll(function() {
+			    console.log('script running')
+			    if ($(document).scrollTop() > 195) {
+			      $(".header_sticky").addClass("header_sticky-active");
+			    } else {
+			      $(".header_sticky").removeClass("header_sticky-active");
+			    }
+			  });
+			});
