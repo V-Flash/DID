@@ -5,14 +5,24 @@
     accordionButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         var plusMinusSign = button.querySelector('.plus-minus-sign');
-
-        button.addEventListener('shown.bs.collapse', function () {
+        
+        // Toggle the plus-minus sign immediately upon button click
+        if (button.getAttribute('aria-expanded') === 'true') {
           plusMinusSign.innerText = '-';
-        });
-
-        button.addEventListener('hidden.bs.collapse', function () {
+        } else {
           plusMinusSign.innerText = '+';
-        });
+        }
+      });
+      
+      // Add event listener to update the sign after the accordion animation completes
+      button.addEventListener('shown.bs.collapse', function () {
+        var plusMinusSign = button.querySelector('.plus-minus-sign');
+        plusMinusSign.innerText = '-';
+      });
+
+      button.addEventListener('hidden.bs.collapse', function () {
+        var plusMinusSign = button.querySelector('.plus-minus-sign');
+        plusMinusSign.innerText = '+';
       });
     });
   });
