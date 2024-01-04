@@ -1,22 +1,24 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var accordionButton = document.querySelector('#headingTwo button');
-    var plusMinusSign = accordionButton.querySelector('.plus-minus-sign');
+    var accordionButtons = document.querySelectorAll('.accordion button');
 
-    accordionButton.addEventListener('click', function () {
-      if (accordionButton.getAttribute('aria-expanded') === 'true') {
-        plusMinusSign.innerText = '+';
-      } else {
-        plusMinusSign.innerText = '-';
-      }
-    });
+    accordionButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var plusMinusSign = button.querySelector('.plus-minus-sign');
 
-    accordionButton.addEventListener('shown.bs.collapse', function () {
-      plusMinusSign.innerText = '-';
-    });
+        accordionButtons.forEach(function (otherButton) {
+          if (otherButton !== button) {
+            var otherPlusMinusSign = otherButton.querySelector('.plus-minus-sign');
+            otherPlusMinusSign.innerText = '+';
+          }
+        });
 
-    accordionButton.addEventListener('hidden.bs.collapse', function () {
-      plusMinusSign.innerText = '+';
+        if (button.getAttribute('aria-expanded') === 'true') {
+          plusMinusSign.innerText = '-';
+        } else {
+          plusMinusSign.innerText = '+';
+        }
+      });
     });
   });
 </script>
