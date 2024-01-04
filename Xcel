@@ -5,16 +5,14 @@
     accordionButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         var plusMinusSign = button.querySelector('.plus-minus-sign');
-        
-        // Toggle the plus-minus sign immediately upon button click
+
         if (button.getAttribute('aria-expanded') === 'true') {
           plusMinusSign.innerText = '-';
         } else {
           plusMinusSign.innerText = '+';
         }
       });
-      
-      // Add event listener to update the sign after the accordion animation completes
+
       button.addEventListener('shown.bs.collapse', function () {
         var plusMinusSign = button.querySelector('.plus-minus-sign');
         plusMinusSign.innerText = '-';
