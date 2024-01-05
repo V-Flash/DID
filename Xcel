@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-</head>
-<body>
-    <input type="text" class="form-control input-field careerdata" name="Name" placeholder="Name" value="Video Editor and Motion Graphic Artist">
-    <input class="wpcf7-form-control wpcf7-hidden" id="careerdata1" value="" type="hidden" name="career">
-
-    <script>
-        // Get the input fields
-        var careerdataInput = document.querySelector('.careerdata');
-        var careerdata1Input = document.getElementById('careerdata1');
-
-        // Set the initial value
-        careerdata1Input.value = careerdataInput.value;
-
-        // Add an event listener to update the hidden field when the visible field changes
-        careerdataInput.addEventListener('input', function() {
-            careerdata1Input.value = careerdataInput.value;
-        });
-    </script>
-</body>
-</html>
+<div class="owl2-container">
+					<div class="">
+					<div class="mb-5 mt-5 line-up title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+						<div class="owl2-slider-width">
+							<div class="owl-carousel owl-2">
+</div
+</div>
+</div>
+</div>
