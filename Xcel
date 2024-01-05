@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jello Effect and Heart Toggle</title>
+    <title>Jello Effect and Heart Toggle with jQuery</title>
     <style>
         @keyframes jello {
             0% {
@@ -45,6 +45,7 @@
             animation: jello 0.7s;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 
@@ -53,18 +54,20 @@
 </div>
 
 <script>
-    document.getElementById('wishlistBtn').addEventListener('click', function() {
-        // Toggle heart color
-        this.classList.toggle('filled-heart');
+    $(document).ready(function() {
+        $('#wishlistBtn').click(function() {
+            // Toggle heart color
+            $(this).toggleClass('filled-heart');
 
-        // Add jello effect
-        this.classList.add('jello');
+            // Add jello effect
+            $(this).addClass('jello');
 
-        // Remove jello class after animation completes
-        const btn = this;
-        setTimeout(function() {
-            btn.classList.remove('jello');
-        }, 700); // 700ms is the duration of the jello animation
+            // Remove jello class after animation completes
+            const btn = this;
+            setTimeout(function() {
+                $(btn).removeClass('jello');
+            }, 700); // 700ms is the duration of the jello animation
+        });
     });
 </script>
 
