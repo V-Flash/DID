@@ -1,51 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Links</title>
-</head>
-<body>
+        	<div class="shareBox">
+	 					<div class="shareProduct">
+			  			<div class="shareSocial">
+						    <h3 class="socialTitle">Share Product:</h3>
+						    <ul class="socialList">
+									 <li>
+									 	<a href="#" onclick="shareOnFacebook()"><i class="bi bi-facebook"></i></a>
+									 </li>
+									    <li><a href="#" onclick="shareOnTwitter()"><i class="bi bi-twitter-x"></i></a></li>
+									    <li><a href="#" onclick="shareViaEmail()"><i class="bi bi-envelope"></i></a></li>
+									    <li><a href="#" onclick="shareOnWhatsApp()"><i class="bi bi-whatsapp"></i></a></li>
+						    </ul>
+						  </div>
+						  <div class="shareLink">
+						    <div class="permalink">
+						      <input class="textLink" id="urltext" type="text" name="shortlink" value="" id="copy-link" readonly="">
+						      <span class="copyLink" id="copy" tooltip="Copy to clipboard">
+						        <i class="bi bi-copy"></i>
+						      </span>
+						    </div>
+						  </div>
+						</div>	
+					</div>
 
-<!-- Input box for the link -->
-<input class="textLink" id="urltext" type="text" name="shortlink" value="" id="copy-link" readonly>
+const input = document.getElementById("urltext");
+const copyButton = document.getElementById("copy");
 
-<!-- Share links as icons -->
-<ul class="socialList">
-    <li><a href="#" onclick="shareOnFacebook(event)"><i class="bi bi-facebook"></i></a></li>
-    <li><a href="#" onclick="shareOnTwitter(event)"><i class="bi bi-twitter-x"></i></a></li>
-    <li><a href="#" onclick="shareViaEmail(event)"><i class="bi bi-envelope"></i></a></li>
-    <li><a href="#" onclick="shareOnWhatsApp(event)"><i class="bi bi-whatsapp"></i></a></li>
-</ul>
 
-<script>
-    // Get the current URL
-    var currentURL = window.location.href;
+const copyText = (e) => {
+  input.select(); 
+  document.execCommand("copy");
+  e.currentTarget.setAttribute("tooltip", "Copied!");
+};
 
-    // Set the value of the input box with the current URL
-    document.getElementById("urltext").value = currentURL;
+const resetTooltip = (e) => {
+  e.currentTarget.setAttribute("tooltip", "Copy to clipboard");
+};
 
-    // Share functions
-    function shareOnFacebook(event) {
-        event.preventDefault();
+copyButton.addEventListener("click", (e) => copyText(e));
+copyButton.addEventListener("mouseover", (e) => resetTooltip(e));
+
+const currentUrl =  window.location.href;
+document.getElementById("urltext").value = currentUrl;
+
+
+
+function shareOnFacebook(event) {
+     event.preventDefault();
         window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(currentURL));
     }
 
     function shareOnTwitter(event) {
-        event.preventDefault();
+         event.preventDefault();
         window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(currentURL));
     }
 
     function shareViaEmail(event) {
-        event.preventDefault();
+         event.preventDefault();
         window.location.href = 'mailto:?body=' + encodeURIComponent(currentURL);
     }
 
     function shareOnWhatsApp(event) {
-        event.preventDefault();
+         event.preventDefault();
         window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(currentURL));
     }
-</script>
-
-</body>
-</html>
