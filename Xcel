@@ -1,47 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Link</title>
-</head>
-<body>
-
-<!-- Input box for the link -->
-<input class="textLink" id="urltext" type="text" name="shortlink" value="" id="copy-link" readonly>
-
-<!-- Share links -->
-<div>
-    <a href="#" onclick="shareOnFacebook()">Share on Facebook</a>
-    <a href="#" onclick="shareOnTwitter()">Share on Twitter</a>
-    <a href="#" onclick="shareViaEmail()">Share via Email</a>
-    <a href="#" onclick="shareOnWhatsApp()">Share on WhatsApp</a>
-</div>
-
-<script>
-    // Get the current URL
-    var currentURL = window.location.href;
-
-    // Set the value of the input box with the current URL
-    document.getElementById("urltext").value = currentURL;
-
-    // Share functions
-    function shareOnFacebook() {
-        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(currentURL));
-    }
-
-    function shareOnTwitter() {
-        window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(currentURL));
-    }
-
-    function shareViaEmail() {
-        window.location.href = 'mailto:?body=' + encodeURIComponent(currentURL);
-    }
-
-    function shareOnWhatsApp() {
-        window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(currentURL));
-    }
-</script>
-
-</body>
-</html>
+						    <ul class="socialList">
+						      <li><a href=""><i class="bi bi-facebook"></i></a></li>
+						      <li><a href=""><i class="bi bi-twitter-x"></i></a></li>
+						      <li><a href="#"><i class="bi bi-envelope"></i></a></li>
+						      <li><a href=""><i class="bi bi-whatsapp"></i></a></li>
+						    </ul>
