@@ -1,6 +1,72 @@
-	        	<div class="link-btnn-box">
-	        		<button class="btn btn-link link-btnn"><i class="bi bi-heart"></i>&nbsp;Add to Wishlist</button>
-	        	</div> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jello Effect and Heart Toggle</title>
+    <style>
+        @keyframes jello {
+            0% {
+                transform: scale3d(1, 1, 1);
+            }
+            30% {
+                transform: scale3d(1.25, 0.75, 1);
+            }
+            40% {
+                transform: scale3d(0.75, 1.25, 1);
+            }
+            50% {
+                transform: scale3d(1.15, 0.85, 1);
+            }
+            65% {
+                transform: scale3d(0.95, 1.05, 1);
+            }
+            75% {
+                transform: scale3d(1.05, 0.95, 1);
+            }
+            100% {
+                transform: scale3d(1, 1, 1);
+            }
+        }
 
+        .link-btnn-box {
+            display: inline-block;
+        }
 
-i want onclick jello effect and fill heart color i want toggle
+        #wishlistBtn {
+            color: #000; /* Default heart color */
+        }
+
+        #wishlistBtn.filled-heart {
+            color: red; /* Filled heart color */
+        }
+
+        #wishlistBtn.jello {
+            animation: jello 0.7s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="link-btnn-box">
+    <button id="wishlistBtn" class="btn btn-link link-btnn"><i class="bi bi-heart"></i>&nbsp;Add to Wishlist</button>
+</div>
+
+<script>
+    document.getElementById('wishlistBtn').addEventListener('click', function() {
+        // Toggle heart color
+        this.classList.toggle('filled-heart');
+
+        // Add jello effect
+        this.classList.add('jello');
+
+        // Remove jello class after animation completes
+        const btn = this;
+        setTimeout(function() {
+            btn.classList.remove('jello');
+        }, 700); // 700ms is the duration of the jello animation
+    });
+</script>
+
+</body>
+</html>
