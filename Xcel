@@ -1,3 +1,4 @@
-	        	<div class="link-btnn-box">
-	        		<button class="btn btn-link link-btnn"><i class="bi bi-heart" id="wishlistBtn"></i>&nbsp;Add to Wishlist</button>
-	        	</div>
+  function switchToReviewTab() {
+    document.getElementById('review-tab').click()
+  }
+i want .offset().top - 500;
