@@ -12,10 +12,10 @@
 
 <!-- Share links as icons -->
 <ul class="socialList">
-    <li><a href="#" onclick="shareOnFacebook()"><i class="bi bi-facebook"></i></a></li>
-    <li><a href="#" onclick="shareOnTwitter()"><i class="bi bi-twitter-x"></i></a></li>
-    <li><a href="#" onclick="shareViaEmail()"><i class="bi bi-envelope"></i></a></li>
-    <li><a href="#" onclick="shareOnWhatsApp()"><i class="bi bi-whatsapp"></i></a></li>
+    <li><a href="#" onclick="shareOnFacebook(event)"><i class="bi bi-facebook"></i></a></li>
+    <li><a href="#" onclick="shareOnTwitter(event)"><i class="bi bi-twitter-x"></i></a></li>
+    <li><a href="#" onclick="shareViaEmail(event)"><i class="bi bi-envelope"></i></a></li>
+    <li><a href="#" onclick="shareOnWhatsApp(event)"><i class="bi bi-whatsapp"></i></a></li>
 </ul>
 
 <script>
@@ -26,19 +26,23 @@
     document.getElementById("urltext").value = currentURL;
 
     // Share functions
-    function shareOnFacebook() {
+    function shareOnFacebook(event) {
+        event.preventDefault();
         window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(currentURL));
     }
 
-    function shareOnTwitter() {
+    function shareOnTwitter(event) {
+        event.preventDefault();
         window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(currentURL));
     }
 
-    function shareViaEmail() {
+    function shareViaEmail(event) {
+        event.preventDefault();
         window.location.href = 'mailto:?body=' + encodeURIComponent(currentURL);
     }
 
-    function shareOnWhatsApp() {
+    function shareOnWhatsApp(event) {
+        event.preventDefault();
         window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(currentURL));
     }
 </script>
