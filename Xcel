@@ -1,4 +1,13 @@
-  function switchToReviewTab() {
-    document.getElementById('review-tab').click()
-  }
-i want .offset().top - 500;
+function switchToReviewTab() {
+  // Get the element with ID 'review-tab'
+  var reviewTab = $('#review-tab');
+
+  // Get the current offset top value
+  var currentOffsetTop = reviewTab.offset().top;
+
+  // Set the offset top to current value - 500
+  reviewTab.offset({ top: currentOffsetTop - 500 });
+
+  // Trigger the click event
+  reviewTab.click();
+}
