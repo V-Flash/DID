@@ -6,7 +6,9 @@ $(document).ready(function(){
     // Plus button click event
     $('.plus-btn').click(function(){
         var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(parseInt($input.val()) + 1);
+        
+        // Increase quantity by 2 instead of 1
+        $input.val(parseInt($input.val()) + 2);
 
         // Update subtotal when the quantity changes
         updateSubtotal($(this));
@@ -15,8 +17,8 @@ $(document).ready(function(){
     // Minus button click event
     $('.minus-btn').click(function(){
         var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(Math.max(parseInt($input.val()) - 1, 1));
-
+        $input.val(Math.max(parseInt($input.val()) - 2, 1)); // Adjusted to decrease by 2
+        
         // Update subtotal when the quantity changes
         updateSubtotal($(this));
     });
@@ -25,7 +27,7 @@ $(document).ready(function(){
     function updateSubtotal(btn) {
         var $qtyForm = btn.closest('.qty-form');
         var quantity = parseInt($qtyForm.find('.qty_input').val());
-        var price = parseFloat($qtyForm.closest('tr').find('.price').text().replace('₹', '').trim());
+        var price = parseFloat($qtyForm.closest('tr').find('.price').text().replace('₹', '').replace(',', '').trim());
         var subtotal = quantity * price;
         
         // Update the subtotal cell
