@@ -1,98 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @media (max-width: 767px) {
-      .table.cart-table thead {
-        display: none; /* Hide the table header on mobile screens */
-      }
+$(document).ready(function(){
 
-      .table.cart-table tbody tr {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    $('.qty_input').prop('disabled', true);
+   
+   $('.plus-btn').click(function(){
+        $('.qty_input').val(parseInt($('.qty_input').val()) + 1 );
+    });
+    
+    $('.minus-btn').click(function(){
+        $('.qty_input').val(parseInt($('.qty_input').val()) - 1 );
+        if ($('.qty_input').val() == 0) {
+            $('.qty_input').val(1);
+        }
+    });
 
-      .table.cart-table tbody tr th,
-      .table.cart-table tbody tr td {
-        width: 100%; /* Make each cell take up the full width on mobile */
-        text-align: left;
-      }
+ });
 
-      .table.cart-table tbody tr th img {
-        order: -1; /* Move the image to the left */
-        margin-right: 10px; /* Add some margin for spacing */
-      }
+				      	  <div class="qty-form">
+					        	<div class="input-group qty_input-box">
 
-      .table.cart-table tbody tr td:nth-child(2) {
-        margin-bottom: 10px; /* Add some margin between title and quantity form */
-      }
+										<div class="input-group-prepend">
+								      <button class="btn btn-light btn-sm plus-minus-btn minus-btn" >
+								      	<i class="bi bi-dash"></i>
+								      </button>
+										</div>
 
-      .table.cart-table tbody tr td:nth-child(3) {
-        order: -1; /* Move the quantity form to the right */
-      }
-    }
-  </style>
-</head>
-<body>
+										<input type="number" class="form-control form-control-sm qty_input" value="1" min="1">
 
-  <table class="table cart-table">
-    <thead>
-      <tr class="cart-title">
-        <th scope="col">Product</th>
-        <th></th>
-        <th scope="col">Price</th>
-        <th scope="col">quantity</th>
-        <th scope="col">subtotal</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
+									  <div class="input-group-prepend">
+								      <button class="btn btn-light btn-sm plus-minus-btn plus-btn">
+								      	<i class="bi bi-plus"></i>
+								      </button>
+									  </div>
+										  
+										</div>
+				        	</div>
 
-      <tr>
-
-        <th scope="row">
-          <img src="assets/images/cart-pro1.png" width="88px" height="102px" alt="">
-        </th>
-
-        <td>Product Title Name</td>
-
-        <td class="price">₹ 10,000</td>
-
-        <td>
-
-          <div class="qty-form">
-            <div class="input-group qty_input-box">
-
-              <div class="input-group-prepend">
-                <button class="btn btn-light btn-sm plus-minus-btn" id="minus-btn">
-                  <i class="bi bi-dash"></i>
-                </button>
-              </div>
-
-              <input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1">
-
-              <div class="input-group-prepend">
-                <button class="btn btn-light btn-sm plus-minus-btn" id="plus-btn">
-                  <i class="bi bi-plus"></i>
-                </button>
-              </div>
-
-            </div>
-          </div>
-
-        </td>
-
-        <td class="subtotal">₹ 10,000</td>
-
-        <td><i class="bi bi-x-lg"></i></td>
-
-      </tr>
-
-    </tbody>
-  </table>
-
-</body>
-</html>
+i have may of this on same page and also in individual page but the proablem is if i plus or miunse all of them are geeting affected
