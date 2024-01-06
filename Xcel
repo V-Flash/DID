@@ -21,8 +21,8 @@ $(document).ready(function(){
         var price = parseFloat($qtyForm.closest('tr').find('.price').text().replace('₹', '').replace(/,/g, '').trim());
         var subtotal = quantity * price;
 
-        // Format the subtotal with commas and without decimals
-        var formattedSubtotal = '₹ ' + subtotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        // Format the subtotal with commas for thousands and lakhs
+        var formattedSubtotal = '₹ ' + subtotal.toLocaleString('en-IN', { maximumFractionDigits: 0 });
 
         // Update the subtotal cell
         $qtyForm.closest('tr').find('.subtotal').text(formattedSubtotal);
