@@ -1,1 +1,98 @@
-					      i want when in moible screen i want image on left on its right product title under that qty-form on right end subtotal and on top right bi bi-x-lg and hide thead
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @media (max-width: 767px) {
+      .table.cart-table thead {
+        display: none; /* Hide the table header on mobile screens */
+      }
+
+      .table.cart-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .table.cart-table tbody tr th,
+      .table.cart-table tbody tr td {
+        width: 100%; /* Make each cell take up the full width on mobile */
+        text-align: left;
+      }
+
+      .table.cart-table tbody tr th img {
+        order: -1; /* Move the image to the left */
+        margin-right: 10px; /* Add some margin for spacing */
+      }
+
+      .table.cart-table tbody tr td:nth-child(2) {
+        margin-bottom: 10px; /* Add some margin between title and quantity form */
+      }
+
+      .table.cart-table tbody tr td:nth-child(3) {
+        order: -1; /* Move the quantity form to the right */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <table class="table cart-table">
+    <thead>
+      <tr class="cart-title">
+        <th scope="col">Product</th>
+        <th></th>
+        <th scope="col">Price</th>
+        <th scope="col">quantity</th>
+        <th scope="col">subtotal</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+
+        <th scope="row">
+          <img src="assets/images/cart-pro1.png" width="88px" height="102px" alt="">
+        </th>
+
+        <td>Product Title Name</td>
+
+        <td class="price">₹ 10,000</td>
+
+        <td>
+
+          <div class="qty-form">
+            <div class="input-group qty_input-box">
+
+              <div class="input-group-prepend">
+                <button class="btn btn-light btn-sm plus-minus-btn" id="minus-btn">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+
+              <input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1">
+
+              <div class="input-group-prepend">
+                <button class="btn btn-light btn-sm plus-minus-btn" id="plus-btn">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </td>
+
+        <td class="subtotal">₹ 10,000</td>
+
+        <td><i class="bi bi-x-lg"></i></td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+</body>
+</html>
