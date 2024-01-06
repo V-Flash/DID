@@ -1,39 +1,30 @@
-<!-- Add jQuery script if not already included -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		      <td width="20%" class="price">₹ 10,000</td>
+<td width="20%" class="qty-td">
 
-<!-- Your HTML code -->
-<nav>
-  <div class="nav nav-tabs login-reg justify-content-center" id="nav-tab" role="tablist">
-    <button class="nav-link text-muted active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="info" aria-selected="false">Login</button>
-    <button class="nav-link text-muted" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
-  </div>
-</nav>
+				      	  <div class="qty-form">
+					        	<div class="input-group qty_input-box">
 
-<div class="col-md-12 text-center banner-content">
-  <h1 class="banner-title">Login</h1>
-  
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb d-flex justify-content-center mb-0">
-      <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-      <li class="breadcrumb-item active">Login</li>
-    </ol>
-  </nav>
-</div>
+										<div class="input-group-prepend">
+								      <button class="btn btn-light btn-sm plus-minus-btn minus-btn" >
+								      	<i class="bi bi-dash"></i>
+								      </button>
+										</div>
 
-<script>
-  $(document).ready(function() {
-    $('.nav-tabs button').on('click', function() {
-      // Remove active class from previous elements
-      $('.nav-tabs button').removeClass('active');
-      
-      // Add active class to the clicked tab
-      $(this).addClass('active');
-      
-      // Update the second part of the breadcrumb with the clicked tab's text
-      $('.breadcrumb-item.active').text($(this).text());
-      
-      // Update banner title
-      $('.banner-title').text($(this).text());
-    });
-  });
-</script>
+										<input type="number" class="form-control form-control-sm qty_input" value="1" min="1">
+
+									  <div class="input-group-prepend">
+								      <button class="btn btn-light btn-sm plus-minus-btn plus-btn">
+								      	<i class="bi bi-plus"></i>
+								      </button>
+									  </div>
+										  
+										</div>
+				        	</div>
+
+					      </td>	
+
+
+					      <td width="20%" class="subtotal">₹ 10,000</td>
+
+when qty-form number increce make the subtotal total as per price
+
