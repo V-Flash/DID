@@ -1,30 +1,54 @@
-$(document).ready(function(){
+      	<div class="desktop-fillter">
 
-    $('.qty_input').prop('disabled', true);
+          <div class="catagories-side-bar">
+            
+            <h4 class="mb-4">Product Catagories</h4>
+            <div class="catagories-under">
 
-    $('.plus-btn').click(function(){
-        var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(parseInt($input.val()) + 1);
-        updateSubtotal($(this));
-    });
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck1">
+                  <label class="form-check-label" for="customCheck1">Sculptures</label>
+                </div>
 
-    $('.minus-btn').click(function(){
-        var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(Math.max(parseInt($input.val()) - 1, 1));
-        updateSubtotal($(this));
-    });
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck2">
+                  <label class="form-check-label" for="customCheck2">Vase</label>
+                </div>
 
-    // Function to update subtotal based on quantity
-    function updateSubtotal(btn) {
-        var $qtyForm = btn.closest('.qty-form');
-        var quantity = parseInt($qtyForm.find('.qty_input').val());
-        var price = parseFloat($qtyForm.closest('tr').find('.price').text().replace('₹', '').replace(/,/g, '').trim());
-        var subtotal = quantity * price;
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck3">
+                  <label class="form-check-label" for="customCheck3">Plates & Bowls</label>
+                </div>
 
-        // Format the subtotal with commas for thousands and lakhs
-        var formattedSubtotal = '₹ ' + subtotal.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck4">
+                  <label class="form-check-label" for="customCheck4">Flower Pots</label>
+                </div>
 
-        // Update the subtotal cell
-        $qtyForm.closest('tr').find('.subtotal').text(formattedSubtotal);
-    }
-});
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck5">
+                  <label class="form-check-label" for="customCheck5">Relief</label>
+                </div>
+
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck6">
+                  <label class="form-check-label" for="customCheck6">Lamps</label>
+                </div>
+
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck7">
+                  <label class="form-check-label" for="customCheck7">Pet Stands</label>
+                </div>
+
+                <div class="form-check mb-1 ml-3">
+                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck8">
+                  <label class="form-check-label" for="customCheck8">Fountain</label>
+                </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+can you clone this to make it offcanvas bootstrap 5 for screen 575px or less then 
