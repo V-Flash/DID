@@ -1,72 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Subtotal Example</title>
-  <!-- Add Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+$(document).ready(function(){
 
-<table>
-  <tr>
-    <td width="20%" class="price">₹ 10,000</td>
-    <td width="20%" class="qty-td">
-      <div class="qty-form">
-        <div class="input-group qty_input-box">
-          <div class="input-group-prepend">
-            <button class="btn btn-light btn-sm plus-minus-btn minus-btn" onclick="decreaseQuantity()">
-              <i class="bi bi-dash"></i>
-            </button>
-          </div>
-          <input type="number" class="form-control form-control-sm qty_input" value="1" min="1" onchange="updateSubtotal()">
-          <div class="input-group-prepend">
-            <button class="btn btn-light btn-sm plus-minus-btn plus-btn" onclick="increaseQuantity()">
-              <i class="bi bi-plus"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </td>
-    <td width="20%" class="subtotal">₹ 10,000</td>
-  </tr>
-</table>
+    $('.qty_input').prop('disabled', true);
 
-<!-- Add Bootstrap JS and Popper.js -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    $('.plus-btn').click(function(){
+        var $input = $(this).closest('.qty-form').find('.qty_input');
+        $input.val(parseInt($input.val()) + 1);
+    });
 
-<script>
-  function updateSubtotal() {
-    const quantityInput = document.querySelector('.qty_input');
-    const priceElement = document.querySelector('.price');
-    const subtotalElement = document.querySelector('.subtotal');
+    $('.minus-btn').click(function(){
+        var $input = $(this).closest('.qty-form').find('.qty_input');
+        $input.val(Math.max(parseInt($input.val()) - 1, 1));
+    });
 
-    const quantity = parseInt(quantityInput.value);
-    const price = parseFloat(priceElement.textContent.replace('₹', '').trim());
-
-    const subtotal = quantity * price;
-    subtotalElement.textContent = `₹ ${subtotal.toFixed(2)}`;
-  }
-
-  function increaseQuantity() {
-    const quantityInput = document.querySelector('.qty_input');
-    quantityInput.value = parseInt(quantityInput.value) + 1;
-    updateSubtotal();
-  }
-
-  function decreaseQuantity() {
-    const quantityInput = document.querySelector('.qty_input');
-    const currentQuantity = parseInt(quantityInput.value);
-    
-    if (currentQuantity > 1) {
-      quantityInput.value = currentQuantity - 1;
-      updateSubtotal();
-    }
-  }
-</script>
-
-</body>
-</html>
+});
