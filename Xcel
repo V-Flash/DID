@@ -1,25 +1,16 @@
 $(document).ready(function(){
 
-    // Initially disable the quantity input
     $('.qty_input').prop('disabled', true);
 
-    // Plus button click event
     $('.plus-btn').click(function(){
         var $input = $(this).closest('.qty-form').find('.qty_input');
-        
-        // Increase quantity by 2 instead of 1
-        $input.val(parseInt($input.val()) + 2);
-
-        // Update subtotal when the quantity changes
+        $input.val(parseInt($input.val()) + 1);
         updateSubtotal($(this));
     });
 
-    // Minus button click event
     $('.minus-btn').click(function(){
         var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(Math.max(parseInt($input.val()) - 2, 1)); // Adjusted to decrease by 2
-        
-        // Update subtotal when the quantity changes
+        $input.val(Math.max(parseInt($input.val()) - 1, 1));
         updateSubtotal($(this));
     });
 
