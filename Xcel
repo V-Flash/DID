@@ -3,12 +3,12 @@ $(document).ready(function(){
     $('.qty_input').prop('disabled', true);
 
     $('.plus-btn').click(function(){
-        var $input = $(this).parent().siblings('.qty_input-box').find('.qty_input');
+        var $input = $(this).closest('.qty-form').find('.qty_input');
         $input.val(parseInt($input.val()) + 1);
     });
 
     $('.minus-btn').click(function(){
-        var $input = $(this).parent().siblings('.qty_input-box').find('.qty_input');
+        var $input = $(this).closest('.qty-form').find('.qty_input');
         $input.val(Math.max(parseInt($input.val()) - 1, 1));
     });
 
