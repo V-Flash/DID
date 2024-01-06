@@ -1,6 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/font/bootstrap-icons.css">
+  <style>
+    .password-eye {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".password-eye").on("click", function() {
+        var passwordInput = $(this).prev("input");
+        var type = passwordInput.attr("type");
+
+        if (type === "password") {
+          passwordInput.attr("type", "text");
+          $(this).removeClass("bi-eye-slash-fill").addClass("bi-eye-fill");
+        } else {
+          passwordInput.attr("type", "password");
+          $(this).removeClass("bi-eye-fill").addClass("bi-eye-slash-fill");
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+
 <div class="form-input-div position-relative">
-    <input type="password" class="form-control rounded-0 form-input" placeholder="Password*" required>
-    <i class="bi bi-eye-slash-fill password-eye"></i>
+  <input type="password" class="form-control rounded-0 form-input" placeholder="Password*" required>
+  <i class="bi bi-eye-slash-fill password-eye"></i>
 </div>
 
-i want when click on password eye the password show in plain text and bi-eye-slash change to     <i class="bi bi-eye-fill password-eye"></i> with smmoth transtion
+</body>
+</html>
