@@ -1,23 +1,38 @@
-					<nav>
-					  <div class="nav nav-tabs login-reg justify-content-center" id="nav-tab" role="tablist">
-					   
-					    <button class="nav-link text-muted active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="info" aria-selected="false">Login</button>
+<!-- Add jQuery script if not already included -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-					    <button class="nav-link text-muted" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
+<!-- Your HTML code -->
+<nav>
+  <div class="nav nav-tabs login-reg justify-content-center" id="nav-tab" role="tablist">
+    <button class="nav-link text-muted active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="info" aria-selected="false">Login</button>
+    <button class="nav-link text-muted" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
+  </div>
+</nav>
 
-					  </div>
-					</nav>
+<div class="col-md-12 text-center banner-content">
+  <h1 class="banner-title">Login</h1>
+  
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb d-flex justify-content-center mb-0">
+      <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
+      <li class="breadcrumb-item active">Login</li>
+    </ol>
+  </nav>
+</div>
 
-
-			<div class="col-md-12 text-center banner-content">
-				<h1 class="banner-title">Login</h1>
-
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb d-flex justify-content-center mb-0">
-						<li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-						<li class="breadcrumb-item active">Login</li>
-						</ol>
-					</nav>
-			</div>
-
- i want which of these is active login-reg nav-link the value go to breadcrumb-item active and banner-title
+<script>
+  $(document).ready(function() {
+    $('.nav-tabs button').on('click', function() {
+      // Remove active class from previous elements
+      $('.nav-tabs button').removeClass('active');
+      $('.breadcrumb-item').removeClass('active');
+      
+      // Add active class to the clicked tab and breadcrumb
+      $(this).addClass('active');
+      $('.breadcrumb-item').text($(this).text()).addClass('active');
+      
+      // Update banner title
+      $('.banner-title').text($(this).text());
+    });
+  });
+</script>
