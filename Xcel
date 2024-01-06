@@ -1,15 +1,6 @@
-$(document).ready(function(){
+<div class="form-input-div position-relative">
+    <input type="password" class="form-control rounded-0 form-input" placeholder="Password*" required>
+    <i class="bi bi-eye-slash-fill password-eye"></i>
+</div>
 
-    $('.qty_input').prop('disabled', true);
-
-    $('.plus-btn').click(function(){
-        var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(parseInt($input.val()) + 1);
-    });
-
-    $('.minus-btn').click(function(){
-        var $input = $(this).closest('.qty-form').find('.qty_input');
-        $input.val(Math.max(parseInt($input.val()) - 1, 1));
-    });
-
-});
+i want when click on password eye the password show in plain text and bi-eye-slash change to     <i class="bi bi-eye-fill password-eye"></i> with smmoth transtion
