@@ -16,7 +16,7 @@
       <div class="qty-form">
         <div class="input-group qty_input-box">
           <div class="input-group-prepend">
-            <button class="btn btn-light btn-sm plus-minus-btn minus-btn">
+            <button class="btn btn-light btn-sm plus-minus-btn minus-btn" onclick="decreaseQuantity()">
               <i class="bi bi-dash"></i>
             </button>
           </div>
@@ -40,19 +40,14 @@
 
 <script>
   function updateSubtotal() {
-    // Get the quantity input and price elements
     const quantityInput = document.querySelector('.qty_input');
     const priceElement = document.querySelector('.price');
+    const subtotalElement = document.querySelector('.subtotal');
 
-    // Get the value of the quantity input and the price
     const quantity = parseInt(quantityInput.value);
     const price = parseFloat(priceElement.textContent.replace('₹', '').trim());
 
-    // Calculate the subtotal
     const subtotal = quantity * price;
-
-    // Update the subtotal element
-    const subtotalElement = document.querySelector('.subtotal');
     subtotalElement.textContent = `₹ ${subtotal.toFixed(2)}`;
   }
 
@@ -60,6 +55,16 @@
     const quantityInput = document.querySelector('.qty_input');
     quantityInput.value = parseInt(quantityInput.value) + 1;
     updateSubtotal();
+  }
+
+  function decreaseQuantity() {
+    const quantityInput = document.querySelector('.qty_input');
+    const currentQuantity = parseInt(quantityInput.value);
+    
+    if (currentQuantity > 1) {
+      quantityInput.value = currentQuantity - 1;
+      updateSubtotal();
+    }
   }
 </script>
 
