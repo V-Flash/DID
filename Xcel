@@ -1,3 +1,58 @@
-.footers-sub form div.newsletter-form-group:last-child {
-    color: white;
-}
+					<table class="table cart-table">
+					  <thead>
+					    <tr class="cart-title">
+					      <th scope="col">Product</th>
+					      <th></th>
+					      <th scope="col">Price</th>
+					      <th scope="col">quantity</th>
+					      <th scope="col">subtotal</th>
+					      <th scope="col"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+
+					    <tr>
+
+					      <th scope="row" width="5%">
+					      	<img src="assets/images/cart-pro1.png" width="88px" height="102px" alt="">
+					      </th>
+
+					      <td width="35%">Product Title Name</td>
+
+					     
+					      <td width="20%" class="price">₹ 10,000</td>
+					      	
+					      <td width="20%">
+
+				      	  <div class="qty-form">
+					        	<div class="input-group qty_input-box">
+
+										<div class="input-group-prepend">
+								      <button class="btn btn-light btn-sm plus-minus-btn" id="minus-btn">
+								      	<i class="bi bi-dash"></i>
+								      </button>
+										</div>
+
+										<input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1">
+
+									  <div class="input-group-prepend">
+								      <button class="btn btn-light btn-sm plus-minus-btn" id="plus-btn">
+								      	<i class="bi bi-plus"></i>
+								      </button>
+									  </div>
+										  
+										</div>
+				        	</div>
+
+					      </td>	
+
+
+					      <td width="20%" class="subtotal">₹ 10,000</td>
+
+					      <td width="10%"><i class="bi bi-x-lg"></i></td>
+
+					    </tr>
+
+
+					  </tbody>
+					</table>
