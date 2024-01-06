@@ -27,9 +27,11 @@
       $('.nav-tabs button').removeClass('active');
       $('.breadcrumb-item').removeClass('active');
       
-      // Add active class to the clicked tab and breadcrumb
+      // Add active class to the clicked tab
       $(this).addClass('active');
-      $('.breadcrumb-item').text($(this).text()).addClass('active');
+      
+      // Update the second part of the breadcrumb with the clicked tab's text
+      $('.breadcrumb-item.active').text($(this).text());
       
       // Update banner title
       $('.banner-title').text($(this).text());
