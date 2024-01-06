@@ -25,7 +25,6 @@
     $('.nav-tabs button').on('click', function() {
       // Remove active class from previous elements
       $('.nav-tabs button').removeClass('active');
-      $('.breadcrumb-item').removeClass('active');
       
       // Add active class to the clicked tab
       $(this).addClass('active');
