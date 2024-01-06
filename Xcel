@@ -18,10 +18,13 @@ $(document).ready(function(){
     function updateSubtotal(btn) {
         var $qtyForm = btn.closest('.qty-form');
         var quantity = parseInt($qtyForm.find('.qty_input').val());
-        var price = parseFloat($qtyForm.closest('tr').find('.price').text().replace('₹', '').replace(',', '').trim());
+        var price = parseFloat($qtyForm.closest('tr').find('.price').text().replace('₹', '').replace(/,/g, '').trim());
         var subtotal = quantity * price;
-        
+
+        // Format the subtotal with commas and without decimals
+        var formattedSubtotal = '₹ ' + subtotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
         // Update the subtotal cell
-        $qtyForm.closest('tr').find('.subtotal').text('₹ ' + subtotal.toFixed(2));
+        $qtyForm.closest('tr').find('.subtotal').text(formattedSubtotal);
     }
 });
