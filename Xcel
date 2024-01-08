@@ -1,54 +1,59 @@
-      	<div class="desktop-fillter">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Your Website</title>
+  <style>
+    /* Add any additional styles here */
+  </style>
+</head>
+<body>
 
-          <div class="catagories-side-bar">
-            
-            <h4 class="mb-4">Product Catagories</h4>
-            <div class="catagories-under">
+<!-- Your main content goes here -->
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck1">
-                  <label class="form-check-label" for="customCheck1">Sculptures</label>
-                </div>
+<!-- Offcanvas container -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Offcanvas content goes here -->
+  </div>
+</div>
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck2">
-                  <label class="form-check-label" for="customCheck2">Vase</label>
-                </div>
+<!-- Bootstrap JavaScript libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck3">
-                  <label class="form-check-label" for="customCheck3">Plates & Bowls</label>
-                </div>
+<script>
+  // Function to toggle offcanvas based on screen width
+  function toggleOffcanvas() {
+    if (window.innerWidth > 767) {
+      // Larger screens, open the offcanvas by default
+      var offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasExample'));
+      offcanvas.show();
+    } else {
+      // Smaller screens, use Bootstrap's built-in functionality to handle offcanvas toggle
+      var offcanvasElement = document.getElementById('offcanvasExample');
+      var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck4">
-                  <label class="form-check-label" for="customCheck4">Flower Pots</label>
-                </div>
+      offcanvasElement.addEventListener('hidden.bs.offcanvas', function () {
+        // If offcanvas is hidden, show it when the screen is smaller
+        if (window.innerWidth <= 767) {
+          offcanvas.show();
+        }
+      });
+    }
+  }
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck5">
-                  <label class="form-check-label" for="customCheck5">Relief</label>
-                </div>
+  // Initial call to toggleOffcanvas on page load
+  toggleOffcanvas();
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck6">
-                  <label class="form-check-label" for="customCheck6">Lamps</label>
-                </div>
+  // Event listener for window resize
+  window.addEventListener('resize', toggleOffcanvas);
+</script>
 
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck7">
-                  <label class="form-check-label" for="customCheck7">Pet Stands</label>
-                </div>
-
-                <div class="form-check mb-1 ml-3">
-                  <input type="checkbox" name="check" class="form-check-input check-input" id="customCheck8">
-                  <label class="form-check-label" for="customCheck8">Fountain</label>
-                </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-can you clone this to make it offcanvas bootstrap 5 for screen 575px or less then 
+</body>
+</html>
