@@ -1,26 +1,32 @@
-function filterProducts() {
-    var checkedCategories = $('.filter:checked').map(function () {
-        return $(this).data('category').toString();
-    }).get();
+filter.html:94 Uncaught TypeError: Cannot read properties of undefined (reading 'toString')
+    at HTMLDivElement.<anonymous> (filter.html:94:56)
+    at jquery-3.6.4.min.js:2:24605
+    at Function.grep (jquery-3.6.4.min.js:2:3421)
+    at j (jquery-3.6.4.min.js:2:24574)
+    at S.fn.init.filter (jquery-3.6.4.min.js:2:25253)
+    at filterProducts (filter.html:92:48)
+    at HTMLInputElement.<anonymous> (filter.html:82:9)
+    at HTMLInputElement.dispatch (jquery-3.6.4.min.js:2:43184)
+    at y.handle (jquery-3.6.4.min.js:2:41168)
+(anonymous) @ filter.html:94
+(anonymous) @ jquery-3.6.4.min.js:2
+grep @ jquery-3.6.4.min.js:2
+j @ jquery-3.6.4.min.js:2
+filter @ jquery-3.6.4.min.js:2
+filterProducts @ filter.html:92
+(anonymous) @ filter.html:82
+dispatch @ jquery-3.6.4.min.js:2
+y.handle @ jquery-3.6.4.min.js:2
+36filter.html:94 Uncaught TypeError: Cannot read properties of undefined (reading 'toString')
+    at HTMLDivElement.<anonymous> (filter.html:94:56)
+    at jquery-3.6.4.min.js:2:24605
+    at Function.grep (jquery-3.6.4.min.js:2:3421)
+    at j (jquery-3.6.4.min.js:2:24574)
+    at S.fn.init.filter (jquery-3.6.4.min.js:2:25253)
+    at filterProducts (filter.html:92:48)
+    at HTMLDivElement.slide (filter.html:73:17)
+    at t.<computed>.<computed>._trigger (jquery-ui.min.js:6:10825)
+    at t.<computed>.<computed>._slide (jquery-ui.min.js:12:3961)
+    at t.<computed>.<computed>._slide (jquery-ui.min.js:6:4499
 
-    var selectedPrices = $("#slider-range").slider("values");
-
-    var productsToShow = $('.product-box').filter(function () {
-        var productPrice = parseInt($(this).data('price'));
-        var categories = $(this).data('categories').toString().split(' ');
-
-        var priceMatch = productPrice >= selectedPrices[0] && productPrice <= selectedPrices[1];
-        var categoryMatch = checkedCategories.length === 0 || categories.some(cat => checkedCategories.includes(cat));
-
-        return priceMatch && categoryMatch;
-    });
-
-    if (productsToShow.length === 0) {
-        $('.no-products-found').show();
-    } else {
-        $('.no-products-found').hide();
-    }
-
-    $('.product-box').hide();
-    productsToShow.show();
-}
+these are the error and also my range slider is not working properly
