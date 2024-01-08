@@ -1,32 +1,119 @@
-filter.html:94 Uncaught TypeError: Cannot read properties of undefined (reading 'toString')
-    at HTMLDivElement.<anonymous> (filter.html:94:56)
-    at jquery-3.6.4.min.js:2:24605
-    at Function.grep (jquery-3.6.4.min.js:2:3421)
-    at j (jquery-3.6.4.min.js:2:24574)
-    at S.fn.init.filter (jquery-3.6.4.min.js:2:25253)
-    at filterProducts (filter.html:92:48)
-    at HTMLInputElement.<anonymous> (filter.html:82:9)
-    at HTMLInputElement.dispatch (jquery-3.6.4.min.js:2:43184)
-    at y.handle (jquery-3.6.4.min.js:2:41168)
-(anonymous) @ filter.html:94
-(anonymous) @ jquery-3.6.4.min.js:2
-grep @ jquery-3.6.4.min.js:2
-j @ jquery-3.6.4.min.js:2
-filter @ jquery-3.6.4.min.js:2
-filterProducts @ filter.html:92
-(anonymous) @ filter.html:82
-dispatch @ jquery-3.6.4.min.js:2
-y.handle @ jquery-3.6.4.min.js:2
-36filter.html:94 Uncaught TypeError: Cannot read properties of undefined (reading 'toString')
-    at HTMLDivElement.<anonymous> (filter.html:94:56)
-    at jquery-3.6.4.min.js:2:24605
-    at Function.grep (jquery-3.6.4.min.js:2:3421)
-    at j (jquery-3.6.4.min.js:2:24574)
-    at S.fn.init.filter (jquery-3.6.4.min.js:2:25253)
-    at filterProducts (filter.html:92:48)
-    at HTMLDivElement.slide (filter.html:73:17)
-    at t.<computed>.<computed>._trigger (jquery-ui.min.js:6:10825)
-    at t.<computed>.<computed>._slide (jquery-ui.min.js:12:3961)
-    at t.<computed>.<computed>._slide (jquery-ui.min.js:6:4499
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Range Slider</title>
+    <!-- Include jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Include your CSS styles -->
+    <style>
+        .product-box {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
 
-these are the error and also my range slider is not working properly
+        .range-bar {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .min-max-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <label><input type="checkbox" class="filter" data-category="1">1</label>
+    <label><input type="checkbox" class="filter" data-category="2">2</label>
+    <label><input type="checkbox" class="filter" data-category="3">3</label>
+    <label><input type="checkbox" class="filter" data-category="4">4</label>
+    <label><input type="checkbox" class="filter" data-category="5">5</label>
+
+    <div class="catagories-side-bar padding-bottom-50">
+        <h4>Price</h4>
+        <div class="catagories-under price-under">
+            <div class="price-range-slider">
+                <div id="slider-range" class="range-bar"></div>
+                <div class="min-max-container" id="min-max-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product list -->
+    <div class="product-box" data-price="2800" data-categories="3 4">
+        Product 5 (Weight 30g)
+        <div>Price ₹2800</div>
+    </div>
+
+    <div class="product-box" data-price="8050" data-categories="1">
+        Product 3 (Weight 20g)
+        <div>Price ₹8050</div>
+    </div>
+
+    <!-- Message for no products found -->
+    <p class="no-products-found" style="display: none;">No products found.</p>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+        function initializeSlider() {
+            var minMaxContainer = document.getElementById("min-max-container");
+
+            $("#slider-range").slider({
+                range: true,
+                min: 2500,
+                max: 10000,
+                values: [2500, 10000],
+                slide: function (event, ui) {
+                    minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min Price:</span> ₹" + ui.values[0] + "</div><div class='min-max-item'><span>Max Price:</span> ₹" + ui.values[1] + "</div>";
+                    filterProducts();
+                }
+            });
+
+            minMaxContainer.innerHTML = "<div class='min-max-item'><span>Min Price:</span> ₹" + $("#slider-range").slider("values", 0) +
+                "</div><div class='min-max-item'><span>Max Price:</span> ₹" + $("#slider-range").slider("values", 1) + "</div>";
+        }
+
+        $('.filter').change(function () {
+            filterProducts();
+        });
+
+        function filterProducts() {
+            var checkedCategories = $('.filter:checked').map(function () {
+                return $(this).data('category').toString();
+            }).get();
+
+            var selectedPrices = $("#slider-range").slider("values");
+
+            var productsToShow = $('.product-box').filter(function () {
+                var productPrice = parseInt($(this).data('price'));
+                var categories = $(this).data('categories').toString().split(' ');
+
+                var priceMatch = productPrice >= selectedPrices[0] && productPrice <= selectedPrices[1];
+                var categoryMatch = checkedCategories.length === 0 || categories.some(cat => checkedCategories.includes(cat));
+
+                return priceMatch && categoryMatch;
+            });
+
+            if (productsToShow.length === 0) {
+                $('.no-products-found').show();
+            } else {
+                $('.no-products-found').hide();
+            }
+
+            $('.product-box').hide();
+            productsToShow.show();
+        }
+
+        $(document).ready(function () {
+            initializeSlider();
+        });
+    </script>
+
+</body>
+</html>
