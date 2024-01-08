@@ -30,21 +30,16 @@
 <script>
   // Function to toggle offcanvas based on screen width
   function toggleOffcanvas() {
+    var offcanvasElement = document.getElementById('offcanvasExample');
+    
     if (window.innerWidth > 767) {
-      // Larger screens, open the offcanvas by default
-      var offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasExample'));
-      offcanvas.show();
+      // Larger screens, remove offcanvas behavior
+      offcanvasElement.classList.remove('offcanvas');
+      offcanvasElement.classList.remove('offcanvas-start');
     } else {
-      // Smaller screens, use Bootstrap's built-in functionality to handle offcanvas toggle
-      var offcanvasElement = document.getElementById('offcanvasExample');
-      var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-
-      offcanvasElement.addEventListener('hidden.bs.offcanvas', function () {
-        // If offcanvas is hidden, show it when the screen is smaller
-        if (window.innerWidth <= 767) {
-          offcanvas.show();
-        }
-      });
+      // Smaller screens, add offcanvas behavior
+      offcanvasElement.classList.add('offcanvas');
+      offcanvasElement.classList.add('offcanvas-start');
     }
   }
 
